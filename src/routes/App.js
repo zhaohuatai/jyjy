@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
+import BottomTab from '../components/layout/BottomTab';
+import 'antd-mobile/dist/antd-mobile.css';
+import Header from '../components/layout/Header';
+//mock
+//import '../utils/mock'
 
 class App extends Component {
   render() {
     return (
       <div>
-        {/* 此处可以引入全局通知组件 */}
+        <Header />
         {this.props.children}
+        <BottomTab />
       </div>
     );
   }

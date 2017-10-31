@@ -1,6 +1,6 @@
 var path = require('path');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
-
+var theme = require('./package.json').theme;
 //定义了一些文件夹的路径
 var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'src');
@@ -27,15 +27,8 @@ module.exports = {
             options:{
               presets:['react','es2015','stage-0'],
               plugins:[
-
                 //配置antd的按需引入
-                [
-                  'import',{
-                    libraryName:'antd',
-                    style:'css'
-                  }
-                ],
-
+                ['import',{'libraryName':'antd-mobile','style':true}],
                 //react热替换
                 ['react-transform', {
                   'transforms': [{
@@ -53,7 +46,7 @@ module.exports = {
           }
         ],
         exclude: /node_modules/,
-        
+
       },
       {
         test: /\.scss$/,
@@ -83,6 +76,10 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.less$/,
+        use: ["style-loader", "css-loader",{loader: 'less-loader', options: {modifyVars: theme}}],
       }
     ]
   },
@@ -98,13 +95,13 @@ module.exports = {
       //要把script插入到标签里
       inject: 'body'
     }),
-    
 
-    
+
+
   ],
   resolve: {
     extensions: ['.js', '.jsx']
   },
   devtool: 'eval-source-map',
-    
+
 };
