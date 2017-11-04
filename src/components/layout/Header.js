@@ -6,12 +6,10 @@ class Header extends React.Component {
     return(
       <NavBar
       mode="dark"
-      leftContent="返回"
       rightContent={[
-        <Icon key="0" type="search" style={{ marginRight: '16px' }} />,
         <Icon key="1" type="ellipsis" />,
       ]}
-    >NavBar</NavBar>
+    >经英教育</NavBar>
     )
   }
 }
