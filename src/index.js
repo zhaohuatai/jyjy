@@ -9,7 +9,9 @@ import './utils/pace.js';
 import './utils/pace.css';
 
 //mock
-import './utils/mock'
+import './utils/mock';
+
+import './utils/index.scss';
 
 ReactDOM.render(
   <Provider store={store}>
