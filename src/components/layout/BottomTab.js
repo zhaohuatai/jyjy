@@ -6,18 +6,15 @@ export default class BottomTab extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: '/',
+      selectedTab: hashHistory.getCurrentLocation().pathname,
     };
-  }
-
-  componentDidMount() {
-    // const path = hashHistory.getCurrentLocation().pathname;
   }
 
   handleChangeTab = (path) => {
     this.setState({selectedTab:path});
     hashHistory.push(path);
   }
+  
   render() {
     return (
       <div style={{ position: 'fixed', bottom: '0', width: '100%' }}>

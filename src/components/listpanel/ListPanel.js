@@ -8,7 +8,6 @@ const Brief = Item.Brief;
 
 
 const ListPanel = ({ list_data, title, title_icon, renderItem }) => {
-  console.log(renderItem);
   return (
     <div>
       <ListHeader title={title} icon={title_icon} />

@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
-import { Carousel, List } from 'antd-mobile';
+import { Carousel, List, WhiteSpace } from 'antd-mobile';
 
 import ColumnListItem from '../../components/column/ColumnListItem';
+import ListPanel from '../../components/listpanel/ListPanel';
+import CourseListItem from '../../components/course/CourseListItem';
 
-class Column extends Component {
+class Course extends Component {
   state = {
     data: ['', '', ''],  
     columns:[
       {id:1, thumbnail:'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png',title:'大作文',view:128, volume: 12, price: 1200},
-      {id:2, thumbnail:'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png',title:'大作文',view:128, volume: 12, price: 1200},      
-    ],  
+    ],
+    course:[
+      {id:1, thumbnail:'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png',title:'hahah',view:128},
+      {id:2, thumbnail:'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png',title:'hahah',view:128},
+      {id:3, thumbnail:'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png',title:'hahah',view:128}      
+    ],
   }
 
   componentDidMount(){
@@ -47,25 +53,21 @@ class Column extends Component {
           ))}
         </Carousel>
 
-        <List>
-          {
-            this.state.columns.map(item => (
-              <ColumnListItem
-                key={item.id}
-                thumbnail={item.thumbnail}
-                title={item.title}
-                studying={item.view}
-                volume={item.volume}
-                price={item.price}
-                id={item.id}
-              />
-            ))
-          }
-      </List>
+        <WhiteSpace size="sm" />
+        <ListPanel list_data={this.state.course} title='面试课程列表' title_icon='icon-kecheng' renderItem={CourseListItem}/>
+
+        <WhiteSpace size="sm" />
+        <ListPanel list_data={this.state.course} title='笔试课程列表' title_icon='icon-kecheng' renderItem={CourseListItem}/>
+
+        <WhiteSpace size="sm" />
+        <ListPanel list_data={this.state.course} title='国内名校升学' title_icon='icon-kecheng' renderItem={CourseListItem}/>
+
+        <WhiteSpace size="sm" />
+        <ListPanel list_data={this.state.course} title='国内名校升学' title_icon='icon-kecheng' renderItem={CourseListItem}/>
 
       </div>
     );
   }
 }
 
-export default Column;
+export default Course;

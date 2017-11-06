@@ -89,7 +89,6 @@ class Index extends Component {
 
               <WhiteSpace size="sm" />
               <ExpertListPanel list_data={this.state.expert} title='专家团队' title_icon='icon-kecheng' renderItem={ArticleListItem}/>
-
             </div>
         );
     }
