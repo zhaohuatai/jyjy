@@ -8,6 +8,7 @@ import ListPanelWithTab from '../../components/listpanel/ListPanelWithTab';
 import ListPanel from '../../components/listpanel/ListPanel';
 import ArticleListItem from '../../components/article/ArticleListItem';
 import ExpertListPanel from '../../components/expert/ExpertListPanel';
+import PartnerListPanel from '../../components/partner/PartnerListPanel';
 
 class Index extends Component {
   state = {
@@ -20,9 +21,9 @@ class Index extends Component {
       {id:3, thumbnail:'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png',title:'hahah',view:128}      
     ],
     features_data:[
-      {text:'名校库',icon:'icon-xuexiao',url:'/1'},
-      {text:'专业库',icon:'icon-zhuanye',url:'/2'},
-      {text:'职业库',icon:'icon-zhiyeziliao',url:'/3'},
+      {text:'名校库',icon:'icon-xuexiao',url:'/school'},
+      {text:'专业库',icon:'icon-zhuanye',url:'/specialty'},
+      {text:'职业库',icon:'icon-zhiyeziliao',url:'/profession'},
       {text:'自招大数据',icon:'icon--zhaoshengtongji',url:'/4'},
       {text:'会员专享',icon:'icon-huiyuan',url:'/'},
       {text:'智能评测',icon:'icon-cepingxueyuan',url:'/'},
@@ -34,6 +35,20 @@ class Index extends Component {
       {id:1, thumbnail:'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png',name:'hahah',view:128},
       {id:1, thumbnail:'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png',name:'hahah',view:128},
       {id:1, thumbnail:'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png',name:'hahah',view:128},      
+    ],
+    teacher: [
+      {
+        id: 12,
+        member: { profilePicture: 'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png', name: '李老师'}
+      },
+      {
+        id: 11,
+        member: { profilePicture: 'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png', name: '李老师'}
+      },
+      {
+        id: 14,
+        member: { profilePicture: 'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png', name: '李老师'}
+      }
     ]
   }
 
@@ -76,6 +91,7 @@ class Index extends Component {
               </Carousel>
 
               <FeaturesBox data={this.state.features_data}/>
+              
               <HeadLines data={this.state.head_lines}/>
 
               <WhiteSpace size="sm" />
@@ -88,7 +104,10 @@ class Index extends Component {
               <ListPanel list_data={this.state.course} title='国外名校升学' title_icon='icon-kecheng' renderItem={ArticleListItem}/>
 
               <WhiteSpace size="sm" />
-              <ExpertListPanel list_data={this.state.expert} title='专家团队' title_icon='icon-kecheng' renderItem={ArticleListItem}/>
+              <ExpertListPanel list_data={this.state.teacher} title='专家团队' title_icon='icon-kecheng' renderItem={ArticleListItem}/>
+            
+              <WhiteSpace size="sm" />
+              <PartnerListPanel list_data={this.state.teacher} title='合作伙伴' title_icon='icon-kecheng' renderItem={ArticleListItem}/>
             </div>
         );
     }

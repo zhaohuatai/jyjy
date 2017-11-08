@@ -8,7 +8,7 @@ const HeadLines = ({ data }) => {
       <WingBlank>
         <Flex>
           <Flex.Item>
-            <svg className="icon" aria-hidden="true" style={{ width: '1.8em', height: '1.8em' }}><use xlinkHref={'#icon-iconzhenghe61'} /></svg>
+            <Link to='/news'><svg className="icon" aria-hidden="true" style={{ width: '1.8em', height: '1.8em' }}><use xlinkHref={'#icon-iconzhenghe61'} /></svg></Link>
           </Flex.Item>
           <Carousel
             className="my-carousel"

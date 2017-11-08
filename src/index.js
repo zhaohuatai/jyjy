@@ -4,11 +4,11 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Router from './router';
 
-//首屏加载动画
-import './utils/pace.js';
+// 首屏加载动画
+import './utils/pace';
 import './utils/pace.css';
 
-//mock
+// mock
 import './utils/mock';
 
 import './utils/index.scss';
@@ -17,5 +17,5 @@ ReactDOM.render(
   <Provider store={store}>
     <Router />
   </Provider>,
-  document.getElementById('app')
+  document.getElementById('app'),
 );

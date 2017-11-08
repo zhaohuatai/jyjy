@@ -2,7 +2,7 @@ import React from 'react';
 import { Carousel, Flex } from 'antd-mobile';
 import ListHeader from '../listpanel/ListHeader';
 import CourseListItem from '../course/CourseListItem';
-import ExpertListPanelItem from './ExpertListPanelItem';
+import PartnerListPanelItem from './PartnerListPanelItem';
 
 const ExpertListPanel = ({ list_data, title, title_icon }) => {
   return (
@@ -20,13 +20,13 @@ const ExpertListPanel = ({ list_data, title, title_icon }) => {
         {list_data.map(item => (
           <Flex key={item.id}>
             <Flex.Item>
-              <ExpertListPanelItem data={item} />
+              <PartnerListPanelItem data={item} />
             </Flex.Item>
             <Flex.Item>
-              <ExpertListPanelItem data={item} />
+              <PartnerListPanelItem data={item} />
             </Flex.Item>
             <Flex.Item>
-              <ExpertListPanelItem data={item} />
+              <PartnerListPanelItem data={item} />
             </Flex.Item>
           </Flex>
         ))}
