@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { loadPubNewsDataSet, loadPubNewsCategoryDataSet } from '../../service/news';
-import { Tabs, List, PullToRefresh, Button } from 'antd-mobile';
+import { Tabs, List, PullToRefresh } from 'antd-mobile';
+import LoadMore from '../../components/loadmore/LoadMore';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -12,7 +13,9 @@ class News extends Component {
       cur_page: 1,
       tabs: [],
       cur_news: [],
-      cur_tab_id: 0
+      cur_tab_id: 0,
+      total: 0 ,
+      loadmore_disable: false
     }
   }
   
@@ -20,8 +23,12 @@ class News extends Component {
   componentDidMount() {
     loadPubNewsCategoryDataSet({}).then((data) => {
       console.log(data.data.dataSet.rows[0].id);
-      this.setState( {tabs: data.data.dataSet.rows, cur_tab_id: data.data.dataSet.rows[0].id })
-      this.handleRefresh({ categoryId: data.data.dataSet.rows[0].id, rows: 1 });
+      this.setState( {
+        tabs: data.data.dataSet.rows, 
+        cur_tab_id: data.data.dataSet.rows[0].id,
+        total: data.data.dataSet.total
+       })
+      this.handleRefresh({ categoryId: data.data.dataSet.rows[0].id });
     });
   }
 
@@ -32,12 +39,16 @@ class News extends Component {
 
   handleChangeTab = (tab, index) => {
     this.setState({cur_page: 1, });
-    this.handleRefresh({ categoryId: tab.id, page: 1, rows: 1 });
+    this.handleRefresh({ categoryId: tab.id, page: 1, });
   }
 
   handleRefresh = (params) =>{
     loadPubNewsDataSet(params).then((data) => {
-      this.setState({ cur_news: data.data.dataSet.rows });
+      if( data.data.dataSet.total > data.data.dataSet.rows.length ){
+        this.setState({ cur_news: data.data.dataSet.rows, loadmore_disable: false });
+      }else{
+        this.setState({ cur_news: data.data.dataSet.rows, loadmore_disable: true });        
+      }
     }).catch(err => {
       console.log(err);
     });
@@ -45,10 +56,15 @@ class News extends Component {
 
   loadMore = () => {
     let cur_page = ++this.state.cur_page;
-    loadPubNewsDataSet({ page: cur_page, rows: 1, categoryId: this.state.cur_tab_id}).then((data) => {
+    loadPubNewsDataSet({ page: cur_page, categoryId: this.state.cur_tab_id}).then((data) => {
       let temp_list = this.state.cur_news;
       temp_list = temp_list.concat(data.data.dataSet.rows);
-      this.setState({ cur_news: temp_list, cur_page });
+      
+      if( data.data.dataSet.total > temp_list.length ){
+        this.setState({ cur_news: temp_list, cur_page, loadmore_disable: false });
+      }else{
+        this.setState({ cur_news: temp_list, cur_page, loadmore_disable: true });
+      }
     }).catch(err => {
       console.log(err);
     });
@@ -71,7 +87,7 @@ class News extends Component {
               )
             })
           }
-          <Button onClick={this.loadMore}>加载更多</Button>
+          <LoadMore disable={this.state.loadmore_disable} onClick={this.loadMore}/>
         </List>
       </Tabs>
     );

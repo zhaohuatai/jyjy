@@ -32,6 +32,7 @@ const checkCode = (statusCode, message) => {
       break;
     case 4010: hashHistory.push('/weblogin'); break;
     case 4011: return { code: statusCode, message };
+    case 4004: return { code: statusCode, message }; // 非vip
     case 500: return { code: statusCode, message };
     default: return { code: statusCode, message };
   }
