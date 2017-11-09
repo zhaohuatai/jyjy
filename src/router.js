@@ -10,6 +10,7 @@ import CourseDetail from './routes/course/CourseDetail';
 import ColumnDetail from './routes/column/ColumnDetail';
 import School from './routes/school/School';
 import Profession from './routes/profession/Profession';
+import ProfessionDetail from './routes/profession/ProfessionDetail';
 import Career from './routes/career/Career';
 import Expert from './routes/expert/Expert';
 import ExpertDetail from './routes/expert/ExpertDetail';
@@ -30,6 +31,7 @@ const Routers = () => {
         <Route path="/school" component={School} />
         <Route path="/career" component={Career} />
         <Route path="/profession" component={Profession} />
+        <Route path="/profession/:id" component={ProfessionDetail} />
         <Route path="/expert/:id" component={ExpertDetail} />
         <Route path="/expert" component={Expert} />
         <Route path="/news" component={News} />

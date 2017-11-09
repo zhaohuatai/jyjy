@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import { SearchBar, Tabs, Tag, Flex } from 'antd-mobile';
-import { loadDataProfessionSubjectDataSet, loadDataProfessionCategoryDataSet, loadDataProfessionDataSet } from '../../service/specicalty';
+import { loadDataProfessionSubjectDataSet, loadDataProfessionCategoryDataSet, loadDataProfessionDataSet } from '../../service/profession';
 
 const SpecialtyItem = ({data}) => {
   return   
@@ -75,7 +76,13 @@ class Specialty extends Component {
               <Flex wrap="wrap">
                 {
                   this.state.specicalties.map( item => {
-                    return <Tag key={item.id} data-seed="logId" style={{ margin: '5px 5px', height: '40px', width:'45%', lineHeight: '40px' }} >{ item.profession }</Tag>
+                    return <Link 
+                      key={item.id} 
+                      style={{ margin: '5px 5px', height: '40px', width:'45%', lineHeight: '40px', display: 'block', border: 'solid 1px #ddd', textAlign: 'center' }} 
+                      to={`/profession/${item.id}`} 
+                      >
+                      { item.profession }
+                    </Link>
                   })
                 }
               </Flex>

@@ -24,3 +24,11 @@ export function loadDataProfessionDataSet(param) {
 		});
 	});
 }
+
+export function loadDataProfession(param) {
+	return new Promise((resolve, reject) => {
+		post(`${API_DOMAIN}pub/data/dataProfession/loadDataProfession`, param).then((data) => {
+			resolve(data);
+		});
+	});
+}
