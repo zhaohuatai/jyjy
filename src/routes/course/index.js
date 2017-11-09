@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Carousel, List, WhiteSpace } from 'antd-mobile';
-
+import { loadServiceCourseCategoryDataSet } from '../../service/course';
 import ColumnListItem from '../../components/column/ColumnListItem';
 import ListPanel from '../../components/listpanel/ListPanel';
 import CourseListItem from '../../components/course/CourseListItem';
 
 class Course extends Component {
   state = {
-    data: ['', '', ''],  
+    data: ['', '', ''],
+    categories: [],
     columns:[
       {id:1, thumbnail:'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png',title:'大作文',view:128, volume: 12, price: 1200},
     ],
@@ -24,6 +25,10 @@ class Course extends Component {
         data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
       });
     }, 100);
+
+    loadServiceCourseCategoryDataSet({rows: 100}).then(data => {
+      this.setState({categories: data.data.dataSet.rows})
+    })
   }
 
   render() {

@@ -7,7 +7,7 @@ import ExpertListPanelItem from './ExpertListPanelItem';
 const ExpertListPanel = ({ list_data, title, title_icon }) => {
   return (
     <div>
-      <ListHeader title={title} icon={title_icon} />
+      <ListHeader title={title} icon={title_icon} href='/expert'/>
       <Carousel
         className="my-carousel"
         autoplay={true}

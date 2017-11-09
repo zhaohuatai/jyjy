@@ -22,7 +22,6 @@ class News extends Component {
 
   componentDidMount() {
     loadPubNewsCategoryDataSet({}).then((data) => {
-      console.log(data.data.dataSet.rows[0].id);
       this.setState( {
         tabs: data.data.dataSet.rows, 
         cur_tab_id: data.data.dataSet.rows[0].id,

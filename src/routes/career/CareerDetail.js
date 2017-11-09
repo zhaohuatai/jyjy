@@ -50,7 +50,7 @@ class CareerDetail extends Component {
         <Item multipleLine>
           {this.state.career.name}
           <Brief>
-            分类：{this.state.career.categoryId} <br />
+            分类：{this.state.career.categoryName} <br />
           </Brief>
         </Item>
         <WhiteSpace />
