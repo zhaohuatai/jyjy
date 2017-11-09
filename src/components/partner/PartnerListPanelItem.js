@@ -6,11 +6,11 @@ const ExpertListPanelItem = ({ data }) => {
     <Link to={`expert/${data.id}`}>
       <div style={{ padding: '5px', textAlign: 'center' }}>
         <img
-          src={data.member.profilePicture}
+          src={data.thumbnail}
           alt=""
           style={{ height: '85px', width: '100%' }}
         />
-        <p style={{ margin: '5px' }}>{data.member.name}</p>
+        <p style={{ margin: '5px' }}>{data.name}</p>
       </div>
     </Link>
   );

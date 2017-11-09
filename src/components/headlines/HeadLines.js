@@ -10,22 +10,28 @@ const HeadLines = ({ data }) => {
           <Flex.Item>
             <Link to='/news'><svg className="icon" aria-hidden="true" style={{ width: '1.8em', height: '1.8em' }}><use xlinkHref={'#icon-iconzhenghe61'} /></svg></Link>
           </Flex.Item>
-          <Carousel
-            className="my-carousel"
-            vertical
-            dots={false}
-            dragging={false}
-            swiping={false}
-            autoplay
-            infinite
-            style={{ flex: 8 }}
-          >
-            {
-              data.map((item) => {
-                return <Link key={item.id} to={item.url}>{item.title}</Link>;
-              })
-            }
-          </Carousel>
+          {
+            data.length > 0 ? 
+              <Carousel
+                className="my-carousel"
+                vertical
+                dots={false}
+                dragging={false}
+                swiping={false}
+                autoplay
+                infinite
+                style={{ flex: 8 }}
+              >
+                {
+                  data.map((item) => {
+                    return <Link to={`/news/${item.id}`} key = {item.id}>{item.title}</Link>;
+                  })
+                }
+              </Carousel>
+              :
+              null
+          }
+          
         </Flex>
       </WingBlank>
     </div>

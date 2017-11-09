@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import {loadCaseSuccessDataSet} from '../../service/cases';
 import { Carousel, WhiteSpace, WingBlank } from 'antd-mobile';
 
+import { loadMemberTeacherDataSet } from '../../service/expert';
+import { loadPubNewsDataSet } from '../../service/news';
+
 import FeaturesBox from '../../components/featuresbox';
 import HeadLines from '../../components/headlines/HeadLines';
 import ListPanelWithTab from '../../components/listpanel/ListPanelWithTab';
@@ -14,7 +17,7 @@ class Index extends Component {
   state = {
     data: ['', '', ''],
     initialHeight: 176,
-    head_lines:[{id: 1, title: '出状元啦', url: '/column'},{id: 2, title: '出状元啦', url: '/column'},{id: 3, title: '出状元啦', url: '/column'}],
+    top_news:[{id: 1, title: '出状元啦', url: '/column'},{id: 2, title: '出状元啦', url: '/column'},{id: 3, title: '出状元啦', url: '/column'}],
     course:[
       {id:1, thumbnail:'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png',title:'hahah',view:128},
       {id:2, thumbnail:'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png',title:'hahah',view:128},
@@ -31,25 +34,8 @@ class Index extends Component {
       {text:'大事记',icon:'icon-biji',url:'/'},
       {text:'加入社群',icon:'icon-qunliao',url:'/'},
     ],
-    expert:[
-      {id:1, thumbnail:'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png',name:'hahah',view:128},
-      {id:1, thumbnail:'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png',name:'hahah',view:128},
-      {id:1, thumbnail:'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png',name:'hahah',view:128},      
-    ],
-    teacher: [
-      {
-        id: 12,
-        member: { profilePicture: 'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png', name: '李老师'}
-      },
-      {
-        id: 11,
-        member: { profilePicture: 'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png', name: '李老师'}
-      },
-      {
-        id: 14,
-        member: { profilePicture: 'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png', name: '李老师'}
-      }
-    ]
+    expert:[],
+
   }
 
   componentDidMount(){
@@ -61,6 +47,14 @@ class Index extends Component {
         data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
       });
     }, 100);
+
+    loadPubNewsDataSet({isTop: 1, rows: 5}).then(data => {
+      this.setState({top_news: data.data.dataSet.rows});
+    })
+
+    loadMemberTeacherDataSet({}).then(data => {
+      this.setState({ expert: data.data.dataSet.rows });
+    })
   }
     render() {
       const hProp = this.state.initialHeight ? { height: this.state.initialHeight } : {};
@@ -92,7 +86,7 @@ class Index extends Component {
 
               <FeaturesBox data={this.state.features_data}/>
               
-              <HeadLines data={this.state.head_lines}/>
+              <HeadLines data={this.state.top_news}/>
 
               <WhiteSpace size="sm" />
               <ListPanelWithTab list_data={this.state.course} category={['自主招生面试', '自主招生笔试']} title='经英课堂' title_icon='icon-kecheng' />
@@ -104,10 +98,10 @@ class Index extends Component {
               <ListPanel list_data={this.state.course} title='国外名校升学' title_icon='icon-kecheng' renderItem={ArticleListItem}/>
 
               <WhiteSpace size="sm" />
-              <ExpertListPanel list_data={this.state.teacher} title='专家团队' title_icon='icon-kecheng' renderItem={ArticleListItem}/>
+              <ExpertListPanel list_data={this.state.expert} title='专家团队' title_icon='icon-kecheng' renderItem={ArticleListItem}/>
             
               <WhiteSpace size="sm" />
-              <PartnerListPanel list_data={this.state.teacher} title='合作伙伴' title_icon='icon-kecheng' renderItem={ArticleListItem}/>
+              <PartnerListPanel list_data={this.state.course} title='合作伙伴' title_icon='icon-kecheng' renderItem={ArticleListItem}/>
             </div>
         );
     }

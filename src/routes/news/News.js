@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { loadPubNewsDataSet, loadPubNewsCategoryDataSet } from '../../service/news';
 import { Tabs, List, PullToRefresh } from 'antd-mobile';
 import LoadMore from '../../components/loadmore/LoadMore';
-
+import { hashHistory } from 'react-router';
 const Item = List.Item;
 const Brief = Item.Brief;
 
@@ -80,7 +80,7 @@ class News extends Component {
           {
             this.state.cur_news.map(item => {
               return (
-                <Item key={item.id} arrow="horizontal" multipleLine onClick={() => {}}>
+                <Item key={item.id} arrow="horizontal" multipleLine onClick={() => hashHistory.push(`/news/${item.id}`)}>
                   {item.title} <Brief>{item.addtime}</Brief>
                 </Item>
               )
