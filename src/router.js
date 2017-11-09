@@ -10,7 +10,7 @@ import CourseDetail from './routes/course/CourseDetail';
 import ColumnDetail from './routes/column/ColumnDetail';
 import School from './routes/school/School';
 import Profession from './routes/profession/Profession';
-import Specialty from './routes/specialty/Specialty';
+import Career from './routes/career/Career';
 import Expert from './routes/expert/Expert';
 import ExpertDetail from './routes/expert/ExpertDetail';
 import News from './routes/news/News';
@@ -28,8 +28,8 @@ const Routers = () => {
         <Route path="/my" component={User} />
         <Route path="/login" component={Login} />
         <Route path="/school" component={School} />
+        <Route path="/career" component={Career} />
         <Route path="/profession" component={Profession} />
-        <Route path="/specialty" component={Specialty} />
         <Route path="/expert/:id" component={ExpertDetail} />
         <Route path="/expert" component={Expert} />
         <Route path="/news" component={News} />

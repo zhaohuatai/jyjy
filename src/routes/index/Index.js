@@ -22,8 +22,8 @@ class Index extends Component {
     ],
     features_data:[
       {text:'名校库',icon:'icon-xuexiao',url:'/school'},
-      {text:'专业库',icon:'icon-zhuanye',url:'/specialty'},
-      {text:'职业库',icon:'icon-zhiyeziliao',url:'/profession'},
+      {text:'专业库',icon:'icon-zhuanye',url:'/profession'},
+      {text:'职业库',icon:'icon-zhiyeziliao',url:'/career'},
       {text:'自招大数据',icon:'icon--zhaoshengtongji',url:'/4'},
       {text:'会员专享',icon:'icon-huiyuan',url:'/'},
       {text:'智能评测',icon:'icon-cepingxueyuan',url:'/'},
