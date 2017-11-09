@@ -16,3 +16,11 @@ export function loadPubNewsCategoryDataSet(param) {
     });
   });
 }
+
+export function loadPubNews(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/pubNews/loadPubNews`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

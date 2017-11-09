@@ -14,6 +14,7 @@ import Specialty from './routes/specialty/Specialty';
 import Expert from './routes/expert/Expert';
 import ExpertDetail from './routes/expert/ExpertDetail';
 import News from './routes/news/News';
+import NewsDetail from './routes/news/NewsDetail';
 
 const Routers = () => {
   return (
@@ -32,6 +33,7 @@ const Routers = () => {
         <Route path="/expert/:id" component={ExpertDetail} />
         <Route path="/expert" component={Expert} />
         <Route path="/news" component={News} />
+        <Route path="/news/:id" component={NewsDetail} />
       </Route>
     </Router>
   );
