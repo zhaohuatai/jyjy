@@ -9,6 +9,7 @@ import Course from './routes/course';
 import CourseDetail from './routes/course/CourseDetail';
 import ColumnDetail from './routes/column/ColumnDetail';
 import School from './routes/school/School';
+import SchoolDetail from './routes/school/SchoolDetail';
 import Profession from './routes/profession/Profession';
 import ProfessionDetail from './routes/profession/ProfessionDetail';
 import Career from './routes/career/Career';
@@ -30,6 +31,7 @@ const Routers = () => {
         <Route path="/my" component={User} />
         <Route path="/login" component={Login} />
         <Route path="/school" component={School} />
+        <Route path="/school/:id" component={SchoolDetail} />
         <Route path="/career" component={Career} />
         <Route path="/career/:id" component={CareerDetail} />
         <Route path="/profession" component={Profession} />

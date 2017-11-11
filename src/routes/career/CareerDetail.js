@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { loadDataCareer } from '../../service/career';
 import { List, Accordion, WhiteSpace } from 'antd-mobile';
+import { loadDataCareer } from '../../service/career';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -56,9 +56,12 @@ class CareerDetail extends Component {
         <WhiteSpace />
         <Accordion>
           <Accordion.Panel header="简介" className="pad">
-            <div style={{ padding: '10px' }}>
-              {this.state.career.intro}
+            <div>
+              <pre style={{ padding: '10px', margin: '10px', width: '100px' }}>
+                {this.state.career.intro}
+              </pre>
             </div>
+
           </Accordion.Panel>
           <Accordion.Panel header="职业定义" className="pad">
             <div style={{ padding: '10px' }}>

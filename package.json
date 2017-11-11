@@ -9,17 +9,20 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "theme": {
-    "@brand-primary": "#2fc2ba"
+    "@brand-primary": "#2fc2ba",
+    "@tabs-color": "#2fc2ba"
   },
   "author": "houser",
   "license": "ISC",
   "dependencies": {
     "antd-mobile": "^2.0.1",
     "blueimp-md5": "^2.10.0",
+    "rc-form": "^2.0.0",
     "react": "~15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",
     "react-router": "^3.0.3",
+    "recharts": "^1.0.0-beta.1",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "whatwg-fetch": "^2.0.3"
