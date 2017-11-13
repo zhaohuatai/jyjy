@@ -1,9 +1,17 @@
 import { post } from '../utils/request';
 import { API_DOMAIN } from '../utils/config';
 
-export function loadServiceCourseCategoryDataSet(param) {
+export function loadServiceCourseDataSet(param) {
   return new Promise((resolve, reject) => {
-    post(`${API_DOMAIN}pub/course/serviceCourseCategory/loadServiceCourseCategoryDataSet`, param).then((data) => {
+    post(`${API_DOMAIN}pub/course/serviceCourse/loadServiceCourseDataSet`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}
+
+export function loadServiceCourse(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/course/serviceCourse/loadServiceCourse`, param).then((data) => {
       resolve(data);
     });
   });

@@ -1,29 +1,26 @@
-import 'whatwg-fetch';
+import { post } from '../utils/request';
+import { API_DOMAIN } from '../utils/config';
 
-export function GetVideoPlayAuth(params = '') {
-  let url = 'http://vod.cn-shanghai.aliyuncs.com/';
-
-  // json 序列化
-  if (params) {
-    const paramsArray = [];
-    // encodeURIComponent
-    Object.keys(params).forEach(key => paramsArray.push(`${key}=${params[key]}`));
-    if (url.search(/\?/) === -1) {
-      url += `?${paramsArray.join('&')}`;
-    } else {
-      url += `&${paramsArray.join('&')}`;
-    }
-  }
-
-  return new Promise(((resolve, reject) => {
-    fetch(url, {
-      method: 'get',
-    }).then(response => {
-      return response.json();
-    }).then((responseData) => {
-      resolve(responseData);
-    }).catch((err) => {
-      reject(err);
+export function loadAliVedioUploadAuthInfo(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}admin/course/aliVedio/auth/loadAliVedioUploadAuthInfo`, param).then((data) => {
+      resolve(data);
     });
-  }));
+  });
+}
+
+export function refreshAliVedioUploadAuthInfo(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}admin/course/aliVedio/auth/refreshAliVedioUploadAuthInfo`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}
+
+export function loadAliVedioPlayAuthInfo(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}admin/course/aliVedio/auth/loadAliVedioPlayAuthInfo`, param).then((data) => {
+      resolve(data);
+    });
+  });
 }

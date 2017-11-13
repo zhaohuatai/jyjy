@@ -1,15 +1,26 @@
 import React, { Component } from 'react';
-import { GetVideoPlayAuth } from '../../service/alivideo';
+import { loadAliVedioPlayAuthInfo } from '../../service/alivideo';
 
 class VideoPlay extends Component {
 
   componentDidMount() {
-    let player = new Aliplayer({
-      id: this.props.id, // 容器id
-      vid: this.props.vid,
-      width: "100%",       // 播放器宽度
-      playauth: this.props.PlayAuth,
+    loadAliVedioPlayAuthInfo({ vedioId: '909916fdf41044478e57e07682060f58' }).then(data => {
+
+      let player = new Aliplayer({
+        id: this.props.id, // 容器id
+        vid: '909916fdf41044478e57e07682060f58',
+        width: "100%",       // 播放器宽度
+        playauth: data.data.aliVedioPalyAuthDto.uploadAuth,
+
+      });
+
+      player.on('ready',function(e) {
+        player.play();
+        console.log(e);
+      });
     });
+
+
   }
 
   render() {

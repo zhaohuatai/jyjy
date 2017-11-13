@@ -1,6 +1,6 @@
 export const sitename='水墨人生';
 
-export const API_DOMAIN = 'http://172.25.253.157/';
+export const API_DOMAIN = 'http://yxyz.kingmon.cn/';
 
 export const IMG_DOMAIN = 'http://172.25.253.158/';
 

@@ -1,11 +1,27 @@
 import React, { Component } from 'react';
 import { Badge, Tabs, List, WhiteSpace } from 'antd-mobile';
 import VideoPlay from '../../components/aliplayer/VideoPlay';
+import { loadServiceCourse } from '../../service/course';
 
 const Item = List.Item;
 const Brief = Item.Brief;
 
 class CourseDetail extends Component {
+  constructor(props){
+    super(props)
+    this.state={
+      course:{}
+    }
+  }
+
+  componentDidMount() {
+    const id = this.props.params.id;
+
+    loadServiceCourse({id}).then(data => {
+      this.setState({ course: data.data.serviceCourse });
+    })
+  }
+
   render() {
     const tabs = [
       { title: <Badge>目录</Badge> },
