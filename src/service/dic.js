@@ -8,3 +8,11 @@ export function loadProvinceList(param) {
     });
   });
 }
+
+export function loadDicData(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/dic/dicData/loadDicData`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

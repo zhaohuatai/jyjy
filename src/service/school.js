@@ -16,3 +16,11 @@ export function loadDataUniversityDataSet(param) {
     });
   });
 }
+
+export function loadDataScoreLineDataSet(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/data/dataScoreLine/loadDataScoreLineDataSet`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

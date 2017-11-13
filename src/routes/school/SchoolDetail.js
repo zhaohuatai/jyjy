@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { List, WhiteSpace, Flex, Tabs } from 'antd-mobile';
+import { List, WhiteSpace, Flex, Tabs, SegmentedControl, WingBlank } from 'antd-mobile';
 import { SCH_BADGE } from '../../utils/config';
-import { loadDataUniversity } from '../../service/school';
+import { loadDataUniversity, loadDataScoreLineDataSet } from '../../service/school';
 import NumberInfo from '../../components/school/NumberInfo';
 import Intro from '../../components/debris/Intro';
 import { LineChart, CartesianGrid, XAxis, YAxis, Line } from 'recharts';
+import { loadDicData } from '../../service/dic';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -13,6 +14,13 @@ class SchoolDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      data_PC: [],
+      data_FK: [],
+      liberalScienceCode: 0,
+      batchCode: 0,
+      FK_selectedIndex: 0,
+      PC_selectedIndex: 0,
+      lines_data:[],
       school: {
         academicianNum: '0',
         academy: '',
@@ -47,9 +55,59 @@ class SchoolDetail extends Component {
     loadDataUniversity({ id }).then((data) => {
       this.setState({ school: data.data.dataUniversity });
     });
+
+    loadDicData({ code: 'PC' }).then(data => {
+      this.setState({data_PC: data.data.dicData, batchCode: data.data.dicData[0].itemCode });
+    });
+
+    loadDicData({ code: 'FK' }).then(data => {
+      this.setState({data_FK: data.data.dicData, liberalScienceCode: data.data.dicData[0].itemCode });
+    });
+
+    loadDataScoreLineDataSet({
+      batchCode: 0,
+      liberalScienceCode: 0,
+      universityId: this.state.school.id
+    }).then(data => {
+      this.setState({lines_data: data.data.dataSet.rows})
+    })
+  }
+
+  onChangePC = (e) => {
+    this.setState({ PC_selectedIndex: e.nativeEvent.selectedSegmentIndex}, ()=>{
+      this.handleGetLines()
+    });
+  };
+
+  onChangeFK = (e) => {
+    this.setState({ FK_selectedIndex: e.nativeEvent.selectedSegmentIndex}, ()=>{
+      this.handleGetLines()
+    });
+  };
+
+  handleGetLines = () => {
+    const { PC_selectedIndex, FK_selectedIndex } = this.state;
+    loadDataScoreLineDataSet({
+      batchCode: this.state.data_PC[PC_selectedIndex].itemCode,
+      liberalScienceCode: this.state.data_FK[FK_selectedIndex].itemCode,
+      universityId: this.state.school.id
+    }).then(data => {
+      this.setState({lines_data: data.data.dataSet.rows})
+    })
   }
 
   render() {
+
+    let SegmentedControl_PC = [];
+    this.state.data_PC.map(item=>{
+      SegmentedControl_PC.push(item.itemValue);
+    });
+
+    let SegmentedControl_FK = [];
+    this.state.data_FK.map(item=>{
+      SegmentedControl_FK.push(item.itemValue);
+    });
+
     return (
       <div style={{ marginBottom: '40px' }}>
         <Item
@@ -87,8 +145,7 @@ class SchoolDetail extends Component {
             双一流：{this.state.school.firstRate ? '是' : '否' } <br />
             办学类型 ：{this.state.school.type} <br />
             招生办电话：{this.state.school.phone} <br />
-            地点：{this.state.school.location} <br />
-
+            地点：{this.state.school.location}
           </Brief>
         </Item>
         <WhiteSpace />
@@ -104,14 +161,34 @@ class SchoolDetail extends Component {
           </div>
 
           <div>
-            <LineChart width={300} height={250} data={this.state.school.scoreLineList}
-                       margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="years" />
-              <YAxis />
-              <Line type="monotone" dataKey="lowest" stroke="#8884d8" />
-              <Line type="monotone" dataKey="highest" stroke="#82ca9d" />
-            </LineChart>
+            <WingBlank>
+              <WhiteSpace />
+              <WhiteSpace />
+
+              <SegmentedControl
+                values={SegmentedControl_PC}
+                onChange={this.onChangePC}
+                selectedIndex={this.state.PC_selectedIndex}
+              />
+              <WhiteSpace />
+              <SegmentedControl
+                values={SegmentedControl_FK}
+                onChange={this.onChangeFK}
+                selectedIndex={this.state.FK_selectedIndex}
+              />
+              <WhiteSpace />
+
+              <LineChart
+                width={350}
+                height={250}
+                data={this.state.lines_data}
+                margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="years" />
+                <YAxis/>
+                <Line type="monotone" dataKey="lowest" stroke="#82ca9d" />
+              </LineChart>
+            </WingBlank>
           </div>
         </Tabs>
       </div>

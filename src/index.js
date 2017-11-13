@@ -9,7 +9,7 @@ import './utils/pace';
 import './utils/pace.css';
 
 // mock
-import './utils/mock';
+//import './utils/mock';
 
 import './utils/index.scss';
 

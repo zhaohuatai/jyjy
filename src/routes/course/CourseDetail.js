@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Badge, Tabs, List, WhiteSpace } from 'antd-mobile';
+import VideoPlay from '../../components/aliplayer/VideoPlay';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -14,6 +15,7 @@ class CourseDetail extends Component {
 
     return (
       <div>
+        <VideoPlay id='aliPlayer_course' videoId='909916fdf41044478e57e07682060f58' />
         <Tabs tabs={tabs} initialPage={0}>
           <div>
             <List>

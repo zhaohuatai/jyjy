@@ -19,7 +19,7 @@ class Specialty extends Component {
   }
 
   componentDidMount(){
-    loadDataProfessionSubjectDataSet({}).then( data => {
+    loadDataProfessionSubjectDataSet({rows: 100}).then( data => {
       this.setState({ tabs: data.data.dataSet.rows });
       loadDataProfessionCategoryDataSet({ subjectId: data.data.dataSet.rows[0].id}).then( data => {
         this.setState({ categorys: data.data.dataSet.rows });
