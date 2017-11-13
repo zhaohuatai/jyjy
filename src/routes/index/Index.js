@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {loadCaseSuccessDataSet} from '../../service/cases';
+import {loadPubPartnerDataSet} from '../../service/partner';
 import { Carousel, WhiteSpace, WingBlank } from 'antd-mobile';
 
 import { loadMemberTeacherDataSet } from '../../service/expert';
@@ -35,6 +36,7 @@ class Index extends Component {
       {text:'加入社群',icon:'icon-qunliao',url:'/'},
     ],
     expert:[],
+    partner:[]
 
   }
 
@@ -52,8 +54,12 @@ class Index extends Component {
       this.setState({top_news: data.data.dataSet.rows});
     })
 
-    loadMemberTeacherDataSet({}).then(data => {
+    loadMemberTeacherDataSet({rows: 100}).then(data => {
       this.setState({ expert: data.data.dataSet.rows });
+    })
+
+    loadPubPartnerDataSet({rows: 100}).then(data => {
+      this.setState({ partner: data.data.dataSet.rows });
     })
   }
     render() {
@@ -101,7 +107,7 @@ class Index extends Component {
               <ExpertListPanel list_data={this.state.expert} title='专家团队' title_icon='icon-kecheng' renderItem={ArticleListItem}/>
             
               <WhiteSpace size="sm" />
-              <PartnerListPanel list_data={this.state.course} title='合作伙伴' title_icon='icon-kecheng' renderItem={ArticleListItem}/>
+              <PartnerListPanel list_data={this.state.partner} title='合作伙伴' title_icon='icon-kecheng' renderItem={ArticleListItem}/>
             </div>
         );
     }

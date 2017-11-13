@@ -5,6 +5,11 @@ import CourseListItem from '../course/CourseListItem';
 import PartnerListPanelItem from './PartnerListPanelItem';
 
 const ExpertListPanel = ({ list_data, title, title_icon }) => {
+  const result = [];
+  for (let i = 0, len = list_data.length; i < len; i += 3) {
+    result.push(list_data.slice(i, i + 3));
+  }
+
   return (
     <div>
       <ListHeader title={title} icon={title_icon} />
@@ -17,17 +22,29 @@ const ExpertListPanel = ({ list_data, title, title_icon }) => {
         dots={false}
         style={{ backgroundColor: '#fff' }}
       >
-        {list_data.map(item => (
-          <Flex key={item.id}>
-            <Flex.Item>
-              <PartnerListPanelItem data={item} />
-            </Flex.Item>
-            <Flex.Item>
-              <PartnerListPanelItem data={item} />
-            </Flex.Item>
-            <Flex.Item>
-              <PartnerListPanelItem data={item} />
-            </Flex.Item>
+        {result.map(item => (
+          <Flex key={item[0].id}>
+            {
+              item[0] ?
+                <Flex.Item>
+                  <PartnerListPanelItem data={item[0]} />
+                </Flex.Item>
+                : <Flex.Item></Flex.Item>
+            }
+            {
+              item[0] ?
+                <Flex.Item>
+                  <PartnerListPanelItem data={item[1]} />
+                </Flex.Item>
+                : <Flex.Item></Flex.Item>
+            }
+            {
+              item[0] ?
+                <Flex.Item>
+                  <PartnerListPanelItem data={item[2]} />
+                </Flex.Item>
+                : <Flex.Item></Flex.Item>
+            }
           </Flex>
         ))}
       </Carousel>

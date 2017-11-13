@@ -13,11 +13,6 @@ class VideoPlay extends Component {
         playauth: data.data.aliVedioPalyAuthDto.uploadAuth,
 
       });
-
-      player.on('ready',function(e) {
-        player.play();
-        console.log(e);
-      });
     });
 
 
