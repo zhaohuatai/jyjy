@@ -1,17 +1,22 @@
 import React from 'react';
 import { Carousel, Flex, WingBlank } from 'antd-mobile';
-import { Link } from 'react-router';
+import { Link, hashHistory } from 'react-router';
 
 const HeadLines = ({ data }) => {
+  const result = [];
+  for (let i = 0, len = data.length; i < len; i += 3) {
+    result.push(data.slice(i, i + 3));
+  }
+
   return (
     <div style={{ backgroundColor: '#fff' }}>
       <WingBlank>
         <Flex>
-          <Flex.Item>
-            <Link to='/news'><svg className="icon" aria-hidden="true" style={{ width: '1.8em', height: '1.8em' }}><use xlinkHref={'#icon-iconzhenghe61'} /></svg></Link>
+          <Flex.Item style={{ marginRight: '10px' }}>
+            <svg className="icon" aria-hidden="true" style={{ width: '2.8em', height: '2.8em' }}><use xlinkHref={'#icon-iconzhenghe61'} /></svg>
           </Flex.Item>
           {
-            data.length > 0 ? 
+            result.length > 0 ?
               <Carousel
                 className="my-carousel"
                 vertical
@@ -23,8 +28,13 @@ const HeadLines = ({ data }) => {
                 style={{ flex: 8 }}
               >
                 {
-                  data.map((item) => {
-                    return <Link to={`/news/${item.id}`} key = {item.id}>{item.title}</Link>;
+                  result.map((item) => {
+                    return (
+                      <div key={item[0].id}>
+                        <Link to='/news'>{item[0].title}</Link><br />
+                        <Link to='/news'>{item[1].title}</Link>
+                      </div>
+                    )
                   })
                 }
               </Carousel>

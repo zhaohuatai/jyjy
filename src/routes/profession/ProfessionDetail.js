@@ -53,7 +53,7 @@ class ProfessionDetail extends Component {
             开设院校：{this.state.profession.offer} <br />
           </Brief>
         </Item>
-        <div dangerouslySetInnerHTML={{ __html: this.state.profession.detail }} style={{ backgroundColor: '#fff', padding: '15px' }} />      
+        <div dangerouslySetInnerHTML={{ __html: this.state.profession.detail }} style={{ backgroundColor: '#fff', padding: '15px' }} />
       </div>
     );
   }

@@ -34,6 +34,7 @@ class Index extends Component {
       {text:'省控线',icon:'icon-tongji',url:'/'},
       {text:'大事记',icon:'icon-biji',url:'/'},
       {text:'加入社群',icon:'icon-qunliao',url:'/'},
+      {text:'自主招生问答',icon:'icon-wenda-copy',url:'/'},
     ],
     expert:[],
     partner:[]
