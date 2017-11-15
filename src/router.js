@@ -21,6 +21,8 @@ import NewsDetail from './routes/news/NewsDetail';
 import Join from './routes/join';
 import MemberExclusive from './routes/exclusive';
 import Event from './routes/event';
+import Introduce from './routes/introduce';
+import Consult from './routes/consult';
 
 const Routers = () => {
   return (
@@ -47,6 +49,8 @@ const Routers = () => {
         <Route path="/join" component={Join} />
         <Route path="/memberexclusive" component={MemberExclusive} />
         <Route path="/event" component={Event} />
+        <Route path="/consult" component={Consult} />
+        <Route path="/introduce" component={Introduce} />
 
       </Route>
     </Router>

@@ -5,6 +5,7 @@ import { Carousel, WhiteSpace, WingBlank } from 'antd-mobile';
 
 import { loadMemberTeacherDataSet } from '../../service/expert';
 import { loadPubNewsDataSet } from '../../service/news';
+import { loadPubSlideDataSet } from '../../service/slide';
 
 import FeaturesBox from '../../components/featuresbox';
 import HeadLines from '../../components/headlines/HeadLines';
@@ -13,10 +14,10 @@ import ListPanel from '../../components/listpanel/ListPanel';
 import ArticleListItem from '../../components/article/ArticleListItem';
 import ExpertListPanel from '../../components/expert/ExpertListPanel';
 import PartnerListPanel from '../../components/partner/PartnerListPanel';
+import {API_DOMAIN} from "../../utils/config";
 
 class Index extends Component {
   state = {
-    data: ['', '', ''],
     initialHeight: 176,
     top_news:[{id: 1, title: '出状元啦', url: '/column'},{id: 2, title: '出状元啦', url: '/column'},{id: 3, title: '出状元啦', url: '/column'}],
     course:[
@@ -37,7 +38,8 @@ class Index extends Component {
       {text:'自主招生问答',icon:'icon-wenda-copy',url:'/'},
     ],
     expert:[],
-    partner:[]
+    partner:[],
+    slide:[]
 
   }
 
@@ -62,6 +64,10 @@ class Index extends Component {
     loadPubPartnerDataSet({rows: 100}).then(data => {
       this.setState({ partner: data.data.dataSet.rows });
     })
+
+    loadPubSlideDataSet({rows: 100}).then(data => {
+      this.setState({ slide: data.data.dataSet.rows });
+    })
   }
     render() {
       const hProp = this.state.initialHeight ? { height: this.state.initialHeight } : {};
@@ -74,11 +80,11 @@ class Index extends Component {
                 selectedIndex={1}
                 swipeSpeed={35}
               >
-                {this.state.data.map(ii => (
+                {this.state.slide.map(ii => (
                   <a href="http://www.baidu.com" key={ii} style={hProp}>
                     <img
-                      src={`https://zos.alipayobjects.com/rmsportal/${ii}.png`}
-                      alt=""
+                      src={`${API_DOMAIN}${ii.imgUrl}`}
+                      alt={ii.title}
                       onLoad={() => {
                         // fire window resize event to change height
                         window.dispatchEvent(new Event('resize'));
