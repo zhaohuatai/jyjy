@@ -18,6 +18,9 @@ import Expert from './routes/expert/Expert';
 import ExpertDetail from './routes/expert/ExpertDetail';
 import News from './routes/news/News';
 import NewsDetail from './routes/news/NewsDetail';
+import Join from './routes/join';
+import MemberExclusive from './routes/exclusive';
+import Event from './routes/event';
 
 const Routers = () => {
   return (
@@ -40,6 +43,11 @@ const Routers = () => {
         <Route path="/expert" component={Expert} />
         <Route path="/news" component={News} />
         <Route path="/news/:id" component={NewsDetail} />
+
+        <Route path="/join" component={Join} />
+        <Route path="/memberexclusive" component={MemberExclusive} />
+        <Route path="/event" component={Event} />
+
       </Route>
     </Router>
   );
