@@ -15,7 +15,7 @@ const checkCode = (statusCode, message) => {
   }
   // 返回码判断
   switch (statusCode) {
-    case 300: return { code: statusCode, message };
+    case 300: Toast.fail(message, 2); break;
     case 301:
       alert('未登录', '请先登录', [
         { text: '取消', onPress: () => console.log('cancel') },
@@ -31,10 +31,10 @@ const checkCode = (statusCode, message) => {
       ]);
       break;
     case 4010: hashHistory.push('/weblogin'); break;
-    case 4011: return { code: statusCode, message };
-    case 4004: return { code: statusCode, message }; // 非vip
-    case 500: return { code: statusCode, message };
-    default: return { code: statusCode, message };
+    case 4011: Toast.fail(message, 2); break;
+    case 4004: Toast.fail(message, 2); break; // 非vip
+    case 500: Toast.fail(message, 2); break;
+    default: Toast.fail(message, 2);
   }
 }
 
@@ -62,6 +62,9 @@ export function get(url, params = '') {
       const checkCodeResult = checkCode(responseData.statusCode);
       if (checkCodeResult.code === 200) {
         resolve(responseData);
+      } else {
+        Toast.info('This is a toast tips !!!', 1);
+        reject(checkCodeResult);
       }
     }).catch((err) => {
       reject(err);
@@ -97,11 +100,15 @@ export function post(url, params = '') {
     }).then((response) => {
       return response.json();
     }).then((responseData) => {
-      const checkCodeResult = checkCode(responseData.statusCode, responseData.message);
-      if (checkCodeResult.code === 200) {
-        resolve(responseData);
+      if (responseData.statusCode) {
+        checkCode(responseData.statusCode, responseData.message);
+        if (responseData.statusCode === 200) {
+          resolve(responseData);
+        } else {
+          reject(responseData);
+        }
       } else {
-        reject(checkCodeResult.message);
+        reject(responseData);
       }
     }).catch((err) => {
       reject(err);

@@ -1,33 +1,25 @@
 import React, { Component } from 'react';
 import { Carousel, List, WhiteSpace } from 'antd-mobile';
-import { loadServiceCourseCategoryDataSet } from '../../service/course';
+import { loadServiceCourseGlobal, loadTopServiceCourse} from '../../service/course';
 import ColumnListItem from '../../components/column/ColumnListItem';
 import ListPanel from '../../components/listpanel/ListPanel';
 import CourseListItem from '../../components/course/CourseListItem';
+import CourseListPanel from "../../components/course/CourseListPanel";
+import {IMG_DOMAIN} from "../../utils/config";
 
 class Course extends Component {
   state = {
-    data: ['', '', ''],
-    categories: [],
-    columns:[
-      {id:1, thumbnail:'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png',title:'大作文',view:128, volume: 12, price: 1200},
-    ],
-    course:[
-      {id:1, thumbnail:'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png',title:'hahah',view:128},
-      {id:2, thumbnail:'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png',title:'hahah',view:128},
-      {id:3, thumbnail:'https://zos.alipayobjects.com/rmsportal/TekJlZRVCjLFexlOCuWn.png',title:'hahah',view:128}      
-    ],
+    course_global: [],
+    course_top:[],
   }
 
   componentDidMount(){
-    setTimeout(() => {
-      this.setState({
-        data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
-      });
-    }, 100);
+    loadTopServiceCourse({rows: 100}).then(data => {
+      this.setState({course_top: data.data.topServiceCourseList})
+    })
 
-    loadServiceCourseCategoryDataSet({rows: 100}).then(data => {
-      this.setState({categories: data.data.dataSet.rows})
+    loadServiceCourseGlobal({rows: 3}).then(data => {
+      this.setState({course_global: data.data.resList})
     })
   }
 
@@ -41,11 +33,11 @@ class Course extends Component {
           selectedIndex={1}
           swipeSpeed={35}
         >
-          {this.state.data.map(ii => (
-            <a href="http://www.baidu.com" key={ii}>
+          {this.state.course_top.map(item => (
+            <a href={`/#/course/${item.id}`} key={item.id}>
               <img
-                src={`https://zos.alipayobjects.com/rmsportal/${ii}.png`}
-                alt=""
+                src={`${IMG_DOMAIN}${item.coverUrl}`}
+                alt={item.name}
                 onLoad={() => {
                   // fire window resize event to change height
                   window.dispatchEvent(new Event('resize'));
@@ -57,19 +49,17 @@ class Course extends Component {
             </a>
           ))}
         </Carousel>
-
-        <WhiteSpace size="sm" />
-        <ListPanel list_data={this.state.course} title='面试课程列表' title_icon='icon-kecheng' renderItem={CourseListItem}/>
-
-        <WhiteSpace size="sm" />
-        <ListPanel list_data={this.state.course} title='笔试课程列表' title_icon='icon-kecheng' renderItem={CourseListItem}/>
-
-        <WhiteSpace size="sm" />
-        <ListPanel list_data={this.state.course} title='国内名校升学' title_icon='icon-kecheng' renderItem={CourseListItem}/>
-
-        <WhiteSpace size="sm" />
-        <ListPanel list_data={this.state.course} title='国内名校升学' title_icon='icon-kecheng' renderItem={CourseListItem}/>
-
+        {
+          this.state.course_global.map(item => {
+            return  <CourseListPanel
+              key={item.courseCategory.id}
+              data={item.serviceCourseList}
+              title={item.courseCategory.categoryName}
+              title_icon='icon-kecheng'
+              href={
+                {pathname: `/coursecat/${item.courseCategory.id}`, query: item.courseCategory}}/>
+          })
+        }
       </div>
     );
   }

@@ -24,9 +24,7 @@ const ListPanelWithTab = ({ list_data, category = [], title, title_icon }) => {
               list_data.map(item => (
                 <CourseListItem
                   key={item.id}
-                  thumbnail={item.thumbnail}
-                  title={item.title}
-                  studying={item.view}
+                  data={item}
                 />
               ))
             }
@@ -36,9 +34,7 @@ const ListPanelWithTab = ({ list_data, category = [], title, title_icon }) => {
               list_data.map(item => (
                 <CourseListItem
                   key={item.id}
-                  thumbnail={item.thumbnail}
-                  title={item.title}
-                  studying={item.view}
+                  data={item}
                 />
               ))
             }

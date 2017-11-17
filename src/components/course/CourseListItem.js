@@ -1,22 +1,25 @@
 import React from 'react';
 import { Button, List } from 'antd-mobile';
 import { hashHistory } from 'react-router';
+import { IMG_DOMAIN } from "../../utils/config";
 
 const Item = List.Item;
 const Brief = Item.Brief;
 
-const CourseListItem = ({ thumbnail, title, studying, id }) => {
+const CourseListItem = ({ data }) => {
+  const {
+    name, id, learningCount, favoriteCount
+  } = data;
   return (
     <Item
       onClick={() => hashHistory.push(`/course/${id}`)}
       key={id}
-      extra={<Button type="primary" size="small">学习</Button>}
       align="top"
-      thumb = {<img style={{ width:'60px', height:'60px' }} src={thumbnail}/>} 
+      thumb={<img style={{ width: '60px', height: '60px' }} src={`${IMG_DOMAIN}coverUrl`} />}
       multipleLine
     >
-      {title}
-      <Brief>{studying}次学习</Brief>
+      {name}
+      <Brief>学习({learningCount}) 收藏({favoriteCount})</Brief>
     </Item>
   );
 };

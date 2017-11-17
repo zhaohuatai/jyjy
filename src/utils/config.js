@@ -1,9 +1,9 @@
 export const sitename='水墨人生';
 
-//export const API_DOMAIN = 'http://yxyz.kingmon.cn/';
-export const API_DOMAIN = 'http://172.25.253.157/';
+export const API_DOMAIN = 'http://yxyz.kingmon.cn/';
+//export const API_DOMAIN = 'http://172.25.253.157/';
 
-export const IMG_DOMAIN = 'http://172.25.253.158/';
+export const IMG_DOMAIN = '';
 
 export const SCH_BADGE = 'http://172.25.253.3/';
 

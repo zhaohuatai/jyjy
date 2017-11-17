@@ -6,6 +6,7 @@ import Login from './routes/login/Login';
 import Column from './routes/column';
 import User from './routes/user/User';
 import Course from './routes/course';
+import CourseCat from './routes/course/CourseCat';
 import CourseDetail from './routes/course/CourseDetail';
 import ColumnDetail from './routes/column/ColumnDetail';
 import School from './routes/school/School';
@@ -23,6 +24,9 @@ import MemberExclusive from './routes/exclusive';
 import Event from './routes/event';
 import Introduce from './routes/introduce';
 import Consult from './routes/consult';
+import Service from './routes/service';
+import EntranceDetail from './routes/service/EntranceDetail';
+import ServiceThird from './routes/service/ServiceThird';
 
 const Routers = () => {
   return (
@@ -31,8 +35,11 @@ const Routers = () => {
         <IndexRoute component={Index} />
         <Route path="/column" component={Column} />
         <Route path="/column/:id" component={ColumnDetail} />
+
         <Route path="/course" component={Course} />
+        <Route path="/coursecat/:id" component={CourseCat} />
         <Route path="/course/:id" component={CourseDetail} />
+
         <Route path="/my" component={User} />
         <Route path="/login" component={Login} />
         <Route path="/school" component={School} />
@@ -45,6 +52,10 @@ const Routers = () => {
         <Route path="/expert" component={Expert} />
         <Route path="/news" component={News} />
         <Route path="/news/:id" component={NewsDetail} />
+
+        <Route path="/service/:id" component={EntranceDetail} />
+        <Route path="/service" component={Service} />
+        <Route path="/servicethird/:id" component={ServiceThird} />
 
         <Route path="/join" component={Join} />
         <Route path="/memberexclusive" component={MemberExclusive} />
