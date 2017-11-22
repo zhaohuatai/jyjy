@@ -5,16 +5,17 @@ import { hashHistory } from 'react-router';
 const Item = List.Item;
 const Brief = Item.Brief;
 
-const ColumnListItem = ({ thumbnail, title, studying, volume, price, id }) => {
+const ColumnListItem = ({ data }) => {
+  const { coverUrl, title, favoriteCount, learningCount, id } = data;
   return (
     <Item
-      onClick={() => hashHistory.push(`/course/${id}`)}
-      extra={<span style={{ color: 'red' }}>¥{price}</span>}
+      onClick={() => hashHistory.push(`/column/${id}`)}
+      extra={<span style={{ color: 'red' }}>¥{favoriteCount}</span>}
       align="top"
-      thumb = {<img style={{ width:'60px', height:'60px' }} src={thumbnail}/>}
+      thumb = {<img style={{ width:'60px', height:'60px' }} src={coverUrl}/>}
       multipleLine
     >
-      {title}<Brief>期数({volume})  学习人({studying})</Brief>
+      {title}<Brief>期数({learningCount})  学习人({learningCount})</Brief>
     </Item>
   );
 };

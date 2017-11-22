@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Badge, Tabs, List, WhiteSpace, Button } from 'antd-mobile';
+import { Badge, Tabs, List, WhiteSpace, Button, Toast } from 'antd-mobile';
 import VideoPlay from '../../components/aliplayer/VideoPlay';
-import { loadServiceCourseDto, addPalyRecord, loadVideoPalyAuth } from '../../service/course';
+import { loadServiceCourseDto, addPalyRecord, loadVideoPalyAuth, loadServiceCourseConsultationDataSet } from '../../service/course';
+import Consulation from '../../components/course/Consulation';
+import  BuyCourseItem from '../../components/course/BuyCourseItem';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -12,12 +14,14 @@ class CourseDetail extends Component {
     this.state = {
       serviceCourse: {},
       serviceCourseItems: [],
+      consultation:[],
       cur_courseitem: {
-        videoId: '',
-        playauth: '',
-        courseItemId:'',
+        videoId: '1',
+        playauth: '1',
+        courseItemId:'1',
         record:true,
-      }
+      },
+      buy_display: true
     };
 
     this.player = null;
@@ -33,6 +37,24 @@ class CourseDetail extends Component {
         serviceCourseItems: data.data.serviceCourseDto.serviceCourseItemCountResDtoList,
       });
     });
+
+    this.player = new Aliplayer({
+      id: 'Ali_Player', // 容器id
+      vid: '',
+      width: "100%",       // 播放器宽度
+      playauth: '',
+      autoplay: false,
+      rePlay: false,
+    });
+
+    this.player.on('play',()=>{
+      if(this.state.cur_courseitem.courseItemId){
+        this.player.play();
+      } else {
+        this.player.pause();
+        Toast.info('请选择章节');
+      }
+    })
   }
 
   handlePlay = (courseItemId) => {
@@ -45,6 +67,7 @@ class CourseDetail extends Component {
           courseItemId: courseItemId
         }
       },()=>{
+        //console.log(this.state.cur_courseitem);
         if (this.player){
           this.player.dispose();
         }
@@ -54,6 +77,8 @@ class CourseDetail extends Component {
           vid: data.data.aliVedioPalyAuthDto.videoId,
           width: "100%",       // 播放器宽度
           playauth: data.data.aliVedioPalyAuthDto.playAuth,
+          autoplay: false,
+          rePlay: false
         });
 
         this.player.on('play',()=>{
@@ -69,6 +94,22 @@ class CourseDetail extends Component {
           }
         })
       });
+    })
+  }
+
+  handleChangeTab = (tab, index) => {
+    if (index == 2) {
+      loadServiceCourseConsultationDataSet({courseId: this.state.serviceCourse.id}).then(data => {
+        this.setState({
+          consultation: data.data.dataSet.rows
+        })
+      });
+    }
+  }
+
+  handleBuy = () => {
+    this.setState({
+      buy_display: true
     })
   }
 
@@ -90,20 +131,18 @@ class CourseDetail extends Component {
 
     return (
       <div>
-        {/*
-        <VideoPlay
-          id="aliPlayer_course"
+        {/*<VideoPlay
+          id={this.state.cur_courseitem.videoId}
           vid={this.state.cur_courseitem.videoId}
           playauth={this.state.cur_courseitem.playauth}
-        />
-        */}
+        />*/}
 
         <div  className="prism-player" id='Ali_Player' />
 
         <List>
           <Item
             multipleLine
-            extra={<Button size='small' type='primary' style={{ width: '80px', marginLeft: '30px' }}>购买</Button>}
+            extra={<Button onClick={this.handleBuy} size='small' type='primary' style={{ width: '100px', marginLeft: '20px' }}>按节购买</Button>}
           >
             {name}
             <Brief>
@@ -112,7 +151,11 @@ class CourseDetail extends Component {
             </Brief>
           </Item>
         </List>
-        <Tabs tabs={tabs} initialPage={0}>
+        <Tabs
+          tabs={tabs}
+          initialPage={0}
+          onTabClick={this.handleChangeTab}
+        >
           <div>
             <List>
               {
@@ -145,11 +188,11 @@ class CourseDetail extends Component {
             <div dangerouslySetInnerHTML={{ __html: introduction }} style={{ backgroundColor: '#fff', padding: '15px' }} />
           </div>
           <div>
-            <Item multipleLine platform="android" extra="10:30" align="top" thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png">
-              李华 <Brief>老师讲得非常帮，谢谢老师，老师讲得非常帮，谢谢老师<br />老师讲得非常帮，谢谢老师</Brief>
-            </Item>
+            <Consulation data={this.state.consultation}/>
           </div>
         </Tabs>
+
+        <BuyCourseItem data={this.state.serviceCourseItems} display={this.state.buy_display} onCancle={()=>this.setState({buy_display:false})} />
       </div>
     );
   }

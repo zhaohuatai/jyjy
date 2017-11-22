@@ -7,21 +7,16 @@ const Item = List.Item;
 const Brief = Item.Brief;
 
 
-const CourseListPanel = ({ data, href, title }) => {
-
-  return (
-    <div>
-      <ListHeader title={title} href={href} />
-      <List>
-        {
-          data.map(item => {
-            return <CourseListItem data={item} key={item.id}/>
-          })
+const CourseListPanel = ({ list_data, href, title }) => (
+  <div>
+    <ListHeader title={title} href={href} />
+    <List>
+      {
+          list_data.map(item => <CourseListItem data={item} key={item.id} />)
         }
-      </List>
-      <WhiteSpace/>
-    </div>
-  );
-};
+    </List>
+    <WhiteSpace />
+  </div>
+);
 
 export default CourseListPanel;

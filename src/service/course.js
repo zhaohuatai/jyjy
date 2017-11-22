@@ -57,3 +57,11 @@ export function loadVideoPalyAuth(param) {
     });
   });
 }
+
+export function loadServiceCourseConsultationDataSet(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/course/serviceCourseConsultation/loadServiceCourseConsultationDataSet`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

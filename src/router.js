@@ -9,6 +9,7 @@ import Course from './routes/course';
 import CourseCat from './routes/course/CourseCat';
 import CourseDetail from './routes/course/CourseDetail';
 import ColumnDetail from './routes/column/ColumnDetail';
+import ColumnItemDetail from './routes/column/ColumnItemDetail';
 import School from './routes/school/School';
 import SchoolDetail from './routes/school/SchoolDetail';
 import Profession from './routes/profession/Profession';
@@ -27,6 +28,7 @@ import Consult from './routes/consult';
 import Service from './routes/service';
 import EntranceDetail from './routes/service/EntranceDetail';
 import ServiceThird from './routes/service/ServiceThird';
+import ProvinceLine from './routes/provinceline';
 
 const Routers = () => {
   return (
@@ -35,6 +37,7 @@ const Routers = () => {
         <IndexRoute component={Index} />
         <Route path="/column" component={Column} />
         <Route path="/column/:id" component={ColumnDetail} />
+        <Route path="/columnitem/:id" component={ColumnItemDetail} />
 
         <Route path="/course" component={Course} />
         <Route path="/coursecat/:id" component={CourseCat} />
@@ -52,6 +55,8 @@ const Routers = () => {
         <Route path="/expert" component={Expert} />
         <Route path="/news" component={News} />
         <Route path="/news/:id" component={NewsDetail} />
+
+        <Route path="/provinceline" component={ProvinceLine} />
 
         <Route path="/service/:id" component={EntranceDetail} />
         <Route path="/service" component={Service} />
