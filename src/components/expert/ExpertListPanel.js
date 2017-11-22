@@ -4,14 +4,16 @@ import ListHeader from '../listpanel/ListHeader';
 import CourseListItem from '../course/CourseListItem';
 import ExpertListPanelItem from './ExpertListPanelItem';
 
-const ExpertListPanel = ({ list_data, title, title_icon }) => {
+const ExpertListPanel = ({ list_data }) => {
   const result = [];
   for (let i = 0, len = list_data.length; i < len; i += 3) {
     result.push(list_data.slice(i, i + 3));
   }
+  console.log(result);
+
   return (
     <div>
-      <ListHeader title={title} icon={title_icon} href='/expert'/>
+      <ListHeader href='/expert' title='专家团队' icon='icon-kecheng' />
       <Carousel
         className="my-carousel"
         autoplay={true}

@@ -6,6 +6,7 @@ import { loadMemberTeacherDataSet } from '../../service/expert';
 import { loadPubNewsDataSet } from '../../service/news';
 import { loadPubSlideDataSet } from '../../service/slide';
 import { loadTopServiceCourse } from '../../service/course';
+import { loadServiceEntranceDataSet } from '../../service/service';
 
 import FeaturesBox from '../../components/featuresbox';
 import HeadLines from '../../components/headlines/HeadLines';
@@ -14,6 +15,7 @@ import ArticleListItem from '../../components/article/ArticleListItem';
 import ExpertListPanel from '../../components/expert/ExpertListPanel';
 import PartnerListPanel from '../../components/partner/PartnerListPanel';
 import CourseListPanel from '../../components/course/CourseListPanel';
+import ServiceListPanel from '../../components/service/ServiceListPanel';
 
 import {API_DOMAIN} from "../../utils/config";
 
@@ -36,7 +38,8 @@ class Index extends Component {
     ],
     expert:[],
     partner:[],
-    slide:[]
+    slide:[],
+    service_top:[]
 
   }
 
@@ -58,7 +61,11 @@ class Index extends Component {
     })
 
     loadTopServiceCourse({rows: 100}).then(data => {
-      this.setState({ course: data.data.dataSet.rows });
+      this.setState({ course: data.data.topServiceCourseList });
+    })
+
+    loadServiceEntranceDataSet({isTop: 1, rows: 3}).then(data => {
+      this.setState({ service_top: data.data.dataSet.rows });
     })
   }
     render() {
@@ -94,13 +101,13 @@ class Index extends Component {
               <HeadLines data={this.state.top_news}/>
 
               <WhiteSpace size="sm" />
-              <CourseListPanel list_data={this.state.course}  title='经英课堂' title_icon='icon-kecheng' />
+              <CourseListPanel list_data={this.state.course} />
 
               <WhiteSpace size="sm" />
-              <ListPanel list_data={this.state.course} title='服务' title_icon='icon-kecheng' renderItem={ArticleListItem}/>
+              <ServiceListPanel list_data={this.state.service_top}/>
 
               <WhiteSpace size="sm" />
-              <ExpertListPanel list_data={this.state.expert} title='专家团队' title_icon='icon-kecheng' renderItem={ArticleListItem}/>
+              <ExpertListPanel list_data={this.state.expert} />
             
               <WhiteSpace size="sm" />
               <PartnerListPanel list_data={this.state.partner} title='合作伙伴' title_icon='icon-kecheng' renderItem={ArticleListItem}/>
