@@ -34,13 +34,12 @@ class Index extends Component {
       {text:'省控线',icon:'icon-tongji',url:'/provinceline'},
       {text:'大事记',icon:'icon-biji',url:'/event'},
       {text:'加入社群',icon:'icon-qunliao',url:'/join'},
-      {text:'自主招生问答',icon:'icon-wenda-copy',url:'/'},
+      {text:'自主招生问答',icon:'icon-wenda-copy',url:'/interlocution'},
     ],
     expert:[],
     partner:[],
     slide:[],
-    service_top:[]
-
+    service_top:[],
   }
 
   componentDidMount(){
@@ -80,7 +79,7 @@ class Index extends Component {
                 swipeSpeed={35}
               >
                 {this.state.slide.map(ii => (
-                  <a href="http://www.baidu.com" key={ii} style={hProp}>
+                  <a href="http://www.baidu.com" key={ii} style={{height: 176}}>
                     <img
                       src={`${API_DOMAIN}${ii.imgUrl}`}
                       alt={ii.title}

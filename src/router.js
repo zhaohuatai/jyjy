@@ -29,6 +29,8 @@ import Service from './routes/service';
 import EntranceDetail from './routes/service/EntranceDetail';
 import ServiceThird from './routes/service/ServiceThird';
 import ProvinceLine from './routes/provinceline';
+import Interlocution from './routes/interlocution';
+import InterlocutionDetail from './routes/interlocution/InterlocutionDetail';
 
 import BigDataIndex from './routes/bigdata';
 import BigData from './routes/bigdata/bigdata';
@@ -92,6 +94,9 @@ const Routers = () => {
         <Route path="/event" component={Event} />
         <Route path="/consult" component={Consult} />
         <Route path="/introduce" component={Introduce} />
+
+        <Route path="/interlocution" component={Interlocution} />
+        <Route path="/interlocution/:id" component={InterlocutionDetail} />
 
       </Route>
     </Router>
