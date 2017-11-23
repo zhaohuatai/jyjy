@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import { SearchBar, List, Switch, Flex, WhiteSpace, Picker } from 'antd-mobile';
-import SchoolListItem from '../../components/school/SchoolListItem';
-import { SCH_BADGE } from '../../utils/config';
-import { loadDataUniversityDataSet } from '../../service/school';
-import { loadProvinceList } from '../../service/dic';
-import LoadMore from '../../components/loadmore/LoadMore';
+import {hashHistory} from 'react-router';
+import { SearchBar, List, InputItem, Flex, WhiteSpace, Picker } from 'antd-mobile';
+import SchoolListItem from '../../../components/school/SchoolListItem';
+import {API_DOMAIN, SCH_BADGE} from '../../../utils/config';
+import { loadDataUniversityDataSet } from '../../../service/school';
+import { loadProvinceList } from '../../../service/dic';
+import LoadMore from '../../../components/loadmore/LoadMore';
 
-class School extends Component {
+const Item = List.Item;
+const Brief = Item.Brief;
+
+class Brochure extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -95,30 +99,6 @@ class School extends Component {
           showCancelButton={true}
         />
 
-        {/*
-
-
-        <Flex style={{ backgroundColor: '#fff' }}>
-          <Flex.Item>
-            <select>
-              {
-                this.state.provices.map(item => {
-                  return <option key={item.id} value={item.code}>{item.name}</option>
-                })
-              }
-            </select>
-          </Flex.Item>
-
-          <Flex.Item>
-
-            <Switch
-              checked={this.state.search_form.isFirsrRate}
-              onClick={(checked) => this.setState({search_form: { ...this.state.search_form, name: val}})}
-            />
-          </Flex.Item>
-        </Flex>
-        */}
-
         <Picker
           data={this.state.filter}
           title="省份/双一流"
@@ -126,15 +106,33 @@ class School extends Component {
           extra="请选择(可选)"
           onOk={v => this.setState({search_form: { ...this.state.search_form, provinceCode: v[0], isFirsrRate: v[1]}})}
         >
-          <List.Item arrow="horizontal">省份/双一流</List.Item>
+          <List.Item>省份/双一流</List.Item>
         </Picker>
+        {/*<List>*/}
+          {/*<InputItem*/}
+            {/*placeholder="输入年份"*/}
+            {/*type='money'*/}
+            {/*onChange={(value)=> this.setState({year: value})}*/}
+            {/*ref={el => this.labelFocusInst = el}*/}
+          {/*><div onClick={() => this.labelFocusInst.focus()}>标题</div></InputItem>*/}
+        {/*</List>*/}
 
         <WhiteSpace />
 
         <List>
           {
             this.state.list.map(item => {
-              return <SchoolListItem key={item.id} thumbnail={`${SCH_BADGE}${item.badge}`} title={item.name} id={item.id} stage={item.stage}/>
+              return <Item
+                onClick={() => hashHistory.push(`/bigdata/brochure/${item.id}`)}
+                key={item.id}
+                align="top"
+                thumb={<img style={{ width:'60px', height:'60px' }} src={`${API_DOMAIN}${item.badge}`} />}
+                multipleLine
+              >
+                {item.name}
+                <Brief>{item.stage}</Brief>
+
+              </Item>
             })
           }
           <LoadMore disable={this.state.loadmore_disable} onClick={this.loadMore}/>
@@ -145,4 +143,4 @@ class School extends Component {
   }
 }
 
-export default School;
+export default Brochure;

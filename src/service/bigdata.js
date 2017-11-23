@@ -72,3 +72,11 @@ export function loadEnrollAutoQuestionDataSet(param) {
     });
   });
 }
+
+export function loadEnrollAutoRecruitBrochureDataSet(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/enroll/enrollAutoRecruitBrochure/loadEnrollAutoRecruitBrochureDataSet`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

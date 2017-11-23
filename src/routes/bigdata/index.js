@@ -10,7 +10,7 @@ class BigDataIndex extends Component {
       {text:'自招大数据',icon:'icon-xuexiao',url:'/bigdata/bigdata'},
       {text:'奖项评测',icon:'icon-zhuanye',url:'/bigdata/award'},
       {text:'自招题库',icon:'icon-zhiyeziliao',url:'/bigdata/question'},
-      {text:'招生简章',icon:'icon--zhaoshengtongji',url:'/'}
+      {text:'招生简章',icon:'icon--zhaoshengtongji',url:'/bigdata/brochure'}
     ],
     bigdata_data: []
   }

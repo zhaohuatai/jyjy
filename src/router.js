@@ -35,8 +35,11 @@ import BigData from './routes/bigdata/bigdata';
 import BigDataDetail from './routes/bigdata/bigdata/BigDataDetail';
 
 import Award from './routes/bigdata/award';
+
 import Question from "./routes/bigdata/question/index";
 import QuestionDetail from "./routes/bigdata/question/QuestionDetail";
+import Brochure from "./routes/bigdata/brochure";
+import BrochureDetail from "./routes/bigdata/brochure/BrochureDetail";
 
 const Routers = () => {
   return (
@@ -75,6 +78,9 @@ const Routers = () => {
 
           <Route path="question" component={Question} />
           <Route path="question/:id" component={QuestionDetail} />
+
+          <Route path="brochure" component={Brochure} />
+          <Route path="brochure/:id" component={BrochureDetail} />
         </Route>
 
         <Route path="/service/:id" component={EntranceDetail} />

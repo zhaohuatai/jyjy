@@ -5,7 +5,7 @@ import { hashHistory } from 'react-router';
 const Item = List.Item;
 const Brief = Item.Brief;
 
-const SchoolListItem = ({ thumbnail, title, studying, id }) => {
+const SchoolListItem = ({ thumbnail, title, stage, id }) => {
   return (
     <Item
       onClick={() => hashHistory.push(`/school/${id}`)}
@@ -15,7 +15,7 @@ const SchoolListItem = ({ thumbnail, title, studying, id }) => {
       multipleLine
     >
       {title}
-      <Brief>{studying}次学习</Brief>
+      <Brief>{stage}</Brief>
 
     </Item>
   );
