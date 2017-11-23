@@ -48,3 +48,27 @@ export function loadEnrollautoAwardCompetitionDataSet(param) {
     });
   });
 }
+
+export function loadEnrollAutoQuestionCategoryDataSet(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/enroll/enrollAutoQuestionCategory/loadEnrollAutoQuestionCategoryDataSet`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}
+
+export function loadEnrollAutoQuestion(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/enroll/enrollAutoQuestion/loadEnrollAutoQuestion`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}
+
+export function loadEnrollAutoQuestionDataSet(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/enroll/enrollAutoQuestion/loadEnrollAutoQuestionDataSet`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { loadEnrollAutoBigdata } from '../../../service/bigdata';
+import { loadEnrollAutoQuestion } from '../../../service/bigdata';
 import { List } from 'antd-mobile';
 
 const Item = List.Item;
 const Brief = Item.Brief;
 
-class NewsDetail extends Component {
+class QuestionDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,16 +26,21 @@ class NewsDetail extends Component {
 
   componentDidMount() {
     const id = this.props.params.id;
-    loadEnrollAutoBigdata({ id }).then( data => {
-      this.setState({ data: data.data.enrollAutoBigdata });
+    loadEnrollAutoQuestion({ id }).then( data => {
+      this.setState({ data: data.data.enrollAutoQuestion });
     });
   }
 
   render() {
+    const { createTime } = this.state.data;
+
     return (
       <div>
-        <Item multipleLine>
-          {this.state.data.title}  <Brief>{this.state.data.addtime}</Brief>
+        <Item
+          multipleLine
+          extra={createTime}
+        >
+          {this.state.data.title}  <Brief>浏览({this.state.data.browseCount}) 收藏({this.state.data.favoriteCount})</Brief>
         </Item>
         <div dangerouslySetInnerHTML={{ __html: this.state.data.content }} style={{ backgroundColor: '#fff', padding: '15px' }} />
       </div>
@@ -43,4 +48,4 @@ class NewsDetail extends Component {
   }
 }
 
-export default NewsDetail;
+export default QuestionDetail;
