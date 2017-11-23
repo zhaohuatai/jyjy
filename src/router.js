@@ -30,6 +30,12 @@ import EntranceDetail from './routes/service/EntranceDetail';
 import ServiceThird from './routes/service/ServiceThird';
 import ProvinceLine from './routes/provinceline';
 
+import BigDataIndex from './routes/bigdata';
+import BigData from './routes/bigdata/bigdata';
+import BigDataDetail from './routes/bigdata/bigdata/BigDataDetail';
+
+import Award from './routes/bigdata/award';
+
 const Routers = () => {
   return (
     <Router history={hashHistory}>
@@ -57,6 +63,14 @@ const Routers = () => {
         <Route path="/news/:id" component={NewsDetail} />
 
         <Route path="/provinceline" component={ProvinceLine} />
+
+        <Route path="/bigdata" >
+          <IndexRoute component={BigDataIndex} />
+          <Route path="bigdata" component={BigData} />
+          <Route path="bigdata/:id" component={BigDataDetail} />
+
+          <Route path="award" component={Award} />
+        </Route>
 
         <Route path="/service/:id" component={EntranceDetail} />
         <Route path="/service" component={Service} />

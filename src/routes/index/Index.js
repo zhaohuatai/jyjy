@@ -28,7 +28,7 @@ class Index extends Component {
       {text:'名校库',icon:'icon-xuexiao',url:'/school'},
       {text:'专业库',icon:'icon-zhuanye',url:'/profession'},
       {text:'职业库',icon:'icon-zhiyeziliao',url:'/career'},
-      {text:'自招大数据',icon:'icon--zhaoshengtongji',url:'/4'},
+      {text:'自招大数据',icon:'icon--zhaoshengtongji',url:'/bigdata'},
       {text:'会员专享',icon:'icon-huiyuan',url:'/memberexclusive'},
       {text:'智能评测',icon:'icon-cepingxueyuan',url:'/'},
       {text:'省控线',icon:'icon-tongji',url:'/provinceline'},
@@ -96,7 +96,7 @@ class Index extends Component {
                 ))}
               </Carousel>
 
-              <FeaturesBox data={this.state.features_data}/>
+              <FeaturesBox data={this.state.features_data} columnNum={5}/>
               
               <HeadLines data={this.state.top_news}/>
 
