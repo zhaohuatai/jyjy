@@ -42,7 +42,7 @@ class ProfessionDetail extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ marginBottom: '54px' }}>
         <Item multipleLine>
           {this.state.profession.profession}
           <Brief>

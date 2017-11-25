@@ -51,11 +51,11 @@
   //alert(JSON.stringify(localStorage));
 
   switch (localStorage.orderType) {
-    case 'productorder':
-      $('#type').html('购买商品');
+    case 'column':
+      $('#type').html('购买专栏');
       break;
     case 'productdeposit':
-      $('#type').html('商品保证金');
+      $('#type').html('商品服务费');
       break;
     case 'memberdeposit':
       $('#type').html('会员费');
@@ -83,13 +83,11 @@
             success();
           }     // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
           else{
-            alert(JSON.stringify(res));
-
             var resetajaxdata = {};
 
             switch(ordertype){
-              case 'productorder':
-                resetajaxdata={'payWhat':'O',orderId:unifyOrderRe.orderId};break;
+              case 'column':
+                resetajaxdata={ ordersId:unifyOrderRe.orderId };break;
               case 'productdeposit':
                 resetajaxdata={'payWhat':'P',orderId:unifyOrderRe.orderId};break;
               case 'memberdeposit':
@@ -98,7 +96,7 @@
             }
 
             $.ajax({
-              url:'http://eshop.1917cn.com/wxpay/resetOrder',
+              url:'http://http://yxyz.kingmon.cn/wxpay/resetOrder',
               type:'post',
               data:resetajaxdata,
               headers:{
@@ -129,9 +127,9 @@
     var type = localStorage.orderType;
 
     switch (type) {
-      case 'productorder':
+      case 'column':
         ajaxdata = {ordersId:localStorage.ordersId};
-        ajaxurl = 'wxpay/doPayProductOrdersUnifiedorder';
+        ajaxurl = 'wxpay/doPayChannelOrdersUnifiedorder';
         break;
       case 'productdeposit':
         ajaxdata = {productId:localStorage.productId,payFee:localStorage.payFee};
@@ -148,7 +146,7 @@
     }
 
     $.ajax({
-      url:'http://eshop.1917cn.com/'+ajaxurl,
+      url:'http://yxyz.kingmon.cn/'+ajaxurl,
       type:'post',
       data:ajaxdata,
       headers:{
@@ -156,7 +154,7 @@
         'Content-Type':'application/x-www-form-urlencoded;charset=utf-8'
       },
       success:function(data){
-        //alert(JSON.stringify(data));
+        alert(JSON.stringify(data));
 
         unifyOrderRe = data.data.res;
 

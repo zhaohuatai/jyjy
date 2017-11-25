@@ -40,3 +40,20 @@ export function loadColumnChannelItem(param) {
     });
   });
 }
+
+// 创建column订单
+export function createColumnChannelOrder(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}user/column/columnChannelOrder/createColumnChannelOrder`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}
+
+export function loadColumnChannelOrder(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}user/column/columnChannelOrder/loadColumnChannelOrder`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

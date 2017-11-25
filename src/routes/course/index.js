@@ -57,7 +57,9 @@ class Course extends Component {
               title={item.courseCategory.categoryName}
               title_icon='icon-kecheng'
               href={
-                {pathname: `/coursecat/${item.courseCategory.id}`, query: item.courseCategory}}/>
+                {pathname: `/coursecat/${item.courseCategory.id}`, query: item.courseCategory}
+              }
+            />
           })
         }
       </div>

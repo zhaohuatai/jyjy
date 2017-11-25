@@ -10,7 +10,10 @@ class App extends Component {
     return (
       <div>
         <Header />
-        {this.props.children}
+        <div style={{ marginBottom: '54px' }}>
+          {this.props.children}
+
+        </div>
         <BottomTab />
       </div>
     );

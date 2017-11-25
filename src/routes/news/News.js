@@ -18,7 +18,6 @@ class News extends Component {
       loadmore_disable: false
     }
   }
-  
 
   componentDidMount() {
     loadPubNewsCategoryDataSet({}).then((data) => {

@@ -8,6 +8,7 @@ class Header extends React.Component {
   state = {
     visible: false,
     selected: '',
+    title: '经英教育',
   };
   onSelect = (opt) => {
     // console.log(opt.props.value);
@@ -56,7 +57,7 @@ class Header extends React.Component {
           </Popover>
         ]}
       >
-        经英教育
+        {this.state.title}
       </NavBar>
     );
   }

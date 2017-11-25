@@ -21,7 +21,6 @@ import {API_DOMAIN} from "../../utils/config";
 
 class Index extends Component {
   state = {
-    initialHeight: 176,
     top_news:[{id: 1, title: '出状元啦', url: '/column'},{id: 2, title: '出状元啦', url: '/column'},{id: 3, title: '出状元啦', url: '/column'}],
     course:[],
     features_data:[
@@ -68,7 +67,6 @@ class Index extends Component {
     })
   }
     render() {
-      const hProp = this.state.initialHeight ? { height: this.state.initialHeight } : {};
         return (
             <div style={{marginBottom:'50px'}}>
               <Carousel
@@ -79,19 +77,13 @@ class Index extends Component {
                 swipeSpeed={35}
               >
                 {this.state.slide.map(ii => (
-                  <a href="http://www.baidu.com" key={ii} style={{height: 176}}>
+                  <div key={ii} style={{height: '176px'}}>
                     <img
                       src={`${API_DOMAIN}${ii.imgUrl}`}
                       alt={ii.title}
-                      onLoad={() => {
-                        // fire window resize event to change height
-                        window.dispatchEvent(new Event('resize'));
-                        this.setState({
-                          initialHeight: null,
-                        });
-                      }}
+                      style={{width: '100%', height:'176px'}}
                     />
-                  </a>
+                  </div>
                 ))}
               </Carousel>
 
@@ -100,7 +92,12 @@ class Index extends Component {
               <HeadLines data={this.state.top_news}/>
 
               <WhiteSpace size="sm" />
-              <CourseListPanel list_data={this.state.course} />
+              <CourseListPanel
+                data={this.state.course}
+                title='经英课堂'
+                title_icon='icon-kecheng'
+                href='/course'
+              />
 
               <WhiteSpace size="sm" />
               <ServiceListPanel list_data={this.state.service_top}/>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { List } from 'antd-mobile';
+import { hashHistory } from 'react-router';
 
 const Item = List.Item;
 
@@ -9,7 +10,14 @@ const UserPageList = () => {
       <Item
         thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
         arrow="horizontal"
-        onClick={() => {}}
+        onClick={() => hashHistory.push('/my/order')}
+      >
+        我的订单
+      </Item>
+      <Item
+        thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
+        arrow="horizontal"
+        onClick={() => hashHistory.push('/my/order')}
       >
         我的收藏
       </Item>

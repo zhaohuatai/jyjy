@@ -4,7 +4,10 @@ import App from './routes/App';
 import Index from './routes/index';
 import Login from './routes/login/Login';
 import Column from './routes/column';
-import User from './routes/user/User';
+
+import User from './routes/my/User';
+import Order from './routes/my/order';
+
 import Course from './routes/course';
 import CourseCat from './routes/course/CourseCat';
 import CourseDetail from './routes/course/CourseDetail';
@@ -43,6 +46,8 @@ import QuestionDetail from "./routes/bigdata/question/QuestionDetail";
 import Brochure from "./routes/bigdata/brochure";
 import BrochureDetail from "./routes/bigdata/brochure/BrochureDetail";
 
+import ColumnOrderDetail from './routes/my/order/column/ColumnOrderDetail';
+
 const Routers = () => {
   return (
     <Router history={hashHistory}>
@@ -56,16 +61,20 @@ const Routers = () => {
         <Route path="/coursecat/:id" component={CourseCat} />
         <Route path="/course/:id" component={CourseDetail} />
 
-        <Route path="/my" component={User} />
         <Route path="/login" component={Login} />
+
         <Route path="/school" component={School} />
         <Route path="/school/:id" component={SchoolDetail} />
+
         <Route path="/career" component={Career} />
         <Route path="/career/:id" component={CareerDetail} />
+
         <Route path="/profession" component={Profession} />
         <Route path="/profession/:id" component={ProfessionDetail} />
+
         <Route path="/expert/:id" component={ExpertDetail} />
         <Route path="/expert" component={Expert} />
+
         <Route path="/news" component={News} />
         <Route path="/news/:id" component={NewsDetail} />
 
@@ -97,7 +106,16 @@ const Routers = () => {
 
         <Route path="/interlocution" component={Interlocution} />
         <Route path="/interlocution/:id" component={InterlocutionDetail} />
+        <Route path="/interlocution/:id" component={InterlocutionDetail} />
 
+        <Route path="/my" >
+          <IndexRoute component={User} />
+          <Route path="order" >
+            <IndexRoute component={Order} />
+            <Route path="column/:id" component={ColumnOrderDetail} />
+            <Route path="course" component={Order} />
+          </Route>
+        </Route>
       </Route>
     </Router>
   );

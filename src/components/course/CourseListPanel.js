@@ -7,12 +7,12 @@ const Item = List.Item;
 const Brief = Item.Brief;
 
 
-const CourseListPanel = ({ list_data }) => (
+const CourseListPanel = ({ data, title, href, title_icon }) => (
   <div>
-    <ListHeader title='经英课堂' href='/course' icon='icon-kecheng' />
+    <ListHeader title={title} href={href} icon={title_icon}/>
     <List>
       {
-          list_data.map(item => <CourseListItem data={item} key={item.id} />)
+          data.map(item => <CourseListItem data={item} key={item.id} />)
         }
     </List>
     <WhiteSpace />

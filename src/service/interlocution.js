@@ -24,3 +24,11 @@ export function loadInterlocution(param) {
     });
   });
 }
+
+export function createInterlocutionConsultation(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}user/interlocution/interlocutionConsultation/createInterlocutionConsultation`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

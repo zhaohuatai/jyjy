@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { loadMemberTeacher } from '../../service/expert';
+import { loadMemberTeacher, createMemberTeacherAppointment } from '../../service/expert';
 import { IMG_DOMAIN } from '../../utils/config';
+import BottomAction from '../../components/debris/BottomAction';
+import { Modal, TextareaItem } from 'antd-mobile';
 
 class ExpertDetail extends Component {
   state = {
-    expert: {}
+    expert: {},
+    pub_show: false,
+    pub_content: ''
   }
 
   componentDidMount() {
@@ -12,6 +16,12 @@ class ExpertDetail extends Component {
     loadMemberTeacher({ id }).then( data => {
       this.setState({ expert: data.data.memberTeacher });
     });
+  }
+
+  handleAppointment = () => {
+    createMemberTeacherAppointment({}).then(data => {
+
+    })
   }
 
   render() {
@@ -25,6 +35,30 @@ class ExpertDetail extends Component {
            <h3>专家简介</h3>
           {this.state.expert.introduction}
         </div>
+
+        <BottomAction
+          buttons={[
+            {label: '立即预约', action:()=>this.setState({})},
+          ]}
+        />
+
+        <Modal
+          visible={this.state.pub_show}
+          maskClosable={false}
+          transparent
+          title='提问'
+          footer={[
+            { text: '取消', onPress: () => this.setState({pub_show: false})},
+            { text: '提交', onPress: this.doSubmit }
+          ]}
+        >
+          <TextareaItem
+            value={this.state.pub_content}
+            rows={3}
+            count={100}
+            onChange={(value)=>this.setState({pub_content: value})}
+          />
+        </Modal>
       </div>
     );
   }
