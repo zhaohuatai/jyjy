@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { loadColumnChannelOrderDataSet, loadServiceCourseOrderDataSet } from '../../../service/user';
 import { Tabs, List, Button } from 'antd-mobile';
 import LoadMore from '../../../components/loadmore/LoadMore';
-import CourseOrderItem from "./CourseOrderItem";
+import CourseOrderItem from "./course/CourseOrderItem";
 import ColumnOrderItem from "./column/CloumnOrderItem";
 import {API_DOMAIN} from "../../../utils/config";
 

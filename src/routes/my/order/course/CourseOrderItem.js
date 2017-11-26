@@ -12,7 +12,7 @@ const CourseOrderItem = ({ data, doPay }) => {
           title="This is title"
           thumb="https://cloud.githubusercontent.com/assets/1698185/18039916/f025c090-6dd9-11e6-9d86-a4d48a1bf049.png"
           extra={<span style={{ color: 'red' }}>¥{payFee}</span>}
-          onClick={() => hashHistory.push(`/my/order/column/${id}`)}
+          onClick={() => hashHistory.push(`/my/order/course/${id}`)}
         />
         <Card.Footer
           content={

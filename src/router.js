@@ -48,6 +48,7 @@ import Brochure from "./routes/bigdata/brochure";
 import BrochureDetail from "./routes/bigdata/brochure/BrochureDetail";
 
 import ColumnOrderDetail from './routes/my/order/column/ColumnOrderDetail';
+import CourseOrderDetail from './routes/my/order/course/CourseOrderDetail';
 
 const Routers = () => {
   return (
@@ -115,7 +116,7 @@ const Routers = () => {
           <Route path="order" >
             <IndexRoute component={Order} />
             <Route path="column/:id" component={ColumnOrderDetail} />
-            <Route path="course" component={Order} />
+            <Route path="course/:id" component={CourseOrderDetail} />
           </Route>
         </Route>
       </Route>

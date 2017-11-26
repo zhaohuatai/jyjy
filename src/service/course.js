@@ -65,3 +65,11 @@ export function loadServiceCourseConsultationDataSet(param) {
     });
   });
 }
+
+export function createServiceCourseOrder(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}user/course/serviceCourseOrder/createServiceCourseOrder?courseItemId`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

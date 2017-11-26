@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { Badge, Tabs, List, WhiteSpace, Button, Toast } from 'antd-mobile';
 import VideoPlay from '../../components/aliplayer/VideoPlay';
-import { loadServiceCourseDto, addPalyRecord, loadVideoPalyAuth, loadServiceCourseConsultationDataSet } from '../../service/course';
+import { loadServiceCourseDto,
+  addPalyRecord,
+  loadVideoPalyAuth,
+  loadServiceCourseConsultationDataSet,
+  createServiceCourseOrder
+} from '../../service/course';
 import Consulation from '../../components/course/Consulation';
 import  BuyCourseItem from '../../components/course/BuyCourseItem';
 
@@ -34,7 +39,7 @@ class CourseDetail extends Component {
     loadServiceCourseDto({ courseId: id }).then((data) => {
       this.setState({
         serviceCourse: data.data.serviceCourseDto.serviceCourse,
-        serviceCourseItems: data.data.serviceCourseDto.serviceCourseItemCountResDtoList,
+        serviceCourseItems: data.data.serviceCourseDto.serviceCourseItemResDtoList,
       });
     });
 
@@ -107,10 +112,11 @@ class CourseDetail extends Component {
     }
   }
 
-  handleBuy = () => {
-    this.setState({
-      buy_display: true
-    })
+  handleBuy = (value) => {
+    console.log(value);
+    // createServiceCourseOrder().then(data => {
+    //   console.log(data);
+    // })
   }
 
   render() {
@@ -142,7 +148,7 @@ class CourseDetail extends Component {
         <List>
           <Item
             multipleLine
-            extra={<Button onClick={this.handleBuy} size='small' type='primary' style={{ width: '100px', marginLeft: '20px' }}>按节购买</Button>}
+            extra={<Button onClick={()=>this.setState({buy_display: true})} size='small' type='primary' style={{ width: '100px', marginLeft: '20px' }}>按节购买</Button>}
           >
             {name}
             <Brief>
@@ -192,7 +198,12 @@ class CourseDetail extends Component {
           </div>
         </Tabs>
 
-        <BuyCourseItem data={this.state.serviceCourseItems} display={this.state.buy_display} onCancle={()=>this.setState({buy_display:false})} />
+        <BuyCourseItem
+          data={this.state.serviceCourseItems}
+          display={this.state.buy_display}
+          onCancle={()=>this.setState({buy_display:false})}
+          onPay={(value) => this.handleBuy(value)}
+        />
       </div>
     );
   }
