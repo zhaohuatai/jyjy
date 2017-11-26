@@ -1,24 +1,36 @@
 import React from 'react';
-import { List } from 'antd-mobile';
+import { Card, Button, Flex, WhiteSpace } from 'antd-mobile';
 import { hashHistory } from 'react-router';
 
-const Item = List.Item;
-const Brief = Item.Brief;
-
-const CourseOrderItem = ({ data }) => {
-  const { id, interQuestion, interAnswer, createTime } = data
+const CourseOrderItem = ({ data, doPay }) => {
+  const { serviceCourseList, serviceCourseOrder } = data;
+  const { id, payFee } = serviceCourseOrder;
   return (
     <div>
-      <Item
-        onClick={() => hashHistory.push(`/my/order/course/${id}`)}
-        key={id}
-        align="top"
-        multipleLine
-        extra={createTime}
-      >
-        {interQuestion}
-        <Brief>{interAnswer}</Brief>
-      </Item>
+      <Card full>
+        <Card.Header
+          title="This is title"
+          thumb="https://cloud.githubusercontent.com/assets/1698185/18039916/f025c090-6dd9-11e6-9d86-a4d48a1bf049.png"
+          extra={<span style={{ color: 'red' }}>¥{payFee}</span>}
+          onClick={() => hashHistory.push(`/my/order/column/${id}`)}
+        />
+        <Card.Footer
+          content={
+            <Flex>
+              <Flex.Item />
+              <Flex.Item />
+              <Flex.Item />
+              <Flex.Item>
+                <Button
+                  type="primary"
+                  size="small"
+                  onClick={() => doPay({ id, payFee })}>支付</Button>
+              </Flex.Item>
+            </Flex>
+          }
+        />
+      </Card>
+      <WhiteSpace />
     </div>
 
   );

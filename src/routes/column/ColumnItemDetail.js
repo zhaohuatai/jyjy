@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { loadColumnChannelItem } from '../../service/column';
+import { loadColumnChannelItem, createColumnChannelOrder } from '../../service/column';
 import {IMG_DOMAIN} from "../../utils/config";
 import { List, Tabs, Button, Badge, WhiteSpace } from 'antd-mobile';
 
@@ -16,9 +16,14 @@ class ColumnDetail extends Component {
   componentDidMount() {
     const id = this.props.params.id;
 
+    console.log(this.props.location.query.columnName);
+
     loadColumnChannelItem({id}).then(data => {
       this.setState({ columnChannel: data.data.columnChannel, column_name: this.props.location.query.columnName })
     })
+  }
+  handlePlayOrder = () => {
+    createColumnChannelOrder()
   }
 
   render() {
@@ -46,7 +51,7 @@ class ColumnDetail extends Component {
         <List>
           <Item
             multipleLine
-            extra={<Button size='small' type='primary'>立即购买</Button>}
+            extra={<Button size='small' type='primary' onClick={this.handlePlayOrder}>立即购买</Button>}
           >
             {this.state.column_name} - {title}
             <Brief>

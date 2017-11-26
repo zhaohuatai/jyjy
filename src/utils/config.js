@@ -7,7 +7,7 @@ export const IMG_DOMAIN = '';
 
 export const SCH_BADGE = 'http://yxyz.kingmon.cn/';
 
-export const WECHAT_LOGIN = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8032839074009dce&redirect_uri=http://yxyz.kingmon.cn/pub/member/weichatAuth/callBack&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+export const WECHAT_LOGIN = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0e5988fbfd6fbb42&redirect_uri=http://yxyz.kingmon.cn/pub/member/weichatAuth/callBack&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
 
 export const DELIVER = {
 };

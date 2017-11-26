@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { loadMemberTeacher, createMemberTeacherAppointment } from '../../service/expert';
 import { IMG_DOMAIN } from '../../utils/config';
 import BottomAction from '../../components/debris/BottomAction';
-import { Modal, TextareaItem } from 'antd-mobile';
+import { Modal, InputItem, Toast } from 'antd-mobile';
 
 class ExpertDetail extends Component {
   state = {
@@ -19,9 +19,20 @@ class ExpertDetail extends Component {
   }
 
   handleAppointment = () => {
-    createMemberTeacherAppointment({}).then(data => {
-
+    createMemberTeacherAppointment({
+      teacherId: this.props.params.id,
+      phone: this.state.phone}).then(data => {
+        Toast.success('预约成功');
+        this.setState({ phone: '', pub_show: false });
     })
+  }
+
+  handleShowModal = () => {
+    this.setState({pub_show: true})
+  }
+
+  handleInputPhone = (value) => {
+    this.setState({phone: value})
   }
 
   render() {
@@ -38,7 +49,7 @@ class ExpertDetail extends Component {
 
         <BottomAction
           buttons={[
-            {label: '立即预约', action:()=>this.setState({})},
+            {label: '立即预约', action: this.handleShowModal},
           ]}
         />
 
@@ -46,18 +57,13 @@ class ExpertDetail extends Component {
           visible={this.state.pub_show}
           maskClosable={false}
           transparent
-          title='提问'
+          title='预约专家'
           footer={[
             { text: '取消', onPress: () => this.setState({pub_show: false})},
-            { text: '提交', onPress: this.doSubmit }
+            { text: '提交', onPress: this.handleAppointment }
           ]}
         >
-          <TextareaItem
-            value={this.state.pub_content}
-            rows={3}
-            count={100}
-            onChange={(value)=>this.setState({pub_content: value})}
-          />
+          <InputItem placeholder='输入联系方式' onChange={this.handleInputPhone}/>
         </Modal>
       </div>
     );

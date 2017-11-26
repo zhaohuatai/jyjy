@@ -19,7 +19,7 @@ export function loadMemberTeacher(param) {
 
 export function createMemberTeacherAppointment(param) {
   return new Promise((resolve, reject) => {
-    post(`${API_DOMAIN}pub/member/memberTeacherAppointment/createMemberTeacherAppointment`, param).then((data) => {
+    post(`${API_DOMAIN}user/member/memberTeacher/createMemberTeacherAppointment`, param).then((data) => {
       resolve(data);
     });
   });

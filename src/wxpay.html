@@ -145,6 +145,8 @@
         break;
     }
 
+    alert(JSON.stringify(ajaxdata));
+
     $.ajax({
       url:'http://yxyz.kingmon.cn/'+ajaxurl,
       type:'post',
@@ -158,27 +160,27 @@
 
         unifyOrderRe = data.data.res;
 
-        callpay(data.data.res,function(){
-
-          localStorage.clear();
-
-          switch (type) {
-            case 'productorder':
-              history.back();
-              break;
-            case 'productdeposit':
-              history.back();
-              break;
-            case 'memberdeposit':
-              window.location.href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx69363f145b06ea8f&redirect_uri=http://eshop.1917cn.com/pub/member/weichatAuth/callBack&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
-              break;
-            default:
-              alert('获取订单信息失败');
-              return;
-              break;
-          }
-
-        });
+//        callpay(data.data.res,function(){
+//
+//          localStorage.clear();
+//
+//          switch (type) {
+//            case 'productorder':
+//              history.back();
+//              break;
+//            case 'productdeposit':
+//              history.back();
+//              break;
+//            case 'memberdeposit':
+//              window.location.href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx69363f145b06ea8f&redirect_uri=http://eshop.1917cn.com/pub/member/weichatAuth/callBack&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+//              break;
+//            default:
+//              alert('获取订单信息失败');
+//              return;
+//              break;
+//          }
+//
+//        });
       },
       error:function(err){
         localStorage.clear();

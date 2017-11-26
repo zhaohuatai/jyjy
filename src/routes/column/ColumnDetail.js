@@ -28,6 +28,13 @@ class ColumnDetail extends Component {
       { title: <Badge>目录</Badge> },
       { title: <Badge>详情</Badge> }
     ]
+
+    const CountExtra = ({remianCount, totalCount}) => <span>剩余次数
+      <span style={{color:'#2fc2ba'}}>
+        {remianCount}/{totalCount}
+      </span>
+    </span>
+
     return (
       <div>
         <img src={`${IMG_DOMAIN}${this.state.column.coverUrl}`} />
@@ -59,9 +66,14 @@ class ColumnDetail extends Component {
                         <Item
                           thumb = {<img style={{ width:'60px', height:'60px' }} src={item.columnChannelItem.coverUrl}/>}
                           key={item.columnChannelItem.id}
-                          extra={<CountExtra remianCount={1} totalCount={10} />}
+                          // extra={<CountExtra remianCount={1} totalCount={10} />}
                           arrow="horizontal"
-                          onClick={()=>this.handlePlay(item.columnChannelItem.id)}
+                          onClick={()=>hashHistory.push({
+                            pathname: `/columnitem/${item.columnChannelItem.id}`,
+                            query: {
+                              columnName: title,
+                            }
+                          })}
                         >
                           {item.columnChannelItem.title} <Brief>{item.columnChannelItem.hint}</Brief>
                         </Item>

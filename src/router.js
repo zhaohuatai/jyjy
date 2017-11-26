@@ -3,6 +3,7 @@ import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 import App from './routes/App';
 import Index from './routes/index';
 import Login from './routes/login/Login';
+import Register from './routes/login/Register';
 import Column from './routes/column';
 
 import User from './routes/my/User';
@@ -62,6 +63,7 @@ const Routers = () => {
         <Route path="/course/:id" component={CourseDetail} />
 
         <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
 
         <Route path="/school" component={School} />
         <Route path="/school/:id" component={SchoolDetail} />

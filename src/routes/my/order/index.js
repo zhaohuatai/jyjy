@@ -8,7 +8,7 @@ import {API_DOMAIN} from "../../../utils/config";
 
 const tabs = [
   { title: '专栏订单' },
-  { title: '微课订单' },
+  { title: '课堂订单' },
 ]
 
 class Order extends Component {
@@ -24,9 +24,9 @@ class Order extends Component {
       this.setState({ column_orders: data.data.dataSet.rows })
     });
 
-    // loadServiceCourseOrderDataSet().then(data => {
-    //   this.setState({ course_orders: data.rows})
-    // });
+    loadServiceCourseOrderDataSet().then(data => {
+      this.setState({ course_orders: data.data.dataSet.rows})
+    });
   }
 
   handlePay = ({id, payFee}) => {
@@ -52,21 +52,21 @@ class Order extends Component {
           tabs={tabs}
           onChange={this.handleChangeTab}
         >
-          {/*<List style={{marginBottom:'54px'}}>*/}
-            {/*{*/}
-              {/*this.state.column_orders.map(item => {*/}
-                {/*return (*/}
-                  {/*<ColumnOrderItem data={item} key={item.id} doPay={()=> this.handlePay}/>*/}
-                {/*)*/}
-              {/*})*/}
-            {/*}*/}
-            {/*<LoadMore disable={this.state.column_loadmore_disable} onClick={this.loadMore}/>*/}
-          {/*</List>*/}
+          <List style={{marginBottom:'54px'}}>
+            {
+              this.state.column_orders.map(item => {
+                return (
+                  <ColumnOrderItem data={item} key={item.columnChannelOrder.id} doPay={this.handlePay}/>
+                )
+              })
+            }
+            <LoadMore disable={this.state.column_loadmore_disable} onClick={this.loadMore}/>
+          </List>
           <List style={{marginBottom:'54px'}}>
             {
               this.state.course_orders.map(item => {
                 return (
-                  <CourseOrderItem data={item} />
+                  <CourseOrderItem data={item} key={item.serviceCourseOrder.id} />
                 )
               })
             }

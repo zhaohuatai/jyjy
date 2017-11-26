@@ -18,7 +18,7 @@ const BottomAction = ({ buttons }) => {
     <Flex style={style}>
       {
         buttons.map(item => {
-          return <Flex.Item onClick={() => buttons.action()} key={item.label}>
+          return <Flex.Item onClick={() => item.action()} key={item.label}>
             {item.label}
           </Flex.Item>
         })
