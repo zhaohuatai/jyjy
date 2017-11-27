@@ -23,14 +23,14 @@ const UserPageList = () => {
       </Item>
       <Item
         thumb="https://zos.alipayobjects.com/rmsportal/UmbJMbWOejVOpxe.png"
-        onClick={() => hashHistory.push('/my/employ')}
+        onClick={() => hashHistory.push('/employ')}
         arrow="horizontal"
       >
         应聘推广员
       </Item>
       <Item
         thumb="https://zos.alipayobjects.com/rmsportal/UmbJMbWOejVOpxe.png"
-        onClick={() => hashHistory.push('/my/memberexclusive')}
+        onClick={() => hashHistory.push('/memberexclusive')}
         arrow="horizontal"
       >
         开通VIP
@@ -44,7 +44,7 @@ const UserPageList = () => {
       </Item>
       <Item
         thumb="https://zos.alipayobjects.com/rmsportal/UmbJMbWOejVOpxe.png"
-        onClick={() => hashHistory.push('/my/join')}
+        onClick={() => hashHistory.push('/join')}
         arrow="horizontal"
       >
         加入社群

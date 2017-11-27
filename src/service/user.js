@@ -16,3 +16,11 @@ export function loadServiceCourseOrderDataSet(param) {
     });
   });
 }
+
+export function createAccount(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/member/memberRegist/createAccount`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

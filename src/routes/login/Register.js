@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { createForm } from 'rc-form';
 import { List, InputItem, Button, Toast } from 'antd-mobile';
-import { loadDicData, sendSmsCheckCode } from '../../service/dic';
+import { loadDicData } from '../../service/dic';
 import SMSVerification from "./SMSVerification";
+import {createAccount} from "../../service/user";
 
 const Item = List.Item;
 
@@ -23,10 +24,13 @@ class Register extends Component {
   }
 
   onSubmit = () => {
-    if( this.state.registId && phone ){
+    if( this.state.registId && this.state.phone ){
       this.props.form.validateFields({ force: true }, (error) => {
         if (!error) {
           console.log(this.props.form.getFieldsValue());
+          createAccount(this.props.form.getFieldsValue()).then(data => {
+            Toast.success('注册成功');
+          })
         } else {
           alert('请检查');
         }

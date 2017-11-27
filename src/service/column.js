@@ -65,3 +65,11 @@ export function loadColumnChannelFavoriteDataSet(param) {
     });
   });
 }
+
+export function loadItemResDtoByItemId(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/channel/columnChannel/loadItemResDtoByItemId`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

@@ -83,7 +83,7 @@ class ColumnDetail extends Component {
                         thumb = {<img style={{ width:'60px', height:'60px' }} src={item.columnChannelItem.coverUrl}/>}
                         key={item.columnChannelItem.id}
                         arrow="horizontal"
-                        extra={<span style={{ color: '#red'}}> 点击购买 ¥{item.columnChannelItem.price}/<span style={{color: 'red'}}>¥{item.columnChannelItem.priceVIP}</span></span>}
+                        extra={<span style={{ color: '#red'}}> ¥{item.columnChannelItem.price}/<span style={{color: 'red'}}>¥{item.columnChannelItem.priceVIP}</span></span>}
                         onClick={()=>hashHistory.push({
                           pathname: `/columnitem/${item.columnChannelItem.id}`,
                           query:{columnName: title}

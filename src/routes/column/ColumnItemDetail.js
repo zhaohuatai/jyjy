@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { loadColumnChannelItem, createColumnChannelOrder } from '../../service/column';
+import { loadItemResDtoByItemId, createColumnChannelOrder } from '../../service/column';
 import {IMG_DOMAIN} from "../../utils/config";
 import { List, Tabs, Button, Badge, WhiteSpace } from 'antd-mobile';
 
@@ -18,10 +18,11 @@ class ColumnDetail extends Component {
 
     console.log(this.props.location.query.columnName);
 
-    loadColumnChannelItem({id}).then(data => {
+    loadItemResDtoByItemId({id}).then(data => {
       this.setState({ columnChannel: data.data.columnChannel, column_name: this.props.location.query.columnName })
     })
   }
+
   handlePlayOrder = () => {
     createColumnChannelOrder({}).then(data => {
 
