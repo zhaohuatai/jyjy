@@ -57,3 +57,11 @@ export function loadColumnChannelOrder(param) {
     });
   });
 }
+
+export function loadColumnChannelFavoriteDataSet(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}user/column/columnChannelFavorite/loadColumnChannelFavoriteDataSet`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

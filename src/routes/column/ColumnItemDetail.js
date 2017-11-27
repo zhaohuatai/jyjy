@@ -23,7 +23,9 @@ class ColumnDetail extends Component {
     })
   }
   handlePlayOrder = () => {
-    createColumnChannelOrder()
+    createColumnChannelOrder({}).then(data => {
+
+    })
   }
 
   render() {

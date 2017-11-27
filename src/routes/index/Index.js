@@ -5,24 +5,23 @@ import { Carousel, WhiteSpace, WingBlank } from 'antd-mobile';
 import { loadMemberTeacherDataSet } from '../../service/expert';
 import { loadPubNewsDataSet } from '../../service/news';
 import { loadPubSlideDataSet } from '../../service/slide';
-import { loadTopServiceCourse } from '../../service/course';
+import { loadServiceCourseGlobal } from '../../service/course';
 import { loadServiceEntranceDataSet } from '../../service/service';
 
 import FeaturesBox from '../../components/featuresbox';
 import HeadLines from '../../components/headlines/HeadLines';
-import ListPanel from '../../components/listpanel/ListPanel';
 import ArticleListItem from '../../components/article/ArticleListItem';
 import ExpertListPanel from '../../components/expert/ExpertListPanel';
 import PartnerListPanel from '../../components/partner/PartnerListPanel';
-import CourseListPanel from '../../components/course/CourseListPanel';
 import ServiceListPanel from '../../components/service/ServiceListPanel';
 
 import {API_DOMAIN} from "../../utils/config";
+import CourseListPanelWithTab from "../../components/course/CourseListPanelWithTab";
 
 class Index extends Component {
   state = {
     top_news:[{id: 1, title: '出状元啦', url: '/column'},{id: 2, title: '出状元啦', url: '/column'},{id: 3, title: '出状元啦', url: '/column'}],
-    course:[],
+    course_global:[],
     features_data:[
       {text:'名校库',icon:'icon-xuexiao',url:'/school'},
       {text:'专业库',icon:'icon-zhuanye',url:'/profession'},
@@ -58,8 +57,8 @@ class Index extends Component {
       this.setState({ slide: data.data.dataSet.rows });
     })
 
-    loadTopServiceCourse({rows: 100}).then(data => {
-      this.setState({ course: data.data.topServiceCourseList });
+    loadServiceCourseGlobal({rows: 100}).then(data => {
+      this.setState({course_global: data.data.resList})
     })
 
     loadServiceEntranceDataSet({isTop: 1, rows: 3}).then(data => {
@@ -92,8 +91,8 @@ class Index extends Component {
               <HeadLines data={this.state.top_news}/>
 
               <WhiteSpace size="sm" />
-              <CourseListPanel
-                data={this.state.course}
+              <CourseListPanelWithTab
+                data={this.state.course_global}
                 title='经英课堂'
                 title_icon='icon-kecheng'
                 href='/course'

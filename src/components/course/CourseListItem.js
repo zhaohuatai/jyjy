@@ -13,7 +13,6 @@ const CourseListItem = ({ data }) => {
   return (
     <Item
       onClick={() => hashHistory.push(`/course/${id}`)}
-      key={id}
       align="top"
       thumb={<img style={{ width: '60px', height: '60px' }} src={`${IMG_DOMAIN}${coverUrl}`} />}
       multipleLine

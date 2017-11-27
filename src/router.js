@@ -8,6 +8,8 @@ import Column from './routes/column';
 
 import User from './routes/my/User';
 import Order from './routes/my/order';
+import MyFavorite from './routes/my/favorite';
+import MyCoupon from './routes/my/coupon';
 
 import Course from './routes/course';
 import CourseCat from './routes/course/CourseCat';
@@ -25,6 +27,7 @@ import ExpertDetail from './routes/expert/ExpertDetail';
 import News from './routes/news/News';
 import NewsDetail from './routes/news/NewsDetail';
 import Join from './routes/join';
+import Employ from './routes/employ';
 import MemberExclusive from './routes/exclusive';
 import Event from './routes/event';
 import Introduce from './routes/introduce';
@@ -102,6 +105,7 @@ const Routers = () => {
         <Route path="/servicethird/:id" component={ServiceThird} />
 
         <Route path="/join" component={Join} />
+        <Route path="/employ" component={Employ} />
         <Route path="/memberexclusive" component={MemberExclusive} />
         <Route path="/event" component={Event} />
         <Route path="/consult" component={Consult} />
@@ -118,6 +122,8 @@ const Routers = () => {
             <Route path="column/:id" component={ColumnOrderDetail} />
             <Route path="course/:id" component={CourseOrderDetail} />
           </Route>
+          <Route path="favorite" component={MyFavorite} />
+          <Route path="coupon" component={MyCoupon} />
         </Route>
       </Route>
     </Router>

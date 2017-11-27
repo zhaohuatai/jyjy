@@ -10,9 +10,8 @@ const ExpertListItem = ({ data }) => {
   return (
     <Item
       onClick={() => hashHistory.push(`/expert/${data.id}`)}
-      key={data.id}
       align="top"
-      thumb={<img style={{ width:'60px', height:'60px' }} src={`${IMG_DOMAIN}${data.profilePicture}`}/>} 
+      thumb={<img style={{ width:'60px', height:'60px' }} src={`${IMG_DOMAIN}${data.profilePicture}`}/>}
       multipleLine
     >
       {data.name}

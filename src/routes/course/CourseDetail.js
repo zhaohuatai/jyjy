@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Badge, Tabs, List, WhiteSpace, Button, Toast } from 'antd-mobile';
+import { hashHistory } from 'react-router';
 import VideoPlay from '../../components/aliplayer/VideoPlay';
 import { loadServiceCourseDto,
   addPalyRecord,
@@ -114,9 +115,11 @@ class CourseDetail extends Component {
 
   handleBuy = (value) => {
     console.log(value);
-    // createServiceCourseOrder().then(data => {
-    //   console.log(data);
-    // })
+    createServiceCourseOrder({courseItemIds: value}).then(data => {
+      Toast.success('下单成功');
+      this.setState({pub_show: false});
+      hashHistory.push('/my/order')
+    })
   }
 
   render() {

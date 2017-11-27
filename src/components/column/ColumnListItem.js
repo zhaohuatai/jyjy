@@ -10,7 +10,6 @@ const ColumnListItem = ({ data }) => {
   return (
     <Item
       onClick={() => hashHistory.push(`/column/${id}`)}
-      extra={<span style={{ color: 'red' }}>¥{favoriteCount}</span>}
       align="top"
       thumb = {<img style={{ width:'60px', height:'60px' }} src={coverUrl}/>}
       multipleLine

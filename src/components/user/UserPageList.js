@@ -17,58 +17,37 @@ const UserPageList = () => {
       <Item
         thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
         arrow="horizontal"
-        onClick={() => hashHistory.push('/my/order')}
+        onClick={() => hashHistory.push('/my/favorite')}
       >
         我的收藏
       </Item>
       <Item
         thumb="https://zos.alipayobjects.com/rmsportal/UmbJMbWOejVOpxe.png"
-        onClick={() => {}}
+        onClick={() => hashHistory.push('/my/employ')}
         arrow="horizontal"
       >
         应聘推广员
       </Item>
       <Item
         thumb="https://zos.alipayobjects.com/rmsportal/UmbJMbWOejVOpxe.png"
-        onClick={() => {}}
+        onClick={() => hashHistory.push('/my/memberexclusive')}
         arrow="horizontal"
       >
         开通VIP
       </Item>
       <Item
         thumb="https://zos.alipayobjects.com/rmsportal/UmbJMbWOejVOpxe.png"
-        onClick={() => {}}
-        arrow="horizontal"
-      >
-        我的课程
-      </Item>
-      <Item
-        thumb="https://zos.alipayobjects.com/rmsportal/UmbJMbWOejVOpxe.png"
-        onClick={() => {}}
+        onClick={() => hashHistory.push('/my/coupon')}
         arrow="horizontal"
       >
         我的优惠券
       </Item>
       <Item
         thumb="https://zos.alipayobjects.com/rmsportal/UmbJMbWOejVOpxe.png"
-        onClick={() => {}}
+        onClick={() => hashHistory.push('/my/join')}
         arrow="horizontal"
       >
         加入社群
-      </Item>
-      <Item
-        thumb="https://zos.alipayobjects.com/rmsportal/UmbJMbWOejVOpxe.png"
-        onClick={() => {}}
-        arrow="horizontal"
-      >
-        购买记录
-      </Item>
-      <Item
-        thumb="https://zos.alipayobjects.com/rmsportal/UmbJMbWOejVOpxe.png"
-        onClick={() => {}}
-        arrow="horizontal"
-      >
-        我的资料
       </Item>
     </List>
   );

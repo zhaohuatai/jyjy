@@ -25,3 +25,18 @@ export function createMemberTeacherAppointment(param) {
   });
 }
 
+export function createMemberTeacherFavorite(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}user/member/memberTeacher/createMemberTeacherFavorite`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}
+
+export function loadMemberTeacherFavoriteDataSet(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}user/member/memberTeacher/loadMemberTeacherFavoriteDataSet`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

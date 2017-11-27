@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { loadMemberTeacher, createMemberTeacherAppointment } from '../../service/expert';
+import { loadMemberTeacher, createMemberTeacherAppointment, createMemberTeacherFavorite } from '../../service/expert';
 import { IMG_DOMAIN } from '../../utils/config';
 import BottomAction from '../../components/debris/BottomAction';
 import { Modal, InputItem, Toast } from 'antd-mobile';
@@ -35,6 +35,12 @@ class ExpertDetail extends Component {
     this.setState({phone: value})
   }
 
+  handleAddFavorite = () => {
+    createMemberTeacherFavorite({memberId: this.props.params.id}).then(data => {
+      Toast.success('关注成功')
+    })
+  }
+
   render() {
     return (
       <div style={{height:'100%'}}>
@@ -49,7 +55,8 @@ class ExpertDetail extends Component {
 
         <BottomAction
           buttons={[
-            {label: '立即预约', action: this.handleShowModal},
+            {label: '添加收藏', action: this.handleAddFavorite, backgroundColor: '#fff', color: '#2fc3ba'},
+            {label: '立即预约', action: this.handleShowModal, backgroundColor: '#2fc3ba', color: '#fff' },
           ]}
         />
 
@@ -60,7 +67,7 @@ class ExpertDetail extends Component {
           title='预约专家'
           footer={[
             { text: '取消', onPress: () => this.setState({pub_show: false})},
-            { text: '提交', onPress: this.handleAppointment }
+            { text: '提交', onPress: this.handleAppointment}
           ]}
         >
           <InputItem placeholder='输入联系方式' onChange={this.handleInputPhone}/>
