@@ -9,7 +9,6 @@ const ExpertListPanel = ({ list_data }) => {
   for (let i = 0, len = list_data.length; i < len; i += 3) {
     result.push(list_data.slice(i, i + 3));
   }
-  console.log(result);
 
   return (
     <div>

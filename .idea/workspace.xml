@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a0a664f-99da-4432-b611-f7d4957868ff" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/routes/service/ServiceFirst.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/routes/service/ServiceSecond.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/column/ColumnItemDetail.js" afterPath="$PROJECT_DIR$/src/routes/column/ColumnItemDetail.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/expert/ExpertListPanel.js" afterPath="$PROJECT_DIR$/src/components/expert/ExpertListPanel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/service/ServiceListItem.js" afterPath="$PROJECT_DIR$/src/components/service/ServiceListItem.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/service/ServiceListPanel.js" afterPath="$PROJECT_DIR$/src/components/service/ServiceListPanel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/router.js" afterPath="$PROJECT_DIR$/src/router.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/index/Index.js" afterPath="$PROJECT_DIR$/src/routes/index/Index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/service/ServiceThird.js" afterPath="$PROJECT_DIR$/src/routes/service/ServiceThird.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/service/index.js" afterPath="$PROJECT_DIR$/src/routes/service/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/service/service.js" afterPath="$PROJECT_DIR$/src/service/service.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,18 +38,102 @@
       <file leaf-file-name="Index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/routes/index/Index.js">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="594">
+              <caret line="106" column="23" lean-forward="true" selection-start-line="106" selection-start-column="23" selection-end-line="106" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServiceListPanel.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/service/ServiceListPanel.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="263">
+              <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServiceFirst.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes/service/ServiceFirst.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServiceSecond.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes/service/ServiceSecond.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="182">
+              <caret line="11" column="28" lean-forward="true" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServiceThird.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes/service/ServiceThird.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="3" lean-forward="true" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExpertListPanel.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/expert/ExpertListPanel.js">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
-              <caret line="17" column="46" lean-forward="true" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
+              <caret line="17" column="23" lean-forward="true" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServiceListItem.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/service/ServiceListItem.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="24" column="2" lean-forward="true" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ColumnItemDetail.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/routes/column/ColumnItemDetail.js">
+      <file leaf-file-name="service.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/service/service.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+            <state relative-caret-position="80">
+              <caret line="25" column="1" lean-forward="true" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes/service/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -57,6 +150,7 @@
       <find>水墨人生</find>
       <find>column</find>
       <find>columnChannel</find>
+      <find>ser</find>
     </findStrings>
     <replaceStrings>
       <replace>columnChannelItem</replace>
@@ -68,14 +162,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/components/interlocution/InterlocutionItem.js" />
-        <option value="$PROJECT_DIR$/src/routes/interlocution/InterlocutionDetail.js" />
-        <option value="$PROJECT_DIR$/src/index.html" />
-        <option value="$PROJECT_DIR$/src/components/debris/Fixed.js" />
-        <option value="$PROJECT_DIR$/src/service/interlocution.js" />
-        <option value="$PROJECT_DIR$/src/routes/interlocution/index.js" />
-        <option value="$PROJECT_DIR$/src/routes/profession/ProfessionDetail.js" />
-        <option value="$PROJECT_DIR$/src/routes/course/index.js" />
         <option value="$PROJECT_DIR$/src/components/course/CourseListPanel.js" />
         <option value="$PROJECT_DIR$/src/routes/App.js" />
         <option value="$PROJECT_DIR$/src/routes/provinceline/index.js" />
@@ -94,7 +180,6 @@
         <option value="$PROJECT_DIR$/src/routes/expert/ExpertDetail.js" />
         <option value="$PROJECT_DIR$/src/service/expert.js" />
         <option value="$PROJECT_DIR$/src/routes/employ/index.js" />
-        <option value="$PROJECT_DIR$/src/router.js" />
         <option value="$PROJECT_DIR$/src/service/coupon.js" />
         <option value="$PROJECT_DIR$/src/components/expert/ExpertListItem.js" />
         <option value="$PROJECT_DIR$/src/components/course/CourseListItem.js" />
@@ -110,7 +195,6 @@
         <option value="$PROJECT_DIR$/src/components/user/UserPageList.js" />
         <option value="$PROJECT_DIR$/src/components/partner/PartnerListPanel.js" />
         <option value="$PROJECT_DIR$/src/components/partner/PartnerListPanelItem.js" />
-        <option value="$PROJECT_DIR$/src/routes/index/Index.js" />
         <option value="$PROJECT_DIR$/src/routes/course/CourseDetail.js" />
         <option value="$PROJECT_DIR$/src/routes/my/order/index.js" />
         <option value="$PROJECT_DIR$/src/service/course.js" />
@@ -119,6 +203,16 @@
         <option value="$PROJECT_DIR$/src/routes/my/order/course/CourseOrderDetail.js" />
         <option value="$PROJECT_DIR$/src/routes/my/order/column/ColumnOrderDetail.js" />
         <option value="$PROJECT_DIR$/src/routes/column/ColumnItemDetail.js" />
+        <option value="$PROJECT_DIR$/src/components/service/ServiceListItem.js" />
+        <option value="$PROJECT_DIR$/src/router.js" />
+        <option value="$PROJECT_DIR$/src/routes/service/index.js" />
+        <option value="$PROJECT_DIR$/src/routes/service/ServiceFirst.js" />
+        <option value="$PROJECT_DIR$/src/service/service.js" />
+        <option value="$PROJECT_DIR$/src/routes/index/Index.js" />
+        <option value="$PROJECT_DIR$/src/components/service/ServiceListPanel.js" />
+        <option value="$PROJECT_DIR$/src/routes/service/ServiceSecond.js" />
+        <option value="$PROJECT_DIR$/src/routes/service/ServiceThird.js" />
+        <option value="$PROJECT_DIR$/src/components/expert/ExpertListPanel.js" />
       </list>
     </option>
   </component>
@@ -175,7 +269,21 @@
               <item name="jyedu-fe" type="b2602c69:ProjectViewProjectNode" />
               <item name="jyedu-fe" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="expert" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jyedu-fe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jyedu-fe" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jyedu-fe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jyedu-fe" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="expert" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -197,19 +305,19 @@
     <property name="SearchEverywhereHistoryKey" value="Order&#9;null&#9;null&#10;re&#9;FILE&#9;file:///Users/houser/项目/kingmon-jyedu/jyedu-fe/src/routes/login/Register.js&#10;column&#9;FILE&#9;file:///Users/houser/项目/kingmon-jyedu/jyedu-fe/src/service/column.js&#10;course&#9;FILE&#9;file:///Users/houser/项目/kingmon-jyedu/jyedu-fe/src/routes/course/CourseDetail.js&#10;exper&#9;FILE&#9;file:///Users/houser/项目/kingmon-jyedu/jyedu-fe/src/service/expert.js&#10;router&#9;FILE&#9;file:///Users/houser/项目/kingmon-jyedu/jyedu-fe/src/router.js&#10;user&#9;FILE&#9;file:///Users/houser/项目/kingmon-jyedu/jyedu-fe/src/routes/my/User.js&#10;Exper&#9;FILE&#9;file:///Users/houser/项目/kingmon-jyedu/jyedu-fe/src/routes/expert/ExpertDetail.js&#10;Ex&#9;FILE&#9;file:///Users/houser/项目/kingmon-jyedu/jyedu-fe/src/service/expert.js&#10;Re&#9;FILE&#9;file:///Users/houser/项目/kingmon-jyedu/jyedu-fe/src/routes/login/Register.js&#10;CountExtra&#9;ACTION&#9;null&#10;request&#9;FILE&#9;file:///Users/houser/项目/kingmon-jyedu/jyedu-fe/src/utils/request.js&#10;User&#9;FILE&#9;file:///Users/houser/项目/kingmon-jyedu/jyedu-fe/src/service/user.js" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/routes/service" />
+      <recent name="$PROJECT_DIR$/src/components/course" />
+      <recent name="$PROJECT_DIR$/src/service" />
+      <recent name="$PROJECT_DIR$/src/routes/my/coupon" />
+      <recent name="$PROJECT_DIR$/src/routes/my" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/routes/my/order/course" />
       <recent name="$PROJECT_DIR$/src/routes/my/order/column" />
       <recent name="$PROJECT_DIR$/src/components/course" />
       <recent name="$PROJECT_DIR$/src/routes/index" />
       <recent name="$PROJECT_DIR$/src/routes/join" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components/course" />
-      <recent name="$PROJECT_DIR$/src/service" />
-      <recent name="$PROJECT_DIR$/src/routes/my/coupon" />
-      <recent name="$PROJECT_DIR$/src/routes/my" />
-      <recent name="$PROJECT_DIR$/src/routes" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -267,7 +375,7 @@
       <workItem from="1511658631214" duration="13893000" />
       <workItem from="1511695693022" duration="4737000" />
       <workItem from="1511744547571" duration="10952000" />
-      <workItem from="1511848313990" duration="8478000" />
+      <workItem from="1511848313990" duration="12510000" />
     </task>
     <task id="LOCAL-00001" summary="完成：学校库；todo：帅选功能待完善">
       <created>1510363991930</created>
@@ -409,11 +517,18 @@
       <option name="project" value="LOCAL" />
       <updated>1511858648143</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="完善专栏期详情">
+      <created>1511859100756</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1511859100756</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="183303000" />
+    <option name="totallyTimeSpent" value="187335000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -487,7 +602,8 @@
     <MESSAGE value="完成 课程购买 选课功能" />
     <MESSAGE value="修改一些功能" />
     <MESSAGE value="完善订单专栏和课程订单" />
-    <option name="LAST_COMMIT_MESSAGE" value="完善订单专栏和课程订单" />
+    <MESSAGE value="完善专栏期详情" />
+    <option name="LAST_COMMIT_MESSAGE" value="完善专栏期详情" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -496,67 +612,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/routes/news/News.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="20" column="2" lean-forward="false" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/news/NewsDetail.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="27" column="24" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/request.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1393">
-          <caret line="134" column="58" lean-forward="true" selection-start-line="134" selection-start-column="58" selection-end-line="134" selection-end-column="58" />
-          <folding>
-            <element signature="e#0#22#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/interlocution/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1357">
-          <caret line="80" column="13" lean-forward="true" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpack.production.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="32" lean-forward="true" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/login/Login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/wxpay.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="160" column="37" lean-forward="true" selection-start-line="160" selection-start-column="37" selection-end-line="160" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/course/CourseCat.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-225">
-          <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/expert/Expert.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -576,6 +631,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
           <caret line="35" column="3" lean-forward="true" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -615,6 +673,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="29" column="20" lean-forward="true" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -622,6 +683,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="21" lean-forward="true" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -655,6 +719,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="22" column="29" lean-forward="false" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -852,14 +917,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="118" column="41" lean-forward="true" selection-start-line="118" selection-start-column="41" selection-end-line="118" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/my/order/column/CloumnOrderItem.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -894,20 +951,110 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/index/Index.js">
+    <entry file="file://$PROJECT_DIR$/src/routes/column/ColumnItemDetail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="46" lean-forward="true" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
+        <state relative-caret-position="142">
+          <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="107" column="53" lean-forward="false" selection-start-line="107" selection-start-column="53" selection-end-line="107" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/service/ServiceListItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="24" column="2" lean-forward="true" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/column/ColumnItemDetail.js">
+    <entry file="file://$PROJECT_DIR$/src/service/service.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+        <state relative-caret-position="80">
+          <caret line="25" column="1" lean-forward="true" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/service/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/index/Index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="106" column="23" lean-forward="true" selection-start-line="106" selection-start-column="23" selection-end-line="106" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/service/ServiceListPanel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/service/ServiceFirst.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/service/ServiceSecond.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="11" column="28" lean-forward="true" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/service/ServiceThird.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="3" lean-forward="true" selection-start-line="22" selection-start-column="3" selection-end-line="22" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/expert/ExpertListPanel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="23" lean-forward="true" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>

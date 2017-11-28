@@ -17,6 +17,47 @@ export function loadServiceEntrance(param) {
   });
 }
 
+export function loadServiceEntranceAtTopDto(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/entrance/serviceEntranceCategory/loadServiceEntranceAtTopDto`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}
+
+export function loadAllServiceEntranceCatefirstList(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/entrance/serviceEntranceCategory/loadAllServiceEntranceCatefirstList`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}
+
+export function loadSecondDtoByFirstCateId(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/entrance/serviceEntranceCategory/loadSecondDtoByFirstCateId`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}
+
+export function loadCateThirdDtoBySecondCateId(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/entrance/serviceEntranceCategory/loadCateThirdDtoBySecondCateId`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}
+
+export function loadEntranceByThirdCateId(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/entrance/serviceEntranceCategory/loadEntranceByThirdCateId`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}
+
+
 // 获取分类关系
 export function loadServiceEntranceCategoryDataSet(param) {
   return new Promise((resolve, reject) => {

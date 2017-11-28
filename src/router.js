@@ -34,6 +34,8 @@ import Introduce from './routes/introduce';
 import Consult from './routes/consult';
 import Service from './routes/service';
 import EntranceDetail from './routes/service/EntranceDetail';
+import ServiceFirst from './routes/service/ServiceFirst';
+import ServiceSecond from './routes/service/ServiceSecond';
 import ServiceThird from './routes/service/ServiceThird';
 import ProvinceLine from './routes/provinceline';
 import Interlocution from './routes/interlocution';
@@ -98,6 +100,14 @@ const Routers = () => {
 
           <Route path="brochure" component={Brochure} />
           <Route path="brochure/:id" component={BrochureDetail} />
+        </Route>
+
+        <Route path="/service" >
+          <IndexRoute component={Service} />
+          <Route path=":id" component={EntranceDetail} />
+          <Route path="first/:id" component={ServiceFirst} />
+          <Route path="second/:id" component={ServiceSecond} />
+          <Route path="third/:id" component={ServiceThird} />
         </Route>
 
         <Route path="/service/:id" component={EntranceDetail} />

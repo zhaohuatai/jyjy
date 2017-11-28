@@ -1,35 +1,38 @@
 import React, { Component } from 'react';
-import { loadServiceEntranceDataSet } from '../../service/service';
+import { loadEntranceByThirdCateId } from '../../service/service';
 import { WhiteSpace, List } from 'antd-mobile';
 import ServiceListItem from '../../components/service/ServiceListItem';
+import { hashHistory } from 'react-router';
 
-class EntranceDetail extends Component {
+const Item = List.Item;
+const Brief = Item.Brief;
+
+class ServiceThird extends Component {
   state = {
-    entrance: []
+    entranceList: [],
+    serviceEntranceCateSecondList: []
   }
 
   componentDidMount() {
     const id = this.props.params.id;
-    loadServiceEntranceDataSet({ catethirdId: id }).then((data) => {
-      this.setState({ entrance: data.data.dataSet.rows });
+    loadEntranceByThirdCateId({ thirdCateId: id }).then((data) => {
+      this.setState({
+        entranceList: data.data.entranceList,
+      });
     });
   }
 
   render() {
     return (
       <div>
-        <List>
-          <List.Item>{this.props.location.query.categoryName}</List.Item>
-        </List>
-        <WhiteSpace/>
         {
-          this.state.entrance.map(item => {
-            return <ServiceListItem key={item.id} data={item} />
-          })
+          this.state.entranceList.map(item => (
+            <ServiceListItem data={item} key={item.id} />
+          ))
         }
       </div>
     );
   }
 }
 
-export default EntranceDetail;
+export default ServiceThird;

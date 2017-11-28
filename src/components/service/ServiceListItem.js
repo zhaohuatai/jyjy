@@ -14,9 +14,9 @@ const ServiceSecondListItem = ({ data }) => {
       onClick={() => hashHistory.push(`/service/${id}`)}
       key={id}
       extra={extra}
-      align="top"
       thumb = {<img style={{ width:'60px', height:'60px' }} src={coverUrl}/>}
       multipleLine
+      arrow="horizontal"
     >
       {title}
       <Brief>¥{price}／<span style={{color: 'red' }}>会员¥{priceVIP}</span> </Brief>

@@ -6,7 +6,7 @@ import { loadMemberTeacherDataSet } from '../../service/expert';
 import { loadPubNewsDataSet } from '../../service/news';
 import { loadPubSlideDataSet } from '../../service/slide';
 import { loadServiceCourseGlobal } from '../../service/course';
-import { loadServiceEntranceDataSet } from '../../service/service';
+import { loadServiceEntranceAtTopDto } from '../../service/service';
 
 import FeaturesBox from '../../components/featuresbox';
 import HeadLines from '../../components/headlines/HeadLines';
@@ -37,7 +37,12 @@ class Index extends Component {
     expert:[],
     partner:[],
     slide:[],
-    service_top:[],
+    service_top: {
+      serviceEntranceCateFirstList: [],
+      serviceEntranceCateSecondList: [],
+      serviceEntranceCateThirdList: [],
+      serviceEntranceList: [],
+    },
   }
 
   componentDidMount(){
@@ -61,8 +66,8 @@ class Index extends Component {
       this.setState({course_global: data.data.resList})
     })
 
-    loadServiceEntranceDataSet({isTop: 1, rows: 3}).then(data => {
-      this.setState({ service_top: data.data.dataSet.rows });
+    loadServiceEntranceAtTopDto().then(data => {
+      this.setState({ service_top: data.data.entranceAtTopDto });
     })
   }
     render() {
