@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { loadItemResDtoByItemId, createColumnChannelOrder } from '../../service/column';
+import { loadItemResDtoByItemId, createcolumnChannelItemOrder } from '../../service/column';
 import {IMG_DOMAIN} from "../../utils/config";
 import { List, Tabs, Button, Badge, WhiteSpace } from 'antd-mobile';
 
@@ -8,29 +8,28 @@ const Brief = Item.Brief;
 
 class ColumnDetail extends Component {
   state = {
-    columnChannel:{},
-    column_list:[],
-    column_name: ''
+    columnChannelItem:{},
+    columnChannel: {
+      title: ''
+    }
   }
 
   componentDidMount() {
     const id = this.props.params.id;
 
     loadItemResDtoByItemId({itemId:id}).then(data => {
-      this.setState({ columnChannel: data.data.itemRes.columnChannelItem })
+      this.setState({ columnChannelItem: data.data.itemRes.columnChannelItem,  columnChannel: data.data.itemRes.columnChannel})
     })
   }
 
   handlePlayOrder = () => {
-    createColumnChannelOrder({}).then(data => {
+    createcolumnChannelItemOrder({}).then(data => {
 
     })
   }
 
   render() {
-    console.log(this.state);
-
-    const { presenterName, content, freePay, commentCount, hint, coverUrl, title, price, priceVIP } = this.state.columnChannel;
+    const { presenterName, content, freePay, commentCount, hint, coverUrl, title, price, priceVIP } = this.state.columnChannelItem;
     const tabs = [
       { title: <Badge>详情</Badge> },
       { title: <Badge>评论({commentCount})</Badge> }
@@ -48,13 +47,12 @@ class ColumnDetail extends Component {
     return (
       <div>
         <img src={`${IMG_DOMAIN}${coverUrl}`} />
-
         <List>
           <Item
             multipleLine
             extra={<Button size='small' type='primary' onClick={this.handlePlayOrder}>立即购买</Button>}
           >
-            {this.state.column_name} - {title}
+            {this.state.columnChannel.title} - {title}
             <Brief>
               主讲人：{presenterName} <br />
               <Price free={freePay} price={price} priceVIP={priceVIP} />
