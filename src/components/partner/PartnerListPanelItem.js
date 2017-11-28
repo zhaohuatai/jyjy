@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import {Link} from 'react-router';
 
 const ExpertListPanelItem = ({ data }) => {
   return (
@@ -9,7 +9,17 @@ const ExpertListPanelItem = ({ data }) => {
         alt=""
         style={{ height: '85px', width: '100%' }}
       />
-      <p style={{ margin: '5px', fontSize: '12px' }}>{data.name}</p>
+      <p
+        style={{
+          margin: '5px',
+          fontSize: '12px',
+          textOverflow: 'ellipsis',
+          overflow: 'hidden',
+          whiteSpace: 'nowrap'
+        }}
+      >
+        {data.name}
+      </p>
     </div>
   );
 };

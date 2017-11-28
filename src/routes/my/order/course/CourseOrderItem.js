@@ -1,6 +1,11 @@
 import React from 'react';
-import { Card, Button, Flex, WhiteSpace } from 'antd-mobile';
+import { Card, Button, Flex, WhiteSpace, List } from 'antd-mobile';
 import { hashHistory } from 'react-router';
+import { IMG_DOMAIN } from "../../../../utils/config";
+import CourseListItem from "../../../../components/course/CourseListItem";
+
+const Item = List.Item;
+const Brief = Item.Brief;
 
 const CourseOrderItem = ({ data, doPay }) => {
   const { serviceCourseList, serviceCourseOrder } = data;
@@ -8,16 +13,30 @@ const CourseOrderItem = ({ data, doPay }) => {
   return (
     <div>
       <Card full>
-        <Card.Header
-          title="This is title"
-          thumb="https://cloud.githubusercontent.com/assets/1698185/18039916/f025c090-6dd9-11e6-9d86-a4d48a1bf049.png"
-          extra={<span style={{ color: 'red' }}>¥{payFee}</span>}
-          onClick={() => hashHistory.push(`/my/order/course/${id}`)}
-        />
+        {
+          serviceCourseList.map(item => {
+            const {
+              name, id, learningCount, favoriteCount, coverUrl
+            } = item;
+
+            return (
+              <Item
+                onClick={() => hashHistory.push(`/my/order/course/${serviceCourseOrder.id}`)}
+                align="top"
+                thumb={<img style={{ width: '60px', height: '60px' }} src={`${IMG_DOMAIN}${coverUrl}`} />}
+                multipleLine
+                key={id}
+              >
+                {name}
+                <Brief>学习({learningCount}) 收藏({favoriteCount})</Brief>
+              </Item>
+            )
+          })
+        }
         <Card.Footer
           content={
             <Flex>
-              <Flex.Item />
+              <Flex.Item ><span style={{ color: 'red' }}>总价 ¥{payFee}</span></Flex.Item>
               <Flex.Item />
               <Flex.Item />
               <Flex.Item>
@@ -30,7 +49,7 @@ const CourseOrderItem = ({ data, doPay }) => {
           }
         />
       </Card>
-      <WhiteSpace />
+      <WhiteSpace style={{ backgroundColor: '#f5f5f9' }} />
     </div>
 
   );

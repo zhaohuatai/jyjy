@@ -32,14 +32,14 @@ const ExpertListPanel = ({ list_data, title, title_icon }) => {
                 : <Flex.Item></Flex.Item>
             }
             {
-              item[0] ?
+              item[1] ?
                 <Flex.Item>
                   <PartnerListPanelItem data={item[1]} />
                 </Flex.Item>
                 : <Flex.Item></Flex.Item>
             }
             {
-              item[0] ?
+              item[2] ?
                 <Flex.Item>
                   <PartnerListPanelItem data={item[2]} />
                 </Flex.Item>

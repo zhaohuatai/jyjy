@@ -27,7 +27,7 @@ class CourseDetail extends Component {
         courseItemId:'1',
         record:true,
       },
-      buy_display: true
+      buy_display: false
     };
 
     this.player = null;

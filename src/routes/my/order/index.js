@@ -47,7 +47,6 @@ class Order extends Component {
   render() {
     return (
       <div>
-        <Button onClick={()=>this.handlePay({id:33, payFee: 1})}>支付</Button>
         <Tabs
           tabs={tabs}
           onChange={this.handleChangeTab}

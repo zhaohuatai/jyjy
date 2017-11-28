@@ -16,10 +16,8 @@ class ColumnDetail extends Component {
   componentDidMount() {
     const id = this.props.params.id;
 
-    console.log(this.props.location.query.columnName);
-
-    loadItemResDtoByItemId({id}).then(data => {
-      this.setState({ columnChannel: data.data.columnChannel, column_name: this.props.location.query.columnName })
+    loadItemResDtoByItemId({itemId:id}).then(data => {
+      this.setState({ columnChannel: data.data.itemRes.columnChannelItem })
     })
   }
 

@@ -1,23 +1,39 @@
 import React from 'react';
-import { Card, Button, Flex, WhiteSpace } from 'antd-mobile';
+import { Card, Button, Flex, WhiteSpace, List } from 'antd-mobile';
 import { hashHistory } from 'react-router';
+import { IMG_DOMAIN } from '../../../../utils/config';
+import ColumnListItem from "../../../../components/column/ColumnListItem";
+
+const Item = List.Item;
+const Brief = List.Item.Brief;
 
 const ColumnOrderItem = ({ data, doPay }) => {
   const { columnChannel, columnChannelOrder } = data;
-  const { id, payFee } = columnChannelOrder;
+  const { payFee  } = columnChannelOrder;
   return (
     <div>
       <Card full>
-        <Card.Header
-          title="This is title"
-          thumb="https://cloud.githubusercontent.com/assets/1698185/18039916/f025c090-6dd9-11e6-9d86-a4d48a1bf049.png"
-          extra={<span style={{ color: 'red' }}>¥{payFee}</span>}
-          onClick={() => hashHistory.push(`/my/order/column/${id}`)}
-        />
+        {
+          columnChannel.map(item => {
+            const { coverUrl, title, learningCount, id } = item;
+
+            return (
+              <Item
+                onClick={() => hashHistory.push(`my/order/column/${columnChannelOrder.id}`)}
+                align="top"
+                thumb={<img alt={title} style={{ width: '60px', height: '60px' }} src={coverUrl} />}
+                multipleLine
+                key={id}
+              >
+                {title}<Brief>期数({learningCount})  学习人({learningCount})</Brief>
+              </Item>
+            );
+          })
+        }
         <Card.Footer
           content={
             <Flex>
-              <Flex.Item />
+              <Flex.Item ><span style={{ color: 'red' }}>总价 ¥{payFee}</span></Flex.Item>
               <Flex.Item />
               <Flex.Item />
               <Flex.Item>
@@ -30,7 +46,7 @@ const ColumnOrderItem = ({ data, doPay }) => {
           }
         />
       </Card>
-      <WhiteSpace />
+      <WhiteSpace style={{ backgroundColor: '#f5f5f9' }} />
     </div>
 
   );

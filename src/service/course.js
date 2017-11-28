@@ -81,3 +81,11 @@ export function loadServiceCourseFaverateDataSet(param) {
     });
   });
 }
+
+export function loadServiceCourseOrder(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}user/course/serviceCourseOrder/loadServiceCourseOrder`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

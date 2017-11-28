@@ -20,7 +20,7 @@ import CourseListPanelWithTab from "../../components/course/CourseListPanelWithT
 
 class Index extends Component {
   state = {
-    top_news:[{id: 1, title: '出状元啦', url: '/column'},{id: 2, title: '出状元啦', url: '/column'},{id: 3, title: '出状元啦', url: '/column'}],
+    top_news:[],
     course_global:[],
     features_data:[
       {text:'名校库',icon:'icon-xuexiao',url:'/school'},
