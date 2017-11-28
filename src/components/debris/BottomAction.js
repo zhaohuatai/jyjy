@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flex } from 'antd-mobile';
 
-const BottomAction = ({ buttons, }) => {
+const BottomAction = ({ buttons }) => {
   const style={
     position: 'absolute',
     zIndex: '100',

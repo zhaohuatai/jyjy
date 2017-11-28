@@ -28,11 +28,9 @@ const ExpertListPanel = ({ list_data }) => {
               {
                 item[0] ? <Flex.Item><ExpertListPanelItem data={item[0]} /></Flex.Item> : <Flex.Item></Flex.Item>
               }
-
               {
                 item[1] ? <Flex.Item><ExpertListPanelItem data={item[1]} /></Flex.Item> : <Flex.Item></Flex.Item>
               }
-              
               {
                 item[2] ? <Flex.Item><ExpertListPanelItem data={item[2]} /></Flex.Item> : <Flex.Item></Flex.Item>
               }

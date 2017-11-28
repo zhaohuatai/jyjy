@@ -24,3 +24,11 @@ export function createAccount(param) {
     });
   });
 }
+
+export function verifyVipCard(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}user/member/memberVipCard/verifyVipCard`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import { Modal, Toast } from 'antd-mobile';
 import { loadPubCustomize } from '../../service/customize';
+import BottomAction from "../../components/debris/BottomAction";
+import { verifyVipCard } from '../../service/user';
+const prompt = Modal.prompt;
 
 class MemberExclusive extends Component {
   state = {
@@ -13,6 +17,23 @@ class MemberExclusive extends Component {
     }
   }
 
+  handlePayVip = () => {
+
+  }
+
+  handleExchange = () => {
+    prompt(
+      '兑换VIP',
+      '请输入兑换卡号和密码',
+      (vipNum, vipPwd) => verifyVipCard({vipNum, vipPwd}).then(data => {
+        Toast.success('兑换成功');
+      }),
+      'login-password',
+      null,
+      ['卡号', '密码'],
+    )
+  }
+
   componentDidMount() {
     loadPubCustomize({ key: 'MEMBER_EXCLUSIVE' }).then(data => {
       this.setState({pubCustomize: data.data.pubCustomize})
@@ -22,7 +43,15 @@ class MemberExclusive extends Component {
 
   render() {
     return (
-      <div dangerouslySetInnerHTML={{ __html: this.state.pubCustomize.content }} style={{ backgroundColor: '#fff', padding: '15px' }} />
+      <div>
+        <div dangerouslySetInnerHTML={{ __html: this.state.pubCustomize.content }} style={{ backgroundColor: '#fff', padding: '15px' }} />
+        <BottomAction
+          buttons={[
+            {label: '兑换VIP', action: this.handleExchange, backgroundColor: '#fff', color: '#2fc3ba'},
+            {label: '购买VIP', action: this.handlePayVip, backgroundColor: '#2fc3ba', color: '#fff' },
+          ]}
+        />
+      </div>
     );
   }
 }
