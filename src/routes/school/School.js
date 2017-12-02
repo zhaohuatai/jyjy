@@ -121,7 +121,7 @@ class School extends Component {
 
         <Picker
           data={this.state.filter}
-          title="省份/双一流"
+          title="省份------------双一流"
           cascade={false}
           extra="请选择(可选)"
           onOk={v => this.setState({search_form: { ...this.state.search_form, provinceCode: v[0], isFirsrRate: v[1]}})}

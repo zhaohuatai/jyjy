@@ -49,7 +49,7 @@ class Specialty extends Component {
   render() {
     return (
       <div>
-        <SearchBar placeholder="专业名称" />
+        <SearchBar placeholder="本科专业名称" />
         
         <div style={{ height: 500 }}>
           <Tabs

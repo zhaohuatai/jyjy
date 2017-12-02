@@ -11,7 +11,7 @@ const ListPanel = ({ list_data }) => {
 
   return (
     <div>
-      <ListHeader href='/service' title='服务' icon='icon-kecheng' />
+      <ListHeader href='/service' title='捷径升学' icon='icon-kecheng' />
       <List>
         {
           list_data.serviceEntranceCateFirstList.map(item => {

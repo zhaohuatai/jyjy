@@ -23,8 +23,8 @@ class MemberExclusive extends Component {
 
   handleExchange = () => {
     prompt(
-      '兑换VIP',
-      '请输入兑换卡号和密码',
+      'VIP认证',
+      '请输入升学一卡通卡号和密码',
       (vipNum, vipPwd) => verifyVipCard({vipNum, vipPwd}).then(data => {
         Toast.success('兑换成功');
       }),
@@ -47,7 +47,7 @@ class MemberExclusive extends Component {
         <div dangerouslySetInnerHTML={{ __html: this.state.pubCustomize.content }} style={{ backgroundColor: '#fff', padding: '15px' }} />
         <BottomAction
           buttons={[
-            {label: '兑换VIP', action: this.handleExchange, backgroundColor: '#fff', color: '#2fc3ba'},
+            {label: 'VIP认证', action: this.handleExchange, backgroundColor: '#fff', color: '#2fc3ba'},
             {label: '购买VIP', action: this.handlePayVip, backgroundColor: '#2fc3ba', color: '#fff' },
           ]}
         />

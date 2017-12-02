@@ -32,7 +32,7 @@ class Index extends Component {
       {text:'省控线',icon:'icon-tongji',url:'/provinceline'},
       {text:'大事记',icon:'icon-biji',url:'/event'},
       {text:'加入社群',icon:'icon-qunliao',url:'/join'},
-      {text:'自主招生问答',icon:'icon-wenda-copy',url:'/interlocution'},
+      {text:'升学百科问答',icon:'icon-wenda-copy',url:'/interlocution'},
     ],
     expert:[],
     partner:[],
