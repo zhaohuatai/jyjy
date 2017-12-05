@@ -6,7 +6,8 @@ import { loadServiceCourseDto,
   addPalyRecord,
   loadVideoPalyAuth,
   loadServiceCourseConsultationDataSet,
-  createServiceCourseOrder
+  createServiceCourseOrder,
+  createServiceCourseFavorite
 } from '../../service/course';
 import Consulation from '../../components/course/Consulation';
 import  BuyCourseItem from '../../components/course/BuyCourseItem';
@@ -113,6 +114,12 @@ class CourseDetail extends Component {
     }
   }
 
+  handleAddFavorite = () => {
+    createServiceCourseFavorite({courseId: this.props.params.id}).then(data => {
+      Toast.success('收藏成功')
+    })
+  }
+
   handleBuy = (value) => {
     console.log(value);
     createServiceCourseOrder({courseItemIds: value}).then(data => {
@@ -151,12 +158,12 @@ class CourseDetail extends Component {
         <List>
           <Item
             multipleLine
-            extra={<Button onClick={()=>this.setState({buy_display: true})} size='small' type='primary' style={{ width: '100px', marginLeft: '20px' }}>按节购买</Button>}
+            extra={<Button onClick={() => this.setState({buy_display: true})} size='small' type='primary' style={{ width: '100px', marginLeft: '20px' }}>按节购买</Button>}
           >
             {name}
             <Brief>
               主讲人：{presenterName} <br />
-              学习({learningCount})  收藏({favoriteCount})<br />
+              学习({learningCount})  <span style={{color: '#2fc2ba'}} onClick={this.handleAddFavorite}>添加收藏</span><br />
             </Brief>
           </Item>
         </List>
@@ -171,6 +178,22 @@ class CourseDetail extends Component {
                 this.state.serviceCourseItems.length ?
                 this.state.serviceCourseItems.map((item) => {
 
+                  if (item.serviceCourseItem.freePay === 0) {
+                    return (
+                      <Item
+                        key={item.serviceCourseItem.id}
+                        extra='免费播放'
+                        arrow="horizontal"
+                        onClick={()=>this.handlePlay(item.serviceCourseItem.id)}
+                      >
+                        {item.serviceCourseItem.name}
+                        <Brief>
+                          免费
+                        </Brief>
+                      </Item>
+                    );
+                  }
+
                   if (item.serviceCourseOrderItemsCount) {
                     return (
                       <Item
@@ -180,10 +203,20 @@ class CourseDetail extends Component {
                         onClick={()=>this.handlePlay(item.serviceCourseItem.id)}
                       >
                         {item.serviceCourseItem.name}
+                        <Brief>
+                          ¥{item.serviceCourseItem.price} / VIP价 <span style={{color: 'red'}}>¥{item.serviceCourseItem.priceVIP}</span>
+                        </Brief>
                       </Item>
                     );
                   } else {
-                    return <Item key={item.serviceCourseItem.id} extra={<span>未购买 ¥{item.serviceCourseItem.price}/<span style={{color: 'red'}}>¥{item.serviceCourseItem.priceVIP}</span></span>} arrow="horizontal">{item.serviceCourseItem.name}</Item>;
+                    return <Item
+                      key={item.serviceCourseItem.id}
+                      extra='未购买' arrow="horizontal">
+                      {item.serviceCourseItem.name}
+                      <Brief>
+                        ¥{item.serviceCourseItem.price} / VIP价 <span style={{color: 'red'}}>¥{item.serviceCourseItem.priceVIP}</span>
+                      </Brief>
+                      </Item>;
                   }
                 })
                   :

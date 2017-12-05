@@ -39,7 +39,7 @@ class ColumnDetail extends Component {
 
       return(
         <div style={{color: 'red'}}>
-          {free ? <span>¥{price}/会员¥{priceVIP}</span> : <span>免费</span>}
+          {free ? <span>¥{price} / VIP ¥{priceVIP}</span> : <span>免费</span>}
         </div>
         )
     };

@@ -6,7 +6,7 @@ import { loadMemberTeacherDataSet } from '../../service/expert';
 import { loadPubNewsDataSet } from '../../service/news';
 import { loadPubSlideDataSet } from '../../service/slide';
 import { loadServiceCourseGlobal } from '../../service/course';
-import { loadServiceEntranceAtTopDto } from '../../service/service';
+import { loadIndexCateDtoList } from '../../service/service';
 
 import FeaturesBox from '../../components/featuresbox';
 import HeadLines from '../../components/headlines/HeadLines';
@@ -27,22 +27,17 @@ class Index extends Component {
       {text:'专业库',icon:'icon-zhuanye',url:'/profession'},
       {text:'职业库',icon:'icon-zhiyeziliao',url:'/career'},
       {text:'自招大数据',icon:'icon--zhaoshengtongji',url:'/bigdata'},
-      {text:'会员专享',icon:'icon-huiyuan',url:'/memberexclusive'},
+      {text:'VIP专享',icon:'icon-huiyuan',url:'/memberexclusive'},
       {text:'智能评测',icon:'icon-cepingxueyuan',url:'/'},
       {text:'省控线',icon:'icon-tongji',url:'/provinceline'},
       {text:'大事记',icon:'icon-biji',url:'/event'},
       {text:'加入社群',icon:'icon-qunliao',url:'/join'},
-      {text:'升学百科问答',icon:'icon-wenda-copy',url:'/interlocution'},
+      {text:'百科问答',icon:'icon-wenda-copy',url:'/interlocution'},
     ],
     expert:[],
     partner:[],
     slide:[],
-    service_top: {
-      serviceEntranceCateFirstList: [],
-      serviceEntranceCateSecondList: [],
-      serviceEntranceCateThirdList: [],
-      serviceEntranceList: [],
-    },
+    service_top: []
   }
 
   componentDidMount(){
@@ -58,7 +53,7 @@ class Index extends Component {
       this.setState({ partner: data.data.dataSet.rows });
     })
 
-    loadPubSlideDataSet({rows: 100}).then(data => {
+    loadPubSlideDataSet({rows: 100, locationCode: 'ZZ'}).then(data => {
       this.setState({ slide: data.data.dataSet.rows });
     })
 
@@ -66,8 +61,8 @@ class Index extends Component {
       this.setState({course_global: data.data.resList})
     })
 
-    loadServiceEntranceAtTopDto().then(data => {
-      this.setState({ service_top: data.data.entranceAtTopDto });
+    loadIndexCateDtoList().then(data => {
+      this.setState({ service_top: data.data.entranceCatefirstDtoList });
     })
   }
     render() {
@@ -106,7 +101,6 @@ class Index extends Component {
               <WhiteSpace size="sm" />
               <ServiceListPanel list_data={this.state.service_top}/>
 
-              <WhiteSpace size="sm" />
               <ExpertListPanel list_data={this.state.expert} />
             
               <WhiteSpace size="sm" />

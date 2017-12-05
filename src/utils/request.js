@@ -1,6 +1,6 @@
 import 'whatwg-fetch';
 import { hashHistory } from 'react-router';
-import { API_DOMAIN } from './config';
+import { API_DOMAIN, WECHAT_LOGIN } from './config';
 import { Modal, Toast } from 'antd-mobile';
 import md5 from 'blueimp-md5';
 
@@ -18,19 +18,11 @@ const checkCode = (statusCode, message) => {
     case 300: Toast.fail(message, 2); break;
     case 301:
       alert('未登录', '请先登录', [
-        { text: '取消', onPress: () => console.log('cancel') },
-        { text: '登录', onPress: () => doWebLogin({ username: 'admin', password: 'admin', captcha: '1111' },
-          data => {
-            if (data.statusCode == 200) {
-              Toast.success('登录成功', 1);
-            } else {
-              Toast.fail(data.message, 1);
-            }
-          }),
-        },
+        { text: '取消', onPress: () => hashHistory.push('/') },
+        { text: '登录', onPress: () => window.location.href=WECHAT_LOGIN },
       ]);
       break;
-    case 4010: hashHistory.push('/weblogin'); break;
+    case 4010: hashHistory.push('/register'); break;
     case 4011: Toast.fail(message, 2); break;
     case 4004: Toast.fail(message, 2); break; // 非vip
     case 500: Toast.fail(message, 2); break;

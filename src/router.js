@@ -10,6 +10,8 @@ import User from './routes/my/User';
 import Order from './routes/my/order';
 import MyFavorite from './routes/my/favorite';
 import MyCoupon from './routes/my/coupon';
+import Myinfo from './routes/my/myinfo';
+import EditMyinfo from './routes/my/editmyinfo';
 
 import Course from './routes/course';
 import CourseCat from './routes/course/CourseCat';
@@ -134,6 +136,8 @@ const Routers = () => {
           </Route>
           <Route path="favorite" component={MyFavorite} />
           <Route path="coupon" component={MyCoupon} />
+          <Route path="myinfo" component={Myinfo} />
+          <Route path="editmyinfo" component={EditMyinfo} />
         </Route>
       </Route>
     </Router>

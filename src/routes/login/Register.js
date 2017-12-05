@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { createForm } from 'rc-form';
-import { List, InputItem, Button, Toast } from 'antd-mobile';
+import { WECHAT_LOGIN } from '../../utils/config';
+import { hashHistory } from 'react-router'
+import { List, InputItem, Button, Toast, Modal } from 'antd-mobile';
 import { loadDicData } from '../../service/dic';
 import SMSVerification from "./SMSVerification";
-import {createAccount} from "../../service/user";
+import {createAccount, ishaveOpenId} from "../../service/user";
 
 const Item = List.Item;
 
@@ -20,19 +22,31 @@ class Register extends Component {
   componentDidMount() {
     loadDicData({ code: 'NJ' }).then(data => {
       this.setState({ class: data.data.dicData })
-    })
+    });
+
+    ishaveOpenId().then(data => {
+      if(data.data.ishaveOpenId !== 'yes'){
+        Modal.alert('未登录', '请先登录', [
+          { text: '取消', onPress: () => hashHistory.push('/') },
+          { text: '登录', onPress: () => window.location.href = WECHAT_LOGIN },
+        ]);
+      }
+    });
   }
 
   onSubmit = () => {
     if( this.state.registId && this.state.phone ){
       this.props.form.validateFields({ force: true }, (error) => {
         if (!error) {
-          console.log(this.props.form.getFieldsValue());
-          createAccount(this.props.form.getFieldsValue()).then(data => {
+          let create_form = this.props.form.getFieldsValue();
+          create_form.phone = this.state.phone;
+          create_form.registId = this.state.registId;
+          createAccount(create_form).then(data => {
             Toast.success('注册成功');
+            hashHistory.push('/')
           })
         } else {
-          alert('请检查');
+          alert('请检查信息');
         }
       });
     } else {
@@ -92,6 +106,7 @@ class Register extends Component {
         </InputItem>
         <Item
           {...getFieldProps('clazz',{
+            initialValue: 0,
             rules: [
               { required: true, message: '请选择年级' },
             ],

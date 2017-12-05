@@ -8,7 +8,7 @@ const Brief = Item.Brief;
 
 const CourseListItem = ({ data }) => {
   const {
-    name, id, learningCount, favoriteCount, coverUrl
+    name, id, learningCount, coverUrl
   } = data;
   return (
     <Item
@@ -18,7 +18,7 @@ const CourseListItem = ({ data }) => {
       multipleLine
     >
       {name}
-      <Brief>学习({learningCount}) 收藏({favoriteCount})</Brief>
+      <Brief>学习({learningCount})</Brief>
     </Item>
   );
 };

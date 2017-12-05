@@ -35,7 +35,7 @@ export function loadAllServiceEntranceCatefirstList(param) {
 
 export function loadSecondDtoByFirstCateId(param) {
   return new Promise((resolve, reject) => {
-    post(`${API_DOMAIN}pub/entrance/serviceEntranceCategory/loadSecondDtoByFirstCateId`, param).then((data) => {
+    post(`${API_DOMAIN}pub/entrance/serviceEntranceCategory/loadCateSecondDtoListByFirstCateId`, param).then((data) => {
       resolve(data);
     });
   });
@@ -57,11 +57,18 @@ export function loadEntranceByThirdCateId(param) {
   });
 }
 
-
-// 获取分类关系
 export function loadServiceEntranceCategoryDataSet(param) {
   return new Promise((resolve, reject) => {
     post(`${API_DOMAIN}pub/entrance/serviceEntranceCategory/loadServiceEntranceCategoryDataSet`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}
+
+// 获取分类关系
+export function loadIndexCateDtoList(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/entrance/serviceEntranceCategory/loadIndexCateDtoList`, param).then((data) => {
       resolve(data);
     });
   });

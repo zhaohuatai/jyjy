@@ -19,7 +19,7 @@ const ServiceSecondListItem = ({ data }) => {
       arrow="horizontal"
     >
       {title}
-      <Brief>¥{price}／<span style={{color: 'red' }}>会员¥{priceVIP}</span> </Brief>
+      <Brief>¥{price} ／ <span style={{color: 'red' }}>VIP ¥{priceVIP}</span> </Brief>
     </Item>
   );
 };

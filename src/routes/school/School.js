@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { SearchBar, List, Switch, Flex, WhiteSpace, Picker } from 'antd-mobile';
 import SchoolListItem from '../../components/school/SchoolListItem';
-import { SCH_BADGE } from '../../utils/config';
 import { loadDataUniversityDataSet } from '../../service/school';
 import { loadProvinceList } from '../../service/dic';
 import LoadMore from '../../components/loadmore/LoadMore';
@@ -23,12 +22,13 @@ class School extends Component {
           "status": 1
         }
       ],
-      filter: [[{ label: '空', value: '', }],[{ label: '空', value: '', }, {  label: ' 是', value: '1', }, { label: '否', value: '0',}]],
+      filter: [[{ label: '空', value: '', }],[{ label: '空', value: '', }, {  label: ' 双一流', value: '1', }, { label: '非双一流', value: '0',}]],
       search_form: {
         isFirstRate: '',
         name: '',
         provinceCode: '',
-      }
+      },
+      filter_value: []
     };
   }
 
@@ -49,7 +49,7 @@ class School extends Component {
 
       console.log(data.data.provinceList);
 
-      let filter = [[],[{ label: '空', value: '', }, {  label: ' 是', value: true, }, { label: '否', value: false,}]];
+      let filter = [[{ label: '空', value: '', }],[{ label: '空', value: '', }, {  label: ' 双一流', value: '1', }, { label: '非双一流', value: '0',}]];
 
       filter[0] = data.data.provinceList;
 
@@ -94,37 +94,14 @@ class School extends Component {
           onChange={(val)=>this.setState({search_form: { ...this.state.search_form, name: val}})}
           showCancelButton={true}
         />
-
-        {/*
-
-
-        <Flex style={{ backgroundColor: '#fff' }}>
-          <Flex.Item>
-            <select>
-              {
-                this.state.provices.map(item => {
-                  return <option key={item.id} value={item.code}>{item.name}</option>
-                })
-              }
-            </select>
-          </Flex.Item>
-
-          <Flex.Item>
-
-            <Switch
-              checked={this.state.search_form.isFirsrRate}
-              onClick={(checked) => this.setState({search_form: { ...this.state.search_form, name: val}})}
-            />
-          </Flex.Item>
-        </Flex>
-        */}
-
         <Picker
           data={this.state.filter}
-          title="省份------------双一流"
+          title="省份-----------双一流"
           cascade={false}
           extra="请选择(可选)"
-          onOk={v => this.setState({search_form: { ...this.state.search_form, provinceCode: v[0], isFirsrRate: v[1]}})}
+          value={this.state.filter_value}
+          //onChange={v =>{ console.log(v);this.setState({filter_value: v})}}
+          onOk={v => this.setState({filter_value: v,search_form: { ...this.state.search_form, provinceCode: v[0], isFirsrRate: v[1]}})}
         >
           <List.Item arrow="horizontal">省份/双一流</List.Item>
         </Picker>
@@ -134,7 +111,7 @@ class School extends Component {
         <List>
           {
             this.state.list.map(item => {
-              return <SchoolListItem key={item.id} thumbnail={`${SCH_BADGE}${item.badge}`} title={item.name} id={item.id} stage={item.stage}/>
+              return <SchoolListItem key={item.id} data={item}/>
             })
           }
           <LoadMore disable={this.state.loadmore_disable} onClick={this.loadMore}/>

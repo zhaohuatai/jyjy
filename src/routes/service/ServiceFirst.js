@@ -9,16 +9,14 @@ const Brief = Item.Brief;
 
 class ServiceFirst extends Component {
   state = {
-    serviceEntranceList: [],
-    serviceEntranceCateSecondList: []
+    entranceCateSecondDtoList: []
   }
 
   componentDidMount() {
     const id = this.props.params.id;
     loadSecondDtoByFirstCateId({ firstCateId: id }).then((data) => {
       this.setState({
-        serviceEntranceList: data.data.entranceCateSecondDto.serviceEntranceList,
-        serviceEntranceCateSecondList: data.data.entranceCateSecondDto.serviceEntranceCateSecondList,
+        entranceCateSecondDtoList: data.data.entranceCateSecondDtoList
       });
     });
   }

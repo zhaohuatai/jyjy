@@ -6,19 +6,19 @@ import { IMG_DOMAIN } from "../../../utils/config";
 const Item = List.Item;
 const Brief = Item.Brief;
 
-const CouponListItem = ({ data, doExchange }) => {
+const CouponListItem = ({ data }) => {
   const {
-    name, id, thumbNailImage, faceValue, changePoints,
+    name, id, thumbNailImage, faceValue, changePoints
   } = data;
   return (
     <Item
       align="top"
       thumb={<img style={{ width: '60px', height: '60px' }} src={`${IMG_DOMAIN}${thumbNailImage}`} />}
       multipleLine
-      extra={<Button size='small' type='primary' onClick={() => doExchange(id)}>兑换</Button>}
+      extra={<span>面值 <span style={{ color: 'red' }}>¥{faceValue}</span></span>}
     >
       {name}
-      <Brief>需要积分{changePoints} / 面值 <span style={{ color: 'red' }}>¥{faceValue}</span></Brief>
+      <Brief>需要积分  {changePoints}</Brief>
     </Item>
   );
 };

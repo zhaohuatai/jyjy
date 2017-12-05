@@ -89,3 +89,11 @@ export function loadServiceCourseOrder(param) {
     });
   });
 }
+
+export function createServiceCourseFavorite(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}user/service/serviceCourseFavorite/createServiceCourseFavorite`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

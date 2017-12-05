@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { hashHistory } from 'react-router';
 import { List, WhiteSpace, Picker } from 'antd-mobile';
 import { loadEnrollAutoAwardRecommendDataSet,
   loadEnrollAutoAwardCategoryDataSet,
@@ -144,7 +145,10 @@ class Award extends Component {
         <List>
           {
             this.state.recommend_data.map(item => {
-              return <Item key={item.id} >{item.university}</Item>
+              return <Item
+                key={item.id}
+                onClick={()=> hashHistory.push(`/school/${item.universityId}`)}
+              >{item.university}</Item>
             })
           }
         </List>

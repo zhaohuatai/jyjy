@@ -29,11 +29,22 @@ class Order extends Component {
     });
   }
 
-  handlePay = ({id, payFee}) => {
+  handleColumnPay = ({id, payFee}) => {
     console.log(id, payFee);
     localStorage.ordersId = id;
-    localStorage.payFee = 1;
+    localStorage.payFee = payFee;
     localStorage.orderType = 'column';
+
+    console.log(localStorage);
+
+    window.location.href= API_DOMAIN + 'wxpay/enterpay/';
+  }
+
+  handleCoursePay = ({id, payFee}) => {
+    console.log(id, payFee);
+    localStorage.ordersId = id;
+    localStorage.payFee = payFee;
+    localStorage.orderType = 'course';
 
     console.log(localStorage);
 
@@ -55,7 +66,7 @@ class Order extends Component {
             {
               this.state.column_orders.map(item => {
                 return (
-                  <ColumnOrderItem data={item} key={item.columnChannelOrder.id} doPay={this.handlePay}/>
+                  <ColumnOrderItem data={item} key={item.columnChannelOrder.id} doPay={this.handleColumnPay}/>
                 )
               })
             }
@@ -69,7 +80,7 @@ class Order extends Component {
                 )
               })
             }
-            <LoadMore disable={this.state.course_loadmore_disable} onClick={this.loadMore}/>
+            <LoadMore disable={this.state.course_loadmore_disable} onClick={this.loadMore} doPay={this.handleCoursePay}/>
           </List>
         </Tabs>
       </div>

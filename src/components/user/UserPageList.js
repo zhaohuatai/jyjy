@@ -8,42 +8,42 @@ const UserPageList = () => {
   return (
     <List>
       <Item
-        thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
+        thumb={<svg className="icon" aria-hidden="true" style={{ width: '1.8em', height: '1.8em' }}><use xlinkHref='#icon-cart' /></svg>}
         arrow="horizontal"
         onClick={() => hashHistory.push('/my/order')}
       >
         我的订单
       </Item>
       <Item
-        thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
+        thumb={<svg className="icon" aria-hidden="true" style={{ width: '1.8em', height: '1.8em' }}><use xlinkHref='#icon-shoucang' /></svg>}
         arrow="horizontal"
         onClick={() => hashHistory.push('/my/favorite')}
       >
         我的收藏
       </Item>
       <Item
-        thumb="https://zos.alipayobjects.com/rmsportal/UmbJMbWOejVOpxe.png"
+        thumb={<svg className="icon" aria-hidden="true" style={{ width: '1.8em', height: '1.8em' }}><use xlinkHref='#icon-tuiguang' /></svg>}
         onClick={() => hashHistory.push('/employ')}
         arrow="horizontal"
       >
         应聘推广员
       </Item>
       <Item
-        thumb="https://zos.alipayobjects.com/rmsportal/UmbJMbWOejVOpxe.png"
+        thumb={<svg className="icon" aria-hidden="true" style={{ width: '1.8em', height: '1.8em' }}><use xlinkHref='#icon-huiyuan' /></svg>}
         onClick={() => hashHistory.push('/memberexclusive')}
         arrow="horizontal"
       >
         开通VIP
       </Item>
       <Item
-        thumb="https://zos.alipayobjects.com/rmsportal/UmbJMbWOejVOpxe.png"
+        thumb={<svg className="icon" aria-hidden="true" style={{ width: '1.8em', height: '1.8em' }}><use xlinkHref='#icon-lingquanzhongxin' /></svg>}
         onClick={() => hashHistory.push('/my/coupon')}
         arrow="horizontal"
       >
-        我的优惠券
+        优惠券
       </Item>
       <Item
-        thumb="https://zos.alipayobjects.com/rmsportal/UmbJMbWOejVOpxe.png"
+        thumb={<svg className="icon" aria-hidden="true" style={{ width: '1.8em', height: '1.8em' }}><use xlinkHref='#icon-qunliao' /></svg>}
         onClick={() => hashHistory.push('/join')}
         arrow="horizontal"
       >

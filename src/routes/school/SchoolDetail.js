@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { List, WhiteSpace, Flex, Tabs, SegmentedControl, WingBlank } from 'antd-mobile';
+import { List, WhiteSpace, Flex, Tabs, SegmentedControl, WingBlank, Modal } from 'antd-mobile';
 import { SCH_BADGE } from '../../utils/config';
 import { loadDataUniversity, loadDataScoreLineDataSet } from '../../service/school';
 import NumberInfo from '../../components/school/NumberInfo';
 import Intro from '../../components/debris/Intro';
-import { LineChart, CartesianGrid, XAxis, YAxis, Line } from 'recharts';
+import SchoolLineList from '../../components/school/SchoolLineList';
 import { loadDicData } from '../../service/dic';
 
 const Item = List.Item;
@@ -14,12 +14,10 @@ class SchoolDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data_PC: [],
       data_FK: [],
       liberalScienceCode: 0,
       batchCode: 0,
       FK_selectedIndex: 0,
-      PC_selectedIndex: 0,
       lines_data:[],
       school: {
         academicianNum: '0',
@@ -56,28 +54,17 @@ class SchoolDetail extends Component {
       this.setState({ school: data.data.dataUniversity });
     });
 
-    loadDicData({ code: 'PC' }).then(data => {
-      this.setState({data_PC: data.data.dicData, batchCode: data.data.dicData[0].itemCode });
-    });
-
     loadDicData({ code: 'FK' }).then(data => {
       this.setState({data_FK: data.data.dicData, liberalScienceCode: data.data.dicData[0].itemCode });
     });
 
     loadDataScoreLineDataSet({
-      batchCode: 0,
       liberalScienceCode: 0,
       universityId: this.state.school.id
     }).then(data => {
       this.setState({lines_data: data.data.dataSet.rows})
     })
   }
-
-  onChangePC = (e) => {
-    this.setState({ PC_selectedIndex: e.nativeEvent.selectedSegmentIndex}, ()=>{
-      this.handleGetLines()
-    });
-  };
 
   onChangeFK = (e) => {
     this.setState({ FK_selectedIndex: e.nativeEvent.selectedSegmentIndex}, ()=>{
@@ -86,9 +73,8 @@ class SchoolDetail extends Component {
   };
 
   handleGetLines = () => {
-    const { PC_selectedIndex, FK_selectedIndex } = this.state;
+    const { FK_selectedIndex } = this.state;
     loadDataScoreLineDataSet({
-      batchCode: this.state.data_PC[PC_selectedIndex].itemCode,
       liberalScienceCode: this.state.data_FK[FK_selectedIndex].itemCode,
       universityId: this.state.school.id
     }).then(data => {
@@ -96,12 +82,14 @@ class SchoolDetail extends Component {
     })
   }
 
-  render() {
+  handleCall = () => {
+    Modal.alert('拨打', '立即拨打招生电话', [
+      { text: '取消', onPress: () => console.log('cancel') },
+      { text: '拨打', onPress: () => console.log('ok') },
+    ])
+  }
 
-    let SegmentedControl_PC = [];
-    this.state.data_PC.map(item=>{
-      SegmentedControl_PC.push(item.itemValue);
-    });
+  render() {
 
     let SegmentedControl_FK = [];
     this.state.data_FK.map(item=>{
@@ -132,20 +120,18 @@ class SchoolDetail extends Component {
           <Flex.Item>
             <NumberInfo text={this.state.school.academicianNum} name="院士人数" />
           </Flex.Item>
-          <Flex.Item>
-            <NumberInfo text={this.state.school.establishTime} name="建校" />
-          </Flex.Item>
         </Flex>
         <WhiteSpace />
 
         <Item multipleLine>
           <Brief>
-            层次：{this.state.school.stage} <br />
-            隶属：{this.state.school.attached} <br />
-            双一流：{this.state.school.firstRate ? '是' : '否' } <br />
-            办学类型 ：{this.state.school.type} <br />
-            招生办电话：{this.state.school.phone} <br />
-            地点：{this.state.school.location}
+            {this.state.school.stage ? <div>层次：{this.state.school.stage}<br /></div> : null }
+            {this.state.school.stage ? <div>隶属：{this.state.school.attached}<br /></div> : null }
+            {this.state.school.stage ? <div>双一流：{this.state.school.firstRate ? '是' : '否' }<br /></div> : null }
+            {this.state.school.stage ? <div>办学类型：{this.state.school.type}<br /></div> : null }
+            {this.state.school.stage ? <div>建校时间：{this.state.school.establishTime}<br /></div> : null }
+            {this.state.school.stage ? <div>招生办电话：<span onClick={this.handleCall} style={{color: '#2fc2ba'}}>{this.state.school.phone}</span><br /></div> : null }
+            {this.state.school.stage ? <div>地点：{this.state.school.location}<br /></div> : null }
           </Brief>
         </Item>
         <WhiteSpace />
@@ -160,16 +146,8 @@ class SchoolDetail extends Component {
             <Intro title="特色专业" text={this.state.school.specialProfession} />
           </div>
 
-          <div>
+          <div style={{backgroundColor: '#fff'}}>
             <WingBlank>
-              <WhiteSpace />
-              <WhiteSpace />
-
-              <SegmentedControl
-                values={SegmentedControl_PC}
-                onChange={this.onChangePC}
-                selectedIndex={this.state.PC_selectedIndex}
-              />
               <WhiteSpace />
               <SegmentedControl
                 values={SegmentedControl_FK}
@@ -177,17 +155,7 @@ class SchoolDetail extends Component {
                 selectedIndex={this.state.FK_selectedIndex}
               />
               <WhiteSpace />
-
-              <LineChart
-                width={350}
-                height={250}
-                data={this.state.lines_data}
-                margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="years" />
-                <YAxis/>
-                <Line type="monotone" dataKey="lowest" stroke="#82ca9d" />
-              </LineChart>
+              <SchoolLineList data={this.state.lines_data} />
             </WingBlank>
           </div>
         </Tabs>

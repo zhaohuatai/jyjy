@@ -8,3 +8,11 @@ export function loadMemberCouponDataSet(param) {
     });
   });
 }
+
+export function loadCouponDataSet(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/coupon/coupon/loadCouponDataSet`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

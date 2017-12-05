@@ -32,3 +32,27 @@ export function verifyVipCard(param) {
     });
   });
 }
+
+export function loadMember(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}user/member/loadMember`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}
+
+export function updateMember(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}user/member/updateMember`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}
+
+export function ishaveOpenId(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/member/memberRegist/ishaveOpenId`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

@@ -15,7 +15,7 @@ const ExpertListItem = ({ data }) => {
       multipleLine
     >
       {data.name}
-      <Brief>排名：{data.rank}</Brief>
+      <Brief>热度：{data.rank}</Brief>
     </Item>
   );
 };

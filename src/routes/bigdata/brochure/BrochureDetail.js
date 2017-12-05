@@ -68,9 +68,8 @@ class BrochureDetail extends Component {
           {
             this.state.brochures.map(item => {
               return (
-                <Accordion.Panel header={item.years}>
+                <Accordion.Panel header={item.title}>
                   <div style={{ backgroundColor: '#fff', padding: '15px' }} >
-                    <h4>{item.title}</h4>
                     <div dangerouslySetInnerHTML={{ __html: item.content }} />
                   </div>
                 </Accordion.Panel>
