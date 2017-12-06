@@ -14,7 +14,7 @@ class ServiceFirst extends Component {
 
   componentDidMount() {
     const id = this.props.params.id;
-    loadSecondDtoByFirstCateId({ firstCateId: id }).then((data) => {
+    loadSecondDtoByFirstCateId({firstCateId: id}).then((data) => {
       this.setState({
         entranceCateSecondDtoList: data.data.entranceCateSecondDtoList
       });
@@ -26,14 +26,14 @@ class ServiceFirst extends Component {
       <div>
         <List>
           {
-            this.state.serviceEntranceCateSecondList.map(item => {
+            this.state.entranceCateSecondDtoList.map(item => {
               return (
                 <Item
-                  onClick={() => hashHistory.push(`/service/second/${item.id}`)}
+                  onClick={() => hashHistory.push(`/service/second/${item.serviceEntranceCateSecond.id}`)}
                   arrow="horizontal"
-                  key={item.id}
+                  key={item.serviceEntranceCateSecond.id}
                 >
-                  {item.name}
+                  {item.serviceEntranceCateSecond.name}
                 </Item>
               )
             })
@@ -41,7 +41,7 @@ class ServiceFirst extends Component {
         </List>
         <WhiteSpace/>
         {
-          this.state.serviceEntranceList.map(item => (
+          this.state.entranceCateSecondDtoList.map(item => (
             <ServiceListItem data={item} key={item.id} />
           ))
         }

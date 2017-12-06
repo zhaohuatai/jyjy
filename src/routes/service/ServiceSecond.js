@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { loadCateThirdDtoBySecondCateId } from '../../service/service';
+import { loadCateThirdDtoListBySecondCateId } from '../../service/service';
 import { WhiteSpace, List } from 'antd-mobile';
 import ServiceListItem from '../../components/service/ServiceListItem';
 import { hashHistory } from 'react-router';
@@ -15,7 +15,7 @@ class ServiceSecond extends Component {
 
   componentDidMount() {
     const id = this.props.params.id;
-    loadCateThirdDtoBySecondCateId({ secondCateId: id }).then((data) => {
+    loadCateThirdDtoListBySecondCateId({ secondCateId: id }).then((data) => {
       this.setState({
         serviceEntranceList: data.data.entranceCateThirdDto.serviceEntranceList,
         serviceEntranceCateThirdList: data.data.entranceCateThirdDto.serviceEntranceCateThirdList,

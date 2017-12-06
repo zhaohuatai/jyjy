@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { loadServiceEntranceDataSet, loadServiceEntranceCategoryDataSet, loadAllServiceEntranceCatefirstList, loadServiceEntranceAtTopDto } from '../../service/service';
 import { Carousel, List, Accordion, WhiteSpace } from 'antd-mobile';
 import { hashHistory } from 'react-router';
-import ServiceListItem from '../../components/service/ServiceListItem';
-import ListHeader from '../../components/listpanel/ListHeader';
 import {IMG_DOMAIN} from "../../utils/config";
+import ServiceListPanel from '../../components/service/ServiceListPanel';
+import { loadCateFirstDtoList } from '../../service/service';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -12,19 +11,15 @@ const Brief = Item.Brief;
 class Service extends Component {
   state = {
     entrance_top: [],
-    entranceCatefirst: []
+    entranceCatefirstDtoList: []
   };
 
   componentDidMount() {
-
-    loadAllServiceEntranceCatefirstList().then(data => {
-      this.setState({entranceCatefirst: data.data.entranceCatefirst})
-    })
-
-    loadServiceEntranceAtTopDto().then(data => {
-      this.setState({entrance_top: data.data.entranceAtTopDto.serviceEntranceList})
-    })
-
+    loadCateFirstDtoList().then((data) => {
+      this.setState({
+        entranceCatefirstDtoList: data.data.entranceCatefirstDtoList
+      });
+    });
   }
 
   render() {
@@ -37,7 +32,7 @@ class Service extends Component {
           selectedIndex={1}
           swipeSpeed={35}
         >
-          {this.state.entrance_top.map(item => (
+          {this.state.entranceCatefirstDtoList.map(item => (
             <div key={item.id} style={{height: '176px'}} onClick={()=>hashHistory.push(`/service/${item.id}`)}>
               <img
                   src={`${IMG_DOMAIN}${item.coverUrl}`}
@@ -47,55 +42,7 @@ class Service extends Component {
             </div>
           ))}
         </Carousel>
-
-        <List>
-          {
-            this.state.entranceCatefirst.map(item => {
-              return (
-                <Item
-                  onClick={() => hashHistory.push(`/service/first/${item.id}`)}
-                  arrow="horizontal"
-                >
-                  {item.name}
-                </Item>
-              )
-            })
-          }
-        </List>
-
-        {/*{*/}
-          {/*this.state.entranceCateList.map(item => {*/}
-            {/*return (*/}
-              {/*<div key={item.serviceEntranceCatefirst.id}>*/}
-                {/*<ListHeader title={item.serviceEntranceCatefirst.name} icon='icon-lanmupeizhi' />*/}
-                {/*<List>*/}
-                  {/*{*/}
-                    {/*item.serviceEntranceCatesecondDtoList.map(item => {*/}
-                      {/*return (*/}
-                        {/*<Accordion key={item.serviceEntranceCatesecond.id}>*/}
-                          {/*<Accordion.Panel header={item.serviceEntranceCatesecond.name}>*/}
-                            {/*<List className="my-list">*/}
-                              {/*{*/}
-                                {/*item.serviceEntranceCatethirdList.map(item => {*/}
-                                  {/*return <Link*/}
-                                    {/*to={{pathname: `/servicethird/${item.id}`,query:{categoryName: item.name}}}*/}
-                                    {/*key={item.id}>*/}
-                                    {/*<Item >{item.name}</Item>*/}
-                                  {/*</Link>*/}
-                                {/*})*/}
-                              {/*}*/}
-                            {/*</List>*/}
-                          {/*</Accordion.Panel>*/}
-                        {/*</Accordion>*/}
-                      {/*)*/}
-                    {/*})*/}
-                  {/*}*/}
-                {/*</List>*/}
-                {/*<WhiteSpace />*/}
-              {/*</div>*/}
-            {/*)*/}
-          {/*})*/}
-        {/*}*/}
+        <ServiceListPanel list_data={this.state.entranceCatefirstDtoList}/>
       </div>
     );
   }
