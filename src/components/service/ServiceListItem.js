@@ -6,14 +6,13 @@ const Item = List.Item;
 const Brief = Item.Brief;
 
 const ServiceSecondListItem = ({ data }) => {
-  const { id, title, price, priceVIP, coverUrl, maxAppointCount, appointCount } = data;
+  const { id, title, price, priceVIP, coverUrl, maxAppointCount } = data;
 
-  const extra = <div>数量{appointCount}/{maxAppointCount}</div>
   return (
     <Item
       onClick={() => hashHistory.push(`/service/${id}`)}
       key={id}
-      extra={extra}
+      extra={`最大预约／${maxAppointCount}`}
       thumb = {<img style={{ width:'60px', height:'60px' }} src={coverUrl}/>}
       multipleLine
       arrow="horizontal"

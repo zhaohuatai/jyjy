@@ -28,7 +28,7 @@ class Index extends Component {
       {text:'职业库',icon:'icon-zhiyeziliao',url:'/career'},
       {text:'自招大数据',icon:'icon--zhaoshengtongji',url:'/bigdata'},
       {text:'VIP专享',icon:'icon-huiyuan',url:'/memberexclusive'},
-      {text:'智能评测',icon:'icon-cepingxueyuan',url:'/'},
+      {text:'智能评测',icon:'icon-cepingxueyuan',url:'/eval'},
       {text:'省控线',icon:'icon-tongji',url:'/provinceline'},
       {text:'大事记',icon:'icon-biji',url:'/event'},
       {text:'加入社群',icon:'icon-qunliao',url:'/join'},

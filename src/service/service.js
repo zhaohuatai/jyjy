@@ -41,17 +41,17 @@ export function loadSecondDtoByFirstCateId(param) {
   });
 }
 
-export function loadCateThirdDtoListBySecondCateId(param) {
+export function loadBySecondCateId(param) {
   return new Promise((resolve, reject) => {
-    post(`${API_DOMAIN}pub/entrance/serviceEntranceCategory/loadCateThirdDtoListBySecondCateId`, param).then((data) => {
+    post(`${API_DOMAIN}pub/entrance/serviceEntranceCategory/loadBySecondCateId`, param).then((data) => {
       resolve(data);
     });
   });
 }
 
-export function loadEntranceByThirdCateId(param) {
+export function loadByThirdCateId(param) {
   return new Promise((resolve, reject) => {
-    post(`${API_DOMAIN}pub/entrance/serviceEntranceCategory/loadEntranceByThirdCateId`, param).then((data) => {
+    post(`${API_DOMAIN}pub/entrance/serviceEntranceCategory/loadByThirdCateId`, param).then((data) => {
       resolve(data);
     });
   });
@@ -68,6 +68,14 @@ export function loadServiceEntranceCategoryDataSet(param) {
 export function loadCateFirstDtoList(param) {
   return new Promise((resolve, reject) => {
     post(`${API_DOMAIN}pub/entrance/serviceEntranceCategory/loadCateFirstDtoList`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}
+
+export function loadByFirstCateId(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/entrance/serviceEntranceCategory/loadByFirstCateId`, param).then((data) => {
       resolve(data);
     });
   });

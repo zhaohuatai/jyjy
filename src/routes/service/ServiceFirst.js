@@ -1,22 +1,29 @@
 import React, { Component } from 'react';
-import { loadSecondDtoByFirstCateId } from '../../service/service';
+import { loadByFirstCateId } from '../../service/service';
 import { WhiteSpace, List } from 'antd-mobile';
 import ServiceListItem from '../../components/service/ServiceListItem';
 import { hashHistory } from 'react-router';
+import ListHeader from "../../components/listpanel/ListHeader";
 
 const Item = List.Item;
 const Brief = Item.Brief;
 
 class ServiceFirst extends Component {
   state = {
-    entranceCateSecondDtoList: []
+    entranceCateFirstDto: {},
+    serviceEntranceCateSecondList: [],
+    serviceEntranceList: [],
+    serviceEntranceCateFirst: {}
   }
 
   componentDidMount() {
     const id = this.props.params.id;
-    loadSecondDtoByFirstCateId({firstCateId: id}).then((data) => {
+    loadByFirstCateId({firstCateId: id}).then((data) => {
       this.setState({
-        entranceCateSecondDtoList: data.data.entranceCateSecondDtoList
+        entranceCateFirstDto: data.data.entranceCateFirstDto.entranceCateFirstDto,
+        serviceEntranceList: data.data.entranceCateFirstDto.serviceEntranceList,
+        serviceEntranceCateSecondList: data.data.entranceCateFirstDto.serviceEntranceCateSecondList,
+        serviceEntranceCateFirst: data.data.entranceCateFirstDto.serviceEntranceCateFirst,
       });
     });
   }
@@ -24,24 +31,25 @@ class ServiceFirst extends Component {
   render() {
     return (
       <div>
+        <ListHeader title={this.state.serviceEntranceCateFirst.name} icon='icon-kecheng' />
+
         <List>
           {
-            this.state.entranceCateSecondDtoList.map(item => {
+            this.state.serviceEntranceCateSecondList.map(item => {
               return (
                 <Item
-                  onClick={() => hashHistory.push(`/service/second/${item.serviceEntranceCateSecond.id}`)}
+                  onClick={() => hashHistory.push(`/service/second/${item.id}`)}
                   arrow="horizontal"
-                  key={item.serviceEntranceCateSecond.id}
+                  key={item.id}
                 >
-                  {item.serviceEntranceCateSecond.name}
+                  {item.name}
                 </Item>
               )
             })
           }
         </List>
-        <WhiteSpace/>
         {
-          this.state.entranceCateSecondDtoList.map(item => (
+          this.state.serviceEntranceList.map(item => (
             <ServiceListItem data={item} key={item.id} />
           ))
         }

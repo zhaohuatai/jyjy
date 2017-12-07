@@ -57,6 +57,8 @@ import BrochureDetail from "./routes/bigdata/brochure/BrochureDetail";
 import ColumnOrderDetail from './routes/my/order/column/ColumnOrderDetail';
 import CourseOrderDetail from './routes/my/order/course/CourseOrderDetail';
 
+import Eval from './routes/eval';
+
 const Routers = () => {
   return (
     <Router history={hashHistory}>
@@ -140,6 +142,20 @@ const Routers = () => {
           <Route path="editmyinfo" component={EditMyinfo} />
         </Route>
       </Route>
+
+      <Route path="/eval" >
+        <IndexRoute component={Eval} />
+        <Route path="order" >
+          <IndexRoute component={Order} />
+          <Route path="column/:id" component={ColumnOrderDetail} />
+          <Route path="course/:id" component={CourseOrderDetail} />
+        </Route>
+        <Route path="favorite" component={MyFavorite} />
+        <Route path="coupon" component={MyCoupon} />
+        <Route path="myinfo" component={Myinfo} />
+        <Route path="editmyinfo" component={EditMyinfo} />
+      </Route>
+
     </Router>
   );
 };

@@ -1,24 +1,27 @@
 import React, { Component } from 'react';
-import { loadCateThirdDtoListBySecondCateId } from '../../service/service';
+import { loadBySecondCateId } from '../../service/service';
 import { WhiteSpace, List } from 'antd-mobile';
 import ServiceListItem from '../../components/service/ServiceListItem';
 import { hashHistory } from 'react-router';
+import ListHeader from "../../components/listpanel/ListHeader";
 
 const Item = List.Item;
 const Brief = Item.Brief;
 
 class ServiceSecond extends Component {
   state = {
+    serviceEntranceCateSecond: {},
+    serviceEntranceCateThirdList: [],
     serviceEntranceList: [],
-    serviceEntranceCateThirdList: []
   }
 
   componentDidMount() {
     const id = this.props.params.id;
-    loadCateThirdDtoListBySecondCateId({ secondCateId: id }).then((data) => {
+    loadBySecondCateId({ secondCateId: id }).then((data) => {
       this.setState({
-        serviceEntranceList: data.data.entranceCateThirdDto.serviceEntranceList,
-        serviceEntranceCateThirdList: data.data.entranceCateThirdDto.serviceEntranceCateThirdList,
+        serviceEntranceCateSecond: data.data.entranceCateSecondDto.serviceEntranceCateSecond,
+        serviceEntranceCateThirdList: data.data.entranceCateSecondDto.serviceEntranceCateThirdList,
+        serviceEntranceList: data.data.entranceCateSecondDto.serviceEntranceList,
       });
     });
   }
@@ -26,6 +29,8 @@ class ServiceSecond extends Component {
   render() {
     return (
       <div>
+        <ListHeader title={this.state.serviceEntranceCateSecond.name} icon='icon-kecheng' />
+
         <List>
           {
             this.state.serviceEntranceCateThirdList.map(item => {
@@ -41,7 +46,6 @@ class ServiceSecond extends Component {
             })
           }
         </List>
-        <WhiteSpace/>
         {
           this.state.serviceEntranceList.map(item => (
             <ServiceListItem data={item} key={item.id} />

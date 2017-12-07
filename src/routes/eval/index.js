@@ -23,7 +23,7 @@ class BigDataIndex extends Component {
       this.setState({ bigdata_data: data.data.dataSet.rows })
     })
 
-    loadPubSlideDataSet({rows: 100, locationCode: 'ZZ'}).then(data => {
+    loadPubSlideDataSet({rows: 100, location: 1}).then(data => {
       this.setState({ slide: data.data.dataSet.rows });
     })
   }
@@ -31,27 +31,8 @@ class BigDataIndex extends Component {
   render() {
     return (
       <div>
-        <Carousel
-          className="my-carousel"
-          autoplay={true}
-          infinite
-          selectedIndex={1}
-          swipeSpeed={35}
-        >
-          {this.state.slide.map(ii => (
-            <div key={ii} style={{height: '176px'}}>
-              <img
-                src={`${API_DOMAIN}${ii.imgUrl}`}
-                alt={ii.title}
-                style={{width: '100%', height:'176px'}}
-              />
-            </div>
-          ))}
-        </Carousel>
-
-        <FeaturesBox data={this.state.features_data} columnNum={4}/>
+        {/*<FeaturesBox data={this.state.features_data} columnNum={4}/>*/}
         <WhiteSpace/>
-        <BigDataListPanel list_data={this.state.bigdata_data}  />
       </div>
     );
   }
