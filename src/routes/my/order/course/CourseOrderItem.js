@@ -9,7 +9,6 @@ const Brief = Item.Brief;
 
 const CourseOrderItem = ({ data, doPay }) => {
   const { serviceCourseList, serviceCourseOrder } = data;
-  const { id, payFee } = serviceCourseOrder;
   return (
     <div>
       <Card full>
@@ -36,14 +35,14 @@ const CourseOrderItem = ({ data, doPay }) => {
         <Card.Footer
           content={
             <Flex>
-              <Flex.Item ><span style={{ color: 'red' }}>总价 ¥{payFee}</span></Flex.Item>
+              <Flex.Item ><span style={{ color: 'red' }}>总价 ¥{serviceCourseOrder.payFee * 0.01}</span></Flex.Item>
               <Flex.Item />
               <Flex.Item />
               <Flex.Item>
                 <Button
                   type="primary"
                   size="small"
-                  onClick={() => doPay({ id, payFee })}>支付</Button>
+                  onClick={() => doPay({ id: serviceCourseOrder.id, payFee: serviceCourseOrder.payFee })}>支付</Button>
               </Flex.Item>
             </Flex>
           }

@@ -76,11 +76,11 @@ class Order extends Component {
             {
               this.state.course_orders.map(item => {
                 return (
-                  <CourseOrderItem data={item} key={item.serviceCourseOrder.id} />
+                  <CourseOrderItem data={item} key={item.serviceCourseOrder.id} doPay={this.handleCoursePay}/>
                 )
               })
             }
-            <LoadMore disable={this.state.course_loadmore_disable} onClick={this.loadMore} doPay={this.handleCoursePay}/>
+            <LoadMore disable={this.state.course_loadmore_disable} onClick={this.loadMore} />
           </List>
         </Tabs>
       </div>

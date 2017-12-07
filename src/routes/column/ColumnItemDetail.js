@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { loadItemResDtoByItemId, createcolumnChannelItemOrder } from '../../service/column';
+import { hashHistory } from 'react-router';
+import { loadItemResDtoByItemId, createColumnChannelOrder } from '../../service/column';
 import {IMG_DOMAIN} from "../../utils/config";
-import { List, Tabs, Button, Badge, WhiteSpace } from 'antd-mobile';
+import { List, Tabs, Button, Badge, WhiteSpace, Toast } from 'antd-mobile';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -23,8 +24,9 @@ class ColumnDetail extends Component {
   }
 
   handlePlayOrder = () => {
-    createcolumnChannelItemOrder({}).then(data => {
-
+    createColumnChannelOrder({channelItemIds: this.props.params.id}).then(data => {
+      Toast.success('下单成功');
+      hashHistory.push('/my/order')
     })
   }
 
