@@ -56,3 +56,19 @@ export function ishaveOpenId(param) {
     });
   });
 }
+
+export function createMemberVipOrder(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}user/member/memberVipOrder/createMemberVipOrder`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}
+
+export function loadWXConfig(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/weichatAuth/loadWXConfig`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

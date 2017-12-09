@@ -4,7 +4,7 @@ export const API_DOMAIN = 'http://jywxsitex.sinogood.com/';
 // export const API_DOMAIN = 'http://106.14.112.47/';
 // export const API_DOMAIN = 'http://172.25.253.157/';
 
-export const IMG_DOMAIN = '';
+export const IMG_DOMAIN = 'http://jywxsitex.sinogood.com/';
 
 export const SCH_BADGE = 'http://jywxsitex.sinogood.com/';
 

@@ -48,9 +48,9 @@ class ExpertDetail extends Component {
           <img src={`${IMG_DOMAIN}${this.state.expert.profilePicture}`} style={{ marginTop: '60px', height: '120px', width:'120px', borderRadius: '50%' }} />
           <p style={{color: '#fff'}}>{this.state.expert.name}</p>
         </div>
-        <div style={{ padding: '10px', backgroundColor: '#fff',height:'100%'}}>
-           <h3>专家简介</h3>
-          {this.state.expert.introduction}
+        <div style={{ padding: '10px', backgroundColor: '#fff',height:'100%', marginBottom: '50px'}}>
+          <h3>专家简介</h3>
+          <div dangerouslySetInnerHTML={{__html: this.state.expert.introduction}}/>
         </div>
 
         <BottomAction

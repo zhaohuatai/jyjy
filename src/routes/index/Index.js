@@ -17,6 +17,7 @@ import ServiceListPanel from '../../components/service/ServiceListPanel';
 
 import {API_DOMAIN} from "../../utils/config";
 import CourseListPanelWithTab from "../../components/course/CourseListPanelWithTab";
+import Slide from "../../components/debris/Slide";
 
 class Index extends Component {
   state = {
@@ -53,7 +54,7 @@ class Index extends Component {
       this.setState({ partner: data.data.dataSet.rows });
     })
 
-    loadPubSlideDataSet({rows: 100, locationCode: 'ZZ'}).then(data => {
+    loadPubSlideDataSet({rows: 100, locationCode: 'SY', status: 1}).then(data => {
       this.setState({ slide: data.data.dataSet.rows });
     })
 
@@ -68,23 +69,7 @@ class Index extends Component {
     render() {
         return (
             <div style={{marginBottom:'50px'}}>
-              <Carousel
-                className="my-carousel"
-                autoplay={true}
-                infinite
-                selectedIndex={1}
-                swipeSpeed={35}
-              >
-                {this.state.slide.map(ii => (
-                  <div key={ii} style={{height: '176px'}}>
-                    <img
-                      src={`${API_DOMAIN}${ii.imgUrl}`}
-                      alt={ii.title}
-                      style={{width: '100%', height:'176px'}}
-                    />
-                  </div>
-                ))}
-              </Carousel>
+              <Slide data={this.state.slide}/>
 
               <FeaturesBox data={this.state.features_data} columnNum={5}/>
               

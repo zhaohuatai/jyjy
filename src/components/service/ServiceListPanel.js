@@ -20,9 +20,8 @@ const ListPanel = ({ list_data }) => {
                 {
                   item.serviceEntranceCateSecondDtoList.map(item => {
                     return (
-                      <div>
+                      <div key={item.serviceEntranceCateSecond.id}>
                         <Item
-                          key={item.serviceEntranceCateSecond.id}
                           onClick={() => hashHistory.push(`/service/second/${item.serviceEntranceCateSecond.id}`)}
                           arrow="horizontal"
                         >

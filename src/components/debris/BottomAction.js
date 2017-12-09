@@ -3,7 +3,7 @@ import { Flex } from 'antd-mobile';
 
 const BottomAction = ({ buttons }) => {
   const style={
-    position: 'absolute',
+    position: 'fixed',
     zIndex: '100',
     bottom: '50px',
     height: '50px',

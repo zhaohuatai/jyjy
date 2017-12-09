@@ -42,7 +42,7 @@
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script>
 
-  $('#totalPrice').html('¥'+localStorage.payFee);
+  $('#totalPrice').html('¥'+localStorage.payFee*0.01);
 
   var unifyOrderRe = {};
   var ordertype = localStorage.orderType;
@@ -136,11 +136,11 @@
         ajaxurl = 'wxpay/doPayCourseOrdersUnifiedorder';
         break;
       case 'memberdeposit':
-        ajaxdata = {payFee:localStorage.payFee};
-        ajaxurl = 'wxpay/doPayWeiMemberShipUnifiedorder';
+        ajaxdata = {ordersId:localStorage.ordersId};
+        ajaxurl = 'wxpay/doPayVipOrdersUnifiedorder';
         break;
       default:
-        alert('获取订单信息失败');
+        // alert('获取订单信息失败');
         return;
         break;
     }
@@ -156,14 +156,11 @@
         'Content-Type':'application/x-www-form-urlencoded;charset=utf-8'
       },
       success:function(data){
-        alert(JSON.stringify(data));
+        // alert(JSON.stringify(data));
 
         unifyOrderRe = data.data.res;
 
         callpay(data.data.res,function(){
-
-          localStorage.clear();
-
           switch (type) {
             case 'column':
               history.back();
@@ -172,7 +169,7 @@
               history.back();
               break;
             case 'memberdeposit':
-              window.location.href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx69363f145b06ea8f&redirect_uri=http://jywxsitex.sinogood.com/pub/member/weichatAuth/callBack&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+              window.location.href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8032839074009dce&redirect_uri=http://jywxsitex.sinogood.com/pub/member/weichatAuth/callBack&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
               break;
             default:
               alert('获取订单信息失败');
@@ -180,11 +177,12 @@
               break;
           }
 
+          localStorage.clear();
         });
       },
       error:function(err){
         localStorage.clear();
-        alert(JSON.stringify(err));
+        // alert(JSON.stringify(err));
         history.back();
       }
     })

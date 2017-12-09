@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Modal, Toast } from 'antd-mobile';
 import { loadPubCustomize } from '../../service/customize';
 import BottomAction from "../../components/debris/BottomAction";
-import { verifyVipCard } from '../../service/user';
+import { verifyVipCard, createMemberVipOrder } from '../../service/user';
+import { API_DOMAIN } from '../../utils/config';
 const prompt = Modal.prompt;
 
 class MemberExclusive extends Component {
@@ -18,6 +19,18 @@ class MemberExclusive extends Component {
   }
 
   handlePayVip = () => {
+    createMemberVipOrder().then(data => {
+      if(data.statusCode === 200){
+        console.log(data);
+        localStorage.ordersId = data.data.memberVipOrder.id;
+        localStorage.payFee = data.data.memberVipOrder.payFee;
+        localStorage.orderType = 'memberdeposit';
+
+        window.location.href= API_DOMAIN + 'wxpay/enterpay/';
+      } else {
+         Toast.fail('开通失败')
+      }
+    })
 
   }
 
