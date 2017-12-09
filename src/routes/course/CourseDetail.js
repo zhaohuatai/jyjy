@@ -105,7 +105,7 @@ class CourseDetail extends Component {
   }
 
   handleChangeTab = (tab, index) => {
-    if (index == 2) {
+    if (index === 2) {
       loadServiceCourseConsultationDataSet({courseId: this.state.serviceCourse.id}).then(data => {
         this.setState({
           consultation: data.data.dataSet.rows
@@ -230,7 +230,7 @@ class CourseDetail extends Component {
             <div dangerouslySetInnerHTML={{ __html: introduction }} style={{ backgroundColor: '#fff', padding: '15px' }} />
           </div>
           <div>
-            <Consulation data={this.state.consultation}/>
+            <Consulation data={this.state.consultation} id={this.state.serviceCourse.id}/>
           </div>
         </Tabs>
 

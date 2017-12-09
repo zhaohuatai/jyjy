@@ -73,3 +73,19 @@ export function loadItemResDtoByItemId(param) {
     });
   });
 }
+
+export function loadColumnChannelCommentDataSet(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/channel/columnChannelComment/loadColumnChannelCommentDataSet`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}
+
+export function createColumnChannelComment(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}user/column/columnChannelComment/createColumnChannelComment`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

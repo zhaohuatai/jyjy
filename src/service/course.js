@@ -97,3 +97,11 @@ export function createServiceCourseFavorite(param) {
     });
   });
 }
+
+export function createServiceCourseConsultation(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}user/course/serviceCourseConsultation/createServiceCourseConsultation`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

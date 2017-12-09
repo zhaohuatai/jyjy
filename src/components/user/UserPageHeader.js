@@ -7,7 +7,7 @@ const Item = List.Item;
 const Brief = Item.Brief;
 
 const UserPageHeader = ({ data, doSignIn }) => {
-  const { name, profilePicture, point } = data;
+  const { name, profilePicture, points } = data;
 
   return (
     <List>
@@ -20,7 +20,7 @@ const UserPageHeader = ({ data, doSignIn }) => {
           <span style={{ color: '#fff' }}>
             {name}
           </span>
-          <Brief>积分 {point}</Brief>
+          <Brief>积分 {points}</Brief>
         </Item>
     </List>
   );

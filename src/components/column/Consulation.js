@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { List, Toast, Modal } from 'antd-mobile';
-import { createServiceCourseConsultation } from '../../service/course'
+import { createColumnChannelComment } from '../../service/column'
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -8,7 +8,7 @@ const Brief = Item.Brief;
 class Consulation extends Component {
   handleConsultation = (value) => {
     console.log(value);
-    createServiceCourseConsultation({courseId: this.props.id, content: value}).then(data => {
+    createColumnChannelComment({channelItemId: this.props.id, content: value}).then(data => {
       Toast.success('留言成功')
     })
   }
@@ -32,8 +32,8 @@ class Consulation extends Component {
         <List>
           {
             this.props.data.map(item => {
-              return <Item key={item.serviceCourseConsultation.id} multipleLine platform="android" extra={item.serviceCourseConsultation.createTime} align="top">
-                {item.serviceCourseConsultation.memberName} <Brief>{item.serviceCourseConsultation.content}</Brief>
+              return <Item key={item.columnChannelComment.id} multipleLine platform="android" extra={item.columnChannelComment.createTime} align="top">
+                {item.columnChannelComment.memberName} <Brief>{item.columnChannelComment.content}</Brief>
               </Item>
             })
           }

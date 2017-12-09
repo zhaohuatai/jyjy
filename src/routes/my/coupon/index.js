@@ -53,7 +53,7 @@ class MyCoupon extends Component {
           <List>
             {
               this.state.coupons.map(item => {
-                return <MyCouponListItem data={item.coupon} key={item.coupon.id}/>
+                return <MyCouponListItem data={item.coupon} key={item.memberCoupon.id}/>
               })
             }
           </List>

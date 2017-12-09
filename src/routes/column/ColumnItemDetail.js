@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { hashHistory } from 'react-router';
-import { loadItemResDtoByItemId, createColumnChannelOrder } from '../../service/column';
+import { loadItemResDtoByItemId, createColumnChannelOrder, loadColumnChannelCommentDataSet } from '../../service/column';
 import {IMG_DOMAIN} from "../../utils/config";
 import { List, Tabs, Button, Badge, WhiteSpace, Toast } from 'antd-mobile';
+import Consulation from "../../components/column/Consulation";
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -12,7 +13,8 @@ class ColumnDetail extends Component {
     columnChannelItem:{},
     columnChannel: {
       title: ''
-    }
+    },
+    consultation:[]
   }
 
   componentDidMount() {
@@ -30,6 +32,16 @@ class ColumnDetail extends Component {
     //   Toast.success('下单成功');
     //   hashHistory.push('/my/order')
     // })
+  }
+
+  handleChangeTab = (tab, index) => {
+    if (index === 1) {
+      loadColumnChannelCommentDataSet({channelItemId: this.props.params.id}).then(data => {
+        this.setState({
+          consultation: data.data.dataSet.rows
+        })
+      });
+    }
   }
 
   render() {
@@ -71,7 +83,7 @@ class ColumnDetail extends Component {
           <div dangerouslySetInnerHTML={{ __html: content }} style={{ backgroundColor: '#fff', padding: '15px' }} />
 
           <div>
-            <WhiteSpace />
+            <Consulation data={this.state.consultation} id={this.props.params.id}/>
           </div>
         </Tabs>
       </div>
