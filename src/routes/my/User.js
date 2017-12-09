@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import UserPageHeader from '../../components/user/UserPageHeader';
 import UserPageList from '../../components/user/UserPageList';
-import { loadMember } from '../../service/user';
+import { Toast } from 'antd-mobile';
+import { loadMember, Sign } from '../../service/user';
 
 class User extends Component {
   state = {
@@ -14,10 +15,16 @@ class User extends Component {
     })
   }
 
+  handleSignIn = () => {
+    Sign().then(data=>{
+      Toast.success('签到成功');
+    })
+  }
+
   render() {
     return (
       <div>
-        <UserPageHeader data={this.state.memberinfo} />
+        <UserPageHeader data={this.state.memberinfo} doSignIn={this.handleSignIn} />
         <UserPageList />
       </div>
     );

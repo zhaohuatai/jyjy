@@ -72,3 +72,11 @@ export function loadWXConfig(param) {
     });
   });
 }
+
+export function Sign(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}user/member/memberSign/sign`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

@@ -6,7 +6,7 @@ import { IMG_DOMAIN, WECHAT_LOGIN } from '../../utils/config';
 const Item = List.Item;
 const Brief = Item.Brief;
 
-const UserPageHeader = ({ data }) => {
+const UserPageHeader = ({ data, doSignIn }) => {
   const { name, profilePicture, point } = data;
 
   return (
@@ -14,9 +14,8 @@ const UserPageHeader = ({ data }) => {
         <Item
           style={{ backgroundColor: '#2fc2ba' }}
           thumb={<img style={{ width:'60px', height:'60px' }} src={`${IMG_DOMAIN}${profilePicture}`} />}
-          arrow='horizontal'
           multipleLine
-          onClick={() => hashHistory.push('/my/myinfo')}
+          extra={<Button size='small'  onClick={() => doSignIn()}>签到</Button>}
         >
           <span style={{ color: '#fff' }}>
             {name}

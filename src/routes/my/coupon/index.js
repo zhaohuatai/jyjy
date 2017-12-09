@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {Tabs, List} from 'antd-mobile';
 import CouponListItem from './CouponListItem';
 import MyCouponListItem from './MyCouponListItem';
-import { Modal } from 'antd-mobile';
-import {loadMemberCouponDataSet, loadCouponDataSet} from '../../../service/coupon';
+import { Modal, Toast } from 'antd-mobile';
+import {loadMemberCouponDataSet, loadCouponDataSet, createMemberCoupon} from '../../../service/coupon';
 
 class MyCoupon extends Component {
   state = {
@@ -23,8 +23,10 @@ class MyCoupon extends Component {
 
   handleExchange = (id) => {
     Modal.alert('兑换优惠券', '是否立即兑换优惠券', [
-      { text: '取消', onPress: () => console.log('cancel') },
-      { text: '兑换', onPress: () => console.log('ok') },
+      { text: '取消', },
+      { text: '兑换', onPress: () => createMemberCoupon({couponId: id}).then(data=>{
+        Toast.success('兑换成功');
+      }) },
     ])
   }
 

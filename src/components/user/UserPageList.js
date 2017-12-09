@@ -49,6 +49,14 @@ const UserPageList = () => {
       >
         加入社群
       </Item>
+
+      <Item
+        thumb={<svg className="icon" aria-hidden="true" style={{ width: '1.8em', height: '1.8em', color: '#2fc2ba' }}><use xlinkHref='#icon-wo' /></svg>}
+        onClick={() => hashHistory.push('/my/myinfo')}
+        arrow="horizontal"
+      >
+        信息管理
+      </Item>
     </List>
   );
 };

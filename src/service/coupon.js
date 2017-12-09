@@ -16,3 +16,11 @@ export function loadCouponDataSet(param) {
     });
   });
 }
+
+export function createMemberCoupon(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}user/member/memberCoupon/createMemberCoupon`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

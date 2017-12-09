@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { WhiteSpace, Carousel } from 'antd-mobile';
+import { WhiteSpace } from 'antd-mobile';
 import FeaturesBox from '../../components/featuresbox';
 import BigDataListPanel from '../../components/bigdata/bigdata/BigDataListPanel'
 import { loadEnrollAutoBigdataDataSet } from '../../service/bigdata';
 import { loadPubSlideDataSet } from '../../service/slide';
-import { API_DOMAIN } from '../../utils/config';
+import Slide from '../../components/debris/Slide';
 
 class BigDataIndex extends Component {
   state = {
@@ -31,24 +31,7 @@ class BigDataIndex extends Component {
   render() {
     return (
       <div>
-        <Carousel
-          className="my-carousel"
-          autoplay={true}
-          infinite
-          selectedIndex={1}
-          swipeSpeed={35}
-        >
-          {this.state.slide.map(ii => (
-            <div key={ii} style={{height: '176px'}}>
-              <img
-                src={`${API_DOMAIN}${ii.imgUrl}`}
-                alt={ii.title}
-                style={{width: '100%', height:'176px'}}
-              />
-            </div>
-          ))}
-        </Carousel>
-
+        <Slide data={this.state.slide}/>
         <FeaturesBox data={this.state.features_data} columnNum={4}/>
         <WhiteSpace/>
         <BigDataListPanel list_data={this.state.bigdata_data}  />

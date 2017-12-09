@@ -60,6 +60,7 @@ import CourseOrderDetail from './routes/my/order/course/CourseOrderDetail';
 import SlideDetail from './routes/slide';
 
 import Eval from './routes/eval';
+import PlayColumnOrder from "./routes/column/PlayColumnOrder";
 
 const Routers = () => {
   return (
@@ -68,6 +69,7 @@ const Routers = () => {
         <IndexRoute component={Index} />
         <Route path="/column" component={Column} />
         <Route path="/column/:id" component={ColumnDetail} />
+        <Route path="/column/playorder/:id" component={PlayColumnOrder} />
         <Route path="/columnitem/:id" component={ColumnItemDetail} />
 
         <Route path="/course" component={Course} />

@@ -24,10 +24,12 @@ class ColumnDetail extends Component {
   }
 
   handlePlayOrder = () => {
-    createColumnChannelOrder({channelItemIds: this.props.params.id}).then(data => {
-      Toast.success('下单成功');
-      hashHistory.push('/my/order')
-    })
+    hashHistory.push(`/column/playorder/${this.props.params.id}`)
+
+    // createColumnChannelOrder({channelItemIds: this.props.params.id}).then(data => {
+    //   Toast.success('下单成功');
+    //   hashHistory.push('/my/order')
+    // })
   }
 
   render() {
