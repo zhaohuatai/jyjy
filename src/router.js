@@ -61,6 +61,7 @@ import SlideDetail from './routes/slide';
 
 import Eval from './routes/eval';
 import PlayColumnOrder from "./routes/column/PlayColumnOrder";
+import PlayCourseOrder from "./routes/course/PlayCourseOrder";
 
 const Routers = () => {
   return (
@@ -75,6 +76,7 @@ const Routers = () => {
         <Route path="/course" component={Course} />
         <Route path="/coursecat/:id" component={CourseCat} />
         <Route path="/course/:id" component={CourseDetail} />
+        <Route path="/course/playorder/:id" component={PlayCourseOrder} />
 
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />

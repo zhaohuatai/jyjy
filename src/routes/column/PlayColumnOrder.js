@@ -5,6 +5,7 @@ import { loadItemResDtoByItemId, createColumnChannelOrder } from '../../service/
 import {loadMemberCouponDataSet} from '../../service/coupon';
 
 import { List, Tabs, Button, Badge, Checkbox, Toast } from 'antd-mobile';
+import {API_DOMAIN} from "../../utils/config";
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -37,6 +38,19 @@ class PlayColumnOrder extends Component {
     createColumnChannelOrder({channelItemIds: this.props.params.id, memberCouponIds }).then(data => {
       Toast.success('下单成功');
       hashHistory.push('/my/order')
+    })
+  }
+
+  handlePlayOrderPay = () => {
+    let memberCouponIds = this.state.select.join();
+    createColumnChannelOrder({channelItemIds: this.props.params.id, memberCouponIds }).then(data => {
+      // Toast.success('下单成功');
+      // console.log(id, payFee);
+      localStorage.ordersId = data.data.orderDetail.columnChannelOrder.id;
+      localStorage.payFee = data.data.orderDetail.columnChannelOrder.payFee;
+      localStorage.orderType = 'column';
+
+      window.location.href= API_DOMAIN + 'wxpay/enterpay/';
     })
   }
 
@@ -105,8 +119,8 @@ class PlayColumnOrder extends Component {
         <div>
           <BottomAction
             buttons={[
-              {label: '取消', action: this.handleAddFavorite, backgroundColor: '#fff', color: '#2fc3ba'},
-              {label: '立即下单', action: this.handlePlayOrder, backgroundColor: '#2fc3ba', color: '#fff' },
+              {label: '立即下单', action: this.handlePlayOrder, backgroundColor: '#fff', color: '#2fc3ba'},
+              {label: '立即购买', action: this.handlePlayOrderPay, backgroundColor: '#2fc3ba', color: '#fff' },
             ]}
           />
         </div>

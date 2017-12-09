@@ -158,7 +158,7 @@ class CourseDetail extends Component {
         <List>
           <Item
             multipleLine
-            extra={<Button onClick={() => this.setState({buy_display: true})} size='small' type='primary' style={{ width: '100px', marginLeft: '20px' }}>按节购买</Button>}
+            extra={<Button onClick={() => hashHistory.push(`/course/playorder/${this.props.params.id}`)} size='small' type='primary' style={{ width: '100px', marginLeft: '20px' }}>按节购买</Button>}
           >
             {name}
             <Brief>

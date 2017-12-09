@@ -2,19 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a0a664f-99da-4432-b611-f7d4957868ff" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/routes/column/PlayColumnOrder.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/routes/course/PlayCourseOrder.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/layout/BottomTab.js" afterPath="$PROJECT_DIR$/src/components/layout/BottomTab.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/user/UserPageHeader.js" afterPath="$PROJECT_DIR$/src/components/user/UserPageHeader.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/user/UserPageList.js" afterPath="$PROJECT_DIR$/src/components/user/UserPageList.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/router.js" afterPath="$PROJECT_DIR$/src/router.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/bigdata/index.js" afterPath="$PROJECT_DIR$/src/routes/bigdata/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/column/ColumnItemDetail.js" afterPath="$PROJECT_DIR$/src/routes/column/ColumnItemDetail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/my/User.js" afterPath="$PROJECT_DIR$/src/routes/my/User.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/my/coupon/index.js" afterPath="$PROJECT_DIR$/src/routes/my/coupon/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/service/coupon.js" afterPath="$PROJECT_DIR$/src/service/coupon.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/service/user.js" afterPath="$PROJECT_DIR$/src/service/user.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/column/PlayColumnOrder.js" afterPath="$PROJECT_DIR$/src/routes/column/PlayColumnOrder.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/course/CourseDetail.js" afterPath="$PROJECT_DIR$/src/routes/course/CourseDetail.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/course/PlayCourseOrder.js" afterPath="$PROJECT_DIR$/src/routes/course/PlayCourseOrder.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -52,8 +44,8 @@
       <file leaf-file-name="PlayColumnOrder.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/routes/column/PlayColumnOrder.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-609">
-              <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+            <state relative-caret-position="637">
+              <caret line="60" column="21" lean-forward="true" selection-start-line="60" selection-start-column="21" selection-end-line="60" selection-end-column="21" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -61,26 +53,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyCouponListItem.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/routes/my/coupon/MyCouponListItem.js">
+      <file leaf-file-name="ColumnOrderDetail.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes/my/order/column/ColumnOrderDetail.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="10" lean-forward="true" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+            <state relative-caret-position="-948">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#0#39#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ColumnListItem.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/column/ColumnListItem.js">
+      <file leaf-file-name="CloumnOrderItem.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes/my/order/column/CloumnOrderItem.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="86">
+              <caret line="28" column="79" lean-forward="true" selection-start-line="28" selection-start-column="79" selection-end-line="28" selection-end-column="79" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/routes/my/order/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="582">
+              <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -88,8 +88,8 @@
       <file leaf-file-name="router.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/router.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="62" column="62" lean-forward="true" selection-start-line="62" selection-start-column="62" selection-end-line="62" selection-end-column="62" />
+            <state relative-caret-position="301">
+              <caret line="77" column="61" lean-forward="true" selection-start-line="77" selection-start-column="61" selection-end-line="77" selection-end-column="61" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -116,13 +116,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CourseDetail.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CourseDetail.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/routes/course/CourseDetail.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="156" column="0" lean-forward="true" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
+            <state relative-caret-position="330">
+              <caret line="122" column="26" lean-forward="true" selection-start-line="122" selection-start-column="26" selection-end-line="122" selection-end-column="26" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayCourseOrder.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/routes/course/PlayCourseOrder.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="461">
+              <caret line="92" column="61" lean-forward="true" selection-start-line="92" selection-start-column="61" selection-end-line="92" selection-end-column="61" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -135,28 +147,6 @@
               <caret line="29" column="20" lean-forward="true" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ColumnDetail.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/routes/column/ColumnDetail.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="485">
-              <caret line="84" column="42" lean-forward="true" selection-start-line="84" selection-start-column="42" selection-end-line="84" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CourseCat.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/routes/course/CourseCat.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -183,8 +173,8 @@
       <find>http://yxyz.kingmon.cn/</find>
       <find>http://</find>
       <find>danger</find>
-      <find>slide</find>
       <find>BottomA</find>
+      <find>slide</find>
     </findStrings>
     <replaceStrings>
       <replace>columnChannelItem</replace>
@@ -243,11 +233,11 @@
         <option value="$PROJECT_DIR$/src/service/coupon.js" />
         <option value="$PROJECT_DIR$/src/routes/my/coupon/index.js" />
         <option value="$PROJECT_DIR$/src/components/layout/BottomTab.js" />
-        <option value="$PROJECT_DIR$/src/routes/course/PlayCourseOrder.js" />
-        <option value="$PROJECT_DIR$/src/router.js" />
         <option value="$PROJECT_DIR$/src/routes/column/ColumnItemDetail.js" />
-        <option value="$PROJECT_DIR$/src/routes/column/PlayColumnOrder.js" />
+        <option value="$PROJECT_DIR$/src/router.js" />
         <option value="$PROJECT_DIR$/src/routes/course/CourseDetail.js" />
+        <option value="$PROJECT_DIR$/src/routes/column/PlayColumnOrder.js" />
+        <option value="$PROJECT_DIR$/src/routes/course/PlayCourseOrder.js" />
       </list>
     </option>
   </component>
@@ -355,7 +345,16 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
               <item name="my" type="462c0819:PsiDirectoryNode" />
-              <item name="coupon" type="462c0819:PsiDirectoryNode" />
+              <item name="order" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jyedu-fe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jyedu-fe" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="my" type="462c0819:PsiDirectoryNode" />
+              <item name="order" type="462c0819:PsiDirectoryNode" />
+              <item name="course" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="jyedu-fe" type="b2602c69:ProjectViewProjectNode" />
@@ -471,7 +470,7 @@
       <workItem from="1512695900831" duration="4070000" />
       <workItem from="1512782900360" duration="191000" />
       <workItem from="1512783549835" duration="16000" />
-      <workItem from="1512783611028" duration="8605000" />
+      <workItem from="1512783611028" duration="10267000" />
     </task>
     <task id="LOCAL-00001" summary="完成：学校库；todo：帅选功能待完善">
       <created>1510363991930</created>
@@ -669,11 +668,18 @@
       <option name="project" value="LOCAL" />
       <updated>1512786025060</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="✅ 专栏下单">
+      <created>1512799192811</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1512799192811</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="265566000" />
+    <option name="totallyTimeSpent" value="267228000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -727,7 +733,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="完成：学校库；todo：帅选功能待完善" />
     <MESSAGE value="完成录取线" />
     <MESSAGE value="完成视频播放调试" />
     <MESSAGE value="完成合作伙伴接口" />
@@ -752,7 +757,8 @@
     <MESSAGE value="解决服务问题" />
     <MESSAGE value="解决下单问题" />
     <MESSAGE value="✅ 幻灯片" />
-    <option name="LAST_COMMIT_MESSAGE" value="✅ 幻灯片" />
+    <MESSAGE value="✅ 专栏下单" />
+    <option name="LAST_COMMIT_MESSAGE" value="✅ 专栏下单" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -761,13 +767,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/routes/service/ServiceSecond.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/service/ServiceThird.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -817,13 +816,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/my/order/column/CloumnOrderItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="53" column="13" lean-forward="true" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/featuresbox/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -849,13 +841,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="985">
           <caret line="184" column="26" lean-forward="false" selection-start-line="184" selection-start-column="26" selection-end-line="184" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/my/order/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1070,14 +1055,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/course/PlayCourseOrder.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/course/CourseCat.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1114,16 +1091,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="62" column="62" lean-forward="true" selection-start-line="62" selection-start-column="62" selection-end-line="62" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/my/coupon/MyCouponListItem.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -1139,7 +1106,7 @@
         <state relative-caret-position="340">
           <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1181,22 +1148,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/column/PlayColumnOrder.js">
+    <entry file="file://$PROJECT_DIR$/src/routes/my/order/column/ColumnOrderDetail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-609">
-          <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+        <state relative-caret-position="-948">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/column/PlayColumnOrder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="637">
+          <caret line="60" column="21" lean-forward="true" selection-start-line="60" selection-start-column="21" selection-end-line="60" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="77" column="61" lean-forward="true" selection-start-line="77" selection-start-column="61" selection-end-line="77" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/my/order/column/CloumnOrderItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="86">
+          <caret line="28" column="79" lean-forward="true" selection-start-line="28" selection-start-column="79" selection-end-line="28" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/my/order/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="582">
+          <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/course/CourseDetail.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="156" column="0" lean-forward="true" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
+        <state relative-caret-position="330">
+          <caret line="122" column="26" lean-forward="true" selection-start-line="122" selection-start-column="26" selection-end-line="122" selection-end-column="26" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/routes/course/PlayCourseOrder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="92" column="61" lean-forward="true" selection-start-line="92" selection-start-column="61" selection-end-line="92" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
