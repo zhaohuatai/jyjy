@@ -72,28 +72,28 @@ class Register extends Component {
         renderHeader={() => '基本信息'}
       >
 
-        <InputItem
-          {...getFieldProps('account', {
-            rules: [
-              { required: true, message: '请输入账号' },
-            ],
-          })}
-          placeholder="请输入账号"
-        >
-          账号
-        </InputItem>
-        <InputItem {...getFieldProps('password',{
-          rules: [
-            { required: true, message: '请输入密码' },
-          ],
-        })}
-                   placeholder="请输入密码"
-                   type="password">
-          密码
-        </InputItem>
+        {/*<InputItem*/}
+          {/*{...getFieldProps('account', {*/}
+            {/*rules: [*/}
+              {/*{ required: true, message: '请输入账号' },*/}
+            {/*],*/}
+          {/*})}*/}
+          {/*placeholder="请输入账号"*/}
+        {/*>*/}
+          {/*账号*/}
+        {/*</InputItem>*/}
+        {/*<InputItem {...getFieldProps('password',{*/}
+          {/*rules: [*/}
+            {/*{ required: true, message: '请输入密码' },*/}
+          {/*],*/}
+        {/*})}*/}
+                   {/*placeholder="请输入密码"*/}
+                   {/*type="password">*/}
+          {/*密码*/}
+        {/*</InputItem>*/}
 
         <InputItem
-          {...getFieldProps('name', {
+          {...getFieldProps('nickName', {
             rules: [
               { required: true, message: '请输入昵称' },
             ],
@@ -101,9 +101,9 @@ class Register extends Component {
           placeholder="请输入昵称"
         >昵称</InputItem>
 
-        <InputItem {...getFieldProps('schoolName')} placeholder="请输入学校" type="text">
-          学校
-        </InputItem>
+        {/*<InputItem {...getFieldProps('schoolName')} placeholder="请输入学校" type="text">*/}
+          {/*学校*/}
+        {/*</InputItem>*/}
         <Item
           {...getFieldProps('clazz',{
             initialValue: 0,

@@ -40,8 +40,10 @@ import ServiceFirst from './routes/service/ServiceFirst';
 import ServiceSecond from './routes/service/ServiceSecond';
 import ServiceThird from './routes/service/ServiceThird';
 import ProvinceLine from './routes/provinceline';
+
 import Interlocution from './routes/interlocution';
 import InterlocutionDetail from './routes/interlocution/InterlocutionDetail';
+import ConsultationDetail from './routes/interlocution/ConsultationDetail';
 
 import BigDataIndex from './routes/bigdata';
 import BigData from './routes/bigdata/bigdata';
@@ -133,6 +135,7 @@ const Routers = () => {
 
         <Route path="/interlocution" component={Interlocution} />
         <Route path="/interlocution/:id" component={InterlocutionDetail} />
+        <Route path="/interlocution/consultation/:id" component={ConsultationDetail} />
 
         <Route path="/slide/:id" component={SlideDetail} />
 

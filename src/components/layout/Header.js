@@ -12,7 +12,7 @@ const router_name = [
   {  path: 'column', title: '专栏' },
   {  path: 'login', title: '登录-经英教育' },
   {  path: 'register', title: '注册-经英教育' },
-  {  path: 'school', title: '高校库' },
+  {  path: 'school', title: '名校库' },
   {  path: 'career', title: '职业库' },
   {  path: 'profession', title: '专业库' },
   {  path: 'expert', title: '专家' },

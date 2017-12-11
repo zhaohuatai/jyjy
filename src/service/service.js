@@ -81,6 +81,14 @@ export function loadByFirstCateId(param) {
   });
 }
 
+export function createAppointment(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}user/entrance/serviceEntrance/createAppointment`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}
+
 // 获取分类关系
 export function loadIndexCateDtoList(param) {
   return new Promise((resolve, reject) => {
@@ -94,15 +102,6 @@ export function loadIndexCateDtoList(param) {
 export function requestAppointment(param) {
   return new Promise((resolve, reject) => {
     post(`${API_DOMAIN}pub/entrance/serviceEntrance/requestAppointment`, param).then((data) => {
-      resolve(data);
-    });
-  });
-}
-
-// 非会员创建请求
-export function createAppointment(param) {
-  return new Promise((resolve, reject) => {
-    post(`${API_DOMAIN}pub/entrance/serviceEntrance/createAppointment`, param).then((data) => {
       resolve(data);
     });
   });

@@ -15,14 +15,14 @@ const ColumnOrderItem = ({ data, doPay }) => {
         {
           columnChannel.map((item) => {
             const {
-             coverUrl, title, learningCount, id,
+              thumbnailUrl, title, learningCount, id,
             } = item;
 
             return (
               <Item
                 onClick={() => hashHistory.push(`my/order/column/${columnChannelOrder.id}`)}
                 align="top"
-                thumb={<img alt={title} style={{ width: '60px', height: '60px' }} src={coverUrl} />}
+                thumb={<img alt={title} style={{ width: '60px', height: '60px' }} src={thumbnailUrl} />}
                 multipleLine
                 key={id}
               >

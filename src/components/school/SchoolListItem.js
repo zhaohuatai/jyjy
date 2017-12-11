@@ -1,5 +1,5 @@
 import React from 'react';
-import { List } from 'antd-mobile';
+import { List, Tag, Flex } from 'antd-mobile';
 import { hashHistory } from 'react-router';
 import { SCH_BADGE } from '../../utils/config';
 
@@ -19,7 +19,11 @@ const SchoolListItem = ({ data }) => {
       multipleLine
     >
       {name}
-      <Brief>{stage} {firstRate ? '双一流' : null} {rank}</Brief>
+      <Brief>
+        <span style={{ fontSize: '13px', float: 'left' }} >{stage}</span>
+        <Tag small className='am-tag-active' style={{ float: 'right', marginLeft: '5px' }}>{rank}</Tag>
+        {firstRate ? <Tag small className='am-tag-active' style={{ float: 'right', marginLeft: '5px' }}>双一流</Tag> : null}
+      </Brief>
 
     </Item>
   );

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Carousel, List } from 'antd-mobile';
-import { Link } from 'react-router';
-import { loadTopColumnChannelList, loadColumnChannelDataSet } from '../../service/column';
+import React, {Component} from 'react';
+import {Carousel, List} from 'antd-mobile';
+import {Link} from 'react-router';
+import {loadTopColumnChannelList, loadColumnChannelDataSet} from '../../service/column';
 
 import ColumnListItem from '../../components/column/ColumnListItem';
 import {IMG_DOMAIN} from "../../utils/config";
@@ -10,22 +10,22 @@ import {IMG_DOMAIN} from "../../utils/config";
 class Column extends Component {
   state = {
     top: [],
-    columns:[],
+    columns: [],
   }
 
-  componentDidMount(){
+  componentDidMount() {
     loadTopColumnChannelList().then(data => {
-      this.setState({ top: data.data.dataSet});
+      this.setState({top: data.data.dataSet});
     })
 
     loadColumnChannelDataSet().then(data => {
-      this.setState({ columns: data.data.dataSet.rows});
+      this.setState({columns: data.data.dataSet.rows});
     })
   }
 
   render() {
     return (
-      <div style={{marginBottom:'50px'}}>
+      <div style={{marginBottom: '50px'}}>
         <Carousel
           className="my-carousel"
           autoplay={true}
@@ -35,17 +35,20 @@ class Column extends Component {
         >
           {this.state.top.map(item => (
             <Link to={`/column/${item.id}`} key={item.id}>
-              <img
-                src={`${IMG_DOMAIN}${item.coverUrl}`}
-                alt={item.title}
-                onLoad={() => {
-                  // fire window resize event to change height
-                  window.dispatchEvent(new Event('resize'));
-                  this.setState({
-                    initialHeight: null,
-                  });
-                }}
-              />
+              <div style={{height: '176px', width: '100%'}}>
+                <img
+                  src={`${IMG_DOMAIN}${item.coverUrl}`}
+                  alt={item.title}
+                  style={{height: '176px', width: '100%'}}
+                  onLoad={() => {
+                    // fire window resize event to change height
+                    window.dispatchEvent(new Event('resize'));
+                    this.setState({
+                      initialHeight: null,
+                    });
+                  }}
+                />
+              </div>
             </Link>
           ))}
         </Carousel>
@@ -56,7 +59,7 @@ class Column extends Component {
               <ColumnListItem data={item} key={item.id}/>
             ))
           }
-      </List>
+        </List>
 
       </div>
     );

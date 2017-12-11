@@ -8,13 +8,13 @@ const Brief = Item.Brief;
 
 const CourseListItem = ({ data }) => {
   const {
-    name, id, learningCount, coverUrl
+    name, id, learningCount, thumbnailUrl,
   } = data;
   return (
     <Item
       onClick={() => hashHistory.push(`/course/${id}`)}
       align="top"
-      thumb={<img style={{ width: '60px', height: '60px' }} src={`${IMG_DOMAIN}${coverUrl}`} />}
+      thumb={<img style={{ width: '60px', height: '60px' }} src={`${IMG_DOMAIN}${thumbnailUrl}`} />}
       multipleLine
     >
       {name}

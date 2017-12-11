@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Carousel, List, WhiteSpace } from 'antd-mobile';
-import { loadServiceCourseGlobal, loadTopServiceCourse} from '../../service/course';
+import React, {Component} from 'react';
+import {Carousel, List, WhiteSpace} from 'antd-mobile';
+import {loadServiceCourseGlobal, loadTopServiceCourse} from '../../service/course';
 import ColumnListItem from '../../components/column/ColumnListItem';
 import ListPanel from '../../components/listpanel/ListPanel';
 import CourseListItem from '../../components/course/CourseListItem';
@@ -10,10 +10,10 @@ import {IMG_DOMAIN} from "../../utils/config";
 class Course extends Component {
   state = {
     course_global: [],
-    course_top:[],
+    course_top: [],
   }
 
-  componentDidMount(){
+  componentDidMount() {
     loadTopServiceCourse({rows: 100}).then(data => {
       this.setState({course_top: data.data.topServiceCourseList})
     })
@@ -25,7 +25,7 @@ class Course extends Component {
 
   render() {
     return (
-      <div style={{marginBottom:'50px'}}>
+      <div style={{marginBottom: '50px'}}>
         <Carousel
           className="my-carousel"
           autoplay={true}
@@ -33,25 +33,33 @@ class Course extends Component {
           selectedIndex={1}
           swipeSpeed={35}
         >
-          {this.state.course_top.map(item => (
-            <a href={`/#/course/${item.id}`} key={item.id}>
-              <img
-                src={`${IMG_DOMAIN}${item.coverUrl}`}
-                alt={item.name}
-                onLoad={() => {
-                  // fire window resize event to change height
-                  window.dispatchEvent(new Event('resize'));
-                  this.setState({
-                    initialHeight: null,
-                  });
-                }}
-              />
-            </a>
-          ))}
+          {
+            this.state.course_top ?
+              this.state.course_top.map(item => (
+                <a href={`/#/course/${item.id}`} key={item.id}>
+                  <div style={{height: '176px', width: '100%'}}>
+
+                    <img
+                      src={`${IMG_DOMAIN}${item.coverUrl}`}
+                      alt={item.name}
+                      style={{height: '176px', width: '100%'}}
+                      onLoad={() => {
+                        // fire window resize event to change height
+                        window.dispatchEvent(new Event('resize'));
+                        this.setState({
+                          initialHeight: null,
+                        });
+                      }}
+                    />
+                  </div>
+                </a>
+              ))
+              : null
+          }
         </Carousel>
         {
           this.state.course_global.map(item => {
-            return  <CourseListPanel
+            return <CourseListPanel
               key={item.courseCategory.id}
               data={item.serviceCourseList}
               title={item.courseCategory.categoryName}

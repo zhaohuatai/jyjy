@@ -15,14 +15,14 @@ const CourseOrderItem = ({ data, doPay }) => {
         {
           serviceCourseList.map(item => {
             const {
-              name, id, learningCount, favoriteCount, coverUrl
+              name, id, learningCount, favoriteCount, thumbnailUrl
             } = item;
 
             return (
               <Item
                 onClick={() => hashHistory.push(`/my/order/course/${serviceCourseOrder.id}`)}
                 align="top"
-                thumb={<img style={{ width: '60px', height: '60px' }} src={`${IMG_DOMAIN}${coverUrl}`} />}
+                thumb={<img style={{ width: '60px', height: '60px' }} src={`${IMG_DOMAIN}${thumbnailUrl}`} />}
                 multipleLine
                 key={id}
               >

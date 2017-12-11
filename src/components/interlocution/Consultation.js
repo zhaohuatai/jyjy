@@ -6,17 +6,18 @@ const Item = List.Item;
 const Brief = Item.Brief;
 
 const InterlocutionItem = ({ data }) => {
-  const { id, interQuestion, interAnswer, createTime } = data
+  const { id, consultorName, content, createTime } = data
   return (
     <div>
       <Item
-        onClick={() => hashHistory.push(`/interlocution/${id}`)}
+        onClick={() => hashHistory.push(`/interlocution/consultation/${id}`)}
         key={id}
         align="top"
-        wrap
-
+        multipleLine
+        extra={createTime}
       >
-        <span style={{ color: '#777', fontSize: '15px' }}>{interQuestion}</span>
+        {consultorName}
+        <Brief>{content}</Brief>
       </Item>
     </div>
 

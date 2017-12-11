@@ -62,7 +62,7 @@ class ColumnDetail extends Component {
 
     return (
       <div>
-        <img src={`${IMG_DOMAIN}${coverUrl}`} />
+        <img src={`${IMG_DOMAIN}${coverUrl}`} style={{height: '176px', width: '100%'}}/>
         <List>
           <Item
             multipleLine

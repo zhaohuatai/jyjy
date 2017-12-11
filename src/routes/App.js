@@ -24,13 +24,12 @@ class App extends Component {
             imgUrl: '', // 分享图标
 
             success: function () {
-              console.log('share success');
+              alert('share success');
               // 用户确认分享后执行的回调函数
-
             },
 
             cancel: function () {
-              console.log('share cancle');
+              alert('share cancle');
               // 用户取消分享后执行的回调函数
             }
           });

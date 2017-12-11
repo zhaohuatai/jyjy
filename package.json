@@ -10,7 +10,13 @@
   },
   "theme": {
     "@brand-primary": "#2fc2ba",
-    "@tabs-color": "#2fc2ba"
+    "@tabs-color": "#2fc2ba",
+    "@font-size-icontext": "10 * @hd",
+    "@font-size-caption-sm": "12 * @hd",
+    "@font-size-base": "12 * @hd",
+    "@font-size-subhead": "13 * @hd",
+    "@font-size-caption": "14 * @hd",
+    "@font-size-heading": "15 * @hd"
   },
   "author": "houser",
   "license": "ISC",

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { loadByFirstCateId } from '../../service/service';
+import { loadPubSlideDataSet } from '../../service/slide';
 import { WhiteSpace, List } from 'antd-mobile';
 import ServiceListItem from '../../components/service/ServiceListItem';
 import { hashHistory } from 'react-router';
 import ListHeader from "../../components/listpanel/ListHeader";
+import Slide from "../../components/debris/Slide";
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -13,7 +15,8 @@ class ServiceFirst extends Component {
     entranceCateFirstDto: {},
     serviceEntranceCateSecondList: [],
     serviceEntranceList: [],
-    serviceEntranceCateFirst: {}
+    serviceEntranceCateFirst: {},
+    slide: []
   }
 
   componentDidMount() {
@@ -26,11 +29,18 @@ class ServiceFirst extends Component {
         serviceEntranceCateFirst: data.data.entranceCateFirstDto.serviceEntranceCateFirst,
       });
     });
+    loadPubSlideDataSet({rows: 100, locationCode: 'FW', status: 1}).then(data => {
+      this.setState({ slide: data.data.dataSet.rows });
+    })
   }
 
   render() {
     return (
       <div>
+        {
+          this.state.slide.length > 0 ? <Slide data={this.state.slide}/> : null
+
+        }
         <ListHeader title={this.state.serviceEntranceCateFirst.name} icon='icon-kecheng' />
 
         <List>

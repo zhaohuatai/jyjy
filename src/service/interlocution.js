@@ -32,3 +32,19 @@ export function createInterlocutionConsultation(param) {
     });
   });
 }
+
+export function loadInterlocutionConsultationDataSet(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/interlocution/interlocutionConsultation/loadInterlocutionConsultationDataSet`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}
+
+export function loadInterlocutionConsultation(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/interlocution/interlocutionConsultation/loadInterlocutionConsultation`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

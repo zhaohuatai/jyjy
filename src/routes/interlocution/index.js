@@ -1,31 +1,53 @@
 import React, { Component } from 'react';
 import { Tabs, List, Modal, TextareaItem, Toast } from 'antd-mobile';
-import { loadInterlocutionCategoryDataSet, loadInterlocutionDataSet, createInterlocutionConsultation } from '../../service/interlocution';
+import { loadInterlocutionCategoryDataSet, loadInterlocutionDataSet, createInterlocutionConsultation, loadInterlocutionConsultationDataSet } from '../../service/interlocution';
 import LoadMore from '../../components/loadmore/LoadMore';
 import InterlocutionItem from '../../components/interlocution/InterlocutionItem';
 import Fixed from '../../components/debris/Fixed';
+import Consultation from '../../components/interlocution/Consultation';
 
 const renderTab = (tab) => {
-  return <span key={tab.id} style={{ height: '40px'}}>{tab.categoryName}</span>
+  return <span key={tab.id} style={{ height: '80px', width: '80px'}}>{tab.categoryName}</span>
 }
 
 class Interlocution extends Component {
   state={
+    cur_page: 1,
     interlocutions:[],
     loadmore_disable: false,
     category:[],
     pub_show: false,
-    pub_content: ''
+    pub_content: '',
+    consultation: []
   }
 
   componentDidMount() {
     loadInterlocutionCategoryDataSet().then(data=>{
-      this.setState({category: data.data.dataSet.rows})
+      this.setState({category: data.data.dataSet.rows});
+      this.handleRefresh({ categoryId: data.data.dataSet.rows[0].id });
+
     })
 
-    loadInterlocutionDataSet().then(data=>{
-      this.setState({interlocutions: data.data.dataSet.rows})
+    loadInterlocutionConsultationDataSet().then(data=>{
+      this.setState({consultation: data.data.dataSet.rows})
     })
+  }
+
+  handleRefresh = (params) =>{
+    loadInterlocutionDataSet(params).then((data) => {
+      if( data.data.dataSet.total > data.data.dataSet.rows.length ){
+        this.setState({ interlocutions: data.data.dataSet.rows, loadmore_disable: false });
+      }else{
+        this.setState({ interlocutions: data.data.dataSet.rows, loadmore_disable: true });
+      }
+    }).catch(err => {
+      console.log(err);
+    });
+  }
+
+  handleChangeTab = (tab, index) => {
+    this.setState({cur_page: 1, });
+    this.handleRefresh({ categoryId: tab.id, page: 1, });
   }
 
   doSubmit = () => {
@@ -36,6 +58,23 @@ class Interlocution extends Component {
         Toast.success('提问成功')
       }
     })
+  }
+
+
+  loadMore = () => {
+    let cur_page = ++this.state.cur_page;
+    loadInterlocutionDataSet({ page: cur_page, categoryId: this.state.cur_tab_id}).then((data) => {
+      let temp_list = this.state.cur_news;
+      temp_list = temp_list.concat(data.data.dataSet.rows);
+
+      if( data.data.dataSet.total > temp_list.length ){
+        this.setState({ interlocutions: temp_list, cur_page, loadmore_disable: false });
+      }else{
+        this.setState({ interlocutions: temp_list, cur_page, loadmore_disable: true });
+      }
+    }).catch(err => {
+      console.log(err);
+    });
   }
 
   render() {
@@ -49,28 +88,31 @@ class Interlocution extends Component {
           tabs={tabs}
           onChange={this.handleChangeTab}
         >
-          <Tabs
-            renderTab={renderTab}
-            tabs={this.state.category}
-            initalPage={'t2'}
-            tabBarPosition="left"
-            tabDirection="vertical"
-            onChange={this.handleChangeTab}
-            usePaged={false}
-          >
-            <div style={{ height: '80px', backgroundColor: '#fff' }}>
-              <List style={{marginBottom:'54px'}}>
-                {
-                  this.state.interlocutions.map(item => {
-                    return (
-                      <InterlocutionItem key={item.id} data={item} />
-                    )
-                  })
-                }
-                <LoadMore disable={this.state.loadmore_disable} onClick={this.loadMore}/>
-              </List>
-            </div>
-          </Tabs>
+          <div style={{ height: 500}}>
+            <Tabs
+              renderTab={renderTab}
+              tabs={this.state.category}
+              initalPage={'t2'}
+              tabBarPosition="left"
+              tabDirection="vertical"
+              onChange={this.handleChangeTab}
+              usePaged={false}
+            >
+              <div style={{ height: '30px', backgroundColor: '#fff' }}>
+                <List style={{marginBottom:'54px', height: '50px'}}>
+                  {
+                    this.state.interlocutions.map(item => {
+                      return (
+                        <InterlocutionItem key={item.id} data={item} />
+                      )
+                    })
+                  }
+                  <LoadMore disable={this.state.loadmore_disable} onClick={this.loadMore}/>
+                </List>
+              </div>
+            </Tabs>
+          </div>
+
 
           <List style={{marginBottom:'54px'}}>
             <Fixed
@@ -79,9 +121,9 @@ class Interlocution extends Component {
               onClick={ () => this.setState({pub_show: true})}
             />
             {
-              this.state.interlocutions.map(item => {
+              this.state.consultation.map(item => {
                 return (
-                  <InterlocutionItem key={item.id} data={item} />
+                  <Consultation key={item.id} data={item} />
                 )
               })
             }

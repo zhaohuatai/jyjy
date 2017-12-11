@@ -80,3 +80,11 @@ export function Sign(param) {
     });
   });
 }
+
+export function downloadImage(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}/pub/weichatAuth/downloadImage`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

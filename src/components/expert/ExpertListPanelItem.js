@@ -11,7 +11,7 @@ const ExpertListPanelItem = ({ data }) => {
           alt=""
           style={{ height: '85px', width: '80%', borderRadius: '50%' }}
         />
-        <p style={{ margin: '5px' }}>{data.name}</p>
+        <p style={{ margin: '5px', fontSize: '13px' }}>{data.name}</p>
       </div>
     </Link>
   );
