@@ -7,7 +7,7 @@ const Item = List.Item;
 const Brief = Item.Brief;
 
 const ColumnListItem = ({data}) => {
-  const {thumbnailUrl, title, favoriteCount, learningCount, id, currentItemNum, totleItemCount} = data;
+  const { thumbnailUrl, title, hint, learningCount, id, currentItemNum, totleItemCount } = data;
   return (
     <Item
       onClick={() => hashHistory.push(`/column/${id}`)}
@@ -17,7 +17,7 @@ const ColumnListItem = ({data}) => {
     >
       <span style={{ fontSize: '15px' }}>{title}</span>
       <Brief style={{fontSize: '12px', marginTop: '0' }}>
-        描述
+        {hint}
         <br />
         <span style={{ float: 'left'}}>已更新{currentItemNum}期／总{totleItemCount}期</span>
         <span style={{ float: 'right'}}>{learningCount}人已开通</span>

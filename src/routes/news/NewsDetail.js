@@ -34,8 +34,11 @@ class NewsDetail extends Component {
   render() {
     return (
       <div>
-        <Item multipleLine>
-          {this.state.news.title}  <Brief>{this.state.news.addtime}</Brief>
+        <Item
+          multipleLine
+          wrap
+        >
+          {this.state.news.title}  <Brief>{this.state.news.createTime}</Brief>
         </Item>
         <div dangerouslySetInnerHTML={{ __html: this.state.news.content }} style={{ backgroundColor: '#fff', padding: '15px' }} />      
       </div>

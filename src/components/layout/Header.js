@@ -27,6 +27,7 @@ const router_name = [
   {  path: 'introduce', title: '经英简介' },
   {  path: 'interlocution', title: '百科问答' },
   {  path: 'service', title: '服务' },
+  {  path: 'eval', title: '测评' },
 ]
 
 class Header extends React.Component {

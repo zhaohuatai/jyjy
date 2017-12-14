@@ -41,6 +41,7 @@ class QuestionDetail extends Component {
       <div>
         <Item
           multipleLine
+          wrap
         >
           {consultorName}  <Brief>提问时间：{createTime} <br /> 回复时间：{handleTime}</Brief>
         </Item>

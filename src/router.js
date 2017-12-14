@@ -62,8 +62,9 @@ import CourseOrderDetail from './routes/my/order/course/CourseOrderDetail';
 import SlideDetail from './routes/slide';
 
 import Eval from './routes/eval';
-import PlayColumnOrder from "./routes/column/PlayColumnOrder";
+import MBIT from "./routes/eval/mbit";
 import PlayCourseOrder from "./routes/course/PlayCourseOrder";
+import PlayColumnOrder from "./routes/column/PlayColumnOrder";
 
 const Routers = () => {
   return (
@@ -151,21 +152,15 @@ const Routers = () => {
           <Route path="myinfo" component={Myinfo} />
           <Route path="editmyinfo" component={EditMyinfo} />
         </Route>
-      </Route>
 
-      <Route path="/eval" >
-        <IndexRoute component={Eval} />
-        <Route path="order" >
-          <IndexRoute component={Order} />
-          <Route path="column/:id" component={ColumnOrderDetail} />
-          <Route path="course/:id" component={CourseOrderDetail} />
+        <Route path="/eval" >
+          <IndexRoute component={Eval} />
+          <Route path="mbit" component={MBIT} />
+          <Route path="career" component={MyCoupon} />
+          <Route path="hollander" component={Myinfo} />
         </Route>
-        <Route path="favorite" component={MyFavorite} />
-        <Route path="coupon" component={MyCoupon} />
-        <Route path="myinfo" component={Myinfo} />
-        <Route path="editmyinfo" component={EditMyinfo} />
-      </Route>
 
+      </Route>
     </Router>
   );
 };

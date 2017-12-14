@@ -38,6 +38,7 @@ class QuestionDetail extends Component {
       <div>
         <Item
           multipleLine
+          wrap
         >
           {interQuestion}  <Brief>{createTime}</Brief>
         </Item>

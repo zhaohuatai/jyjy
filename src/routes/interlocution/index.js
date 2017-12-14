@@ -5,9 +5,10 @@ import LoadMore from '../../components/loadmore/LoadMore';
 import InterlocutionItem from '../../components/interlocution/InterlocutionItem';
 import Fixed from '../../components/debris/Fixed';
 import Consultation from '../../components/interlocution/Consultation';
+import TabsTabbar from '../../components/interlocution/TabsTabbar';
 
 const renderTab = (tab) => {
-  return <span key={tab.id} style={{ height: '80px', width: '80px'}}>{tab.categoryName}</span>
+  return <span key={tab.id} style={{height: '60px'}}>{tab.categoryName}</span>
 }
 
 class Interlocution extends Component {
@@ -97,6 +98,7 @@ class Interlocution extends Component {
               tabDirection="vertical"
               onChange={this.handleChangeTab}
               usePaged={false}
+              renderTabBar={TabsTabbar}
             >
               <div style={{ height: '30px', backgroundColor: '#fff' }}>
                 <List style={{marginBottom:'54px', height: '50px'}}>
