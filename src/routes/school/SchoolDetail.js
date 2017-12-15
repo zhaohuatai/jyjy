@@ -102,8 +102,8 @@ class SchoolDetail extends Component {
           thumb={<img style={{ width: '60px', height: '60px' }} src={`${SCH_BADGE}${this.state.school.badge}`} />}
           multipleLine
         >
-          {this.state.school.name}
-          <Brief>
+          <span style={{fontSize: '17px'}}>{this.state.school.name}</span>
+          <Brief style={{fontSize: '14px'}}>
             排名：{this.state.school.rank}<br />
             省份：{this.state.school.province}
           </Brief>
@@ -135,7 +135,7 @@ class SchoolDetail extends Component {
           </Brief>
         </Item>
         <WhiteSpace />
-        <Tabs tabs={[{title: '介绍'}, {title: '录取线'}]} initialPage={1}>
+        <Tabs tabs={[{title: '介绍'}, {title: '山东省录取线'}]} initialPage={0}>
           <div >
             <Intro title="简介" text={this.state.school.introduction} />
 

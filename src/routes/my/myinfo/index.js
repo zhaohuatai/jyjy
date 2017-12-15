@@ -25,7 +25,7 @@ class MyInfo extends Component {
       <div>
         <List>
           <Item
-            thumb={<img style={{ width:'60px', height:'60px' }} src={`${IMG_DOMAIN}${profilePicture}`} />}
+            thumb={<svg className="icon" aria-hidden="true" style={{ width: '3em', height: '3em' }}><use xlinkHref='#icon-xuesheng' /></svg>}
             extra='编辑'
             arrow='horizontal'
             onClick={()=>hashHistory.push('/my/editmyinfo')}

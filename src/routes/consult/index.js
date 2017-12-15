@@ -1,28 +1,54 @@
-import React, { Component } from 'react';
-import { loadPubCustomize } from '../../service/customize';
+import React, {Component} from 'react';
+import {loadPubCustomize} from '../../service/customize';
+import {Flex} from 'antd-mobile';
+import BottomAction from "../../components/debris/BottomAction";
 
 class Introduce extends Component {
   state = {
     pubCustomize: {
-      "content":"",
-      "id":3,
-      "isEnabled":"",
-      "key":"CONSULT",
-      "recordTime":1510736638131,
-      "status":""
+      "content": "",
+      "id": 3,
+      "isEnabled": "",
+      "key": "CONSULT",
+      "recordTime": 1510736638131,
+      "status": ""
     }
   }
 
   componentDidMount() {
-    loadPubCustomize({ key: 'CONSULT' }).then(data => {
+    loadPubCustomize({key: 'CONSULT'}).then(data => {
       this.setState({pubCustomize: data.data.pubCustomize})
     })
   }
 
+  handlePhone = () => {
+    window.location.href = "tel:10086";
+  }
+
   render() {
+    const style = {
+      position: 'fixed',
+      zIndex: '100',
+      bottom: '50px',
+      height: '50px',
+      lineHeight: '50px',
+      width: '100%',
+      textAlign: 'center',
+      color: '#fff',
+      backgroundColor: '#2fc3ba',
+    }
+
     return (
-      <div dangerouslySetInnerHTML={{ __html: this.state.pubCustomize.content }} style={{ backgroundColor: '#fff', padding: '15px' }} />
-    );
+      <div>
+        <div dangerouslySetInnerHTML={{__html: this.state.pubCustomize.content}}
+             style={{backgroundColor: '#fff', padding: '15px'}}/>
+        <Flex style={style}>
+          <Flex.Item>
+            <a href="tel:10086" style={{ color: '#fff' }}>现在电话咨询</a>
+          </Flex.Item>
+        </Flex>
+      </div>
+    )
   }
 }
 

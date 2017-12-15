@@ -79,7 +79,7 @@ class News extends Component {
           {
             this.state.cur_news.map(item => {
               return (
-                <Item key={item.id} arrow="horizontal" multipleLine onClick={() => hashHistory.push(`/news/${item.id}`)}>
+                <Item key={item.id} arrow="horizontal" multipleLine  wrap onClick={() => hashHistory.push(`/news/${item.id}`)}>
                   {item.title} <Brief>{item.addtime}</Brief>
                 </Item>
               )

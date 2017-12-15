@@ -47,6 +47,14 @@ export default class BottomTab extends React.Component {
             data-seed="logId1"
           />
           <TabBar.Item
+            icon={<svg className="icon" aria-hidden="true" style={{ width: '2.5em', height: '2.5em' }}><use xlinkHref="#icon-dianhua" /></svg>}
+            selectedIcon={<svg className="icon" aria-hidden="true" style={{ width: '2.5em', height: '2.5em', color: '#2fc2ba' }}><use xlinkHref="#icon-dianhua" /></svg>}
+            key="consult"
+            selected={ this.handleSelect(hashHistory.getCurrentLocation().pathname, 'consult') }
+            onPress={() => this.handleChangeTab('/consult')}
+            data-seed="logId1"
+          />
+          <TabBar.Item
             icon={<svg className="icon" aria-hidden="true" style={{ width: '1.5em', height: '1.5em' }}><use xlinkHref="#icon-kecheng" /></svg>}
             selectedIcon={<svg className="icon" aria-hidden="true" style={{ width: '1.5em', height: '1.5em', color: '#2fc2ba' }}><use xlinkHref="#icon-kecheng" /></svg>}
             title="课程"

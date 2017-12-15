@@ -13,7 +13,7 @@ const UserPageHeader = ({ data, doSignIn }) => {
     <List>
         <Item
           style={{ backgroundColor: '#2fc2ba' }}
-          thumb={<img style={{ width:'60px', height:'60px' }} src={`${IMG_DOMAIN}${profilePicture}`} />}
+          thumb={<svg className="icon" aria-hidden="true" style={{ width: '3em', height: '3em' }}><use xlinkHref='#icon-xuesheng' /></svg>}
           multipleLine
           extra={<Button size='small'  onClick={() => doSignIn()}>签到</Button>}
         >

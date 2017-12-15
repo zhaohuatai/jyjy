@@ -71,12 +71,6 @@ class MyInfo extends Component {
     return (
       <div>
         <List>
-          <Item
-            extra={<img style={{ width:'60px', height:'60px' }} src={`${IMG_DOMAIN}${profilePicture}`} />}
-            onClick={this.handleUploadPicture}
-          >
-            头像
-          </Item>
           <InputItem
             {...getFieldProps('name',{
               initialValue: name

@@ -36,7 +36,7 @@ class ProfessionDetail extends Component {
   componentDidMount() {
     const id = this.props.params.id;
     loadDataProfession({ id }).then( data => {
-      this.setState({ news: data.data.pubNews });
+      this.setState({ profession: data.data.dataProfession });
     });
   }
 
@@ -50,7 +50,7 @@ class ProfessionDetail extends Component {
             授予学位：{this.state.profession.degree} <br />
             修业年限：{this.state.profession.revisedYears} <br />
             毕业5年薪酬：{this.state.profession.salary} <br />
-            <div style={{whiteSpace: 'normal'}}>开设院校代表：{this.state.profession.offer}</div>
+            <div style={{whiteSpace: 'normal'}}>开设院校代表：<div dangerouslySetInnerHTML={{__html: this.state.profession.offer}}/></div>
           </Brief>
         </Item>
         <div dangerouslySetInnerHTML={{ __html: this.state.profession.detail }} style={{ backgroundColor: '#fff', padding: '15px' }} />

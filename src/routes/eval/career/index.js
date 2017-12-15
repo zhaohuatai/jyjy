@@ -4,9 +4,12 @@ import { List, WhiteSpace, Button, WingBlank, Radio, Toast, Modal } from 'antd-m
 import {
   loadEvalSubjectRecordItemDtoList,
   createEvalSubjectRecord,
-  createEvalSubjectRecordItem
+  createEvalSubjectRecordItem,
+  loadRecordItemDtoForCate3Sep2,
+  createRecordItemForCate3Sep2
 } from '../../../service/eval';
 import BottomAction from "../../../components/debris/BottomAction";
+import SelectStep2 from "../hollander/SelectStep2";
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -62,6 +65,8 @@ class MBTI extends Component {
     categoryName: '',
     total: 3,
     recordId: null,
+    step2:[],
+    step2_show: false
   }
 
   componentDidMount() {
@@ -79,12 +84,15 @@ class MBTI extends Component {
 
     const categoryId = this.props.location.query.categoryId;
     const recordId = this.props.location.query.recordId;
+    const finishCount = this.props.location.query.finishCount;
 
     if(recordId) {
+      // 继续答题
       loadEvalSubjectRecordItemDtoList({categoryId, recordId}).then(data => {
-        this.setState({ questions: data.data.recordItemDtoList, recordId })
+        this.setState({ questions: data.data.recordItemDtoList, recordId, cur_index: finishCount})
       });
     } else {
+      // 创建新记录
       createEvalSubjectRecord({categoryId}).then(data => {
         this.setState({recordId: data.data.record});
         loadEvalSubjectRecordItemDtoList({categoryId, recordId: data.data.record}).then(data => {
@@ -115,17 +123,28 @@ class MBTI extends Component {
       optionCode: this.state.cur_select,
       //memberId: 1
     }).then(data=>{
-      this.setState({cur_select: null});
-      console.log(data);
-      // 切换下一题
-      if(this.state.cur_index < this.state.questions.length-1){
-        this.setState({cur_index: ++this.state.cur_index})
+      // 判断是否结束
+      if( data.data.isFininshed){
+        // 结束
+        this.setState({cur_select: null});
+        // 请求第二步结果
+        loadRecordItemDtoForCate3Sep2({recordId: this.state.recordId}).then(data=>{
+          if(data.data.recordItemDtoList.length > 0){
+            // 存在多个6分题，需要选择
+            this.setState({ step2: data.data.recordItemDtoList, step2_show: true })
+          } else {
+            // 结束
+          }
+        })
       } else {
-        Toast.info('没有下一题哦！', 1)
+        // 切换下一题
+        if(this.state.cur_index < this.state.questions.length-1){
+          this.setState({cur_index: ++this.state.cur_index})
+        } else {
+          Toast.info('没有下一题哦！', 1)
+        }
       }
     });
-
-
   }
 
   handlePrev = () => {
@@ -134,6 +153,15 @@ class MBTI extends Component {
     } else {
       Toast.info('没有上一题哦！', 1)
     }
+  }
+
+  handleUpStep2 = (value) => {
+    createRecordItemForCate3Sep2({subjectIds: value, recordId: this.state.recordId}).then(data => {
+      Toast.success('评测完成, 请点击记录查看结果');
+      this.setState({step2_show: false, step2: []});
+      hashHistory.push('/eval')
+    })
+
   }
 
   render() {
@@ -159,6 +187,13 @@ class MBTI extends Component {
             </RadioItem>
           ))}
         </List>
+
+        <SelectStep2
+          data={this.state.step2}
+          display={this.state.step2_show}
+          onCancle={()=>this.setState({buy_display:false})}
+          onPay={(value) => this.handleUpStep2(value)}
+        />
 
         <BottomAction
           buttons={[

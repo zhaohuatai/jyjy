@@ -32,23 +32,62 @@ class BigDataIndex extends Component {
           {
             this.state.records.length > 0 ?
               this.state.records.map(item => {
+                let pathname = '';
+                let count = 0;
                 switch (item.categoryId) {
                   case 1 :
-                    return <Item
-                      key={item.id}
-                      onClick={() => hashHistory.push({
-                        pathname: '/eval/mbit',
-                        query: {
-                          categoryId: item.categoryId,
-                          categoryName: item.categoryName,
-                          recordId: item.id
-                        }
-                      })} extra={<span>未完成</span>} arrow='horizontal'>{item.categoryName}
-                      <Brief>{item.createTime}</Brief></Item>;
-
+                    pathname = '/eval/mbit'; count = 93;
+                    break;
+                  case 2 :
+                    pathname = '/eval/hollander'; count = 60;
+                    break;
+                  case 3 :
+                    pathname = '/eval/career'; count = 40;
+                    break;
                   default:
-                    return;
+                    pathname = '/eval';
+                    break;
                 }
+
+                  if(item.finished){
+                    return (
+                      <Item
+                        key={item.id}
+                        onClick={() => hashHistory.push({
+                          pathname,
+                          query: {
+                            categoryId: item.categoryId,
+                            categoryName: item.categoryName,
+                            recordId: item.id,
+                            finishCount: item.finishCount,
+                          }
+                        })}
+                        extra={<span>继续答题({item.finishCount}/{count})</span>}
+                        arrow='horizontal'
+                      >{item.categoryName}
+                        <Brief>{item.createTime}</Brief>
+                      </Item>
+                    )
+                  } else {
+                    return (
+                      <Item
+                        key={item.id}
+                        onClick={() => hashHistory.push({
+                          pathname,
+                          query: {
+                            categoryId: item.categoryId,
+                            categoryName: item.categoryName,
+                            recordId: item.id,
+                            finishCount: item.finishCount,
+                          }
+                        })}
+                        extra={<span style={{color: '#2fc2ba'}}>查看结果</span>}
+                        arrow='horizontal'
+                      >{item.categoryName}
+                        <Brief>{item.createTime}</Brief>
+                      </Item>
+                      )
+                  }
               })
               :
               <Item>没有记录</Item>
