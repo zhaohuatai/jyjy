@@ -65,10 +65,10 @@ import Eval from './routes/eval';
 import MBIT from "./routes/eval/mbit";
 import EvalCareer from "./routes/eval/career";
 import Hollander from "./routes/eval/hollander";
+import EvalResult from './routes/eval/result';
 
 import PlayCourseOrder from "./routes/course/PlayCourseOrder";
 import PlayColumnOrder from "./routes/column/PlayColumnOrder";
-
 const Routers = () => {
   return (
     <Router history={hashHistory}>
@@ -161,6 +161,7 @@ const Routers = () => {
           <Route path="mbit" component={MBIT} />
           <Route path="career" component={EvalCareer} />
           <Route path="hollander" component={Hollander} />
+          <Route path="result" component={EvalResult} />
         </Route>
 
       </Route>

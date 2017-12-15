@@ -33,6 +33,17 @@ class SelectStep2 extends Component {
     }
   }
 
+  onWrapTouchStart = (e) => {
+    // fix touch to scroll background page on iOS
+    if (!/iPhone|iPod|iPad/i.test(navigator.userAgent)) {
+      return;
+    }
+    const pNode = closest(e.target, '.am-modal-content');
+    if (!pNode) {
+      e.preventDefault();
+    }
+  }
+
   render() {
     const {data, submit, display, onPay} = this.props;
     return (
@@ -46,8 +57,9 @@ class SelectStep2 extends Component {
         footer={[
           {text: '提交', onPress: this.handleSubmit},
         ]}
+        wrapProps={{ onTouchStart: this.onWrapTouchStart }}
       >
-        <div>
+        <div style={{ height: 100, overflow: 'scroll' }}>
           <List>
             {
               data.length > 0 ? data.map(i => (

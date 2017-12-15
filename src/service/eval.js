@@ -64,3 +64,11 @@ export function loadRecordItemDtoForCate3Sep2(param) {
     });
   });
 }
+
+export function loadRecordResultDtoByRecordId(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}user/eval/evalSubjectRecord/loadRecordResultDtoByRecordId`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

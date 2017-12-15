@@ -88,9 +88,27 @@ class MBTI extends Component {
 
     if(recordId) {
       // 继续答题
-      loadEvalSubjectRecordItemDtoList({categoryId, recordId}).then(data => {
-        this.setState({ questions: data.data.recordItemDtoList, recordId, cur_index: finishCount})
-      });
+
+      // 判断是否已经完成第一步
+      if(finishCount >= 40){
+        // 进入第二步
+        loadRecordItemDtoForCate3Sep2({recordId: this.state.recordId}).then(data=>{
+          if(data.data.recordItemDtoList.length > 0){
+            // 存在多个6分题，需要选择
+            this.setState({ step2: data.data.recordItemDtoList, step2_show: true })
+          } else {
+            Modal.alert('完毕', '返回测评首页产看结果', [
+              { text: 'OK', onPress: () => hashHistory.push('/eval') },
+            ])
+          }
+        })
+      } else {
+        // 继续第一步
+        loadEvalSubjectRecordItemDtoList({categoryId, recordId}).then(data => {
+          this.setState({ questions: data.data.recordItemDtoList, recordId, cur_index: finishCount})
+        });
+      }
+
     } else {
       // 创建新记录
       createEvalSubjectRecord({categoryId}).then(data => {
@@ -115,14 +133,18 @@ class MBTI extends Component {
       return ;
     }
 
+    Toast.loading('正在加载',0);
+
+
     // 提交答案
     createEvalSubjectRecordItem({
       recordId: this.state.recordId,
       categoryId: this.props.location.query.categoryId,
       subjectId: this.state.questions[this.state.cur_index].evalSubject.id,
       optionCode: this.state.cur_select,
-      //memberId: 1
     }).then(data=>{
+      this.setState({cur_select: null});
+
       // 判断是否结束
       if( data.data.isFininshed){
         // 结束
@@ -133,7 +155,9 @@ class MBTI extends Component {
             // 存在多个6分题，需要选择
             this.setState({ step2: data.data.recordItemDtoList, step2_show: true })
           } else {
-            // 结束
+            Modal.alert('完毕', '返回测评首页产看结果', [
+              { text: 'OK', onPress: () => hashHistory.push('/eval') },
+            ])
           }
         })
       } else {
@@ -144,6 +168,8 @@ class MBTI extends Component {
           Toast.info('没有下一题哦！', 1)
         }
       }
+
+      Toast.hide();
     });
   }
 

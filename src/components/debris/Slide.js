@@ -1,6 +1,6 @@
 import React from 'react';
 import {Carousel} from 'antd-mobile';
-import {API_DOMAIN} from "../../utils/config";
+import {IMG_DOMAIN} from "../../utils/config";
 import {Link} from 'react-router';
 
 const Slide = ({data}) => {
@@ -18,7 +18,7 @@ const Slide = ({data}) => {
             <Link to={`/slide/${ii.id}`} key={ii.id}>
               <div  style={{height: '176px'}}>
                 <img
-                  src={`${API_DOMAIN}${ii.imgUrl}`}
+                  src={`${IMG_DOMAIN}${ii.imgUrl}`}
                   alt={ii.title}
                   style={{width: '100%', height: '176px'}}
                 />

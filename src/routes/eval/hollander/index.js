@@ -79,10 +79,11 @@ class MBTI extends Component {
 
     const categoryId = this.props.location.query.categoryId;
     const recordId = this.props.location.query.recordId;
+    const finishCount = this.props.location.query.finishCount;
 
     if(recordId) {
       loadEvalSubjectRecordItemDtoList({categoryId, recordId}).then(data => {
-        this.setState({ questions: data.data.recordItemDtoList, recordId })
+        this.setState({ questions: data.data.recordItemDtoList, recordId, cur_index: finishCount})
       });
     } else {
       createEvalSubjectRecord({categoryId}).then(data => {
@@ -107,6 +108,8 @@ class MBTI extends Component {
       return ;
     }
 
+    Toast.loading('正在加载',0);
+
     // 提交答案
     createEvalSubjectRecordItem({
       recordId: this.state.recordId,
@@ -117,12 +120,19 @@ class MBTI extends Component {
     }).then(data=>{
       this.setState({cur_select: null});
       console.log(data);
+      if(data.data.isFininshed){
+        Modal.alert('完毕', '返回测评首页产看结果', [
+          { text: 'OK', onPress: () => hashHistory.push('/eval') },
+        ])
+      }
+
       // 切换下一题
       if(this.state.cur_index < this.state.questions.length-1){
         this.setState({cur_index: ++this.state.cur_index})
       } else {
         Toast.info('没有下一题哦！', 1)
       }
+      Toast.hide();
     });
 
 

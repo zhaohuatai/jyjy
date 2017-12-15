@@ -49,7 +49,7 @@ class BigDataIndex extends Component {
                     break;
                 }
 
-                  if(item.finished){
+                  if(!item.finished){
                     return (
                       <Item
                         key={item.id}
@@ -73,7 +73,7 @@ class BigDataIndex extends Component {
                       <Item
                         key={item.id}
                         onClick={() => hashHistory.push({
-                          pathname,
+                          pathname:'/eval/result',
                           query: {
                             categoryId: item.categoryId,
                             categoryName: item.categoryName,
