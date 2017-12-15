@@ -140,7 +140,7 @@ class MBTI extends Component {
     const { cur_index, questions, cur_select, categoryName } = this.state;
 
     return (
-      <div style={{backgroundColor: '#fff', height: '100%', paddingTop: '20px'}}>
+      <div style={{backgroundColor: '#fff', height: '100%', paddingTop: '20px', marginBottom: '104px'}}>
         <h4 style={{ textAlign: 'center', color: '#2fc2ba' }}>{categoryName}</h4>
 
         <div>
@@ -151,6 +151,8 @@ class MBTI extends Component {
 
         <WhiteSpace size='xl'/>
 
+        {
+          this.state.started ?
 
         <List renderHeader={() => <div><span>选择答案</span>  <span style={{float: 'right'}}>进度 {cur_index+1}/{this.state.questions.length}</span></div>}>
           {questions[cur_index].evalDefineOptionList.map(i => (
@@ -159,6 +161,10 @@ class MBTI extends Component {
             </RadioItem>
           ))}
         </List>
+            :
+            null
+
+        }
 
         {
           this.state.started ?

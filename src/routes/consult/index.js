@@ -39,12 +39,12 @@ class Introduce extends Component {
     }
 
     return (
-      <div>
+      <div style={{marginBottom: '104px'}}>
         <div dangerouslySetInnerHTML={{__html: this.state.pubCustomize.content}}
              style={{backgroundColor: '#fff', padding: '15px'}}/>
         <Flex style={style}>
           <Flex.Item>
-            <a href="tel:10086" style={{ color: '#fff' }}>现在电话咨询</a>
+            <a href="tel:053185551680" style={{ color: '#fff' }}>现在电话咨询</a>
           </Flex.Item>
         </Flex>
       </div>

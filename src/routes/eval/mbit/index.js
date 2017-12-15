@@ -135,7 +135,7 @@ class MBTI extends Component {
     const { cur_index, questions, cur_select, categoryName } = this.state;
 
     return (
-      <div style={{backgroundColor: '#fff', height: '100%', paddingTop: '20px'}}>
+      <div style={{backgroundColor: '#fff', height: '100%', paddingTop: '20px', marginBottom: '104px'}}>
         <h4 style={{ textAlign: 'center', color: '#2fc2ba' }}>{categoryName}</h4>
 
         <div>

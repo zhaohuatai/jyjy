@@ -2,7 +2,7 @@ import React from 'react';
 import {Grid} from 'antd-mobile';
 import {Link} from 'react-router';
 
-const FeaturesBox = ({data, columnNum}) => {
+const CategoryGrid = ({data, columnNum}) => {
   const gridData = data.map(item => ({
     icon: (<Link to={{
       pathname: item.url,
@@ -11,7 +11,7 @@ const FeaturesBox = ({data, columnNum}) => {
         categoryName: item.text
       }
     }}>
-      <svg className="icon" aria-hidden="true" style={{width: '1.8em', height: '1.8em'}}>
+      <svg className="icon" aria-hidden="true" style={{width: '2.8em', height: '2.8em'}}>
         <use xlinkHref={`#${item.icon}`}/>
       </svg>
     </Link>),
@@ -21,4 +21,4 @@ const FeaturesBox = ({data, columnNum}) => {
     <Grid data={gridData} columnNum={columnNum} hasLine={false} activeStyle={false}/>
   );
 };
-export default FeaturesBox;
+export default CategoryGrid;
