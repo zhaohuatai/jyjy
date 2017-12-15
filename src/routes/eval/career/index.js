@@ -14,36 +14,25 @@ import SelectStep2 from "../hollander/SelectStep2";
 const Item = List.Item;
 const Brief = Item.Brief;
 const RadioItem = Radio.RadioItem;
+const style = {
+  position: 'fixed',
+  zIndex: '100',
+  bottom: '50px',
+  height: '50px',
+  lineHeight: '50px',
+  width: '100%',
+  textAlign: 'center',
+  color: '#fff',
+  backgroundColor: '#2fc3ba',
+}
 
 class MBTI extends Component {
   state = {
+    started: false,
     start_btn: false,
     questions: [
       {
-        "evalDefineOptionList":[
-          {
-            "categoryId":1,
-            "id":1,
-            "isEnabled":"",
-            "optionCode":11,
-            "optionScore":1,
-            "optionTitle":"A",
-            "optionValue":"1",
-            "recordTime":1513059509380,
-            "status":""
-          },
-          {
-            "categoryId":1,
-            "id":2,
-            "isEnabled":"",
-            "optionCode":12,
-            "optionScore":1,
-            "optionTitle":"B",
-            "optionValue":"2",
-            "recordTime":1513059509380,
-            "status":""
-          }
-        ],
+        "evalDefineOptionList":[],
         "evalSubject":{
           "categoryId":1,
           "createTime":"",
@@ -53,7 +42,9 @@ class MBTI extends Component {
           "remark":"",
           "showIndex":1,
           "status":"",
-          "title":"当你要在一个星期内完成一个大项目，你在开始的时候会 <br/><br/>  A.把要做的不同工作依次列出，<br/><br/>B.马上动工",
+          "title":"    锚，是使船只停泊定位用的铁制器具。职业锚，又称职业系留点（CareerAnchor）。实际就是人们选择和发展自己的职业时所围绕的中心，是指当一个人不得不做出选择的时候，他无论如何都不会放弃的职业中的那种至关重要的东西或价值观。是自我意向的一个习得部分。个人进入早期工作情境后，由习得的实际工作经验所决定，与在经验中自省的动机、价值观、才干相符合，达到自我满足和补偿的一种稳定的职业定位。职业锚强调个人能力、动机和价值观三方面的相互作用与整合。职业锚是个人同工作环境互动作用的产物，在实际工作中是不断调整的。 \n" +
+          "职业锚理论（Career Anchor Theory）产生于在职业生涯规划领域具有“教父”级地位的美国麻省理工大学斯隆商学院、美国著名的职业指导专家埃德加•H•施恩（Edgar.H.Schein）教授领导的专门研究小组，是对该学院毕业生的职业生涯研究中演绎成的。斯隆管理学院的44名MBA毕业生，自愿形成一个小组接受施恩教授长达12年的职业生涯研究，包括面谈、跟踪调查、公司调查、人才测评、问卷等多种方式，最终分析总结出了职业锚(又称职业定位)理论。\n" +
+          "职业锚问卷（Career Anchor Questionaire）是国外职业测评运用最广泛、最有效的工具之一。职业锚问卷是一种职业生涯规划咨询、自我了解的工具，能够协助组织或个人进行更理想的职业生涯发展规划。职业锚倾向没有好坏，请根据第一感觉，不假思索迅速答题。\n",
           "updateTime":""
         },
         "evalSubjectRecordItem":""
@@ -73,11 +64,6 @@ class MBTI extends Component {
     const categoryName = this.props.location.query.categoryName;
 
     this.setState({categoryName});
-
-    Modal.alert('开始答题？', categoryName, [
-      { text: '取消', onPress: () => hashHistory.push('/eval') },
-      { text: '开始', onPress: () => this.handleStart() },
-    ])
   }
 
   handleStart = () => {
@@ -95,7 +81,7 @@ class MBTI extends Component {
         loadRecordItemDtoForCate3Sep2({recordId: this.state.recordId}).then(data=>{
           if(data.data.recordItemDtoList.length > 0){
             // 存在多个6分题，需要选择
-            this.setState({ step2: data.data.recordItemDtoList, step2_show: true })
+            this.setState({ step2: data.data.recordItemDtoList, step2_show: true, started: true })
           } else {
             Modal.alert('完毕', '返回测评首页产看结果', [
               { text: 'OK', onPress: () => hashHistory.push('/eval') },
@@ -105,7 +91,7 @@ class MBTI extends Component {
       } else {
         // 继续第一步
         loadEvalSubjectRecordItemDtoList({categoryId, recordId}).then(data => {
-          this.setState({ questions: data.data.recordItemDtoList, recordId, cur_index: finishCount})
+          this.setState({ questions: data.data.recordItemDtoList, recordId, cur_index: finishCount, started: true})
         });
       }
 
@@ -114,7 +100,7 @@ class MBTI extends Component {
       createEvalSubjectRecord({categoryId}).then(data => {
         this.setState({recordId: data.data.record});
         loadEvalSubjectRecordItemDtoList({categoryId, recordId: data.data.record}).then(data => {
-          this.setState({ questions: data.data.recordItemDtoList })
+          this.setState({ questions: data.data.recordItemDtoList, started: true })
         });
       })
     }
@@ -221,12 +207,22 @@ class MBTI extends Component {
           onPay={(value) => this.handleUpStep2(value)}
         />
 
-        <BottomAction
-          buttons={[
-            {label: '上一题', action: this.handlePrev, backgroundColor: '#fff', color: '#2fc3ba'},
-            {label: '下一题', action: this.handleNext, backgroundColor: '#2fc3ba', color: '#fff' },
-          ]}
-        />
+        {
+          this.state.started ?
+            <BottomAction
+              buttons={[
+                {label: '上一题', action: this.handlePrev, backgroundColor: '#fff', color: '#2fc3ba'},
+                {label: '下一题', action: this.handleNext, backgroundColor: '#2fc3ba', color: '#fff' },
+              ]}
+            />
+            :
+            <Flex style={style}>
+              <Flex.Item onClick={this.handleStart}>
+                开始测评
+              </Flex.Item>
+            </Flex>
+
+        }
       </div>
     );
   }

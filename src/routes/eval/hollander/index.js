@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { hashHistory } from 'react-router';
-import { List, WhiteSpace, Button, WingBlank, Radio, Toast, Modal } from 'antd-mobile';
+import { List, WhiteSpace, Flex, WingBlank, Radio, Toast, Modal } from 'antd-mobile';
 import {
   loadEvalSubjectRecordItemDtoList,
   createEvalSubjectRecord,
@@ -12,35 +12,25 @@ const Item = List.Item;
 const Brief = Item.Brief;
 const RadioItem = Radio.RadioItem;
 
+const style = {
+  position: 'fixed',
+  zIndex: '100',
+  bottom: '50px',
+  height: '50px',
+  lineHeight: '50px',
+  width: '100%',
+  textAlign: 'center',
+  color: '#fff',
+  backgroundColor: '#2fc3ba',
+}
+
 class MBTI extends Component {
   state = {
+    started: false,
     start_btn: false,
     questions: [
       {
-        "evalDefineOptionList":[
-          {
-            "categoryId":1,
-            "id":1,
-            "isEnabled":"",
-            "optionCode":11,
-            "optionScore":1,
-            "optionTitle":"A",
-            "optionValue":"1",
-            "recordTime":1513059509380,
-            "status":""
-          },
-          {
-            "categoryId":1,
-            "id":2,
-            "isEnabled":"",
-            "optionCode":12,
-            "optionScore":1,
-            "optionTitle":"B",
-            "optionValue":"2",
-            "recordTime":1513059509380,
-            "status":""
-          }
-        ],
+        "evalDefineOptionList":[],
         "evalSubject":{
           "categoryId":1,
           "createTime":"",
@@ -50,7 +40,12 @@ class MBTI extends Component {
           "remark":"",
           "showIndex":1,
           "status":"",
-          "title":"当你要在一个星期内完成一个大项目，你在开始的时候会 <br/><br/>  A.把要做的不同工作依次列出，<br/><br/>B.马上动工",
+          "title":"本测验是由美国著名职业教育专家霍兰德的人才测评理论为基础，结合中国广大学生和工作者的实际而编制。 \n" +
+          "根据霍兰德的研究成果和后人的分析论证，按照不同的职业特点和个性特征，一般可以将人分为六类：现实型(R)、探索型(1)、艺术型(A)、社会型(S)、管理型(E)和常规型(C)。这六种类型的人具有不同的典型特征。每种类型的人对相应职业类型感兴趣，人格特征和职业需求进合理搭配的特点。\n" +
+          "同时，人们在择业时主要受三个因素的影响：兴趣(你想做什么——兴趣倾向)、能力(你能做什么——个人经历)和人格(你适合做什么——人格倾向)。以此为依据，本套试题由三部分组成：兴趣倾向问卷、个人经历问卷和人格倾向问卷，分别对测评者的兴趣、能力和人格特点进行测评。通过对测评结果的综合分析，可以帮助测评者发现和确定自己的职业兴趣和能力特长，使我们对与自身性格匹配的职业类别、岗位特质有更为明晰的认识，从而在我们就业、升学、进修或职业转向时，做出最佳的选择。\n" +
+          "该测评适用于高中毕业生、在读大中专生、应届大中专毕业生，以及已参加工作但渴望转行，需发现和确定自己的职业兴趣和能力特长的人士。\n" +
+          "请根据对每一题目的第一印象作答，不必仔细推敲，答案没有好坏、对错之分。具体填写方法是，根据自己的情况每一题回答“是”或“否”\n" +
+          "\n",
           "updateTime":""
         },
         "evalSubjectRecordItem":""
@@ -68,11 +63,6 @@ class MBTI extends Component {
     const categoryName = this.props.location.query.categoryName;
 
     this.setState({categoryName});
-
-    Modal.alert('开始答题？', categoryName, [
-      { text: '取消', onPress: () => hashHistory.push('/eval') },
-      { text: '开始', onPress: () => this.handleStart() },
-    ])
   }
 
   handleStart = () => {
@@ -83,13 +73,13 @@ class MBTI extends Component {
 
     if(recordId) {
       loadEvalSubjectRecordItemDtoList({categoryId, recordId}).then(data => {
-        this.setState({ questions: data.data.recordItemDtoList, recordId, cur_index: finishCount})
+        this.setState({ questions: data.data.recordItemDtoList, recordId, cur_index: finishCount, started: true})
       });
     } else {
       createEvalSubjectRecord({categoryId}).then(data => {
         this.setState({recordId: data.data.record});
         loadEvalSubjectRecordItemDtoList({categoryId, recordId: data.data.record}).then(data => {
-          this.setState({ questions: data.data.recordItemDtoList })
+          this.setState({ questions: data.data.recordItemDtoList, started: true })
         });
       })
     }
@@ -170,12 +160,22 @@ class MBTI extends Component {
           ))}
         </List>
 
-        <BottomAction
-          buttons={[
-            {label: '上一题', action: this.handlePrev, backgroundColor: '#fff', color: '#2fc3ba'},
-            {label: '下一题', action: this.handleNext, backgroundColor: '#2fc3ba', color: '#fff' },
-          ]}
-        />
+        {
+          this.state.started ?
+            <BottomAction
+              buttons={[
+                {label: '上一题', action: this.handlePrev, backgroundColor: '#fff', color: '#2fc3ba'},
+                {label: '下一题', action: this.handleNext, backgroundColor: '#2fc3ba', color: '#fff' },
+              ]}
+            />
+            :
+            <Flex style={style}>
+              <Flex.Item onClick={this.handleStart}>
+                开始测评
+              </Flex.Item>
+            </Flex>
+
+        }
       </div>
     );
   }
