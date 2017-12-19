@@ -16,7 +16,7 @@ const Slide = ({data}) => {
         {data.map(ii => (
           ii.content ?
             <Link to={`/slide/${ii.id}`} key={ii.id}>
-              <div  style={{height: '176px'}}>
+              <div style={{height: '176px'}}>
                 <img
                   src={`${IMG_DOMAIN}${ii.imgUrl}`}
                   alt={ii.title}
@@ -27,7 +27,7 @@ const Slide = ({data}) => {
             :
             <div key={ii.id} style={{height: '176px'}}>
               <img
-                src={`${API_DOMAIN}${ii.imgUrl}`}
+                src={`${IMG_DOMAIN}${ii.imgUrl}`}
                 alt={ii.title}
                 style={{width: '100%', height: '176px'}}
               />

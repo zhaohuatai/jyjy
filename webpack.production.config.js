@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlwebpackPlugin = require('html-webpack-plugin');
 const theme = require('./package.json').theme;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 // 定义了一些文件夹的路径
 const ROOT_PATH = path.resolve(__dirname);
@@ -96,6 +97,7 @@ module.exports = {
         drop_debugger: true,
       },
     }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
   ],
   resolve: {
     extensions: ['.js', '.jsx'],

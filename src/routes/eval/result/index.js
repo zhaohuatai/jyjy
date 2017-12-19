@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { loadRecordResultDtoByRecordId } from '../../../service/eval';
-import { List } from 'antd-mobile';
+import { List, WhiteSpace } from 'antd-mobile';
 import Intro from "../../../components/debris/Intro";
 import { RadarChart, PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, Legend, ResponsiveContainer } from 'recharts';
 
@@ -41,20 +41,26 @@ class EvalResult extends Component {
         <div dangerouslySetInnerHTML={{ __html: evalSubjectRecordResultConclusion.resultCombinConclusion }} style={{ backgroundColor: '#fff', padding: '15px' }} />
         <div dangerouslySetInnerHTML={{ __html: evalSubjectRecordResultConclusion.resultConclusion }} style={{ backgroundColor: '#fff', padding: '15px' }} />
 
-        <ResponsiveContainer width='100%' height={300}>
-          <RadarChart outerRadius={90} width={330} height={250} data={evalSubjectRecordResultList}>
-            <PolarGrid />
-            <PolarAngleAxis dataKey="resultTypeChName" />
-            <PolarRadiusAxis angle={2} domain={[0, 10]} />
-            <Radar name="霍兰德职业倾向" dataKey="score" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
-            <Legend />
-          </RadarChart>
-        </ResponsiveContainer>
-        <List>
+        {
+          evalSubjectRecord.categoryId === 2 ?
+            <ResponsiveContainer width='100%' height={300}>
+              <RadarChart outerRadius={90} width={330} height={250} data={evalSubjectRecordResultList}>
+                <PolarGrid />
+                <PolarAngleAxis dataKey="resultTypeChName" />
+                <PolarRadiusAxis angle={2} domain={[0, 10]} />
+                <Radar name="霍兰德职业倾向" dataKey="score" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+                <Legend />
+              </RadarChart>
+            </ResponsiveContainer>
+            :
+            null
+        }
+
+        <List renderHeader='详细得分'>
         {
           evalSubjectRecordResultList.map(item => {
             return <Item extra={item.score} key={item.id}
-            >{item.resultTypeChName}-{item.resultTypeCode}</Item>
+            >{item.resultTypeChName}</Item>
           })
         }
         </List>

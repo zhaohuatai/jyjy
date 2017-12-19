@@ -147,7 +147,7 @@ class MBTI extends Component {
         <WhiteSpace size='xl'/>
 
 
-        <List renderHeader={() => <div><span>选择答案</span>  <span style={{float: 'right'}}>进度 {cur_index+1}/{this.state.questions.length}</span></div>}>
+        <List renderHeader={() => <div><span>选择答案</span>  <span style={{float: 'right'}}>进度 {parseInt(cur_index, 0) + 1}/{this.state.questions.length}</span></div>}>
           {questions[cur_index].evalDefineOptionList.map(i => (
             <RadioItem key={i.id } checked={cur_select === i.optionCode} onChange={() => this.handleSelect(i.optionCode)}>
               {i.optionTitle}

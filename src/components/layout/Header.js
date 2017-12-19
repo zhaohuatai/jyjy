@@ -98,35 +98,6 @@ class Header extends React.Component {
     return(
       <NavBar
         mode="dark"
-        rightContent={[
-          <Popover
-            key='1'
-            mask
-            overlayClassName="fortest"
-            overlayStyle={{ color: 'currentColor' }}
-            visible={this.state.visible}
-            overlay={[
-              (<Item key="4" value="scan" icon={myImg('tOtXhkIWzwotgGSeptou')} data-seed="logId">Scan</Item>),
-            ]}
-            align={{
-              overflow: { adjustY: 0, adjustX: 0 },
-              offset: [-10, 0],
-            }}
-            onVisibleChange={this.handleVisibleChange}
-            onSelect={this.onSelect}
-          >
-            <div style={{
-              height: '100%',
-              padding: '0 15px',
-              marginRight: '-15px',
-              display: 'flex',
-              alignItems: 'center',
-            }}
-            >
-              <Icon type="ellipsis" />
-            </div>
-          </Popover>
-        ]}
       >
         {this.state.title}
       </NavBar>

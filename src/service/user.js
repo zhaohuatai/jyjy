@@ -88,3 +88,20 @@ export function downloadImage(param) {
     });
   });
 }
+
+// 分享
+export function shareMainPage(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}/user/member/memberShare/shareMainPage`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}
+
+export function shareColumnChannel(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}/user/member/memberShare/shareColumnChannel`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}

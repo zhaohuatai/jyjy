@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { SearchBar, Tabs, Tag, Flex } from 'antd-mobile';
 import { loadDataProfessionSubjectDataSet, loadDataProfessionCategoryDataSet, loadDataProfessionDataSet } from '../../service/profession';
+import TabsTabbar from "./TabsTabbar";
 
 const renderTab = (tab) => {
   return <span key={tab.id} style={{ height: '40px'}}>{tab.name}</span>
@@ -41,7 +42,7 @@ class Specialty extends Component {
       <div style={{ backgroundColor: '#fff' }}>
         {/*<SearchBar placeholder="本科专业名称" />*/}
         
-        <div style={{ height: 500 }}>
+        <div style={{ height: 550 }}>
           <Tabs
             renderTab={renderTab}
             tabs={this.state.tabs}
@@ -50,6 +51,7 @@ class Specialty extends Component {
             tabDirection="vertical"
             onChange={this.handleChangeTab}
             usePaged={false}
+            renderTabBar={TabsTabbar}
           >
             <div style={{ height: '500px', backgroundColor: '#fff', paddingLeft: '10px' }}>
               {
