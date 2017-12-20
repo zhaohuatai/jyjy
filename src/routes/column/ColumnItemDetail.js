@@ -15,14 +15,19 @@ class ColumnDetail extends Component {
     columnChannel: {
       title: ''
     },
-    consultation:[]
+    consultation:[],
+    columnChannelOrderItems: null
   }
 
   componentDidMount() {
     const id = this.props.params.id;
 
     loadItemResDtoByItemId({itemId:id}).then(data => {
-      this.setState({ columnChannelItem: data.data.itemRes.columnChannelItem,  columnChannel: data.data.itemRes.columnChannel})
+      this.setState({
+        columnChannelItem: data.data.itemRes.columnChannelItem,
+        columnChannel: data.data.itemRes.columnChannel,
+        columnChannelOrderItems: data.data.itemRes.columnChannelOrderItems,
+      })
     })
 
     loadWXConfig({ urlx: API_DOMAIN }).then((data) => {
@@ -88,7 +93,8 @@ class ColumnDetail extends Component {
   }
 
   render() {
-    const { presenterName, content, freePay, commentCount, hint, coverUrl, title, price, priceVIP } = this.state.columnChannelItem;
+    const { content, freePay, commentCount, hint, coverUrl, title, price, priceVIP } = this.state.columnChannelItem;
+    const { presenterName } = this.state.columnChannel;
     const tabs = [
       { title: <Badge>详情</Badge> },
       { title: <Badge>评论({commentCount})</Badge> }
@@ -109,7 +115,7 @@ class ColumnDetail extends Component {
         <List>
           <Item
             multipleLine
-            extra={<Button size='small' type='primary' onClick={this.handlePlayOrder}>立即购买</Button>}
+            wrap
           >
             {this.state.columnChannel.title} - {title}
             <Brief>
@@ -123,7 +129,12 @@ class ColumnDetail extends Component {
           initialPage={0}
           onTabClick={this.handleChangeTab}
         >
-          <div dangerouslySetInnerHTML={{ __html: content }} style={{ backgroundColor: '#fff', padding: '15px' }} />
+          {
+            this.state.columnChannelOrderItems ? <div dangerouslySetInnerHTML={{ __html: content }} style={{ backgroundColor: '#fff', padding: '15px' }} />
+              :
+              <div style={{backgroundColor: '#fff', textAlign: 'center', color: '#949494', padding: '10px'}}>
+                <Button size='large' type='primary' onClick={this.handlePlayOrder}>立即购买</Button></div>
+          }
 
           <div>
             <Consulation data={this.state.consultation} id={this.props.params.id}/>

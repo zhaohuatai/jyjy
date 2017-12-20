@@ -64,7 +64,8 @@ class ColumnDetail extends Component {
                     if (item.columnChannelOrderItems) {
                       return (
                         <Item
-                          thumb = {<img style={{ width:'60px', height:'60px' }} src={item.columnChannelItem.coverUrl}/>}
+                          wrap
+                          thumb = {<img style={{ width:'60px', height:'60px' }} src={`${IMG_DOMAIN}${item.columnChannelItem.thumbnailUrl}`}/>}
                           key={item.columnChannelItem.id}
                           extra={<span style={{ color: '#2fc2ba'}}>已购买</span>}
                           arrow="horizontal"
@@ -80,9 +81,10 @@ class ColumnDetail extends Component {
                       );
                     } else {
                       return <Item
-                        thumb = {<img style={{ width:'60px', height:'60px' }} src={item.columnChannelItem.coverUrl}/>}
+                        thumb = {<img style={{ width:'60px', height:'60px' }} src={`${IMG_DOMAIN}${item.columnChannelItem.thumbnailUrl}`}/>}
                         key={item.columnChannelItem.id}
                         arrow="horizontal"
+                        wrap
                         extra={<span style={{ color: '#red'}}> ¥{item.columnChannelItem.price}/<span style={{color: 'red'}}>¥{item.columnChannelItem.priceVIP}</span></span>}
                         onClick={()=>hashHistory.push({
                           pathname: `/columnitem/${item.columnChannelItem.id}`,

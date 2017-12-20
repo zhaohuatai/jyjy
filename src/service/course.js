@@ -52,7 +52,7 @@ export function addPalyRecord(param) {
 
 export function loadVideoPalyAuth(param) {
   return new Promise((resolve, reject) => {
-    post(`${API_DOMAIN}user/course/serviceCourse/loadVideoPalyAuth`, param).then((data) => {
+    post(`${API_DOMAIN}user/course/serviceCourse/loadVideoPlayAuth`, param).then((data) => {
       resolve(data);
     });
   });

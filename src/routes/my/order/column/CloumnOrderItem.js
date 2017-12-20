@@ -15,14 +15,14 @@ const ColumnOrderItem = ({ data, doPay }) => {
         {
           columnChannel.map((item) => {
             const {
-              thumbnailUrl, title, learningCount, id,
+               title, learningCount, id, thumbnailUrl,
             } = item;
 
             return (
               <Item
                 onClick={() => hashHistory.push(`my/order/column/${columnChannelOrder.id}`)}
                 align="top"
-                thumb={<img alt={title} style={{ width: '60px', height: '60px' }} src={thumbnailUrl} />}
+                thumb={<img alt={title} style={{ width: '60px', height: '60px' }} src={`${IMG_DOMAIN}${thumbnailUrl}`} />}
                 multipleLine
                 key={id}
               >
@@ -31,26 +31,32 @@ const ColumnOrderItem = ({ data, doPay }) => {
             );
           })
         }
-        <Card.Footer
-          content={
-            <Flex>
-              <Flex.Item ><span style={{ color: 'red' }}>总价 ¥{columnChannelOrder.payFee * 0.01}</span></Flex.Item>
-              <Flex.Item />
-              <Flex.Item />
-              <Flex.Item>
-                <Button
-                  type="primary"
-                  size="small"
-                  onClick={() => doPay({
-                    id: columnChannelOrder.id,
-                    payFee: columnChannelOrder.payFee,
-                  })}
-                >支付
-                </Button>
-              </Flex.Item>
-            </Flex>
-          }
-        />
+        {
+          columnChannelOrder.orderStatus === 1 ?
+            <Card.Footer
+              content={
+                <Flex>
+                  <Flex.Item ><span style={{ color: 'red' }}>总价 ¥{columnChannelOrder.payFee * 0.01}</span></Flex.Item>
+                  <Flex.Item />
+                  <Flex.Item />
+                  <Flex.Item>
+                    <Button
+                      type="primary"
+                      size="small"
+                      onClick={() => doPay({
+                        id: columnChannelOrder.id,
+                        payFee: columnChannelOrder.payFee,
+                      })}
+                    >支付
+                    </Button>
+                  </Flex.Item>
+                </Flex>
+              }
+            />
+            :
+            null
+        }
+
       </Card>
       <WhiteSpace style={{ backgroundColor: '#f5f5f9' }} />
     </div>

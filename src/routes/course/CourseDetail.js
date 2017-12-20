@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Badge, Tabs, List, WhiteSpace, Button, Toast } from 'antd-mobile';
 import { hashHistory } from 'react-router';
-import VideoPlay from '../../components/aliplayer/VideoPlay';
 import { loadServiceCourseDto,
   addPalyRecord,
   loadVideoPalyAuth,
@@ -11,6 +10,7 @@ import { loadServiceCourseDto,
 } from '../../service/course';
 import Consulation from '../../components/course/Consulation';
 import  BuyCourseItem from '../../components/course/BuyCourseItem';
+import {IMG_DOMAIN} from "../../utils/config";
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -23,9 +23,9 @@ class CourseDetail extends Component {
       serviceCourseItems: [],
       consultation:[],
       cur_courseitem: {
-        videoId: '1',
-        playauth: '1',
-        courseItemId:'1',
+        videoId: null,
+        playauth: '',
+        courseItemId:'',
         record:true,
       },
       buy_display: false
@@ -43,25 +43,33 @@ class CourseDetail extends Component {
         serviceCourse: data.data.serviceCourseDto.serviceCourse,
         serviceCourseItems: data.data.serviceCourseDto.serviceCourseItemResDtoList,
       });
+
+      this.player = new Aliplayer({
+        id: 'Ali_Player', // 容器id
+        vid: '',
+        width: "100%",       // 播放器宽度
+        playauth: '',
+        cover: `${IMG_DOMAIN}${data.data.serviceCourseDto.serviceCourse.coverUrl}`,
+        autoplay: false,
+        rePlay: false,
+        skinLayout:[{"name":"H5Loading","align":"cc"},
+          {"name":"errorDisplay","align":"tlabs","x":0,"y":0},
+          {"name":"infoDisplay","align":"cc"},
+          {"name":"controlBar","align":"blabs","x":0,"y":0,"children":[{"name":"progress","align":"tlabs","x":0,"y":0},
+            {"name":"timeDisplay","align":"tl","x":10,"y":24}]}]
+      });
+
+      this.player.on('play',()=>{
+        if(this.state.cur_courseitem.courseItemId){
+          this.player.play();
+        } else {
+          this.player.pause();
+          Toast.info('请选择章节');
+        }
+      })
     });
 
-    this.player = new Aliplayer({
-      id: 'Ali_Player', // 容器id
-      vid: '',
-      width: "100%",       // 播放器宽度
-      playauth: '',
-      autoplay: false,
-      rePlay: false,
-    });
 
-    this.player.on('play',()=>{
-      if(this.state.cur_courseitem.courseItemId){
-        this.player.play();
-      } else {
-        this.player.pause();
-        Toast.info('请选择章节');
-      }
-    })
   }
 
   handlePlay = (courseItemId) => {
@@ -69,8 +77,8 @@ class CourseDetail extends Component {
       this.setState({
         cur_courseitem: {
           ...this.state.cur_courseitem,
-          videoId: data.data.aliVedioPalyAuthDto.videoId,
-          playauth: data.data.aliVedioPalyAuthDto.playAuth,
+          videoId: data.data.aliVideoPlayAuthDto.videoId,
+          playauth: data.data.aliVideoPlayAuthDto.playAuth,
           courseItemId: courseItemId
         }
       },()=>{
@@ -81,11 +89,11 @@ class CourseDetail extends Component {
 
         this.player = new Aliplayer({
           id: 'Ali_Player', // 容器id
-          vid: data.data.aliVedioPalyAuthDto.videoId,
+          vid: data.data.aliVideoPlayAuthDto.videoId,
           width: "100%",       // 播放器宽度
-          playauth: data.data.aliVedioPalyAuthDto.playAuth,
+          playauth: data.data.aliVideoPlayAuthDto.playAuth,
           autoplay: false,
-          rePlay: false
+          rePlay: false,
         });
 
         this.player.on('play',()=>{
@@ -131,7 +139,7 @@ class CourseDetail extends Component {
 
   render() {
     const {
-      introduction, name, freePay, presenterName, price, priceVIP, remark, tryVideoUrl, learningCount, favoriteCount, consultationCount,
+      introduction, name, freePay, presenterName, price, priceVIP, remark, tryVideoUrl, learningCount, favoriteCount, consultationCount,coverUrl
     } = this.state.serviceCourse;
     const tabs = [
       { title: <Badge>目录</Badge> },
@@ -147,12 +155,6 @@ class CourseDetail extends Component {
 
     return (
       <div>
-        {/*<VideoPlay
-          id={this.state.cur_courseitem.videoId}
-          vid={this.state.cur_courseitem.videoId}
-          playauth={this.state.cur_courseitem.playauth}
-        />*/}
-
         <div  className="prism-player" id='Ali_Player' />
 
         <List>
@@ -204,14 +206,16 @@ class CourseDetail extends Component {
                       >
                         {item.serviceCourseItem.name}
                         <Brief>
-                          ¥{item.serviceCourseItem.price} / VIP价 <span style={{color: 'red'}}>¥{item.serviceCourseItem.priceVIP}</span>
+                          ¥{item.serviceCourseItem.price/100} / VIP价 <span style={{color: 'red'}}>¥{item.serviceCourseItem.priceVIP/100}</span>
                         </Brief>
                       </Item>
                     );
                   } else {
                     return <Item
                       key={item.serviceCourseItem.id}
-                      extra='未购买' arrow="horizontal">
+                      extra='未购买' arrow="horizontal"
+                      onClick={()=>Toast.info('请先购买')}
+                    >
                       {item.serviceCourseItem.name}
                       <Brief>
                         ¥{item.serviceCourseItem.price} / VIP价 <span style={{color: 'red'}}>¥{item.serviceCourseItem.priceVIP}</span>
@@ -233,13 +237,6 @@ class CourseDetail extends Component {
             <Consulation data={this.state.consultation} id={this.state.serviceCourse.id}/>
           </div>
         </Tabs>
-
-        <BuyCourseItem
-          data={this.state.serviceCourseItems}
-          display={this.state.buy_display}
-          onCancle={()=>this.setState({buy_display:false})}
-          onPay={(value) => this.handleBuy(value)}
-        />
       </div>
     );
   }

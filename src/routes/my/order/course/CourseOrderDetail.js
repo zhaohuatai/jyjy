@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { List, WhiteSpace } from 'antd-mobile';
 import { hashHistory } from 'react-router';
 import { loadServiceCourseOrder } from '../../../../service/course';
+import OrderStatus from "../../../../components/debris/OrderStatus";
 
 const Item = List.Item;
 const Brief = List.Item.Brief;
@@ -36,7 +37,7 @@ class ColumnOrderDetail extends Component {
         <List
           renderHeader={'订单详情'}
         >
-          <Item extra={<span style={{color: '#2fc2ba'}}>{orderStatus}</span>}>
+          <Item extra={<OrderStatus orderStatus={orderStatus}/>}>
             订单状态
           </Item>
           <Item extra={<span style={{color: 'red'}}>¥{payFee*0.01}</span>}>
@@ -75,7 +76,7 @@ class ColumnOrderDetail extends Component {
               return (
                 <Item
                   key={item.serviceCourseItem.id}
-                  extra={<span>¥{item.serviceCourseItem.price*0.01} / <span>¥{item.serviceCourseItem.priceVIP*0.01}</span>  </span>}
+                  extra={<span>¥{item.serviceCourseItem.price*0.01} / VIP <span>¥{item.serviceCourseItem.priceVIP*0.01}</span>  </span>}
                   arrow="horizontal"
                   onClick={()=>hashHistory.push(`/course/${item.serviceCourseItem.courseId}`)}
                 >

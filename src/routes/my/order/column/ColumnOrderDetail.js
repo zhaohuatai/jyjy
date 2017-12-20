@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { List, WhiteSpace } from 'antd-mobile';
 import { hashHistory } from 'react-router';
 import { loadColumnChannelOrder } from '../../../../service/column';
+import OrderStatus from "../../../../components/debris/OrderStatus";
+import {IMG_DOMAIN} from "../../../../utils/config";
 
 const Item = List.Item;
 const Brief = List.Item.Brief;
@@ -35,7 +37,7 @@ class ColumnOrderDetail extends Component {
         <List
           renderHeader={'订单详情'}
         >
-          <Item extra={<span style={{color: '#2fc2ba'}}>{orderStatus}</span>}>
+          <Item extra={<OrderStatus orderStatus={orderStatus}/>}>
             订单状态
           </Item>
           <Item extra={<span style={{color: 'red'}}>¥{payFee*0.01}</span>}>
@@ -73,10 +75,11 @@ class ColumnOrderDetail extends Component {
             columnChannelItemResDtoList.map(item => {
               return (
                 <Item
-                  thumb = {<img style={{ width:'60px', height:'60px' }} src={item.columnChannelItem.coverUrl}/>}
+                  thumb = {<img style={{ width:'60px', height:'60px' }} src={`${IMG_DOMAIN}${item.columnChannelItem.coverUrl}`}/>}
                   key={item.columnChannelItem.id}
-                  extra={<span>¥{item.columnChannelItem.price*0.01} / <span>¥{item.columnChannelItem.priceVIP*0.01}</span>  </span>}
+                  extra={<span>¥{item.columnChannelItem.price*0.01} / <span>VIP¥{item.columnChannelItem.priceVIP*0.01}</span>  </span>}
                   arrow="horizontal"
+                  wrap
                   onClick={()=>hashHistory.push({
                     pathname: `/columnitem/${item.columnChannelItem.id}`,
                   })}

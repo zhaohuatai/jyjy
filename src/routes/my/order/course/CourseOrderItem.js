@@ -27,26 +27,32 @@ const CourseOrderItem = ({ data, doPay }) => {
                 key={id}
               >
                 {name}
-                <Brief>学习({learningCount}) 收藏({favoriteCount})</Brief>
+                <Brief>学习({learningCount})</Brief>
               </Item>
             )
           })
         }
-        <Card.Footer
-          content={
-            <Flex>
-              <Flex.Item ><span style={{ color: 'red' }}>总价 ¥{serviceCourseOrder.payFee * 0.01}</span></Flex.Item>
-              <Flex.Item />
-              <Flex.Item />
-              <Flex.Item>
-                <Button
-                  type="primary"
-                  size="small"
-                  onClick={() => doPay({ id: serviceCourseOrder.id, payFee: serviceCourseOrder.payFee })}>支付</Button>
-              </Flex.Item>
-            </Flex>
-          }
-        />
+        {
+          serviceCourseOrder.orderStatus === 1 ?
+            <Card.Footer
+              content={
+                <Flex>
+                  <Flex.Item ><span style={{ color: 'red' }}>总价 ¥{serviceCourseOrder.payFee * 0.01}</span></Flex.Item>
+                  <Flex.Item />
+                  <Flex.Item />
+                  <Flex.Item>
+                    <Button
+                      type="primary"
+                      size="small"
+                      onClick={() => doPay({ id: serviceCourseOrder.id, payFee: serviceCourseOrder.payFee })}>支付</Button>
+                  </Flex.Item>
+                </Flex>
+              }
+            />
+            :
+            null
+        }
+
       </Card>
       <WhiteSpace style={{ backgroundColor: '#f5f5f9' }} />
     </div>

@@ -86,6 +86,7 @@ class PlayColumnOrder extends Component {
             align="top"
             thumb = {<img style={{ width:'60px', height:'60px' }} src={coverUrl}/>}
             multipleLine
+            wrap
           >
             {title}<Brief><span style={{ color: '#red'}}>普通 ¥{price}/<span style={{color: 'red'}}>VIP ¥{priceVIP}</span></span></Brief>
           </Item>

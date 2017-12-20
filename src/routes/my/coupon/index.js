@@ -26,6 +26,9 @@ class MyCoupon extends Component {
       { text: '取消', },
       { text: '兑换', onPress: () => createMemberCoupon({couponId: id}).then(data=>{
         Toast.success('兑换成功');
+        loadMemberCouponDataSet({rows: 1000}).then(data => {
+          this.setState({coupons: data.data.dataSet.rows});
+        });
       }) },
     ])
   }
