@@ -17,7 +17,7 @@ class User extends Component {
 
   handleSignIn = () => {
     Sign().then(data=>{
-      Toast.success('签到成功');
+      Toast.success('签到成功',1);
     })
   }
 

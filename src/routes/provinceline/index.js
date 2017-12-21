@@ -41,7 +41,7 @@ class ProvinceLine extends Component {
   }
 
   handleSearch = () => {
-    Toast.loading('正在获取');
+    Toast.loading('正在获取', 0);
     loadDataScoreLineProvince({
       provinceCode: this.state.provinceCode[0],
       subjectCode: this.state.subjectCode[0],

@@ -26,7 +26,7 @@ class MyInfo extends Component {
         let form = this.props.form.getFieldsValue();
         form.id = this.state.member.id;
         updateMember(form).then(data => {
-          Toast.success('更新成功');
+          Toast.success('更新成功',1);
           hashHistory.push('/my/myinfo');
         })
       } else {
@@ -52,7 +52,7 @@ class MyInfo extends Component {
           isShowProgressTips: 1, // 默认为1，显示进度提示
           success: function (res) {
             downloadImage({mediaId:res.serverId, memberId:this.state.member.id},data=>{
-              Toast.success('更新成功');
+              Toast.success('更新成功',1);
               loadMember().then(data => {
                 this.setState({member: data.data.member});
               });

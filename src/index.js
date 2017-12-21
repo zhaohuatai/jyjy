@@ -4,9 +4,6 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Router from './router';
 
-// mock
-//import './utils/mock';
-
 import './utils/index.scss';
 
 ReactDOM.render(

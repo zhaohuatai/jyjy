@@ -55,7 +55,7 @@ export function get(url, params = '') {
       if (checkCodeResult.code === 200) {
         resolve(responseData);
       } else {
-        Toast.info('This is a toast tips !!!', 1);
+        Toast.info(responseData.message, 1);
         reject(checkCodeResult);
       }
     }).catch((err) => {

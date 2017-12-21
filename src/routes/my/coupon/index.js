@@ -25,7 +25,7 @@ class MyCoupon extends Component {
     Modal.alert('兑换优惠券', '是否立即兑换优惠券', [
       { text: '取消', },
       { text: '兑换', onPress: () => createMemberCoupon({couponId: id}).then(data=>{
-        Toast.success('兑换成功');
+        Toast.success('兑换成功',1);
         loadMemberCouponDataSet({rows: 1000}).then(data => {
           this.setState({coupons: data.data.dataSet.rows});
         });

@@ -33,7 +33,7 @@ const CourseOrderItem = ({ data, doPay }) => {
           })
         }
         {
-          serviceCourseOrder.orderStatus === 1 ?
+          serviceCourseOrder.orderStatus == 1 ?
             <Card.Footer
               content={
                 <Flex>

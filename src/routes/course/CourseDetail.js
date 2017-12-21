@@ -56,15 +56,17 @@ class CourseDetail extends Component {
           {"name":"errorDisplay","align":"tlabs","x":0,"y":0},
           {"name":"infoDisplay","align":"cc"},
           {"name":"controlBar","align":"blabs","x":0,"y":0,"children":[{"name":"progress","align":"tlabs","x":0,"y":0},
-            {"name":"timeDisplay","align":"tl","x":10,"y":24}]}]
+          {"name":"timeDisplay","align":"tl","x":10,"y":24}]}]
       });
 
       this.player.on('play',()=>{
+
         if(this.state.cur_courseitem.courseItemId){
+          // 请求减少播放记录次数
           this.player.play();
         } else {
           this.player.pause();
-          Toast.info('请选择章节');
+          Toast.info('请选择章节',2);
         }
       })
     });
@@ -97,6 +99,7 @@ class CourseDetail extends Component {
         });
 
         this.player.on('play',()=>{
+          console.log('addrecord');
           if(this.state.cur_courseitem.record){
             addPalyRecord({ courseItemId: this.state.cur_courseitem.courseItemId }).then(data => {
               this.setState({
@@ -124,14 +127,14 @@ class CourseDetail extends Component {
 
   handleAddFavorite = () => {
     createServiceCourseFavorite({courseId: this.props.params.id}).then(data => {
-      Toast.success('收藏成功')
+      Toast.success('收藏成功',1)
     })
   }
 
   handleBuy = (value) => {
     console.log(value);
     createServiceCourseOrder({courseItemIds: value}).then(data => {
-      Toast.success('下单成功');
+      Toast.success('下单成功',2);
       this.setState({pub_show: false});
       hashHistory.push('/my/order')
     })
@@ -200,7 +203,7 @@ class CourseDetail extends Component {
                     return (
                       <Item
                         key={item.serviceCourseItem.id}
-                        extra={<CountExtra remianCount={1} totalCount={10} />}
+                        extra={<CountExtra remianCount={item.serviceCourseOrderItemsCount.remainCount} totalCount={item.serviceCourseOrderItemsCount.totleCount} />}
                         arrow="horizontal"
                         onClick={()=>this.handlePlay(item.serviceCourseItem.id)}
                       >
@@ -214,7 +217,7 @@ class CourseDetail extends Component {
                     return <Item
                       key={item.serviceCourseItem.id}
                       extra='未购买' arrow="horizontal"
-                      onClick={()=>Toast.info('请先购买')}
+                      onClick={()=>Toast.info('请先购买', 2)}
                     >
                       {item.serviceCourseItem.name}
                       <Brief>

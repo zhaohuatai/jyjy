@@ -36,21 +36,29 @@ class PlayColumnOrder extends Component {
   handlePlayOrder = () => {
     let memberCouponIds = this.state.select.join();
     createColumnChannelOrder({channelItemIds: this.props.params.id, memberCouponIds }).then(data => {
-      Toast.success('下单成功');
-      hashHistory.push('/my/order')
+      if (data.data.orderDetail.columnChannelOrder.orderStatus == 2){
+        Toast.success('购买成功',1);
+        hashHistory.push(`/columnitem/${this.props.params.id}`);
+      } else {
+        Toast.success('下单成功',1);
+        hashHistory.push('/my/order')
+      }
     })
   }
 
   handlePlayOrderPay = () => {
     let memberCouponIds = this.state.select.join();
     createColumnChannelOrder({channelItemIds: this.props.params.id, memberCouponIds }).then(data => {
-      // Toast.success('下单成功');
-      // console.log(id, payFee);
-      localStorage.ordersId = data.data.orderDetail.columnChannelOrder.id;
-      localStorage.payFee = data.data.orderDetail.columnChannelOrder.payFee;
-      localStorage.orderType = 'column';
+      if (data.data.orderDetail.columnChannelOrder.orderStatus == 2){
+        Toast.success('购买成功',1);
+        hashHistory.push(`/columnitem/${this.props.params.id}`);
+      } else {
+        localStorage.ordersId = data.data.orderDetail.columnChannelOrder.id;
+        localStorage.payFee = data.data.orderDetail.columnChannelOrder.payFee;
+        localStorage.orderType = 'column';
 
-      window.location.href= API_DOMAIN + 'wxpay/enterpay/';
+        window.location.href= API_DOMAIN + 'wxpay/enterpay/';
+      }
     })
   }
 

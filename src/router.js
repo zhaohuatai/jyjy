@@ -69,9 +69,20 @@ import EvalResult from './routes/eval/result';
 
 import PlayCourseOrder from "./routes/course/PlayCourseOrder";
 import PlayColumnOrder from "./routes/column/PlayColumnOrder";
+
+function isWeixinBrowser() {
+  let ua = navigator.userAgent.toLowerCase();
+  return (/micromessenger/.test(ua)) ? true : false ;
+}
+
 const Routers = () => {
+  // if (!isWeixinBrowser()) {
+  //   document.write('<h1 style="text-align: center; margin-top: 200px">请在微信浏览器内访问</h1>')
+  //   return;
+  // }
+
   return (
-    <Router history={hashHistory}>
+    <Router history={hashHistory} >
       <Route path="/" component={App}>
         <IndexRoute component={Index} />
         <Route path="/column" component={Column} />

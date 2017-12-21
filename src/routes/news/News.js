@@ -11,7 +11,11 @@ class News extends Component {
     super(props);
     this.state = {
       cur_page: 1,
-      tabs: [],
+      tabs: [
+          { title: 'First Tab', sub: '1' },
+          { title: 'Second Tab', sub: '2' },
+          { title: 'Third Tab', sub: '3' },
+      ],
       cur_news: [],
       cur_tab_id: 0,
       total: 0 ,
@@ -22,7 +26,7 @@ class News extends Component {
   componentDidMount() {
     loadPubNewsCategoryDataSet({}).then((data) => {
       this.setState( {
-        tabs: data.data.dataSet.rows, 
+        tabs: data.data.dataSet.rows,
         cur_tab_id: data.data.dataSet.rows[0].id,
         total: data.data.dataSet.total
        })
@@ -73,7 +77,7 @@ class News extends Component {
       <Tabs
         tabs={this.state.tabs}
         onChange={this.handleChangeTab}
-        renderTab={tab => <span key={tab.id}>{tab.name}</span>}
+        renderTab={tab => tab.name}
       >
         <List style={{marginBottom:'54px'}}>
           {

@@ -29,7 +29,7 @@ class PlayCourseOrder extends Component {
       this.setState({ serviceCourseItemResDtoList: data.data.serviceCourseDto.serviceCourseItemResDtoList,  serviceCourse: data.data.serviceCourseDto.serviceCourse})
     })
 
-    loadMemberCouponDataSet({rows: 1000}).then(data => {
+    loadMemberCouponDataSet({rows: 1000, status: 1}).then(data => {
       this.setState({coupons: data.data.dataSet.rows});
     });
   }
@@ -38,8 +38,13 @@ class PlayCourseOrder extends Component {
     let courseItemIds = this.state.select_course.join();
     let memberCouponIds = this.state.select_coupon.join();
     createServiceCourseOrder({courseItemIds, memberCouponIds }).then(data => {
-      Toast.success('下单成功');
-      hashHistory.push('/my/order')
+      if (data.data.orderDetail.serviceCourseOrder.orderStatus == 2){
+        Toast.success('购买成功',1);
+        hashHistory.push(`/course/${this.props.params.id}`);
+      } else {
+        Toast.success('下单成功,请去我的订单查看',1);
+        hashHistory.push('/my/order');
+      }
     })
   }
 
@@ -47,13 +52,16 @@ class PlayCourseOrder extends Component {
     let courseItemIds = this.state.select_course.join();
     let memberCouponIds = this.state.select_coupon.join();
     createServiceCourseOrder({courseItemIds, memberCouponIds }).then(data => {
-      // Toast.success('下单成功');
-      // console.log(id, payFee);
-      localStorage.ordersId = data.data.orderDetail.serviceCourseOrder.id;
-      localStorage.payFee = data.data.orderDetail.serviceCourseOrder.payFee;
-      localStorage.orderType = 'course';
+      if (data.data.orderDetail.serviceCourseOrder.orderStatus == 2){
+        Toast.success('购买成功',1);
+        hashHistory.push(`/course/${this.props.params.id}`);
+      } else {
+        localStorage.ordersId = data.data.orderDetail.serviceCourseOrder.id;
+        localStorage.payFee = data.data.orderDetail.serviceCourseOrder.payFee;
+        localStorage.orderType = 'course';
 
-      window.location.href= API_DOMAIN + 'wxpay/enterpay/';
+        window.location.href= API_DOMAIN + 'wxpay/enterpay/';
+      }
     })
   }
 
@@ -131,6 +139,7 @@ class PlayCourseOrder extends Component {
                     data-seed="logId"
                     onChange={() => this.handleCheck(item.memberCoupon.id)}
                     multipleLine
+                    extra={`面值 ¥${item.coupon.faceValue/100}`}
                   >
                     {item.coupon.name}
                   </CheckboxItem>

@@ -124,7 +124,7 @@ class MBTI extends Component {
     console.log('now', this.state)
 
     if (!this.state.cur_select) {
-      Toast.info('请选择答案', '1');
+      Toast.info('请选择答案', 1);
       return;
     }
 

@@ -42,7 +42,7 @@ class Register extends Component {
           create_form.phone = this.state.phone;
           create_form.registId = this.state.registId;
           createAccount(create_form).then(data => {
-            Toast.success('注册成功');
+            Toast.success('注册成功',1);
             hashHistory.push('/')
           })
         } else {
@@ -50,7 +50,7 @@ class Register extends Component {
         }
       });
     } else {
-      Toast.fail('请先验证手机');
+      Toast.fail('请先验证手机',2);
     }
 
   }

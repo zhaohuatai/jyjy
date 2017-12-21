@@ -56,7 +56,7 @@ class Interlocution extends Component {
       this.setState({pub_show:false, pub_content: ''});
 
       if( data.statusCode === 200 ){
-        Toast.success('提问成功')
+        Toast.success('提问成功',1)
       }
     })
   }

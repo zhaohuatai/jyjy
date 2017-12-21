@@ -44,7 +44,7 @@ export function loadTopServiceCourse(param) {
 //  增加播放次数
 export function addPalyRecord(param) {
   return new Promise((resolve, reject) => {
-    post(`${API_DOMAIN}user/course/serviceCourse/addPalyRecord`, param).then((data) => {
+    post(`${API_DOMAIN}user/course/serviceCourse/addPlayRecord`, param).then((data) => {
       resolve(data);
     });
   });

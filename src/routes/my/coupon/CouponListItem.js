@@ -18,7 +18,7 @@ const CouponListItem = ({ data, doExchange }) => {
       extra={<Button size='small' type='primary' onClick={() => doExchange(id)}>兑换</Button>}
     >
       {name}
-      <Brief>需要积分{changePoints} / 面值 <span style={{ color: 'red' }}>¥{faceValue}</span></Brief>
+      <Brief>需要积分{changePoints} / 面值 <span style={{ color: 'red' }}>¥{faceValue/100}</span></Brief>
     </Item>
   );
 };

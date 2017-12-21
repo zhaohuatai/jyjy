@@ -21,7 +21,7 @@ class SelectStep2 extends Component {
 
       this.setState({ select })
     } else {
-      Toast.info('只能选择三道题');
+      Toast.info('只能选择三道题',2);
     }
   }
 
@@ -29,7 +29,7 @@ class SelectStep2 extends Component {
     if(this.state.select.length === 3){
       this.props.onPay(this.state.select.join())
     } else {
-      Toast.info('请选择三道题')
+      Toast.info('请选择三道题',2)
     }
   }
 

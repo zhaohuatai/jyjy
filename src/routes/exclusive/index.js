@@ -28,7 +28,7 @@ class MemberExclusive extends Component {
 
         window.location.href= API_DOMAIN + 'wxpay/enterpay/';
       } else {
-         Toast.fail('开通失败')
+         Toast.fail('开通失败',2)
       }
     })
 
@@ -39,7 +39,7 @@ class MemberExclusive extends Component {
       'VIP认证',
       '请输入升学一卡通卡号和密码',
       (vipNum, vipPwd) => verifyVipCard({vipNum, vipPwd}).then(data => {
-        Toast.success('兑换成功');
+        Toast.success('兑换成功',1);
       }),
       'login-password',
       null,

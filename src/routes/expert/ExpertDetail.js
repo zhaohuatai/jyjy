@@ -22,7 +22,7 @@ class ExpertDetail extends Component {
     createMemberTeacherAppointment({
       teacherId: this.props.params.id,
       phone: this.state.phone}).then(data => {
-        Toast.success('预约成功');
+        Toast.success('预约成功',1);
         this.setState({ phone: '', pub_show: false });
     })
   }
@@ -37,7 +37,7 @@ class ExpertDetail extends Component {
 
   handleAddFavorite = () => {
     createMemberTeacherFavorite({memberId: this.props.params.id}).then(data => {
-      Toast.success('关注成功')
+      Toast.success('关注成功',1)
     })
   }
 

@@ -9,7 +9,7 @@ class Consulation extends Component {
   handleConsultation = (value) => {
     console.log(value);
     createColumnChannelComment({channelItemId: this.props.id, content: value}).then(data => {
-      Toast.success('留言成功')
+      Toast.success('留言成功',1)
     })
   }
 
