@@ -115,12 +115,12 @@ class Index extends Component {
     });
   }
     render() {
-        return (
+      return (
             <div style={{marginBottom:'50px'}}>
               <Slide data={this.state.slide}/>
 
               <FeaturesBox data={this.state.features_data} columnNum={5}/>
-              
+
               <HeadLines data={this.state.top_news}/>
 
               <WhiteSpace size="sm" />
@@ -135,7 +135,7 @@ class Index extends Component {
               <ServiceListPanel list_data={this.state.service_top}/>
 
               <ExpertListPanel list_data={this.state.expert} />
-            
+
               <WhiteSpace size="sm" />
               <PartnerListPanel list_data={this.state.partner} title='合作伙伴' title_icon='icon-kecheng' renderItem={ArticleListItem}/>
             </div>

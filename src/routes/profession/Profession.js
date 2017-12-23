@@ -8,10 +8,10 @@ const renderTab = (tab) => {
   return <span key={tab.id} style={{ height: '40px'}}>{tab.name}</span>
 }
 
-class Specialty extends Component {
+class Profession extends Component {
   state = {
     tabs: [],
-    categorys:[{dataProfessionCategory: {}, dataProfessionList: []}],
+    categorys:[{dataProfessionCategory: {id: 0}, dataProfessionList: []}],
     specicalties: []
   }
 
@@ -41,8 +41,8 @@ class Specialty extends Component {
     return (
       <div style={{ backgroundColor: '#fff' }}>
         {/*<SearchBar placeholder="本科专业名称" />*/}
-        
-        <div style={{ height: 550 }}>
+
+        <div style={{ height: window.innerHeight-100 }}>
           <Tabs
             renderTab={renderTab}
             tabs={this.state.tabs}
@@ -53,7 +53,7 @@ class Specialty extends Component {
             usePaged={false}
             renderTabBar={TabsTabbar}
           >
-            <div style={{ height: '500px', backgroundColor: '#fff', paddingLeft: '10px' }}>
+            <div style={{ height: window.innerHeight-100, backgroundColor: '#fff', paddingLeft: '10px' }}>
               {
                 this.state.categorys.map(item => {
                   return (
@@ -61,13 +61,13 @@ class Specialty extends Component {
                       <h4 style={{color: '#2fc2ba', margin: '10px 0'}}>{item.dataProfessionCategory.name}</h4>
                       <Flex wrap="wrap">
                         {
-                          item.dataProfessionList.map( item => {
+                          item.dataProfessionList.map( itemlist => {
                             return <Link
-                              key={item.id}
+                              key={itemlist.id}
                               style={{ margin: '5px 5px',fontSize: '14px', height: '30px', lineHeight: '30px', display: 'block', textAlign: 'center' }}
-                              to={`/profession/${item.id}`}
+                              to={`/profession/${itemlist.id}`}
                             >
-                              { item.profession }
+                              { itemlist.profession }
                             </Link>
                           })
                         }
@@ -84,4 +84,4 @@ class Specialty extends Component {
   }
 }
 
-export default Specialty;
+export default Profession;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { loadColumnChannelDto } from '../../service/column';
+import { loadColumnChannelDto, isSubscribed, subscribe, subscribeCancel } from '../../service/column';
 import {IMG_DOMAIN} from "../../utils/config";
-import { List, Tabs, Button, Badge, WhiteSpace } from 'antd-mobile';
+import { List, Tabs, Button, Badge, WhiteSpace, Toast } from 'antd-mobile';
 import { hashHistory } from 'react-router';
 
 const Item = List.Item;
@@ -10,14 +10,35 @@ const Brief = Item.Brief;
 class ColumnDetail extends Component {
   state = {
     column:{},
-    column_list:[]
+    column_list:[],
+    subscribed: false
   }
 
   componentDidMount() {
     const id = this.props.params.id;
+
     loadColumnChannelDto({channelId: id}).then(data => {
       this.setState({ column: data.data.columnChannel.columnChannel, column_list: data.data.columnChannel.columnChannelItemResDtoList })
     })
+
+    isSubscribed({channelId: id}).then(data => {
+      this.setState({ subscribed: data.message == 'true' ? true : false });
+    })
+  }
+
+  handleSubscribe = () => {
+    const id = this.props.params.id;
+
+    this.state.subscribed ?
+      subscribeCancel({channelId: id}).then(data => {
+        Toast.success(data.message, 1);
+        this.setState({ subscribed: false })
+      })
+      :
+      subscribe({channelId: id}).then(data => {
+        Toast.success(data.message, 1);
+        this.setState({ subscribed: true })
+      })
   }
 
   render() {
@@ -42,6 +63,7 @@ class ColumnDetail extends Component {
         <List>
           <Item
             multipleLine
+            extra={<Button size='small' type={ this.state.subscribed ? 'default' : 'primary'} onClick={this.handleSubscribe}>{this.state.subscribed ? '取消订阅' : '订阅'}</Button>}
           >
             {title}
             <Brief>

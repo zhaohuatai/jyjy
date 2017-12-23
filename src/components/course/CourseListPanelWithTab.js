@@ -8,10 +8,14 @@ const Brief = Item.Brief;
 
 
 const CourseListPanelWithTab = ({ data, title, title_icon }) => {
-  const tabs = [];
+  let tabs = [
+    { title: <Badge>自招/综评面试</Badge> },
+    { title: <Badge>自招/综评笔试</Badge> },
+  ];
 
-  let newdata = data.slice(0, 2);
+  const newdata = data.slice(0, 2);
 
+  tabs = [];
   newdata.map((category_item) => {
     tabs.push({ title: <Badge>{category_item.courseCategory.categoryName}</Badge> });
   });

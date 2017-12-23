@@ -89,3 +89,28 @@ export function createColumnChannelComment(param) {
     });
   });
 }
+
+export function isSubscribed(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/channel/columnChannel/isSubscribed`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}
+
+export function subscribe(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/channel/columnChannel/subscribe`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}
+
+export function subscribeCancel(param) {
+  return new Promise((resolve, reject) => {
+    post(`${API_DOMAIN}pub/channel/columnChannel/subscribeCancel`, param).then((data) => {
+      resolve(data);
+    });
+  });
+}
+

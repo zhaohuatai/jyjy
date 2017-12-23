@@ -6,6 +6,7 @@ import {loadTopColumnChannelList, loadColumnChannelDataSet} from '../../service/
 import ColumnListItem from '../../components/column/ColumnListItem';
 import {IMG_DOMAIN} from "../../utils/config";
 
+// TODO: example
 
 class Column extends Component {
   state = {

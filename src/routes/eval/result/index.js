@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { loadRecordResultDtoByRecordId } from '../../../service/eval';
 import { List, WhiteSpace } from 'antd-mobile';
 import Intro from "../../../components/debris/Intro";
-import { RadarChart, PolarAngleAxis, PolarGrid, PolarRadiusAxis, Radar, Legend, ResponsiveContainer } from 'recharts';
 import { IMG_DOMAIN } from '../../../utils/config';
 
 const Item = List.Item;
@@ -29,7 +28,7 @@ class EvalResult extends Component {
   }
 
   render() {
-    const { evalSubjectRecordResultConclusion, evalSubjectRecord, evalSubjectRecordResultList, SVG } = this.state.result;
+    const { evalSubjectRecordResultConclusion, evalSubjectRecord, evalSubjectRecordResultList, svg } = this.state.result;
 
     return (
       <div style={{backgroundColor: '#fff' }}>
@@ -44,7 +43,7 @@ class EvalResult extends Component {
 
         {
           evalSubjectRecord.categoryId === 2 ?
-            <img src={`${IMG_DOMAIN}${SVG}`} style={{ width: '100%' }} />
+            <img src={`${IMG_DOMAIN}${svg}`} style={{ width: '100%' }} />
             :
             null
         }
