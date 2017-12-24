@@ -6,7 +6,7 @@ import {loadTopColumnChannelList, loadColumnChannelDataSet} from '../../service/
 import ColumnListItem from '../../components/column/ColumnListItem';
 import {IMG_DOMAIN} from "../../utils/config";
 
-// TODO: example
+// TODO: 显示是否有更新
 
 class Column extends Component {
   state = {
@@ -57,7 +57,7 @@ class Column extends Component {
         <List>
           {
             this.state.columns.map(item => (
-              <ColumnListItem data={item} key={item.id}/>
+              <ColumnListItem data={item} key={item.columnChannel.id}/>
             ))
           }
         </List>

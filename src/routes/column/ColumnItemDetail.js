@@ -120,7 +120,7 @@ class ColumnDetail extends Component {
             {this.state.columnChannel.title} - {title}
             <Brief>
               主讲人：{presenterName} <br />
-              <Price free={freePay} price={price} priceVIP={priceVIP} />
+              <Price free={freePay} price={price/100} priceVIP={priceVIP/100} />
             </Brief>
           </Item>
         </List>
