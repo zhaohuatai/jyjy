@@ -96,7 +96,7 @@
             }
 
             $.ajax({
-              url:'http://jywxsitex.sinogood.com/wxpay/resetOrder',
+              url:'https://jywxsitex.sinogood.com/wxpay/resetOrder',
               type:'post',
               data:resetajaxdata,
               headers:{
@@ -148,7 +148,7 @@
     alert(JSON.stringify(ajaxdata));
 
     $.ajax({
-      url:'http://jywxsitex.sinogood.com/'+ajaxurl,
+      url:'https://jywxsitex.sinogood.com/'+ajaxurl,
       type:'post',
       data:ajaxdata,
       headers:{
@@ -169,7 +169,7 @@
               history.back();
               break;
             case 'memberdeposit':
-              window.location.href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8032839074009dce&redirect_uri=http://jywxsitex.sinogood.com/pub/member/weichatAuth/callBack&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
+              window.location.href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8032839074009dce&redirect_uri=https://jywxsitex.sinogood.com/pub/member/weichatAuth/callBack&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
               break;
             default:
               alert('获取订单信息失败');
