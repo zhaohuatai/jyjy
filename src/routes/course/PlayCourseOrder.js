@@ -114,6 +114,7 @@ class PlayCourseOrder extends Component {
                     data-seed="logId"
                     onChange={() => this.handleCheckCourseItem(item.serviceCourseItem.id)}
                     multipleLine
+                    extra={`¥${item.serviceCourseItem.price/100}`}
                   >
                     {item.serviceCourseItem.name}
                   </CheckboxItem>

@@ -96,7 +96,7 @@ class PlayColumnOrder extends Component {
             multipleLine
             wrap
           >
-            {title}<Brief><span style={{ color: '#red'}}>普通 ¥{price}/<span style={{color: 'red'}}>VIP ¥{priceVIP}</span></span></Brief>
+            {title}<Brief><span style={{ color: '#red'}}>普通 ¥{price/100}/<span style={{color: 'red'}}>VIP ¥{priceVIP/100}</span></span></Brief>
           </Item>
         </List>
 

@@ -76,7 +76,7 @@ class ColumnOrderDetail extends Component {
               return (
                 <Item
                   key={item.serviceCourseItem.id}
-                  extra={<span>¥{item.serviceCourseItem.price*0.01} / VIP <span>¥{item.serviceCourseItem.priceVIP*0.01}</span>  </span>}
+                  extra={<span>¥{item.serviceCourseItem.price/100} / VIP <span>¥{item.serviceCourseItem.priceVIP/100}</span>  </span>}
                   arrow="horizontal"
                   onClick={()=>hashHistory.push(`/course/${item.serviceCourseItem.courseId}`)}
                 >

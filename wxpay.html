@@ -42,7 +42,7 @@
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script>
 
-  $('#totalPrice').html('¥'+localStorage.payFee*0.01);
+  $('#totalPrice').html('¥'+localStorage.payFee/100);
 
   var unifyOrderRe = {};
   var ordertype = localStorage.orderType;
@@ -109,7 +109,7 @@
               },
               error:function(err){
                 localStorage.clear();
-                alert(JSON.stringify(err));
+                //alert(JSON.stringify(err));
                 history.back();
               }
             })
@@ -145,7 +145,7 @@
         break;
     }
 
-    alert(JSON.stringify(ajaxdata));
+    // alert(JSON.stringify(ajaxdata));
 
     $.ajax({
       url:'https://jywxsitex.sinogood.com/'+ajaxurl,
@@ -156,7 +156,7 @@
         'Content-Type':'application/x-www-form-urlencoded;charset=utf-8'
       },
       success:function(data){
-         alert(JSON.stringify(data));
+         // alert(JSON.stringify(data));
 
         unifyOrderRe = data.data.res;
 
@@ -182,7 +182,7 @@
       },
       error:function(err){
         localStorage.clear();
-        alert(JSON.stringify(err));
+        //alert(JSON.stringify(err));
         history.back();
       }
     })

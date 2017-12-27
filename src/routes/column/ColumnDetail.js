@@ -107,7 +107,7 @@ class ColumnDetail extends Component {
                         key={item.columnChannelItem.id}
                         arrow="horizontal"
                         wrap
-                        extra={<span style={{ color: '#red'}}> ¥{item.columnChannelItem.price}/<span style={{color: 'red'}}>¥{item.columnChannelItem.priceVIP}</span></span>}
+                        extra={<span style={{ color: '#red'}}> ¥{item.columnChannelItem.price/100}/<span style={{color: 'red'}}>¥{item.columnChannelItem.priceVIP/100}</span></span>}
                         onClick={()=>hashHistory.push({
                           pathname: `/columnitem/${item.columnChannelItem.id}`,
                           query:{columnName: title}

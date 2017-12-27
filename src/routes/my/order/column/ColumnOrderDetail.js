@@ -77,7 +77,7 @@ class ColumnOrderDetail extends Component {
                 <Item
                   thumb = {<img style={{ width:'60px', height:'60px' }} src={`${IMG_DOMAIN}${item.columnChannelItem.coverUrl}`}/>}
                   key={item.columnChannelItem.id}
-                  extra={<span>¥{item.columnChannelItem.price*0.01} / <span>VIP¥{item.columnChannelItem.priceVIP*0.01}</span>  </span>}
+                  extra={<span>¥{item.columnChannelItem.price/100} / <span>VIP¥{item.columnChannelItem.priceVIP/100}</span>  </span>}
                   arrow="horizontal"
                   wrap
                   onClick={()=>hashHistory.push({

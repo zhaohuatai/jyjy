@@ -221,7 +221,7 @@ class CourseDetail extends Component {
                     >
                       {item.serviceCourseItem.name}
                       <Brief>
-                        ¥{item.serviceCourseItem.price} / VIP价 <span style={{color: 'red'}}>¥{item.serviceCourseItem.priceVIP}</span>
+                        ¥{item.serviceCourseItem.price/100} / VIP价 <span style={{color: 'red'}}>¥{item.serviceCourseItem.priceVIP/100}</span>
                       </Brief>
                       </Item>;
                   }
