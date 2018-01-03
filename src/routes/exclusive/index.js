@@ -15,6 +15,12 @@ class MemberExclusive extends Component {
       "key":"MEMBER_EXCLUSIVE",
       "recordTime":1510736638131,
       "status":""
+    },
+    exchange_show: false,
+    exchange_form: {
+      schoolName: '',
+      vipNum: '',
+      vipPwd: ''
     }
   }
 
@@ -23,7 +29,6 @@ class MemberExclusive extends Component {
       '购买VIP',
       '请输入就读学校',
       (schoolName) => {
-        console.log(schoolName);
         if(schoolName){
           createMemberVipOrder({schoolName}).then(data => {
             if(data.statusCode === 200){
@@ -46,22 +51,22 @@ class MemberExclusive extends Component {
       null,
       ['学校'],
     )
-
-
-
   }
 
   handleExchange = () => {
-    prompt(
-      'VIP认证',
-      '请输入升学一卡通卡号和密码',
-      (vipNum, vipPwd) => verifyVipCard({vipNum, vipPwd}).then(data => {
-        Toast.success('兑换成功',1);
-      }),
-      'login-password',
-      null,
-      ['卡号', '密码'],
-    )
+    this.setState({exchange_show: true});
+  }
+
+  handleCloseExchange = () => {
+    this.setState({exchange_show: false});
+  }
+
+  doExchange = () => {
+    console.log(this.state.exchange_form);
+    this.handleCloseExchange();
+    verifyVipCard(this.state.exchange_form).then(data => {
+      Toast.success('兑换成功',1);
+    })
   }
 
   componentDidMount() {
@@ -81,6 +86,62 @@ class MemberExclusive extends Component {
             {label: '购买VIP', action: this.handlePayVip, backgroundColor: '#2fc3ba', color: '#fff' },
           ]}
         />
+
+        <Modal
+          visible={this.state.exchange_show}
+          transparent
+          maskClosable={false}
+          onClose={this.handleCloseExchange}
+          title="兑换VIP卡"
+          footer={[
+            { text: '取消', onPress: this.handleCloseExchange },
+            { text: '确定', onPress: () => { this.doExchange() } }
+            ]}
+          wrapProps={{ onTouchStart: this.onWrapTouchStart }}
+        >
+          <div>
+            <div className="am-modal-input-container">
+              <div className="am-modal-input">
+                <label>
+                  <input
+                    type="text"
+                    placeholder="学校"
+                    value={this.state.exchange_form.schoolName}
+                    onChange={ e =>
+                      this.setState({exchange_form: {...this.state.exchange_form, schoolName: e.target.value}})
+                    }
+                  />
+                </label>
+              </div>
+            </div>
+            <div className="am-modal-input-container">
+              <div className="am-modal-input">
+                <label>
+                  <input
+                    type="text"
+                    placeholder="学校"
+                    value={this.state.exchange_form.vipNum}
+                    onChange={ e =>
+                      this.setState({exchange_form: {...this.state.exchange_form, vipNum: e.target.value}})
+                    }
+                  />
+                </label>
+              </div>
+              <div className="am-modal-input">
+                <label>
+                  <input
+                    type="password"
+                    placeholder="学校"
+                    value={this.state.exchange_form.vipPwd}
+                    onChange={ e =>
+                      this.setState({exchange_form: {...this.state.exchange_form, vipPwd: e.target.value}})
+                    }
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
+        </Modal>
       </div>
     );
   }

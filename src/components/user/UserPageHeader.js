@@ -7,7 +7,7 @@ const Item = List.Item;
 const Brief = Item.Brief;
 
 const UserPageHeader = ({ data, doSignIn }) => {
-  const { name, profilePicture, points } = data;
+  const { name, profilePicture, points, vipLevel } = data;
 
   return (
     <List>
@@ -20,7 +20,7 @@ const UserPageHeader = ({ data, doSignIn }) => {
           <span style={{ color: '#fff' }}>
             {name}
           </span>
-          <Brief>积分 {points}</Brief>
+          <Brief>积分 {points} { vipLevel == 1 ? <svg className="icon" aria-hidden="true" style={{ width: '2em' }}><use xlinkHref="#icon-VIP1" /></svg> : null}</Brief>
         </Item>
     </List>
   );
