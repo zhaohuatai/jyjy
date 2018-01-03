@@ -19,18 +19,35 @@ class MemberExclusive extends Component {
   }
 
   handlePayVip = () => {
-    createMemberVipOrder().then(data => {
-      if(data.statusCode === 200){
-        console.log(data);
-        localStorage.ordersId = data.data.memberVipOrder.id;
-        localStorage.payFee = data.data.memberVipOrder.payFee;
-        localStorage.orderType = 'memberdeposit';
+    prompt(
+      '购买VIP',
+      '请输入就读学校',
+      (schoolName) => {
+        console.log(schoolName);
+        if(schoolName){
+          createMemberVipOrder({schoolName}).then(data => {
+            if(data.statusCode === 200){
+              console.log(data);
+              localStorage.ordersId = data.data.memberVipOrder.id;
+              localStorage.payFee = data.data.memberVipOrder.payFee;
+              localStorage.orderType = 'memberdeposit';
 
-        window.location.href= API_DOMAIN + 'wxpay/enterpay/';
-      } else {
-         Toast.fail('开通失败',2)
-      }
-    })
+              window.location.href= API_DOMAIN + 'wxpay/enterpay/';
+            } else {
+               Toast.fail('开通失败',2)
+            }
+          })
+        } else {
+          Toast.fail('学校不能为空',1)
+        }
+
+      },
+      'default',
+      null,
+      ['学校'],
+    )
+
+
 
   }
 

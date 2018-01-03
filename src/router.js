@@ -95,7 +95,7 @@ const Routers = () => {
         <Route path="/course/:id" component={CourseDetail} />
         <Route path="/course/playorder/:id" component={PlayCourseOrder} />
 
-        <Route path="/login" component={Login} />
+        {/* <Route path="/login" component={Login} /> */ }
         <Route path="/register" component={Register} />
 
         <Route path="/school" component={School} />

@@ -19,10 +19,10 @@ export default class BottomTab extends React.Component {
     let path_arr  = pathname.split('/');
     return select_path === path_arr[1];
   }
-  
+
   render() {
     return (
-      <div style={{ position: 'fixed', bottom: '0', width: '100%' }}>
+      <div style={{ position: 'fixed', bottom: '-1', width: '100%', zIndex: 999 }}>
         <TabBar
           unselectedTintColor="#949494"
           tintColor="#2fc2ba"
