@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Modal, Toast } from 'antd-mobile';
 import { loadPubCustomize } from '../../service/customize';
 import BottomAction from "../../components/debris/BottomAction";
-import { verifyVipCard, createMemberVipOrder } from '../../service/user';
+import { verifyVipCard, createMemberVipOrder, loadMember } from '../../service/user';
 import { API_DOMAIN } from '../../utils/config';
 const prompt = Modal.prompt;
 
@@ -21,6 +21,9 @@ class MemberExclusive extends Component {
       schoolName: '',
       vipNum: '',
       vipPwd: ''
+    },
+    memberinfo: {
+      vipLevel: 0
     }
   }
 
@@ -65,13 +68,17 @@ class MemberExclusive extends Component {
     console.log(this.state.exchange_form);
     this.handleCloseExchange();
     verifyVipCard(this.state.exchange_form).then(data => {
-      Toast.success('兑换成功',1);
+      Toast.success('恭喜您完成经英教育VIP专享认证',3);
     })
   }
 
   componentDidMount() {
     loadPubCustomize({ key: 'MEMBER_EXCLUSIVE' }).then(data => {
       this.setState({pubCustomize: data.data.pubCustomize})
+    })
+
+    loadMember().then(data => {
+      this.setState({memberinfo: data.data.member})
     })
   }
 
@@ -80,12 +87,23 @@ class MemberExclusive extends Component {
     return (
       <div>
         <div dangerouslySetInnerHTML={{ __html: this.state.pubCustomize.content }} style={{ backgroundColor: '#fff', padding: '15px' }} />
-        <BottomAction
-          buttons={[
-            {label: 'VIP认证', action: this.handleExchange, backgroundColor: '#fff', color: '#2fc3ba'},
-            {label: '购买VIP', action: this.handlePayVip, backgroundColor: '#2fc3ba', color: '#fff' },
-          ]}
-        />
+        {
+          this.state.memberinfo.vipLevel == 1 ?
+            <BottomAction
+            buttons={[
+              {label: '您已经开通VIP', action: () => {}, backgroundColor: '#2fc3ba', color: '#fff' },
+            ]}
+          />
+            :
+
+            <BottomAction
+              buttons={[
+                {label: 'VIP认证', action: this.handleExchange, backgroundColor: '#fff', color: '#2fc3ba'},
+                {label: '购买VIP', action: this.handlePayVip, backgroundColor: '#2fc3ba', color: '#fff' },
+              ]}
+            />
+        }
+
 
         <Modal
           visible={this.state.exchange_show}
@@ -119,7 +137,7 @@ class MemberExclusive extends Component {
                 <label>
                   <input
                     type="text"
-                    placeholder="学校"
+                    placeholder="卡号"
                     value={this.state.exchange_form.vipNum}
                     onChange={ e =>
                       this.setState({exchange_form: {...this.state.exchange_form, vipNum: e.target.value}})
@@ -131,7 +149,7 @@ class MemberExclusive extends Component {
                 <label>
                   <input
                     type="password"
-                    placeholder="学校"
+                    placeholder="密码"
                     value={this.state.exchange_form.vipPwd}
                     onChange={ e =>
                       this.setState({exchange_form: {...this.state.exchange_form, vipPwd: e.target.value}})

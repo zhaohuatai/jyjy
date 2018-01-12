@@ -6,8 +6,6 @@ import {loadTopColumnChannelList, loadColumnChannelDataSet} from '../../service/
 import ColumnListItem from '../../components/column/ColumnListItem';
 import {IMG_DOMAIN} from "../../utils/config";
 
-// TODO: 显示是否有更新
-
 class Column extends Component {
   state = {
     top: [],

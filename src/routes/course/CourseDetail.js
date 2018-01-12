@@ -28,7 +28,14 @@ class CourseDetail extends Component {
         courseItemId:'',
         record:true,
       },
-      buy_display: false
+      buy_display: false,
+      fullScreen: false,
+      videoStyle:{
+        width: '100%',
+        height: '300px',
+        overflow: 'hidden',
+        zIndex: '999'
+      }
     };
 
     this.player = null;
@@ -47,7 +54,7 @@ class CourseDetail extends Component {
       this.player = new Aliplayer({
         id: 'Ali_Player', // 容器id
         vid: '',
-        width: "100%",       // 播放器宽度
+        //width: "100%",       // 播放器宽度
         playauth: '',
         cover: `${IMG_DOMAIN}${data.data.serviceCourseDto.serviceCourse.coverUrl}`,
         autoplay: false,
@@ -56,7 +63,7 @@ class CourseDetail extends Component {
           {"name":"errorDisplay","align":"tlabs","x":0,"y":0},
           {"name":"infoDisplay","align":"cc"},
           {"name":"controlBar","align":"blabs","x":0,"y":0,"children":[{"name":"progress","align":"tlabs","x":0,"y":0},
-          {"name":"timeDisplay","align":"tl","x":10,"y":24}]}]
+          {"name":"timeDisplay","align":"tl","x":10,"y":24}]}],
       });
 
       this.player.on('play',()=>{
@@ -92,10 +99,15 @@ class CourseDetail extends Component {
         this.player = new Aliplayer({
           id: 'Ali_Player', // 容器id
           vid: data.data.aliVideoPlayAuthDto.videoId,
-          width: "100%",       // 播放器宽度
+          //width: "100%",       // 播放器宽度
           playauth: data.data.aliVideoPlayAuthDto.playAuth,
           autoplay: false,
           rePlay: false,
+          useH5Prism:true,
+          x5_video_position:'top', //指定视频在上部显示
+          x5_type:'h5', //声明启用同层H5播放器，支持的值：h5
+          //x5_orientation: 'landscape',
+          //x5_fullscreen: true
         });
 
         this.player.on('play',()=>{
@@ -111,6 +123,26 @@ class CourseDetail extends Component {
             })
           }
         })
+
+        this.player.on('requestFullScreen',()=>{
+          console.log('requestFullScreen');
+          // if(this.player._firstFullscreen)
+          // {
+          //   this.player.cancelFullScreen();
+          //   this._firstFullscreen = false;
+          // }
+          // else
+          // {
+          //   let video=$(that.player.el()).find('video');
+          //   video.addClass('center');
+          // }
+          // this.setState({
+          //   videoStyle: {
+          //     height: '200px'
+          //   }
+          // })\
+        })
+
       });
     })
   }
@@ -158,7 +190,7 @@ class CourseDetail extends Component {
 
     return (
       <div>
-        <div  className="prism-player" id='Ali_Player' />
+        <div className="prism-player" id='Ali_Player' style={this.state.videoStyle}/>
 
         <List>
           <Item

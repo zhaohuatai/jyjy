@@ -23,7 +23,40 @@ import Slide from "../../components/debris/Slide";
 class Index extends Component {
   state = {
     top_news:[],
-    course_global:[],
+    course_global:[
+      {
+        "courseCategory":{
+          "categoryName":"自招/综评面试",
+          "createTime":"",
+          "creator":"",
+          "id":1,
+          "isEnabled":"",
+          "recordTime":1515403769743,
+          "remark":"",
+          "showIndex":"",
+          "status":1,
+          "updateTime":"2017-12-04 13:49:58",
+          "updater":""
+        },
+        "serviceCourseList":[]
+      },
+      {
+        "courseCategory":{
+          "categoryName":"自招/综评笔试",
+          "createTime":"",
+          "creator":"",
+          "id":1,
+          "isEnabled":"",
+          "recordTime":1515403769743,
+          "remark":"",
+          "showIndex":"",
+          "status":1,
+          "updateTime":"2017-12-04 13:49:58",
+          "updater":""
+        },
+        "serviceCourseList":[]
+      },
+    ],
     features_data:[
       {text:'名校库',icon:'icon-xuexiao',url:'/school'},
       {text:'专业库',icon:'icon-zhuanye',url:'/profession'},

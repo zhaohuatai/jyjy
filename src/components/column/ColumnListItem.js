@@ -20,8 +20,7 @@ const ColumnListItem = ({data}) => {
       <Brief style={{fontSize: '12px', marginTop: '0' }}>
         {hint}
         <br />
-        <span style={{ float: 'left'}}>已更新{currentItemNum}期／总{totleItemCount}期</span>
-        <span style={{ float: 'right'}}>{learningCount}人已开通</span>
+        已更新{currentItemNum}期／总{totleItemCount}期 {learningCount}人已开通
       </Brief>
     </Item>
   );

@@ -6,12 +6,12 @@ import CourseListItem from '../course/CourseListItem';
 const Item = List.Item;
 const Brief = Item.Brief;
 
+let tabs = [
+  { title: <Badge>自招/综评面试</Badge> },
+  { title: <Badge>自招/综评笔试</Badge> },
+];
 
 const CourseListPanelWithTab = ({ data, title, title_icon }) => {
-  let tabs = [
-    { title: <Badge>自招/综评面试</Badge> },
-    { title: <Badge>自招/综评笔试</Badge> },
-  ];
 
   const newdata = data.slice(0, 2);
 

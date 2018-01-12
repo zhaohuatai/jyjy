@@ -22,7 +22,7 @@ export default class BottomTab extends React.Component {
 
   render() {
     return (
-      <div style={{ position: 'fixed', bottom: '-1px', width: '100%', zIndex: 999 }}>
+      <div style={{ position: 'fixed', bottom: '-1px', width: '100%', zIndex: 1 }}>
         <TabBar
           unselectedTintColor="#949494"
           tintColor="#2fc2ba"

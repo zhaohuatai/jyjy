@@ -39,8 +39,8 @@ class ColumnDetail extends Component {
 
         wx.ready(function () {
           wx.onMenuShareTimeline({
-            title: '经英教育-首页', // 分享标题
-            link: `${API_DOMAIN}columnitem/${id}`, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            title: '经英教育-专栏', // 分享标题
+            link: `${API_DOMAIN}#/columnitem/${id}`, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: `${API_DOMAIN}static/WechatIMG290.png`, // 分享图标
             success: function () {
               // 用户确认分享后执行的回调函数
@@ -51,9 +51,9 @@ class ColumnDetail extends Component {
           });
 
           wx.onMenuShareAppMessage({
-            title: '经英教育-首页', // 分享标题
+            title: '经英教育-专栏', // 分享标题
             desc: '经英教育-专栏', // 分享描述
-            link: `${API_DOMAIN}columnitem/${id}`, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            link: `${API_DOMAIN}#/columnitem/${id}`, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: `${API_DOMAIN}/static/WechatIMG290.png`, // 分享图标
             success: function () {
               shareColumnChannel({itemId: id}).then(data => {
@@ -63,9 +63,9 @@ class ColumnDetail extends Component {
           });
 
           wx.onMenuShareQQ({
-            title: '经英教育-首页', // 分享标题
+            title: '经英教育-专栏', // 分享标题
             desc: '经英教育-专栏', // 分享描述
-            link: `${API_DOMAIN}columnitem/${id}`, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            link: `${API_DOMAIN}#/columnitem/${id}`, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: `${API_DOMAIN}static/WechatIMG290.png`, // 分享图标
             success: function () {
               shareColumnChannel({itemId: id}).then(data => {
