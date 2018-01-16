@@ -63,7 +63,8 @@ class CourseDetail extends Component {
           {"name":"errorDisplay","align":"tlabs","x":0,"y":0},
           {"name":"infoDisplay","align":"cc"},
           {"name":"controlBar","align":"blabs","x":0,"y":0,"children":[{"name":"progress","align":"tlabs","x":0,"y":0},
-          {"name":"timeDisplay","align":"tl","x":10,"y":24}]}],
+          {"name":"timeDisplay","align":"tl","x":10,"y":24}]},
+          ],
       });
 
       this.player.on('play',()=>{
@@ -91,9 +92,14 @@ class CourseDetail extends Component {
           courseItemId: courseItemId
         }
       },()=>{
-        //console.log(this.state.cur_courseitem);
+        console.log(this.state.cur_courseitem);
         if (this.player){
           this.player.dispose();
+          var div = document.getElementById("Ali_Player");
+          while(div.hasChildNodes()) //当div下还存在子节点时 循环继续
+          {
+            div.removeChild(div.firstChild);
+          }
         }
 
         this.player = new Aliplayer({
@@ -103,11 +109,21 @@ class CourseDetail extends Component {
           playauth: data.data.aliVideoPlayAuthDto.playAuth,
           autoplay: false,
           rePlay: false,
-          useH5Prism:true,
-          x5_video_position:'top', //指定视频在上部显示
-          x5_type:'h5', //声明启用同层H5播放器，支持的值：h5
+          //useH5Prism:true,
+          //x5_video_position:'center', //指定视频在上部显示
+          //x5_type:'h5', //声明启用同层H5播放器，支持的值：h5
           //x5_orientation: 'landscape',
-          //x5_fullscreen: true
+          //x5_fullscreen: true,
+          //playsinline:true,
+          skinLayout: [
+            {"name":"controlBar","align":"blabs","x":0,"y":0,"children":[{"name":"playButton","align":"tl","x":15,"y":26},
+                {"name":"timeDisplay","align":"tl","x":10,"y":24},
+                {"name":"setButton","align":"tr","x":20,"y":25},
+                {"name":"volume","align":"tr","x":20,"y":25},
+                {"name":"progress","align":"tlabs","x":0,"y":0}]},
+            {"name":"bigPlayButton","align":"blabs","x":30,"y":80},
+            {"name":"H5Loading","align":"cc"}
+           ]
         });
 
         this.player.on('play',()=>{
@@ -190,8 +206,7 @@ class CourseDetail extends Component {
 
     return (
       <div>
-        <div className="prism-player" id='Ali_Player' style={this.state.videoStyle}/>
-
+        <div dangerouslySetInnerHTML={{__html: '<div className="prism-player" id=\'Ali_Player\' style={this.state.videoStyle}/>'}}></div>
         <List>
           <Item
             multipleLine
