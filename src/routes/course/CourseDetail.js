@@ -78,8 +78,6 @@ class CourseDetail extends Component {
         }
       })
     });
-
-
   }
 
   handlePlay = (courseItemId) => {

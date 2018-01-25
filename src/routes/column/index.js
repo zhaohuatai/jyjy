@@ -4,7 +4,8 @@ import {Link} from 'react-router';
 import {loadTopColumnChannelList, loadColumnChannelDataSet} from '../../service/column';
 
 import ColumnListItem from '../../components/column/ColumnListItem';
-import {IMG_DOMAIN} from "../../utils/config";
+import {IMG_DOMAIN, API_DOMAIN} from "../../utils/config";
+import WXshare from '../../utils/WXshare';
 
 class Column extends Component {
   state = {
@@ -20,6 +21,12 @@ class Column extends Component {
     loadColumnChannelDataSet().then(data => {
       this.setState({columns: data.data.dataSet.rows});
     })
+
+    WXshare({
+      title: '经英教育-专栏',
+      link: `${API_DOMAIN}#/column`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
   }
 
   render() {
