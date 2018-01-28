@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {loadPubCustomize} from '../../service/customize';
 import {Flex} from 'antd-mobile';
 import BottomAction from "../../components/debris/BottomAction";
+import WXshare from '../../utils/WXshare';
+import { API_DOMAIN } from '../../utils/config';
 
 class Introduce extends Component {
   state = {
@@ -18,7 +20,13 @@ class Introduce extends Component {
   componentDidMount() {
     loadPubCustomize({key: 'CONSULT'}).then(data => {
       this.setState({pubCustomize: data.data.pubCustomize})
-    })
+    });
+
+    WXshare({
+      title: '经英教育-咨询',
+      link: `${API_DOMAIN}#/consult`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
   }
 
   handlePhone = () => {

@@ -10,6 +10,8 @@ import {
 } from '../../../service/eval';
 import BottomAction from "../../../components/debris/BottomAction";
 import SelectStep2 from "../hollander/SelectStep2";
+import WXshare from '../../../utils/WXshare';
+import { API_DOMAIN } from '../../../utils/config';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -73,6 +75,12 @@ class MBTI extends Component {
     const categoryName = this.props.location.query.categoryName;
 
     this.setState({categoryName});
+
+    WXshare({
+      title: '经英教育-智能测评-职业锚',
+      link: `${API_DOMAIN}#/eval/career`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
   }
 
   handleStart = () => {

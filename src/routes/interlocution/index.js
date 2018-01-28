@@ -6,6 +6,8 @@ import InterlocutionItem from '../../components/interlocution/InterlocutionItem'
 import Fixed from '../../components/debris/Fixed';
 import Consultation from '../../components/interlocution/Consultation';
 import TabsTabbar from '../../components/interlocution/TabsTabbar';
+import WXshare from '../../utils/WXshare';
+import { API_DOMAIN } from '../../utils/config';
 
 const renderTab = (tab) => {
   return <span key={tab.id} style={{height: '60px'}}>{tab.categoryName}</span>
@@ -32,6 +34,12 @@ class Interlocution extends Component {
     loadInterlocutionConsultationDataSet().then(data=>{
       this.setState({consultation: data.data.dataSet.rows})
     })
+
+    WXshare({
+      title: '经英教育-百科问答',
+      link: `${API_DOMAIN}#/interlocution`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
   }
 
   handleRefresh = (params) =>{

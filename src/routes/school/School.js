@@ -4,6 +4,8 @@ import SchoolListItem from '../../components/school/SchoolListItem';
 import { loadDataUniversityDataSet } from '../../service/school';
 import { loadProvinceList } from '../../service/dic';
 import LoadMore from '../../components/loadmore/LoadMore';
+import WXshare from '../../utils/WXshare';
+import { API_DOMAIN } from '../../utils/config';
 
 class School extends Component {
   constructor(props){
@@ -39,6 +41,13 @@ class School extends Component {
       }else{
         this.setState({ list: data.data.dataSet.rows, loadmore_disable: true });
       }
+
+      WXshare({
+        title: '经英教育-高校库',
+        desc: '经英教育-高校库',
+        link: `${API_DOMAIN}#/school`,
+        imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+      });
     });
 
     loadProvinceList({}).then(data => {
@@ -54,6 +63,12 @@ class School extends Component {
       filter[0] = data.data.provinceList;
 
       this.setState({ filter: filter });
+    });
+
+    WXshare({
+      title: '经英教育-名校库',
+      link: `${API_DOMAIN}#/school`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }
 

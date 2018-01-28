@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { List, Accordion, WhiteSpace } from 'antd-mobile';
 import { loadDataCareer } from '../../service/career';
+import WXshare from '../../utils/WXshare';
+import { API_DOMAIN } from '../../utils/config';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -41,6 +43,12 @@ class CareerDetail extends Component {
     const id = this.props.params.id;
     loadDataCareer({ id }).then((data) => {
       this.setState({ career: data.data.dataCareer });
+    });
+
+    WXshare({
+      title: '经英教育',
+      link: `${API_DOMAIN}#/career/${id}`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }
 

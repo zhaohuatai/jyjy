@@ -9,6 +9,8 @@ import { loadEnrollAutoAwardRecommendDataSet,
 import BigDataListItem from '../../../components/bigdata/bigdata/BigDataListItem';
 import ListHeader from '../../../components/listpanel/ListHeader';
 import LoadMore from '../../../components/loadmore/LoadMore';
+import WXshare from '../../../utils/WXshare';
+import { API_DOMAIN } from '../../../utils/config';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -34,6 +36,12 @@ class Award extends Component {
         item.label = item.name;
       });
       this.setState({ category_list: data.data.dataSet.rows })
+    });
+
+    WXshare({
+      title: '经英教育-奖项评测',
+      link: `${API_DOMAIN}#/award`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }
 

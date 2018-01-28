@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { loadPubCustomize } from '../../service/customize';
+import WXshare from '../../utils/WXshare';
+import { API_DOMAIN } from '../../utils/config';
 
 class Introduce extends Component {
   state = {
@@ -17,6 +19,12 @@ class Introduce extends Component {
     loadPubCustomize({ key: 'INTRODUCE' }).then(data => {
       this.setState({pubCustomize: data.data.pubCustomize})
     })
+
+    WXshare({
+      title: '经英教育-经英简介',
+      link: `${API_DOMAIN}#/introduce`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
   }
 
   render() {

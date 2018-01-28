@@ -6,6 +6,7 @@ import {loadMemberCouponDataSet} from '../../service/coupon';
 
 import { List, Tabs, Button, Badge, Checkbox, Toast } from 'antd-mobile';
 import {API_DOMAIN} from "../../utils/config";
+import WXshare from '../../utils/WXshare';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -30,6 +31,12 @@ class PlayColumnOrder extends Component {
 
     loadMemberCouponDataSet({rows: 1000}).then(data => {
       this.setState({coupons: data.data.dataSet.rows});
+    });
+
+    WXshare({
+      title: '经英教育',
+      link: `${API_DOMAIN}#/`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }
 

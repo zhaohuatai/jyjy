@@ -137,10 +137,6 @@ const Routers = () => {
           <Route path="third/:id" component={ServiceThird} />
         </Route>
 
-        <Route path="/service/:id" component={EntranceDetail} />
-        <Route path="/service" component={Service} />
-        <Route path="/servicethird/:id" component={ServiceThird} />
-
         <Route path="/join" component={Join} />
         <Route path="/employ" component={Employ} />
         <Route path="/memberexclusive" component={MemberExclusive} />

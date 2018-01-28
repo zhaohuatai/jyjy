@@ -7,6 +7,8 @@ import {
   createEvalSubjectRecordItem
 } from '../../../service/eval';
 import BottomAction from "../../../components/debris/BottomAction";
+import WXshare from '../../../utils/WXshare';
+import { API_DOMAIN } from '../../../utils/config';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -74,6 +76,12 @@ class MBTI extends Component {
   componentDidMount() {
     const categoryName = this.props.location.query.categoryName;
     this.setState({categoryName});
+
+    WXshare({
+      title: '经英教育-智能测评-MBIT',
+      link: `${API_DOMAIN}#/eval/mbit`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
   }
 
   handleStart = () => {

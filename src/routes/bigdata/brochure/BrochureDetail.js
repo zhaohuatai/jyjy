@@ -3,6 +3,7 @@ import { loadEnrollAutoRecruitBrochureDataSet } from '../../../service/bigdata';
 import { List, WhiteSpace, Accordion } from 'antd-mobile';
 import { loadDataUniversity } from '../../../service/school';
 import {API_DOMAIN} from "../../../utils/config";
+import WXshare from '../../../utils/WXshare';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -47,6 +48,12 @@ class BrochureDetail extends Component {
     });
     loadEnrollAutoRecruitBrochureDataSet({ universityId: id }).then((data) => {
       this.setState({ brochures: data.data.dataSet.rows });
+    });
+
+    WXshare({
+      title: '经英教育-招生简章',
+      link: `${API_DOMAIN}#/bigdata/brochure/${id}`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }
 

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { createForm } from 'rc-form';
-import { WECHAT_LOGIN } from '../../utils/config';
+import { WECHAT_LOGIN, API_DOMAIN } from '../../utils/config';
 import { hashHistory } from 'react-router'
 import { List, InputItem, Button, Toast, Modal } from 'antd-mobile';
 import { loadDicData } from '../../service/dic';
 import SMSVerification from "./SMSVerification";
 import {createAccount, ishaveOpenId} from "../../service/user";
+import WXshare from '../../utils/WXshare';
 
 const Item = List.Item;
 
@@ -31,6 +32,12 @@ class Register extends Component {
           { text: '登录', onPress: () => window.location.href = WECHAT_LOGIN },
         ]);
       }
+    });
+
+    WXshare({
+      title: '经英教育',
+      link: `${API_DOMAIN}#/register`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }
 

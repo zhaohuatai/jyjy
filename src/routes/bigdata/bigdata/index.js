@@ -3,6 +3,8 @@ import { List, WhiteSpace } from 'antd-mobile';
 import { loadEnrollAutoBigdataDataSet } from '../../../service/bigdata';
 import BigDataListItem from '../../../components/bigdata/bigdata/BigDataListItem';
 import LoadMore from '../../../components/loadmore/LoadMore';
+import WXshare from '../../../utils/WXshare';
+import { API_DOMAIN } from '../../../utils/config';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -17,6 +19,12 @@ class BigData extends Component {
 
   componentDidMount() {
     this.handleRefresh();
+
+    WXshare({
+      title: '经英教育-自招大数据',
+      link: `${API_DOMAIN}#/bigdata/bigdata`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
   }
 
   handleRefresh = (params) =>{

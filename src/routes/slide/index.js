@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { loadPubSlide } from '../../service/slide';
-import {IMG_DOMAIN} from "../../utils/config";
+import { API_DOMAIN, IMG_DOMAIN } from '../../utils/config';
+import WXshare from '../../utils/WXshare';
 
 class SlideDetail extends Component {
   state = {
@@ -27,6 +28,12 @@ class SlideDetail extends Component {
     loadPubSlide({id}).then(data => {
       this.setState({pubSlide: data.data.pubSlide})
     })
+
+    WXshare({
+      title: '经英教育',
+      link: `${API_DOMAIN}#/slide/${id}`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
   }
 
 

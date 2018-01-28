@@ -4,6 +4,7 @@ import { loadPubCustomize } from '../../service/customize';
 import BottomAction from "../../components/debris/BottomAction";
 import { verifyVipCard, createMemberVipOrder, loadMember } from '../../service/user';
 import { API_DOMAIN } from '../../utils/config';
+import WXshare from '../../utils/WXshare';
 const prompt = Modal.prompt;
 
 class MemberExclusive extends Component {
@@ -80,6 +81,12 @@ class MemberExclusive extends Component {
     loadMember().then(data => {
       this.setState({memberinfo: data.data.member})
     })
+
+    WXshare({
+      title: '经英教育-会员专享',
+      link: `${API_DOMAIN}#/memberexclusive`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
   }
 
 

@@ -5,7 +5,8 @@ import ColumnListItem from '../../components/column/ColumnListItem';
 import ListPanel from '../../components/listpanel/ListPanel';
 import CourseListItem from '../../components/course/CourseListItem';
 import CourseListPanel from "../../components/course/CourseListPanel";
-import {IMG_DOMAIN} from "../../utils/config";
+import { API_DOMAIN, IMG_DOMAIN } from '../../utils/config';
+import WXshare from '../../utils/WXshare';
 
 class Course extends Component {
   state = {
@@ -21,6 +22,12 @@ class Course extends Component {
     loadServiceCourseGlobal({rows: 3}).then(data => {
       this.setState({course_global: data.data.resList})
     })
+
+    WXshare({
+      title: '经英教育-课程',
+      link: `${API_DOMAIN}#/course`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
   }
 
   render() {

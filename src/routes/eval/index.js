@@ -3,6 +3,8 @@ import {WhiteSpace, List} from 'antd-mobile';
 import {hashHistory} from 'react-router';
 import CategoryGrid from '../../components/eval/CategoryGrid';
 import {loadEvalCategoryList, loadEvalSubjectRecordDataSet} from '../../service/eval';
+import WXshare from '../../utils/WXshare';
+import { API_DOMAIN } from '../../utils/config';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -20,7 +22,13 @@ class BigDataIndex extends Component {
   componentDidMount() {
     loadEvalSubjectRecordDataSet({rows: 1000}).then(data => {
       this.setState({records: data.data.dataSet.rows});
-    })
+    });
+
+    WXshare({
+      title: '经英教育-智能测评',
+      link: `${API_DOMAIN}#/eval`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
   }
 
   render() {

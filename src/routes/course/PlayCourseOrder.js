@@ -6,6 +6,7 @@ import {loadMemberCouponDataSet} from '../../service/coupon';
 
 import { List, Tabs, Button, Badge, Checkbox, Toast } from 'antd-mobile';
 import {API_DOMAIN} from "../../utils/config";
+import WXshare from '../../utils/WXshare';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -24,6 +25,12 @@ class PlayCourseOrder extends Component {
 
   componentDidMount() {
     const id = this.props.params.id;
+
+    WXshare({
+      title: '经英教育',
+      link: `${API_DOMAIN}#/`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
 
     loadServiceCourseDto({courseId:id}).then(data => {
       this.setState({ serviceCourseItemResDtoList: data.data.serviceCourseDto.serviceCourseItemResDtoList,  serviceCourse: data.data.serviceCourseDto.serviceCourse})

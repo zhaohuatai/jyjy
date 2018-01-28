@@ -3,6 +3,8 @@ import { List, WhiteSpace } from 'antd-mobile';
 import { loadServiceCourseDataSet } from '../../service/course';
 import CourseListItem from '../../components/course/CourseListItem';
 import LoadMore from '../../components/loadmore/LoadMore';
+import WXshare from '../../utils/WXshare';
+import { API_DOMAIN } from '../../utils/config';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -20,6 +22,12 @@ class CourseCat extends Component {
     const id = this.props.params.id;
 
     this.handleRefresh({ categoryId: id});
+
+    WXshare({
+      title: '经英教育',
+      link: `${API_DOMAIN}#/coursecat/${id}`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
 
   }
 

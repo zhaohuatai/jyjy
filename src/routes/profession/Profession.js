@@ -3,6 +3,8 @@ import { Link } from 'react-router';
 import { SearchBar, Tabs, Tag, Flex } from 'antd-mobile';
 import { loadDataProfessionSubjectDataSet, loadDataProfessionCategoryDataSet, loadDataProfessionDataSet } from '../../service/profession';
 import TabsTabbar from "./TabsTabbar";
+import WXshare from '../../utils/WXshare';
+import { API_DOMAIN } from '../../utils/config';
 
 const renderTab = (tab) => {
   return <span key={tab.id} style={{ height: '40px'}}>{tab.name}</span>
@@ -22,6 +24,12 @@ class Profession extends Component {
         this.setState({ categorys: data.data.DataSetDto.rows });
       })
     })
+
+    WXshare({
+      title: '经英教育-专业库',
+      link: `${API_DOMAIN}#/profession`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
   }
 
   handleChangeTab = (tab, index) =>{

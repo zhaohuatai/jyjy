@@ -5,6 +5,8 @@ import BigDataListPanel from '../../components/bigdata/bigdata/BigDataListPanel'
 import { loadEnrollAutoBigdataDataSet } from '../../service/bigdata';
 import { loadPubSlideDataSet } from '../../service/slide';
 import Slide from '../../components/debris/Slide';
+import WXshare from '../../utils/WXshare';
+import { API_DOMAIN } from '../../utils/config';
 
 class BigDataIndex extends Component {
   state = {
@@ -26,6 +28,12 @@ class BigDataIndex extends Component {
     loadPubSlideDataSet({rows: 100, locationCode: 'ZZ'}).then(data => {
       this.setState({ slide: data.data.dataSet.rows });
     })
+
+    WXshare({
+      title: '经英教育-自招大数据',
+      link: `${API_DOMAIN}#/bigdata`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
   }
 
   render() {

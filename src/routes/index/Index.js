@@ -7,7 +7,7 @@ import { loadPubNewsDataSet } from '../../service/news';
 import { loadPubSlideDataSet } from '../../service/slide';
 import { loadServiceCourseGlobal } from '../../service/course';
 import { loadIndexCateDtoList } from '../../service/service';
-import { loadWXConfig, shareMainPage } from '../../service/user';
+import { loadWXConfig, shareColumnChannel, shareMainPage } from '../../service/user';
 
 import FeaturesBox from '../../components/featuresbox';
 import HeadLines from '../../components/headlines/HeadLines';
@@ -19,6 +19,7 @@ import ServiceListPanel from '../../components/service/ServiceListPanel';
 import {API_DOMAIN} from "../../utils/config";
 import CourseListPanelWithTab from "../../components/course/CourseListPanelWithTab";
 import Slide from "../../components/debris/Slide";
+import WXshare from '../../utils/WXshare';
 
 class Index extends Component {
   state = {
@@ -146,6 +147,18 @@ class Index extends Component {
     //     });
     //   }
     // });
+
+    WXshare({
+      title: '经英教育-专栏', // 分享标题
+      link: `${API_DOMAIN}#/`, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+      imgUrl: `${API_DOMAIN}/static/WechatIMG290.png`, // 分享图标
+      success: function () {
+        shareMainPage()
+          .then(data => {
+            Toast.success(data.message);
+          })
+      }
+    });
   }
     render() {
       return (

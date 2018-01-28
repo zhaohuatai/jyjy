@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { List, WhiteSpace, Flex, Tabs, SegmentedControl, WingBlank, Modal } from 'antd-mobile';
-import { SCH_BADGE } from '../../utils/config';
+import { API_DOMAIN, SCH_BADGE } from '../../utils/config';
 import { loadDataUniversity, loadDataScoreLineDataSet } from '../../service/school';
 import NumberInfo from '../../components/school/NumberInfo';
 import Intro from '../../components/debris/Intro';
 import SchoolLineList from '../../components/school/SchoolLineList';
 import { loadDicData } from '../../service/dic';
+import WXshare from '../../utils/WXshare';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -64,6 +65,12 @@ class SchoolDetail extends Component {
     }).then(data => {
       this.setState({lines_data: data.data.dataSet.rows})
     })
+
+    WXshare({
+      title: '经英教育-名校库',
+      link: `${API_DOMAIN}#/school/${id}`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
   }
 
   onChangeFK = (e) => {

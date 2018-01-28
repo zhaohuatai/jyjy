@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Carousel, List, Accordion, WhiteSpace } from 'antd-mobile';
 import { hashHistory } from 'react-router';
-import {IMG_DOMAIN} from "../../utils/config";
+import { API_DOMAIN, IMG_DOMAIN } from '../../utils/config';
 import ServiceListPanel from '../../components/service/ServiceListPanel';
 import { loadCateFirstDtoList } from '../../service/service';
+import WXshare from '../../utils/WXshare';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -19,6 +20,12 @@ class Service extends Component {
       this.setState({
         entranceCatefirstDtoList: data.data.entranceCatefirstDtoList
       });
+    });
+
+    WXshare({
+      title: '经英教育-捷径升学',
+      link: `${API_DOMAIN}#/service`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }
 

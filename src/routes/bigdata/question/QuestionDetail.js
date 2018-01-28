@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { loadEnrollAutoQuestion } from '../../../service/bigdata';
 import { List } from 'antd-mobile';
+import { API_DOMAIN } from '../../../utils/config';
+import WXshare from '../../../utils/WXshare';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -28,6 +30,12 @@ class QuestionDetail extends Component {
     const id = this.props.params.id;
     loadEnrollAutoQuestion({ id }).then( data => {
       this.setState({ data: data.data.enrollAutoQuestion });
+    });
+
+    WXshare({
+      title: '经英教育-自招题库',
+      link: `${API_DOMAIN}#/bigdata/question/${id}`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }
 

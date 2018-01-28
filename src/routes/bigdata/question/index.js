@@ -4,6 +4,8 @@ import { List, WhiteSpace, Tabs } from 'antd-mobile';
 import { loadEnrollAutoQuestionCategoryDataSet, loadEnrollAutoQuestionDataSet } from '../../../service/bigdata';
 import BigDataListItem from '../../../components/bigdata/bigdata/BigDataListItem';
 import LoadMore from '../../../components/loadmore/LoadMore';
+import WXshare from '../../../utils/WXshare';
+import { API_DOMAIN } from '../../../utils/config';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -26,7 +28,13 @@ class Question extends Component {
         total: data.data.dataSet.total
       })
       this.handleRefresh({categoryId: data.data.dataSet.rows[0].id})
-    })
+    });
+
+    WXshare({
+      title: '经英教育-自招题库',
+      link: `${API_DOMAIN}#/bigdata/question`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
   }
 
   handleRefresh = (params) =>{

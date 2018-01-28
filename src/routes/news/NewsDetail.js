@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { loadPubNews } from '../../service/news';
 import { List } from 'antd-mobile';
+import WXshare from '../../utils/WXshare';
+import { API_DOMAIN } from '../../utils/config';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -29,6 +31,12 @@ class NewsDetail extends Component {
     loadPubNews({ id }).then( data => {
       this.setState({ news: data.data.pubNews });
     });
+
+    WXshare({
+      title: '经英教育-新闻',
+      link: `${API_DOMAIN}#/news/${id}`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
   }
 
   render() {
@@ -40,7 +48,7 @@ class NewsDetail extends Component {
         >
           {this.state.news.title}  <Brief>{this.state.news.createTime}</Brief>
         </Item>
-        <div dangerouslySetInnerHTML={{ __html: this.state.news.content }} style={{ backgroundColor: '#fff', padding: '15px' }} />      
+        <div dangerouslySetInnerHTML={{ __html: this.state.news.content }} style={{ backgroundColor: '#fff', padding: '15px' }} />
       </div>
     );
   }

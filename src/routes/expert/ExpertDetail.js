@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { loadMemberTeacher, createMemberTeacherAppointment, createMemberTeacherFavorite } from '../../service/expert';
-import { IMG_DOMAIN } from '../../utils/config';
+import { API_DOMAIN, IMG_DOMAIN } from '../../utils/config';
 import BottomAction from '../../components/debris/BottomAction';
 import { Modal, InputItem, Toast } from 'antd-mobile';
+import WXshare from '../../utils/WXshare';
 
 class ExpertDetail extends Component {
   state = {
@@ -15,6 +16,12 @@ class ExpertDetail extends Component {
     const id = this.props.params.id;
     loadMemberTeacher({ id }).then( data => {
       this.setState({ expert: data.data.memberTeacher });
+    });
+
+    WXshare({
+      title: '经英教育-专家团队',
+      link: `${API_DOMAIN}#/expert/${id}`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }
 

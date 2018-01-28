@@ -4,6 +4,8 @@ import { WhiteSpace, List } from 'antd-mobile';
 import ServiceListItem from '../../components/service/ServiceListItem';
 import { hashHistory } from 'react-router';
 import ListHeader from "../../components/listpanel/ListHeader";
+import WXshare from '../../utils/WXshare';
+import { API_DOMAIN } from '../../utils/config';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -23,6 +25,12 @@ class ServiceSecond extends Component {
         serviceEntranceCateThirdList: data.data.entranceCateSecondDto.serviceEntranceCateThirdList,
         serviceEntranceList: data.data.entranceCateSecondDto.serviceEntranceList,
       });
+    });
+
+    WXshare({
+      title: '经英教育-捷径升学',
+      link: `${API_DOMAIN}#/service/second/${id}`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }
 

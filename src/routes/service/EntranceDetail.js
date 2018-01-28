@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import {loadServiceEntrance, createAppointment} from '../../service/service';
 import {WhiteSpace, Modal, Toast, Flex} from 'antd-mobile';
 import Intro from '../../components/debris/Intro';
-import {IMG_DOMAIN} from "../../utils/config";
+import { API_DOMAIN, IMG_DOMAIN } from '../../utils/config';
 import BottomAction from "../../components/debris/BottomAction";
+import WXshare from '../../utils/WXshare';
 
 const style = {
   position: 'fixed',
@@ -26,6 +27,12 @@ class EntranceDetail extends Component {
     const id = this.props.params.id;
     loadServiceEntrance({id}).then((data) => {
       this.setState({entrance: data.data.serviceEntrance});
+    });
+
+    WXshare({
+      title: '经英教育-捷径升学',
+      link: `${API_DOMAIN}#/service/${id}`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }
 

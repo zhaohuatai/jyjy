@@ -10,7 +10,8 @@ import { loadServiceCourseDto,
 } from '../../service/course';
 import Consulation from '../../components/course/Consulation';
 import  BuyCourseItem from '../../components/course/BuyCourseItem';
-import {IMG_DOMAIN} from "../../utils/config";
+import { API_DOMAIN, IMG_DOMAIN } from '../../utils/config';
+import WXshare from '../../utils/WXshare';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -44,6 +45,12 @@ class CourseDetail extends Component {
 
   componentDidMount() {
     const id = this.props.params.id;
+
+    WXshare({
+      title: '经英教育',
+      link: `${API_DOMAIN}#/course/${id}`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
 
     loadServiceCourseDto({ courseId: id }).then((data) => {
       this.setState({

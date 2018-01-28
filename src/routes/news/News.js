@@ -3,6 +3,8 @@ import { loadPubNewsDataSet, loadPubNewsCategoryDataSet } from '../../service/ne
 import { Tabs, List, PullToRefresh } from 'antd-mobile';
 import LoadMore from '../../components/loadmore/LoadMore';
 import { hashHistory } from 'react-router';
+import { API_DOMAIN } from '../../utils/config';
+import WXshare from '../../utils/WXshare';
 const Item = List.Item;
 const Brief = Item.Brief;
 
@@ -32,6 +34,12 @@ class News extends Component {
        })
       this.handleRefresh({ categoryId: data.data.dataSet.rows[0].id });
     });
+
+    WXshare({
+      title: '经英教育-新闻',
+      link: `${API_DOMAIN}#/news`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
   }
 
   renderContent = tab =>
@@ -49,7 +57,7 @@ class News extends Component {
       if( data.data.dataSet.total > data.data.dataSet.rows.length ){
         this.setState({ cur_news: data.data.dataSet.rows, loadmore_disable: false });
       }else{
-        this.setState({ cur_news: data.data.dataSet.rows, loadmore_disable: true });        
+        this.setState({ cur_news: data.data.dataSet.rows, loadmore_disable: true });
       }
     }).catch(err => {
       console.log(err);
@@ -61,7 +69,7 @@ class News extends Component {
     loadPubNewsDataSet({ page: cur_page, categoryId: this.state.cur_tab_id}).then((data) => {
       let temp_list = this.state.cur_news;
       temp_list = temp_list.concat(data.data.dataSet.rows);
-      
+
       if( data.data.dataSet.total > temp_list.length ){
         this.setState({ cur_news: temp_list, cur_page, loadmore_disable: false });
       }else{

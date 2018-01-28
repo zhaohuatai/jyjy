@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { loadColumnChannelDto, isSubscribed, subscribe, subscribeCancel } from '../../service/column';
-import {IMG_DOMAIN} from "../../utils/config";
+import { API_DOMAIN, IMG_DOMAIN } from '../../utils/config';
 import { List, Tabs, Button, Badge, WhiteSpace, Toast } from 'antd-mobile';
 import { hashHistory } from 'react-router';
+import WXshare from '../../utils/WXshare';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -24,6 +25,12 @@ class ColumnDetail extends Component {
     isSubscribed({channelId: id}).then(data => {
       this.setState({ subscribed: data.message == 'true' ? true : false });
     })
+
+    WXshare({
+      title: '经英教育-专栏',
+      link: `${API_DOMAIN}#/column/${id}`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
   }
 
   handleSubscribe = () => {

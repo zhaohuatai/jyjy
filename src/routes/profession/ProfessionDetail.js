@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { loadDataProfession } from '../../service/profession';
 import { List } from 'antd-mobile';
+import WXshare from '../../utils/WXshare';
+import { API_DOMAIN } from '../../utils/config';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -37,6 +39,12 @@ class ProfessionDetail extends Component {
     const id = this.props.params.id;
     loadDataProfession({ id }).then( data => {
       this.setState({ profession: data.data.dataProfession });
+    });
+
+    WXshare({
+      title: '经英教育',
+      link: `${API_DOMAIN}#/profession/${id}`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }
 

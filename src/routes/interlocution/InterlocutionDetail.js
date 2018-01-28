@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { loadInterlocution } from '../../service/interlocution';
 import { List } from 'antd-mobile';
+import WXshare from '../../utils/WXshare';
+import { API_DOMAIN } from '../../utils/config';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -28,6 +30,12 @@ class QuestionDetail extends Component {
     const id = this.props.params.id;
     loadInterlocution({ id }).then( data => {
       this.setState({ data: data.data.interlocution });
+    });
+
+    WXshare({
+      title: '经英教育-百科问答',
+      link: `${API_DOMAIN}#/interlocution/${id}`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }
 

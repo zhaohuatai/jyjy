@@ -3,6 +3,8 @@ import { Picker, List, WhiteSpace, Toast } from 'antd-mobile';
 import { loadProvinceList, loadDicData } from '../../service/dic';
 import LineList from '../../components/school/LineList';
 import { loadDataScoreLineProvince } from '../../service/provinceline';
+import { API_DOMAIN } from '../../utils/config';
+import WXshare from '../../utils/WXshare';
 
 class ProvinceLine extends Component {
   state = {
@@ -37,6 +39,12 @@ class ProvinceLine extends Component {
     loadDataScoreLineProvince(this.state.formdata).then(data => {
       this.setState({line_data: data.data.dataSet.rows})
     })
+
+    WXshare({
+      title: '经英教育-批次线',
+      link: `${API_DOMAIN}#/provinceline`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
 
   }
 

@@ -3,6 +3,8 @@ import { loadMemberTeacherDataSet } from '../../service/expert';
 import { List } from 'antd-mobile';
 import ExpertListItem from '../../components/expert/ExpertListItem';
 import LoadMore from '../../components/loadmore/LoadMore';
+import WXshare from '../../utils/WXshare';
+import { API_DOMAIN } from '../../utils/config';
 
 class Expert extends Component {
   state = {
@@ -17,7 +19,13 @@ class Expert extends Component {
         this.setState({ experts: data.data.dataSet.rows, loadmore_disable: true});
       else
         this.setState({ experts: data.data.dataSet.rows});
-    })
+    });
+
+    WXshare({
+      title: '经英教育',
+      link: `${API_DOMAIN}#/expert`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
   }
 
   loadMore = () => {
@@ -25,7 +33,7 @@ class Expert extends Component {
     loadMemberTeacherDataSet({ page: cur_page }).then((data) => {
       let temp_list = this.state.experts;
       temp_list = temp_list.concat(data.data.dataSet.rows);
-      
+
       if( data.data.dataSet.total > temp_list.length ){
         this.setState({ experts: temp_list, cur_page, loadmore_disable: false });
       }else{

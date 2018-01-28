@@ -7,6 +7,8 @@ import {
   createEvalSubjectRecordItem
 } from '../../../service/eval';
 import BottomAction from "../../../components/debris/BottomAction";
+import WXshare from '../../../utils/WXshare';
+import { API_DOMAIN } from '../../../utils/config';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -84,6 +86,12 @@ class MBTI extends Component {
     const categoryName = this.props.location.query.categoryName;
 
     this.setState({categoryName});
+
+    WXshare({
+      title: '经英教育-智能测评-霍兰德',
+      link: `${API_DOMAIN}#/eval/hollander`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
   }
 
   handleStart = () => {

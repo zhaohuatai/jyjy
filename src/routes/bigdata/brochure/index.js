@@ -6,6 +6,7 @@ import {API_DOMAIN, SCH_BADGE} from '../../../utils/config';
 import { loadDataUniversityDataSet } from '../../../service/school';
 import { loadProvinceList } from '../../../service/dic';
 import LoadMore from '../../../components/loadmore/LoadMore';
+import WXshare from '../../../utils/WXshare';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -58,6 +59,12 @@ class Brochure extends Component {
       filter[0] = data.data.provinceList;
 
       this.setState({ filter: filter });
+    });
+
+    WXshare({
+      title: '经英教育-招生简章',
+      link: `${API_DOMAIN}#/bigdata/brochure`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }
 

@@ -6,6 +6,8 @@ import ServiceListItem from '../../components/service/ServiceListItem';
 import { hashHistory } from 'react-router';
 import ListHeader from "../../components/listpanel/ListHeader";
 import Slide from "../../components/debris/Slide";
+import WXshare from '../../utils/WXshare';
+import { API_DOMAIN } from '../../utils/config';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -32,6 +34,12 @@ class ServiceFirst extends Component {
     loadPubSlideDataSet({rows: 100, locationCode: 'FW', status: 1}).then(data => {
       this.setState({ slide: data.data.dataSet.rows });
     })
+
+    WXshare({
+      title: '经英教育-捷径升学',
+      link: `${API_DOMAIN}#/service/first/${id}`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
   }
 
   render() {
