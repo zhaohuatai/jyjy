@@ -39,12 +39,13 @@ class ProfessionDetail extends Component {
     const id = this.props.params.id;
     loadDataProfession({ id }).then( data => {
       this.setState({ profession: data.data.dataProfession });
-    });
 
-    WXshare({
-      title: '经英教育',
-      link: `${API_DOMAIN}#/profession/${id}`,
-      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+      WXshare({
+        title: `专业库-${data.data.dataProfession.profession}`,
+        desc: '经英教育',
+        link: `${API_DOMAIN}#/profession/${id}`,
+        imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+      });
     });
   }
 

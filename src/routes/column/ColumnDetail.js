@@ -19,18 +19,20 @@ class ColumnDetail extends Component {
     const id = this.props.params.id;
 
     loadColumnChannelDto({channelId: id}).then(data => {
-      this.setState({ column: data.data.columnChannel.columnChannel, column_list: data.data.columnChannel.columnChannelItemResDtoList })
+      this.setState({ column: data.data.columnChannel.columnChannel, column_list: data.data.columnChannel.columnChannelItemResDtoList });
+      WXshare({
+        title: data.data.columnChannel.columnChannel.title,
+        link: `${API_DOMAIN}#/column/${id}`,
+        desc: '经英教育',
+        imgUrl: `${API_DOMAIN}${data.data.columnChannel.columnChannel.thumbnailUrl}`,
+      });
     })
 
     isSubscribed({channelId: id}).then(data => {
       this.setState({ subscribed: data.message == 'true' ? true : false });
     })
 
-    WXshare({
-      title: '经英教育-专栏',
-      link: `${API_DOMAIN}#/column/${id}`,
-      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
-    });
+
   }
 
   handleSubscribe = () => {

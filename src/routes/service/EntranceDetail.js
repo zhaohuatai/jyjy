@@ -27,12 +27,13 @@ class EntranceDetail extends Component {
     const id = this.props.params.id;
     loadServiceEntrance({id}).then((data) => {
       this.setState({entrance: data.data.serviceEntrance});
-    });
 
-    WXshare({
-      title: '经英教育-捷径升学',
-      link: `${API_DOMAIN}#/service/${id}`,
-      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+      WXshare({
+        title: `捷径升学-${data.data.serviceEntrance.title}`,
+        desc: '经英教育',
+        link: `${API_DOMAIN}#/service/${id}`,
+        imgUrl: `${API_DOMAIN}${data.data.serviceEntrance.thumbnailUrl}`,
+      });
     });
   }
 

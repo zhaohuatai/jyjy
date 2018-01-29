@@ -30,12 +30,13 @@ class NewsDetail extends Component {
     const id = this.props.params.id;
     loadPubNews({ id }).then( data => {
       this.setState({ news: data.data.pubNews });
-    });
 
-    WXshare({
-      title: '经英教育-新闻',
-      link: `${API_DOMAIN}#/news/${id}`,
-      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+      WXshare({
+        title: `${data.data.pubNews.title}`,
+        desc: '经英教育',
+        link: `${API_DOMAIN}#/news/${id}`,
+        imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+      });
     });
   }
 

@@ -43,12 +43,13 @@ class CareerDetail extends Component {
     const id = this.props.params.id;
     loadDataCareer({ id }).then((data) => {
       this.setState({ career: data.data.dataCareer });
-    });
 
-    WXshare({
-      title: '经英教育',
-      link: `${API_DOMAIN}#/career/${id}`,
-      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+      WXshare({
+        title: `职业库-${data.data.dataCareer.name}`,
+        link: `${API_DOMAIN}#/career/${id}`,
+        desc: '经英教育',
+        imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+      });
     });
   }
 

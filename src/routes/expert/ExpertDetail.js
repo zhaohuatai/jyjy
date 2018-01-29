@@ -16,12 +16,13 @@ class ExpertDetail extends Component {
     const id = this.props.params.id;
     loadMemberTeacher({ id }).then( data => {
       this.setState({ expert: data.data.memberTeacher });
-    });
 
-    WXshare({
-      title: '经英教育-专家团队',
-      link: `${API_DOMAIN}#/expert/${id}`,
-      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+      WXshare({
+        title: `专家团队-${data.data.memberTeacher.name}`,
+        desc: '经英教育',
+        link: `${API_DOMAIN}#/expert/${id}`,
+        imgUrl: `${API_DOMAIN}${data.data.memberTeacher.profilePicture}`,
+      });
     });
   }
 

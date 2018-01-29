@@ -46,16 +46,17 @@ class CourseDetail extends Component {
   componentDidMount() {
     const id = this.props.params.id;
 
-    WXshare({
-      title: '经英教育',
-      link: `${API_DOMAIN}#/course/${id}`,
-      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
-    });
-
     loadServiceCourseDto({ courseId: id }).then((data) => {
       this.setState({
         serviceCourse: data.data.serviceCourseDto.serviceCourse,
         serviceCourseItems: data.data.serviceCourseDto.serviceCourseItemResDtoList,
+      });
+
+      WXshare({
+        title: data.data.serviceCourseDto.serviceCourse.name,
+        link: `${API_DOMAIN}#/course/${id}`,
+        desc: '经英教育',
+        imgUrl: `${API_DOMAIN}${data.data.serviceCourseDto.serviceCourse.thumbnailUrl}`,
       });
 
       this.player = new Aliplayer({

@@ -33,12 +33,13 @@ class QuestionDetail extends Component {
     const id = this.props.params.id;
     loadInterlocutionConsultation({ id }).then((data) => {
       this.setState({ data: data.data.interlocutionConsultation });
-    });
 
-    WXshare({
-      title: '经英教育-百科问答',
-      link: `${API_DOMAIN}#/interlocution/consultation/${id}`,
-      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+      WXshare({
+        title: `百科问答-${data.data.interlocutionConsultation.consultorName}`,
+        desc: '经英教育',
+        link: `${API_DOMAIN}#/interlocution/consultation/${id}`,
+        imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+      });
     });
   }
 

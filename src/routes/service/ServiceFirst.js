@@ -30,16 +30,18 @@ class ServiceFirst extends Component {
         serviceEntranceCateSecondList: data.data.entranceCateFirstDto.serviceEntranceCateSecondList,
         serviceEntranceCateFirst: data.data.entranceCateFirstDto.serviceEntranceCateFirst,
       });
+
+      WXshare({
+        title: `捷径升学-${data.data.entranceCateFirstDto.serviceEntranceCateFirst.name}`,
+        desc: '经英教育',
+        link: `${API_DOMAIN}#/service/first/${id}`,
+        imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+      });
     });
+
     loadPubSlideDataSet({rows: 100, locationCode: 'FW', status: 1}).then(data => {
       this.setState({ slide: data.data.dataSet.rows });
     })
-
-    WXshare({
-      title: '经英教育-捷径升学',
-      link: `${API_DOMAIN}#/service/first/${id}`,
-      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
-    });
   }
 
   render() {

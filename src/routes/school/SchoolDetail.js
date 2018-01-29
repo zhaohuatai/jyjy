@@ -53,6 +53,13 @@ class SchoolDetail extends Component {
     const id = this.props.params.id;
     loadDataUniversity({ id }).then((data) => {
       this.setState({ school: data.data.dataUniversity });
+
+      WXshare({
+        title: `名校库-${data.data.dataUniversity.name}`,
+        link: `${API_DOMAIN}#/school/${id}`,
+        desc: '经英教育',
+        imgUrl: `${API_DOMAIN}${data.data.dataUniversity.badge}`,
+      });
     });
 
     loadDicData({ code: 'FK' }).then(data => {
@@ -65,12 +72,6 @@ class SchoolDetail extends Component {
     }).then(data => {
       this.setState({lines_data: data.data.dataSet.rows})
     })
-
-    WXshare({
-      title: '经英教育-名校库',
-      link: `${API_DOMAIN}#/school/${id}`,
-      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
-    });
   }
 
   onChangeFK = (e) => {

@@ -29,18 +29,19 @@ class ColumnDetail extends Component {
         columnChannel: data.data.itemRes.columnChannel,
         columnChannelOrderItems: data.data.itemRes.columnChannelOrderItems,
       })
-    })
 
-    WXshare({
-      title: '经英教育-专栏', // 分享标题
-      link: `${API_DOMAIN}#/columnitem/${id}`, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-      imgUrl: `${API_DOMAIN}/static/WechatIMG290.png`, // 分享图标
-      success: function () {
-        shareColumnChannel({itemId: id}).then(data => {
-          Toast.success(data.message);
-        })
-      }
-    });
+      WXshare({
+        title: `${data.data.itemRes.columnChannel.title}-${data.data.itemRes.columnChannelItem.title}`, // 分享标题
+        link: `${API_DOMAIN}#/columnitem/${id}`, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        desc: '经英教育',
+        imgUrl: `${API_DOMAIN}${data.data.itemRes.columnChannelItem.thumbnailUrl}`, // 分享图标
+        success: function () {
+          shareColumnChannel({itemId: id}).then(data => {
+            Toast.success(data.message);
+          })
+        }
+      });
+    })
 
     // loadWXConfig({ urlx: API_DOMAIN }).then((data) => {
     //   if (data.statusCode === 200) {

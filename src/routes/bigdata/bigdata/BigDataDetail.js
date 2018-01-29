@@ -30,12 +30,13 @@ class NewsDetail extends Component {
     const id = this.props.params.id;
     loadEnrollAutoBigdata({ id }).then( data => {
       this.setState({ data: data.data.enrollAutoBigdata });
-    });
 
-    WXshare({
-      title: '经英教育-自招大数据',
-      link: `${API_DOMAIN}#/bigdata/bigdata/${id}`,
-      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+      WXshare({
+        title: `${data.data.enrollAutoBigdata.title}`,
+        desc: '经英教育',
+        link: `${API_DOMAIN}#/bigdata/bigdata/${id}`,
+        imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+      });
     });
   }
 

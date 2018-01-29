@@ -23,12 +23,13 @@ class ServiceThird extends Component {
         serviceEntranceList: data.data.entranceCateThirdDto.serviceEntranceList,
         serviceEntranceCateThird: data.data.entranceCateThirdDto.serviceEntranceCateThird,
       });
-    });
 
-    WXshare({
-      title: '经英教育-捷径升学',
-      link: `${API_DOMAIN}#/service/third/${id}`,
-      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+      WXshare({
+        title: `捷径升学-${data.data.entranceCateThirdDto.serviceEntranceCateThird.name}`,
+        desc: '经英教育',
+        link: `${API_DOMAIN}#/service/third/${id}`,
+        imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+      });
     });
   }
 

@@ -26,14 +26,15 @@ class SlideDetail extends Component {
     const id = this.props.params.id;
 
     loadPubSlide({id}).then(data => {
-      this.setState({pubSlide: data.data.pubSlide})
-    })
+      this.setState({pubSlide: data.data.pubSlide});
 
-    WXshare({
-      title: '经英教育',
-      link: `${API_DOMAIN}#/slide/${id}`,
-      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
-    });
+      WXshare({
+        title: `${data.data.pubSlide.title}`,
+        desc: '经英教育',
+        link: `${API_DOMAIN}#/slide/${id}`,
+        imgUrl: `${API_DOMAIN}${data.data.pubSlide.imgUrl}`,
+      });
+    })
   }
 
 

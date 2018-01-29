@@ -45,15 +45,17 @@ class BrochureDetail extends Component {
     const id = this.props.params.id;
     loadDataUniversity({ id }).then((data) => {
       this.setState({ school: data.data.dataUniversity });
-    });
-    loadEnrollAutoRecruitBrochureDataSet({ universityId: id }).then((data) => {
-      this.setState({ brochures: data.data.dataSet.rows });
+
+      WXshare({
+        title: `招生简章-${data.data.dataUniversity.name}`,
+        desc: '经英教育',
+        link: `${API_DOMAIN}#/bigdata/brochure/${id}`,
+        imgUrl: `${API_DOMAIN}${data.data.dataUniversity.badge}`,
+      });
     });
 
-    WXshare({
-      title: '经英教育-招生简章',
-      link: `${API_DOMAIN}#/bigdata/brochure/${id}`,
-      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    loadEnrollAutoRecruitBrochureDataSet({ universityId: id }).then((data) => {
+      this.setState({ brochures: data.data.dataSet.rows });
     });
   }
 
