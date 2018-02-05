@@ -56,7 +56,7 @@ class SchoolDetail extends Component {
 
       WXshare({
         title: `名校库-${data.data.dataUniversity.name}`,
-        link: `${API_DOMAIN}#/school/${id}`,
+        link: `${API_DOMAIN}?redirect_url=school/${id}`,
         desc: '经英教育',
         imgUrl: `${API_DOMAIN}${data.data.dataUniversity.badge}`,
       });

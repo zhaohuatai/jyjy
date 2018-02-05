@@ -63,7 +63,7 @@ class Brochure extends Component {
 
     WXshare({
       title: '经英教育-招生简章',
-      link: `${API_DOMAIN}#/bigdata/brochure`,
+      link: `${API_DOMAIN}?redirect_url=bigdata/brochure`,
       imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }

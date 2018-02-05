@@ -43,7 +43,7 @@ class ProfessionDetail extends Component {
       WXshare({
         title: `专业库-${data.data.dataProfession.profession}`,
         desc: '经英教育',
-        link: `${API_DOMAIN}#/profession/${id}`,
+        link: `${API_DOMAIN}?redirect_url=profession/${id}`,
         imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
       });
     });

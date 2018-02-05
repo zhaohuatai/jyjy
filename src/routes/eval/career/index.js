@@ -73,12 +73,13 @@ class MBTI extends Component {
 
   componentDidMount() {
     const categoryName = this.props.location.query.categoryName;
+    const recordId = this.props.location.query.recordId;
 
-    this.setState({categoryName});
+    this.setState({categoryName, recordId});
 
     WXshare({
       title: '经英教育-智能测评-职业锚',
-      link: `${API_DOMAIN}#/eval/career`,
+      link: `${API_DOMAIN}?redirect_url=eval/career`,
       imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }
@@ -95,7 +96,7 @@ class MBTI extends Component {
       // 判断是否已经完成第一步
       if (finishCount >= 40) {
         // 进入第二步
-        loadRecordItemDtoForCate3Sep2({recordId: this.state.recordId}).then(data => {
+        loadRecordItemDtoForCate3Sep2({recordId}).then(data => {
           if (data.data.recordItemDtoList.length > 0) {
             // 存在多个6分题，需要选择
             this.setState({step2: data.data.recordItemDtoList, step2_show: true, started: true})

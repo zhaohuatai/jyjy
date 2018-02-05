@@ -89,7 +89,7 @@ class MBTI extends Component {
 
     WXshare({
       title: '经英教育-智能测评-霍兰德',
-      link: `${API_DOMAIN}#/eval/hollander`,
+      link: `${API_DOMAIN}?redirect_url=eval/hollander`,
       imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }

@@ -59,7 +59,7 @@ class SelectStep2 extends Component {
         ]}
         wrapProps={{ onTouchStart: this.onWrapTouchStart }}
       >
-        <div style={{ height: 100, overflow: 'scroll' }}>
+        <div style={{ height: 200, overflow: 'scroll' }}>
           <List>
             {
               data.length > 0 ? data.map(i => (

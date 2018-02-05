@@ -26,7 +26,7 @@ class BigDataIndex extends Component {
 
     WXshare({
       title: '经英教育-智能测评',
-      link: `${API_DOMAIN}#/eval`,
+      link: `${API_DOMAIN}?redirect_url=eval`,
       imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }

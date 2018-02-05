@@ -22,7 +22,7 @@ class BigData extends Component {
 
     WXshare({
       title: '经英教育-自招大数据',
-      link: `${API_DOMAIN}#/bigdata/bigdata`,
+      link: `${API_DOMAIN}?redirect_url=bigdata/bigdata`,
       imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }

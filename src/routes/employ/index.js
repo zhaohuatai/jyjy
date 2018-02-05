@@ -22,7 +22,7 @@ class Employ extends Component {
 
     WXshare({
       title: '经英教育-应聘推广员',
-      link: `${API_DOMAIN}#/employ`,
+      link: `${API_DOMAIN}?redirect_url=employ`,
       imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }

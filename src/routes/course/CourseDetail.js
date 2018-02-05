@@ -54,7 +54,7 @@ class CourseDetail extends Component {
 
       WXshare({
         title: data.data.serviceCourseDto.serviceCourse.name,
-        link: `${API_DOMAIN}#/course/${id}`,
+        link: `${API_DOMAIN}?redirect_url=course/${id}`,
         desc: '经英教育',
         imgUrl: `${API_DOMAIN}${data.data.serviceCourseDto.serviceCourse.thumbnailUrl}`,
       });

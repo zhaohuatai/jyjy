@@ -37,7 +37,7 @@ class Interlocution extends Component {
 
     WXshare({
       title: '经英教育-百科问答',
-      link: `${API_DOMAIN}#/interlocution`,
+      link: `${API_DOMAIN}?redirect_url=interlocution`,
       imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }

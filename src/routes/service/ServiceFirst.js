@@ -34,7 +34,7 @@ class ServiceFirst extends Component {
       WXshare({
         title: `捷径升学-${data.data.entranceCateFirstDto.serviceEntranceCateFirst.name}`,
         desc: '经英教育',
-        link: `${API_DOMAIN}#/service/first/${id}`,
+        link: `${API_DOMAIN}?redirect_url=service/first/${id}`,
         imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
       });
     });

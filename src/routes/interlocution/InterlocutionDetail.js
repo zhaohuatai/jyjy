@@ -34,7 +34,7 @@ class QuestionDetail extends Component {
       WXshare({
         title: `百科问答-${data.data.interlocution.interQuestion}`,
         desc: '经英教育',
-        link: `${API_DOMAIN}#/interlocution/${id}`,
+        link: `${API_DOMAIN}?redirect_url=interlocution/${id}`,
         imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
       });
     });

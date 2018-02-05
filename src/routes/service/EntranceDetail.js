@@ -31,7 +31,7 @@ class EntranceDetail extends Component {
       WXshare({
         title: `捷径升学-${data.data.serviceEntrance.title}`,
         desc: '经英教育',
-        link: `${API_DOMAIN}#/service/${id}`,
+        link: `${API_DOMAIN}?redirect_url=service/${id}`,
         imgUrl: `${API_DOMAIN}${data.data.serviceEntrance.thumbnailUrl}`,
       });
     });

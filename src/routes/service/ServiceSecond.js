@@ -29,7 +29,7 @@ class ServiceSecond extends Component {
       WXshare({
         title: `捷径升学-${data.data.entranceCateSecondDto.serviceEntranceCateSecond.name}`,
         desc: '经英教育',
-        link: `${API_DOMAIN}#/service/second/${id}`,
+        link: `${API_DOMAIN}?redirect_url=service/second/${id}`,
         imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
       });
     });

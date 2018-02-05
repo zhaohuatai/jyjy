@@ -34,7 +34,7 @@ class NewsDetail extends Component {
       WXshare({
         title: `${data.data.pubNews.title}`,
         desc: '经英教育',
-        link: `${API_DOMAIN}#/news/${id}`,
+        link: `${API_DOMAIN}?redirect_url=news/${id}`,
         imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
       });
     });

@@ -49,7 +49,7 @@ class BrochureDetail extends Component {
       WXshare({
         title: `招生简章-${data.data.dataUniversity.name}`,
         desc: '经英教育',
-        link: `${API_DOMAIN}#/bigdata/brochure/${id}`,
+        link: `${API_DOMAIN}?redirect_url=bigdata/brochure/${id}`,
         imgUrl: `${API_DOMAIN}${data.data.dataUniversity.badge}`,
       });
     });

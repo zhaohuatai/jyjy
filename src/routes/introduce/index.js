@@ -22,7 +22,7 @@ class Introduce extends Component {
 
     WXshare({
       title: '经英教育-经英简介',
-      link: `${API_DOMAIN}#/introduce`,
+      link: `${API_DOMAIN}?redirect_url=introduce`,
       imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }

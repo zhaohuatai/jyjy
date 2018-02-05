@@ -24,7 +24,7 @@ class Service extends Component {
 
     WXshare({
       title: '经英教育-捷径升学',
-      link: `${API_DOMAIN}#/service`,
+      link: `${API_DOMAIN}?redirect_url=service`,
       imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }

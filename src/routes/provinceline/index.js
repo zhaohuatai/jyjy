@@ -42,7 +42,7 @@ class ProvinceLine extends Component {
 
     WXshare({
       title: '经英教育-批次线',
-      link: `${API_DOMAIN}#/provinceline`,
+      link: `${API_DOMAIN}?redirect_url=provinceline`,
       imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
 

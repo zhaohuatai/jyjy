@@ -45,7 +45,7 @@ class School extends Component {
       WXshare({
         title: '经英教育-高校库',
         desc: '经英教育-高校库',
-        link: `${API_DOMAIN}#/school`,
+        link: `${API_DOMAIN}?redirect_url=school`,
         imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
       });
     });
@@ -67,7 +67,7 @@ class School extends Component {
 
     WXshare({
       title: '经英教育-名校库',
-      link: `${API_DOMAIN}#/school`,
+      link: `${API_DOMAIN}?redirect_url=school`,
       imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }

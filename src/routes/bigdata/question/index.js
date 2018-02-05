@@ -32,7 +32,7 @@ class Question extends Component {
 
     WXshare({
       title: '经英教育-自招题库',
-      link: `${API_DOMAIN}#/bigdata/question`,
+      link: `${API_DOMAIN}?redirect_url=bigdata/question`,
       imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }

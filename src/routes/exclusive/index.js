@@ -84,7 +84,7 @@ class MemberExclusive extends Component {
 
     WXshare({
       title: '经英教育-会员专享',
-      link: `${API_DOMAIN}#/memberexclusive`,
+      link: `${API_DOMAIN}?redirect_url=memberexclusive`,
       imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }

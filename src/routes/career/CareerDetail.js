@@ -46,7 +46,7 @@ class CareerDetail extends Component {
 
       WXshare({
         title: `职业库-${data.data.dataCareer.name}`,
-        link: `${API_DOMAIN}#/career/${id}`,
+        link: `${API_DOMAIN}?redirect_url=career/${id}`,
         desc: '经英教育',
         imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
       });

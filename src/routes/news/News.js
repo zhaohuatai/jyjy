@@ -37,7 +37,7 @@ class News extends Component {
 
     WXshare({
       title: '经英教育-新闻',
-      link: `${API_DOMAIN}#/news`,
+      link: `${API_DOMAIN}?redirect_url=news`,
       imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }

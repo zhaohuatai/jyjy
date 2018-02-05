@@ -22,7 +22,7 @@ class ColumnDetail extends Component {
       this.setState({ column: data.data.columnChannel.columnChannel, column_list: data.data.columnChannel.columnChannelItemResDtoList });
       WXshare({
         title: data.data.columnChannel.columnChannel.title,
-        link: `${API_DOMAIN}#/column/${id}`,
+        link: `${API_DOMAIN}?redirect_url=column/${id}`,
         desc: '经英教育',
         imgUrl: `${API_DOMAIN}${data.data.columnChannel.columnChannel.thumbnailUrl}`,
       });

@@ -79,7 +79,7 @@ class MBTI extends Component {
 
     WXshare({
       title: '经英教育-智能测评-MBIT',
-      link: `${API_DOMAIN}#/eval/mbit`,
+      link: `${API_DOMAIN}?redirect_url=eval/mbit`,
       imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }

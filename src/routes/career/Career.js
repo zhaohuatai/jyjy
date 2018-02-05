@@ -25,7 +25,7 @@ class Profession extends Component {
 
     WXshare({
       title: '经英教育-职业库',
-      link: `${API_DOMAIN}#/career`,
+      link: `${API_DOMAIN}?redirect_url=career`,
       imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }

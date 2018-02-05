@@ -40,7 +40,7 @@ class Award extends Component {
 
     WXshare({
       title: '经英教育-奖项评测',
-      link: `${API_DOMAIN}#/award`,
+      link: `${API_DOMAIN}?redirect_url=award`,
       imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }

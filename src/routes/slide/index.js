@@ -31,7 +31,7 @@ class SlideDetail extends Component {
       WXshare({
         title: `${data.data.pubSlide.title}`,
         desc: '经英教育',
-        link: `${API_DOMAIN}#/slide/${id}`,
+        link: `${API_DOMAIN}?redirect_url=slide/${id}`,
         imgUrl: `${API_DOMAIN}${data.data.pubSlide.imgUrl}`,
       });
     })

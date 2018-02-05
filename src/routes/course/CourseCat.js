@@ -25,7 +25,7 @@ class CourseCat extends Component {
 
     WXshare({
       title: '经英教育',
-      link: `${API_DOMAIN}#/coursecat/${id}`,
+      link: `${API_DOMAIN}?redirect_url=coursecat/${id}`,
       imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
 

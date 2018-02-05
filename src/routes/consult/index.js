@@ -24,7 +24,7 @@ class Introduce extends Component {
 
     WXshare({
       title: '经英教育-咨询',
-      link: `${API_DOMAIN}#/consult`,
+      link: `${API_DOMAIN}?redirect_url=consult`,
       imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }

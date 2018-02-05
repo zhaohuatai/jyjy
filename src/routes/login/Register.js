@@ -36,7 +36,7 @@ class Register extends Component {
 
     WXshare({
       title: '经英教育',
-      link: `${API_DOMAIN}#/register`,
+      link: `${API_DOMAIN}?redirect_url=register`,
       imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }

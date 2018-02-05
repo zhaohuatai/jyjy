@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { loadRecordResultDtoByRecordId } from '../../../service/eval';
 import { List, WhiteSpace } from 'antd-mobile';
 import Intro from "../../../components/debris/Intro";
-import { IMG_DOMAIN } from '../../../utils/config';
+import { API_DOMAIN, IMG_DOMAIN } from '../../../utils/config';
+import WXshare from '../../../utils/WXshare';
 
 const Item = List.Item;
 const Brief = Item.Brief;
@@ -25,6 +26,16 @@ class EvalResult extends Component {
     loadRecordResultDtoByRecordId({ recordId }).then( data => {
       this.setState({ result: data.data.resultDto });
     });
+
+    console.log(this.props.location);
+    const { pathname, search} = this.props.location;
+
+    WXshare({
+      title: '经英教育-智能测评',
+      link: `${API_DOMAIN}#${pathname}${search}`,
+      imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
+    });
+
   }
 
   render() {

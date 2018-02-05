@@ -18,7 +18,7 @@ class User extends Component {
 
     WXshare({
       title: '经英教育',
-      link: `${API_DOMAIN}#/`,
+      link: `${API_DOMAIN}?redirect_url=`,
       imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }

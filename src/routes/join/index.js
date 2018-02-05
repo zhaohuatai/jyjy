@@ -22,7 +22,7 @@ class Join extends Component {
 
     WXshare({
       title: '经英教育-加入我们', // 分享标题
-      link: `${API_DOMAIN}#/join`, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+      link: `${API_DOMAIN}?redirect_url=join`, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
       imgUrl: `${API_DOMAIN}static/WechatIMG290.png`, // 分享图标
     });
   }

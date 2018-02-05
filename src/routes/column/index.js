@@ -24,7 +24,7 @@ class Column extends Component {
 
     WXshare({
       title: '经英教育-专栏',
-      link: `${API_DOMAIN}#/column`,
+      link: `${API_DOMAIN}?redirect_url=column`,
       imgUrl: `${API_DOMAIN}static/WechatIMG290.png`,
     });
   }

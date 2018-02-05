@@ -20,7 +20,7 @@ class ExpertDetail extends Component {
       WXshare({
         title: `专家团队-${data.data.memberTeacher.name}`,
         desc: '经英教育',
-        link: `${API_DOMAIN}#/expert/${id}`,
+        link: `${API_DOMAIN}?redirect_url=expert/${id}`,
         imgUrl: `${API_DOMAIN}${data.data.memberTeacher.profilePicture}`,
       });
     });
