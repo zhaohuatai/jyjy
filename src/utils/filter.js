@@ -11,7 +11,7 @@ export default function () {
   const redirect_url = getQueryString('redirect_url');
   //console.log(redirect_url);
   if (redirect_url) {
-    //window.location.href = `${API_DOMAIN}#/${redirect_url}`;
-    hashHistory.push(redirect_url);
+    window.location.href = `${API_DOMAIN}#/${redirect_url}`;
+    //hashHistory.push(redirect_url);
   }
 }

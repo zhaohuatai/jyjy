@@ -1,5 +1,4 @@
-<h1 align='center'>react-cli</h1>
-<p align='center'>react应用的起步工程和总结</p>
+<h1 align='center'>一个在线教育应用</h1>
 
 <p align='center'>
   <a href="https://github.com/facebook/react">
@@ -11,18 +10,11 @@
   <a href="https://github.com/ReactTraining/react-router">
     <img src="https://camo.githubusercontent.com/b7a8d8cd8681575533ed05805f61c8f55a21f0f3/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f72656163742d2d726f757465722d253545332e302e332d677265656e2e737667" alt="Travis" data-canonical-src="https://img.shields.io/badge/react--router-%5E3.0.3-green.svg" style="max-width:100%;">
   </a>
-  <a href="https://opensource.org/licenses/MIT">
-    <img src="https://camo.githubusercontent.com/3f7996bf7bd441deb7199c498aaa835164dee8da/68747470733a2f2f696d672e736869656c64732e696f2f6475622f6c2f766962652d642e737667" alt="DUB" data-canonical-src="https://img.shields.io/dub/l/vibe-d.svg" style="max-width:100%;"></a>
-  <a href="https://github.com/Houserqu/react-cli/pulls">
-    <img src="https://camo.githubusercontent.com/ef7f9a5121a87ec0b41fbf403d164240737178e8/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f70756c6c25323072657175657374732d77656c636f6d652d626c75652e737667" alt="TeamCity (simple build status)" data-canonical-src="https://img.shields.io/badge/pull%20requests-welcome-blue.svg" style="max-width:100%;">
-  </a>
 </p>
 
 ## 特点
 
-采用时下流行的技术栈，视图：react，状态管理：redux，路由：react-router 作为基础，配合webpack等开发工具而搭建的项目架构，适用于中小型项目，也可以在此基础上进行调整适合更多类型的项目。
-
-同时还会提供react开发相关的资料、疑问、解决方案等，希望对开发者有所帮助，也对自己的技术有所提升。欢迎大家提供建议
+高校师生在线学习平台，包含在线课程视频、高校信息、报考信息
 
 ## 技术栈
 
@@ -84,34 +76,3 @@
 5. 每个页面都是该组件的字组件，便于引入例如通知等全局组件
 6. 每个页面对应一个文件夹，因为一个页面包含的组件较多，利于拆分
 7. 独立出来store是便于在非组件的文件中操作reducer的store
-
-### 开发说明
-
-克隆项目:
-
-```bash
-git clone https://github.com/Houserqu/react-cli.git
-```
-
-进入项目目录安装依赖:
-
-```bash
-npm i 
-```
-
-开发:
-
-```bash 
-npm run dev
-```
-
-构建:
-
-```bash 
-npm run build
-````
-
-## 技术分析
-
-### redux
-个人还是比较喜欢redux这种严格的 action reducer分离的方式，不容易混乱
