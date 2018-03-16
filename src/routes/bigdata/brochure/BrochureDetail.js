@@ -77,7 +77,7 @@ class BrochureDetail extends Component {
           {
             this.state.brochures.map(item => {
               return (
-                <Accordion.Panel header={item.title}>
+                <Accordion.Panel header={item.title} key={item.id}>
                   <div style={{ backgroundColor: '#fff', padding: '15px' }} >
                     <div dangerouslySetInnerHTML={{ __html: item.content }} />
                   </div>

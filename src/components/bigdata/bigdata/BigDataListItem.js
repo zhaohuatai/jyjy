@@ -19,7 +19,7 @@ const BigDataListItem = ({ data }) => {
       multipleLine
     >
       {title}
-      <Brief>浏览({browseCount}) 收藏({favoriteCount})</Brief>
+      <Brief>浏览({browseCount})</Brief>
     </Item>
   );
 };

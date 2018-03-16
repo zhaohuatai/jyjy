@@ -21,13 +21,13 @@ class Question extends Component {
   }
 
   componentDidMount() {
-    loadEnrollAutoQuestionCategoryDataSet().then(data=>{
+    loadEnrollAutoQuestionCategoryDataSet({status: 1}).then(data=>{
       this.setState({
         tabs: data.data.dataSet.rows,
         cur_tab_id: data.data.dataSet.rows[0].id,
         total: data.data.dataSet.total
       })
-      this.handleRefresh({categoryId: data.data.dataSet.rows[0].id})
+      this.handleRefresh({categoryId: data.data.dataSet.rows[0].id, status: 1})
     });
 
     WXshare({
@@ -92,7 +92,7 @@ class Question extends Component {
                 this.state.question_data.map(item => {
                   return (
                       <Item arrow="horizontal" key={item.id} onClick={()=>hashHistory.push(`/bigdata/question/${item.id}`)}>
-                        {item.title} <Brief>浏览({item.browseCount}) 收藏({item.favoriteCount})</Brief>
+                        {item.title} <Brief>浏览({item.browseCount})</Brief>
                       </Item>
                   )
                 })
