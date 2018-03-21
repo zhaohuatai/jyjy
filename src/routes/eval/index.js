@@ -57,7 +57,7 @@ class BigDataIndex extends Component {
                     break;
                 }
 
-                  if(!item.finished){
+                  if(item.finished == 0){
                     return (
                       <Item
                         key={item.id}

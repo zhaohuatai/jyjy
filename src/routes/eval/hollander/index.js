@@ -140,7 +140,7 @@ class MBTI extends Component {
       this.setState({cur_select: null});
       console.log(data);
       if(data.data.isFininshed){
-        Modal.alert('完毕', '返回测评首页产看结果', [
+        Modal.alert('完毕', '返回测评首页查看结果', [
           { text: 'OK', onPress: () => hashHistory.push('/eval') },
         ])
       }

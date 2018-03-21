@@ -101,7 +101,7 @@ class MBTI extends Component {
             // 存在多个6分题，需要选择
             this.setState({step2: data.data.recordItemDtoList, step2_show: true, started: true})
           } else {
-            Modal.alert('完毕', '返回测评首页产看结果', [
+            Modal.alert('完毕', '返回测评首页查看结果', [
               {text: 'OK', onPress: () => hashHistory.push('/eval')},
             ])
           }
@@ -159,7 +159,7 @@ class MBTI extends Component {
             // 存在多个6分题，需要选择
             this.setState({step2: data.data.recordItemDtoList, step2_show: true})
           } else {
-            Modal.alert('完毕', '返回测评首页产看结果', [
+            Modal.alert('完毕', '返回测评首页查看结果', [
               {text: 'OK', onPress: () => hashHistory.push('/eval')},
             ])
           }
