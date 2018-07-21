@@ -51,7 +51,7 @@ class QuestionDetail extends Component {
         >
           {this.state.data.title}  <Brief>浏览({this.state.data.browseCount}) 收藏({this.state.data.favoriteCount})</Brief>
         </Item>
-        <div dangerouslySetInnerHTML={{ __html: this.state.data.content }} style={{ backgroundColor: '#fff', padding: '15px' }} />
+        <div dangerouslySetInnerHTML={{ __html: this.state.data.content }} style={{ backgroundColor: '#fff', padding: '15px', overflow: 'hidden' }} />
       </div>
     );
   }

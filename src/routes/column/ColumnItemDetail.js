@@ -143,7 +143,7 @@ class ColumnDetail extends Component {
           onTabClick={this.handleChangeTab}
         >
           {
-            this.state.columnChannelOrderItems ? <div dangerouslySetInnerHTML={{ __html: content }} style={{ backgroundColor: '#fff', padding: '15px' }} />
+            this.state.columnChannelOrderItems ? <div dangerouslySetInnerHTML={{ __html: content }} style={{ backgroundColor: '#fff', padding: '15px', overflow: 'hidden' }} />
               :
               <div style={{backgroundColor: '#fff', textAlign: 'center', color: '#949494', padding: '10px'}}>
                 <Button size='large' type='primary' onClick={this.handlePlayOrder}>立即购买</Button></div>

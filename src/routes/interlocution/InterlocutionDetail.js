@@ -51,7 +51,7 @@ class QuestionDetail extends Component {
         >
           {interQuestion}  <Brief>{createTime}</Brief>
         </Item>
-        <div dangerouslySetInnerHTML={{ __html: interAnswer }} style={{ backgroundColor: '#fff', padding: '15px' }} />
+        <div dangerouslySetInnerHTML={{ __html: interAnswer }} style={{ backgroundColor: '#fff', padding: '15px', overflow: 'hidden' }} />
       </div>
     );
   }

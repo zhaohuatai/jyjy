@@ -49,8 +49,8 @@ class EvalResult extends Component {
         >
           {evalSubjectRecord.categoryName}-结果  <Brief> 测评时间：{evalSubjectRecord.createTime}</Brief>
         </Item>
-        <div dangerouslySetInnerHTML={{ __html: evalSubjectRecordResultConclusion.resultCombinConclusion }} style={{ backgroundColor: '#fff', padding: '15px' }} />
-        <div dangerouslySetInnerHTML={{ __html: evalSubjectRecordResultConclusion.resultConclusion }} style={{ backgroundColor: '#fff', padding: '15px' }} />
+        <div dangerouslySetInnerHTML={{ __html: evalSubjectRecordResultConclusion.resultCombinConclusion }} style={{ backgroundColor: '#fff', padding: '15px', overflow: 'hidden' }} />
+        <div dangerouslySetInnerHTML={{ __html: evalSubjectRecordResultConclusion.resultConclusion }} style={{ backgroundColor: '#fff', padding: '15px', overflow: 'hidden' }} />
 
         {
           evalSubjectRecord.categoryId === 2 ?

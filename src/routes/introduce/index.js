@@ -29,7 +29,7 @@ class Introduce extends Component {
 
   render() {
     return (
-      <div dangerouslySetInnerHTML={{ __html: this.state.pubCustomize.content }} style={{ backgroundColor: '#fff', padding: '15px' }} />
+      <div dangerouslySetInnerHTML={{ __html: this.state.pubCustomize.content }} style={{ backgroundColor: '#fff', padding: '15px', overflow: 'hidden' }} />
     );
   }
 }

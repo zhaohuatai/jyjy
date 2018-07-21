@@ -54,7 +54,7 @@ class QuestionDetail extends Component {
         >
           {consultorName}  <Brief>提问时间：{createTime} <br /> 回复时间：{handleTime}</Brief>
         </Item>
-        <div dangerouslySetInnerHTML={{ __html: content }} style={{ backgroundColor: '#fff', padding: '15px' }} />
+        <div dangerouslySetInnerHTML={{ __html: content }} style={{ backgroundColor: '#fff', padding: '15px', overflow: 'hidden' }} />
       </div>
     );
   }

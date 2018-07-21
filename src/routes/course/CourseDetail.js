@@ -287,7 +287,7 @@ class CourseDetail extends Component {
           <div>
 
             <WhiteSpace />
-            <div dangerouslySetInnerHTML={{ __html: introduction }} style={{ backgroundColor: '#fff', padding: '15px' }} />
+            <div dangerouslySetInnerHTML={{ __html: introduction }} style={{ backgroundColor: '#fff', padding: '15px', overflow: 'hidden'}} />
           </div>
           <div>
             <Consulation data={this.state.consultation} id={this.state.serviceCourse.id}/>
